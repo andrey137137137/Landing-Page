@@ -1,0 +1,48 @@
+// BEGIN MIXINS
+
+@mixin rhombusSize($size: $defaultRhombusSize) {
+  width: $size;
+  height: $size;
+}
+
+@mixin resetRhombusRotate() {
+  transform: rotate(0deg);
+}
+
+@mixin opacityRhombus(
+  $borderColor: $white,
+  $backgroundColor: rgba(255, 255, 255, 0.2),
+  $color: $white,
+  $borderHoverColor: $socialHoverColor,
+  $backgroundHoverColor: rgba(27, 182, 239, 0.2),
+  $hoverColor: $socialHoverColor
+) {
+  border: 1px solid $borderColor;
+  color: $color;
+  background-color: $backgroundColor;
+  // transition('border ${transitionTime}, background-color ${transitionTime}');
+
+  &:hover {
+    border: 1px solid $borderHoverColor;
+    color: $hoverColor;
+    background-color: $backgroundHoverColor;
+
+    div,
+    div:before,
+    div:after {
+      border-color: $borderHoverColor;
+    }
+  }
+}
+
+@mixin opacityRhombusTransition($isSocialsRhombus: 0, $additionalValues: "") {
+  @if $isSocialsRhombus = 0 {
+    transition: border $transitionTime,
+      background-color $transitionTime $additionalValues;
+  } @else if $isSocialsRhombus > 0 {
+    transition: border $transitionTime, background-color $transitionTime,
+      right $transitionTime, bottom $transitionTime $additionalValues;
+  }
+}
+
+// END MIXINS
