@@ -113,7 +113,7 @@ function html() {
   var YOUR_LOCALS = {};
 
   return gulp
-    .src(pathes.html.src + "/*.pug")
+    .src(pathes.src + "/*.pug")
     .pipe($gp.plumber())
     .pipe(
       $gp.pug({
@@ -121,7 +121,7 @@ function html() {
         pretty: true
       })
     )
-    .pipe(gulp.dest(pathes.html.dest));
+    .pipe(gulp.dest(pathes.dest));
 }
 
 function css() {
@@ -214,18 +214,15 @@ function browser_sync() {
 }
 
 function watch() {
-  gulp.watch(
-    [`${pathes.html.src}/**/*.pug`, `${pathes.html.views}/**/**/*.pug`],
-    gulp.series(html)
-  );
-  gulp.watch(
-    [pathes.css.src + "/**/*.scss", pathes.css.src + "/pages/**/*.scss"],
-    gulp.series(css)
-  );
-  gulp.watch(
-    ["./webpack.config.js", pathes.js.src + "/**/*.js"],
-    gulp.series(js)
-  );
+  gulp.watch([`${pathes.html.src}/*.pug`], gulp.series(html));
+  // gulp.watch(
+  //   [pathes.css.src + "/**/*.scss", pathes.css.src + "/pages/**/*.scss"],
+  //   gulp.series(css)
+  // );
+  // gulp.watch(
+  //   ["./webpack.config.js", pathes.js.src + "/**/*.js"],
+  //   gulp.series(js)
+  // );
 }
 
 exports.clean = clean;
@@ -239,11 +236,11 @@ exports.browser_sync = browser_sync;
 gulp.task(
   "default",
   gulp.series(
-    clean,
-    svg,
-    gulp.parallel(html, css, js),
+    // clean,
+    // svg,
+    html,
+    // gulp.parallel(html, css, js),
     // gulp.parallel(svg, css, js)
-    // gulp.parallel(watch, browser_sync),
     gulp.parallel(watch, browser_sync)
   )
 );
