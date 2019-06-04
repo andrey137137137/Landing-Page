@@ -113,7 +113,7 @@ function html() {
   var YOUR_LOCALS = {};
 
   return gulp
-    .src(pathes.src + "/*.pug")
+    .src(pathes.html.src + "/index.pug")
     .pipe($gp.plumber())
     .pipe(
       $gp.pug({
@@ -121,7 +121,7 @@ function html() {
         pretty: true
       })
     )
-    .pipe(gulp.dest(pathes.dest));
+    .pipe(gulp.dest(pathes.html.dest));
 }
 
 function css() {
@@ -214,7 +214,7 @@ function browser_sync() {
 }
 
 function watch() {
-  gulp.watch([`${pathes.html.src}/*.pug`], gulp.series(html));
+  gulp.watch(`${pathes.html.src}/*.pug`, gulp.series(html));
   // gulp.watch(
   //   [pathes.css.src + "/**/*.scss", pathes.css.src + "/pages/**/*.scss"],
   //   gulp.series(css)

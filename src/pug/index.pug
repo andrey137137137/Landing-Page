@@ -1,3 +1,5 @@
+include mixins
+
 doctype html
 html(lang="en")
 head
@@ -159,7 +161,7 @@ body
 			each item in features
 				.block
 					.rhombus-wrap
-						.rhombus.sl-icon-(+ item.icon)
+						div(class="rhombus sl-icon-" + item.icon)
 					h3= item.title
 					p= item.desc
 
@@ -176,21 +178,9 @@ body
 			a#about-logo.logo(href="#")
 				.rhombus-wrap.fill-rhombus
 				.rhombus-wrap.empty-rhombus
-				rubiko
+				| rubiko
 
-			ul.socials
-				li
-					a.facebook(href="#")
-				li
-					a.twitter(href="#")
-				li
-					a.dribbble(href="#")
-				li
-					a.tumblr(href="#")
-				li
-					a.linkedin(href="#")
-				li
-					a.pinterest(href="#")
+			+socials
 
 			a#to-portfolio.rhombus-wrap.after-section.arrow-bottom(href="#portfolio")
 				.rhombus
@@ -344,10 +334,10 @@ body
 			each item, index in topSkills
 				.block(id="skills-block" + index)
 					.rhombus-wrap
-						div.rhombus(+ item.prs)
+						.rhombus= item.prs
 						.rhombus.background-container
 							.background
-								div.block-percents(+ item.prs)
+								.block-percents= item.prs
 					h3= item.title
 
 			ul#skills-technologies
@@ -366,7 +356,7 @@ body
 	section#statistics.dark-background
 		.container
 
-			h2.some.cool.statistics
+			h2.some.cool statistics
 			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
 			.flex-container
@@ -425,19 +415,7 @@ body
 						p Proin pretium felis quis eros interdum venenatis. Mauris vitae ultricies augue. Nunc ultrices neque at mollis mattis. Integer luctus, libero sed imperdiet interdum, dolor velit ullamcorper lectus, a elementum tortor leo ac sapien. Duis velit leo, mattis sit amet aliquam quis, molestie eget ante. Mauris rhoncus, arcu quis dictum fringilla, purus eros convallis leo, sit amet tincidunt purus nunc id eros. Nulla vitae egestas lectus. Maecenas semper sem sed sapien porta tincidunt quis et risus. Quisque in lobortis ipsum. Nam tincidunt gravida elit, vel auctor urna placerat ut. Sed nisl nibh, pulvinar ut sapien tincidunt, dictum sollicitudin justo. Sed tempor et nibh et eleifend. Integer nibh felis, fermentum in enim eget.
 						
 						.rhombus-wrap.socials-rhombus
-							ul.socials
-								li
-									a.pinterest(href="#")
-								li
-									a.linkedin(href="#")
-								li
-									a.dribbble(href="#")
-								li
-									a.twitter(href="#")
-								li
-									a.facebook(href="#")
-								li
-									a.tumblr(href="#")
+							+socials
 							.rhombus-wrap.show-socials
 								.rhombus
 
@@ -472,7 +450,7 @@ body
 									a.show-more(href="#")
 								
 
-								ul.sub-comments level-2
+								ul.sub-comments.level-2
 
 									li
 										.comment
@@ -584,7 +562,7 @@ body
 
 	//- BEGIN TEAM SECTION
 
-	section#team.light-background carousel-section
+	section#team.light-background.carousel-section
 		.container
 
 			a.anchor(name="team")
@@ -595,7 +573,7 @@ body
 
 			.carousel-container
 
-				#team-navigation.navigation carousel-navigation
+				#team-navigation.navigation.carousel-navigation
 					.arrows
 
 						#team-carousel-prev.rhombus-wrap.arrow-left
@@ -612,26 +590,21 @@ body
 				#team-demonstration.carousel-demonstration
 					.carousel-row
 
-						.flex-container slide
+						.flex-container.slide
 
 							#team-person-1.block
 								.rhombus-wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus photo-block
+										.rhombus.photo-block
 											picture
 												source(srcset="img/team/d/1.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/1.jpg" media="(min-width: 768px)")
 												img(srcset="img/team/m/1.jpg" alt="1")
 											
 										
-									
-									ul.team-socials socials
-										lia.tumblr(href="#")
-										lia.dribbble(href="#")
-										lia.linkedin(href="#")
-										lia.facebook(href="#")
-										lia.twitter(href="#")
-									
+
+									+socials("team-socials", 5)
+
 								
 
 								span art director
@@ -642,7 +615,7 @@ body
 							#team-person-2.block
 								.rhombus-wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus photo-block
+										.rhombus.photo-block
 											picture
 												source(srcset="img/team/d/2.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/2.jpg" media="(min-width: 768px)")
@@ -650,13 +623,8 @@ body
 											
 										
 									
-									ul.team-socials socials
-										lia.tumblr(href="#")
-										lia.dribbble(href="#")
-										lia.linkedin(href="#")
-										lia.facebook(href="#")
-										lia.twitter(href="#")
-									
+									+socials("team-socials", 5)
+
 								
 
 								span graphic designer
@@ -666,12 +634,12 @@ body
 
 						
 
-						.flex-container slide
+						.flex-container.slide
 
 							#team-person-3.block
 								.rhombus-wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus photo-block
+										.rhombus.photo-block
 											picture
 												source(srcset="img/team/d/3.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/3.jpg" media="(min-width: 768px)")
@@ -679,13 +647,8 @@ body
 											
 										
 									
-									ul.team-socials socials
-										lia.tumblr(href="#")
-										lia.dribbble(href="#")
-										lia.linkedin(href="#")
-										lia.facebook(href="#")
-										lia.twitter(href="#")
-									
+									+socials("team-socials", 5)
+
 								
 
 								span General Manager
@@ -696,7 +659,7 @@ body
 							#team-person-4.block
 								.rhombus-wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus photo-block
+										.rhombus.photo-block
 											picture
 												source(srcset="img/team/d/4.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/4.jpg" media="(min-width: 768px)")
@@ -704,13 +667,8 @@ body
 											
 										
 									
-									ul.team-socials socials
-										lia.tumblr(href="#")
-										lia.dribbble(href="#")
-										lia.linkedin(href="#")
-										lia.facebook(href="#")
-										lia.twitter(href="#")
-									
+									+socials("team-socials", 5)
+
 								
 
 								span Lead Developer
@@ -732,7 +690,7 @@ body
 
 	//- BEGIN CLIENTS SECTION
 
-	section#clients.dark-background carousel-section
+	section#clients.dark-background.carousel-section
 		.container
 
 			h2 meet our lovely clients
@@ -934,19 +892,19 @@ body
 
 	//- END LIGHTBOX
 
-	//- script(src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript")
-	//- script(src="js/pf.intrinsic.min.js")
-	//- script(src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js")
-	//- script(src="js/slick.min.js" charset="utf-8")
-	//- script(src="js/request-animation-frame-polyfill.js")
-	//- script(src="js/reasanik-base.js")
-	//- script(src="js/restruct-rhombuses.js")
-	//- script(src="js/menu.js")
-	//- script(src="js/slider.js")
-	//- script(src="js/animate-blocks.js")
-	//- script(src="js/scroll-effect.js")
-	//- script(src="js/to-top.js")
-	//- script(src="js/gallery.js")
-	//- script(src="js/carousel.js")
-	//- script(src="js/form-validate.js")
-	//- script(src="js/include-plugins.js")
+	script(src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript")
+	script(src="js/pf.intrinsic.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js")
+	script(src="js/slick.min.js" charset="utf-8")
+	script(src="js/request-animation-frame-polyfill.js")
+	script(src="js/reasanik-base.js")
+	script(src="js/restruct-rhombuses.js")
+	script(src="js/menu.js")
+	script(src="js/slider.js")
+	script(src="js/animate-blocks.js")
+	script(src="js/scroll-effect.js")
+	script(src="js/to-top.js")
+	script(src="js/gallery.js")
+	script(src="js/carousel.js")
+	script(src="js/form-validate.js")
+	script(src="js/include-plugins.js")

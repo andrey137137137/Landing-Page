@@ -1,0 +1,16 @@
+mixin socials(classes="", count=6)
+  -
+    var items = [
+      "facebook",
+      "twitter",
+      "dribbble",
+      "tumblr",
+      "linkedin",
+      "pinterest"
+    ]
+  - var listClasses = (classes ? classes + " " : "") + "socials"
+
+  ul(class=listClasses)
+    - for (var i = 0; i < count; i++)
+      li
+        a(class=items[i] href="#")
