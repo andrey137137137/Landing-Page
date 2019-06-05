@@ -821,23 +821,29 @@ body
 
 		
 
-		#footer-socials-container.content flex-container
+		#footer-socials-container.content.flex-container
 
-			ul#footer-left-socials.socials flex-container
-				lia.facebook(href="#")
-				lia.twitter(href="#")
-				lia.dribbble(href="#")
+			ul#footer-left-socials.socials.flex-container
+				li
+					a.facebook(href="#")
+				li
+					a.twitter(href="#")
+				li
+					a.dribbble(href="#")
 			
 
-			ul#footer-right-socials.socials flex-container
-				lia.tumblr(href="#")
-				lia.linkedin(href="#")
-				lia.pinterest(href="#")
+			ul#footer-right-socials.socials.flex-container
+				li
+					a.tumblr(href="#")
+				li
+					a.linkedin(href="#")
+				li
+					a.pinterest(href="#")
 			
 
 		
 
-		a#to-top.rhombus-wrap.after-section arrow-top(href="google.ru")
+		a#to-top.rhombus-wrap.after-section.arrow-top(href="google.ru")
 			.rhombus
 		
 
@@ -895,7 +901,7 @@ body
 	script(src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript")
 	script(src="js/pf.intrinsic.min.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js")
-	script(src="js/slick.min.js" charset="utf-8")
+	script(src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
 	script(src="js/request-animation-frame-polyfill.js")
 	script(src="js/reasanik-base.js")
 	script(src="js/restruct-rhombuses.js")
