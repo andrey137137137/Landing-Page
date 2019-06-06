@@ -18,20 +18,20 @@
 }
 
 @media only screen and (min-width: 768px) {
+  $darkBgBlock: ".dark-background";
+
   .light-background {
     // padding: 210px 0 0;
     padding-top: $lightSectionPaddingTopTb;
   }
 
-  .dark-background {
-    &,
-    #testimonials&,
-    #statistics&,
-    #socials-feedback&,
-    #clients& {
-      // padding: 157px 0 0;
-      padding-top: $darkSectionPaddingTopTb;
-    }
+  #{$darkBgBlock},
+  #testimonials#{$darkBgBlock},
+  #statistics#{$darkBgBlock},
+  #socials-feedback#{$darkBgBlock},
+  #clients#{$darkBgBlock} {
+    // padding: 157px 0 0;
+    padding-top: $darkSectionPaddingTopTb;
   }
 
   h2,

@@ -215,10 +215,7 @@ function browser_sync() {
 
 function watch() {
   gulp.watch(`${pathes.html.src}/*.pug`, gulp.series(html));
-  // gulp.watch(
-  //   [pathes.css.src + "/**/*.scss", pathes.css.src + "/pages/**/*.scss"],
-  //   gulp.series(css)
-  // );
+  gulp.watch(`${pathes.css.src}/*.scss`, gulp.series(css));
   // gulp.watch(
   //   ["./webpack.config.js", pathes.js.src + "/**/*.js"],
   //   gulp.series(js)
@@ -238,8 +235,7 @@ gulp.task(
   gulp.series(
     // clean,
     // svg,
-    html,
-    // gulp.parallel(html, css, js),
+    gulp.parallel(html, css),
     // gulp.parallel(svg, css, js)
     gulp.parallel(watch, browser_sync)
   )
