@@ -71,7 +71,7 @@ header {
   div {
     color: $white;
     border-color: $white;
-    transition: "border ${transitionTime}";
+    transition: "border #{$transitionTime}";
   }
 
   &.bars div {
@@ -213,8 +213,13 @@ header {
 
 #main-slide-1 {
   .background {
-    linear-gradient: "to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%",
-      "rgba(9, 9, 9, .85) url(${imgBgPath}/main-slider/1-m.jpg) no-repeat center top";
+    background: linear-gradient(
+        to top right,
+        rgba(9, 9, 9, 0.85) 0%,
+        rgba(205, 41, 41, 0.85) 100%
+      ),
+      rgba(9, 9, 9, 0.85) url(#{$imgBgPath}/main-slider/1-m.jpg) no-repeat
+        center top;
     // linear-gradient: 'to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%', 'rgba(9, 9, 9, .85) url(images/backgrounds/main-slider/1-m.jpg') no-repeat center -8px';
     background-size: cover;
   }
@@ -234,30 +239,30 @@ header {
 }
 
 #main-slide-2 .background {
-  background: rgba(9, 9, 9, 0.85) url("${imgBgPath}/main-slider/2.jpg") center
+  background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/2.jpg") center
     top;
-  // background: rgba(9, 9, 9, .85) url('${imgBgPath}/main-slider/2.jpg';
+  // background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/2.jpg';
 }
 
 #main-slide-3 .background {
-  background: rgba(9, 9, 9, 0.85) url("${imgBgPath}/main-slider/3-m.jpg")
+  background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/3-m.jpg")
     no-repeat center top;
-  //background: rgba(9, 9, 9, .85) url('${imgBgPath}/main-slider/3-m.jpg') no-repeat;
+  //background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/3-m.jpg') no-repeat;
   background-size: cover;
 }
 
 #main-slide-4 {
   .background {
-    //background: url('${imgBgPath}/main-slider/4-m.jpg') no-repeat center -5px;
-    background: url("${imgBgPath}/main-slider/4-m.jpg") no-repeat center top;
-    //background: url('${imgBgPath}/main-slider/4-m.jpg');
+    //background: url('#{$imgBgPath}/main-slider/4-m.jpg') no-repeat center -5px;
+    background: url("#{$imgBgPath}/main-slider/4-m.jpg") no-repeat center top;
+    //background: url('#{$imgBgPath}/main-slider/4-m.jpg');
     background-size: cover;
   }
 
   .content {
     flex-wrap: nowrap;
     justify-content: space-between;
-    // background: url('${imgBgPath}/main-slider/hand.png') no-repeat 289px bottom;
+    // background: url('#{$imgBgPath}/main-slider/hand.png') no-repeat 289px bottom;
   }
 
   // .text-container {
@@ -370,7 +375,7 @@ header {
 
   div {
     border: none;
-    background: url("${imgBgPath}/after-slider.png") no-repeat center center;
+    background: url("#{$imgBgPath}/after-slider.png") no-repeat center center;
   }
 }
 
@@ -433,8 +438,8 @@ header {
 #about {
   padding-bottom: 149px;
   // height: 788px;
-  background: #1f1f1f url("${imgBgPath}/about-m.jpg") no-repeat center 0;
-  //background: #1f1f1f url('${imgBgPath}/about-m.jpg') no-repeat -260px -179px;
+  background: #1f1f1f url("#{$imgBgPath}/about-m.jpg") no-repeat center 0;
+  //background: #1f1f1f url('#{$imgBgPath}/about-m.jpg') no-repeat -260px -179px;
 
   p {
     color: $greyColor;
@@ -600,9 +605,9 @@ header {
 #testimonials {
   padding-top: 76px;
   // height: 417px;
-  background: $darkSectionBgColor url("${imgBgPath}/testimonials-m.jpg")
+  background: $darkSectionBgColor url("#{$imgBgPath}/testimonials-m.jpg")
     no-repeat center top;
-  //background: $darkSectionBgColor url('${imgBgPath}/testimonials-m.jpg') no-repeat -425px -299px;
+  //background: $darkSectionBgColor url('#{$imgBgPath}/testimonials-m.jpg') no-repeat -425px -299px;
 
   .container {
     padding: 0;
@@ -887,9 +892,13 @@ header {
 #statistics {
   padding: 80px 0 120px;
   // height: 875px;
-  linear-gradient: "to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%",
-    "${darkSectionBgColor} url(${imgBgPath}/statistics-m.jpg) no-repeat center top";
-  //background: $darkSectionBgColor url('${imgBgPath}/statistics-m.jpg') no-repeat -583px -5px;
+  background: linear-gradient(
+      to top right,
+      rgba(9, 9, 9, 0.1) 0%,
+      rgba(205, 41, 41, 0.1) 100%
+    ),
+    #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-m.jpg) no-repeat center top;
+  //background: $darkSectionBgColor url('#{$imgBgPath}/statistics-m.jpg') no-repeat -583px -5px;
 
   h2 {
     font-size: 31px;
@@ -1084,9 +1093,9 @@ header {
 
   .sub-comments {
     margin-top: 18px;
-    background: url("${imgBgPath}/blog-comments/vertical-line.png") repeat-y
+    background: url("#{$imgBgPath}/blog-comments/vertical-line.png") repeat-y
         left 20px,
-      url("${imgBgPath}/blog-comments/sub.png") no-repeat;
+      url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
 
     li {
       padding-top: 4px;
@@ -1094,7 +1103,7 @@ header {
   }
 
   .final-comments {
-    background: url("${imgBgPath}/blog-comments/sub.png") no-repeat;
+    background: url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
   }
 
   .comment-text {
@@ -1191,7 +1200,7 @@ header {
   }
 
   .admin-avatar {
-    background: $linkColor url("${imgBgPath}/logo.png") no-repeat center center;
+    background: $linkColor url("#{$imgBgPath}/logo.png") no-repeat center center;
   }
 
   .show-more {
@@ -1203,7 +1212,7 @@ header {
     height: 13px;
     // font: 15px/1.2 SimpleLineIcons;
     // color: rgba(33, 33, 33, .5);
-    background: url("${imgBgPath}/arrow.png") no-repeat;
+    background: url("#{$imgBgPath}/arrow.png") no-repeat;
 
     // &:before {
     // 	display: block;
@@ -1244,7 +1253,7 @@ header {
   // padding-top: 84px;
   padding-top: 74px;
   // height: 448px;
-  background: #121212 url("${imgBgPath}/socials-feedback-m.jpg") no-repeat top
+  background: #121212 url("#{$imgBgPath}/socials-feedback-m.jpg") no-repeat top
     center;
 
   .container {
@@ -1396,7 +1405,7 @@ header {
 #team-navigation .rhombus-wrap,
 .team-socials li {
   @include opacityRhombus($black, rgba(0, 0, 0, 0.2), $hoverColor: $white);
-  // transition: 'border ${transitionTime}, background-color ${transitionTime}';
+  // transition: 'border #{$transitionTime}, background-color #{$transitionTime}';
 }
 
 #team-navigation {
@@ -1505,7 +1514,7 @@ header {
     @include rhombusSize($rhombusSize65);
     line-height: $rhombusSize65 - 2px;
     @include resetRhombusRotate;
-    @include opacityRhombusTransition(1, ", opacity ${transitionTime}");
+    @include opacityRhombusTransition(1, ", opacity #{$transitionTime}");
 
     &:hover {
       border: 1px solid $black;
@@ -1540,7 +1549,7 @@ header {
 #clients {
   padding-top: 76px;
   // height: 579px;
-  background: #171717 url("${imgBgPath}/clients-m.jpg") no-repeat top center;
+  background: #171717 url("#{$imgBgPath}/clients-m.jpg") no-repeat top center;
 
   p {
     margin-bottom: 105px;
@@ -1577,7 +1586,7 @@ header {
   position: relative;
   padding-bottom: 116px;
   // height: 1499px;
-  background: url("${imgBgPath}/map-m.jpg") no-repeat center bottom;
+  background: url("#{$imgBgPath}/map-m.jpg") no-repeat center bottom;
 
   .container {
     overflow: hidden;
@@ -1914,7 +1923,7 @@ footer {
   width: 0;
   height: 0;
   opacity: 0;
-  transition: "width 1s, height 1s, opacity 1s, left 1s, bottom 1s, padding ${transitionTime}";
+  transition: "width 1s, height 1s, opacity 1s, left 1s, bottom 1s, padding #{$transitionTime}";
 
   &.active {
     padding: 18px;

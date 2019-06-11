@@ -1,7 +1,7 @@
 // BEGIN VARIABLES
 
 $imgPath: "../img";
-$imgBgPath: "${imgPath}/bg";
+$imgBgPath: "#{$imgPath}/bg";
 
 $zLevel1: 10;
 $zLevel2: 20;

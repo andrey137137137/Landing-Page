@@ -1,5 +1,38 @@
 // BEGIN MIXINS
 
+@mixin cssProp($property, $value) {
+  #{$property}: unquote($value);
+}
+
+@mixin margin($value) {
+  // margin: unquote($value);
+  @include cssProp(margin, $value);
+}
+
+@mixin border($value) {
+  // border: unquote($value);
+  @include cssProp(border, $value);
+}
+
+@mixin padding($value) {
+  // padding: unquote($value);
+  @include cssProp(padding, $value);
+}
+
+@mixin size($value) {
+  // size: unquote($value);
+  @include cssProp(size, $value);
+}
+
+@mixin position($value) {
+  @include cssProp(position, $value);
+}
+
+@mixin oneLineBlock($height, $border: 0) {
+  height: $height;
+  line-height: $height - $border * 2;
+}
+
 @mixin rhombusSize($size: $defaultRhombusSize) {
   width: $size;
   height: $size;
@@ -20,7 +53,7 @@
   border: 1px solid $borderColor;
   color: $color;
   background-color: $backgroundColor;
-  // transition('border ${transitionTime}, background-color ${transitionTime}');
+  // transition('border #{$transitionTime}, background-color #{$transitionTime}');
 
   &:hover {
     border: 1px solid $borderHoverColor;
@@ -38,10 +71,10 @@
 @mixin opacityRhombusTransition($isSocialsRhombus: 0, $additionalValues: "") {
   @if $isSocialsRhombus = 0 {
     transition: border $transitionTime,
-      background-color $transitionTime $additionalValues;
+      background-color $transitionTime unquote($additionalValues);
   } @else if $isSocialsRhombus > 0 {
     transition: border $transitionTime, background-color $transitionTime,
-      right $transitionTime, bottom $transitionTime $additionalValues;
+      right $transitionTime, bottom $transitionTime unquote($additionalValues);
   }
 }
 

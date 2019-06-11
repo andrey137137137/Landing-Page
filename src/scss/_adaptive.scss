@@ -176,21 +176,26 @@
   }
 
   #main-slide-1 .background {
-    // background-image: url('${imgBgPath}/main-slider/1-t.jpg');
-    linear-gradient: "to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%",
-      "rgba(9, 9, 9, .85) url(${imgBgPath}/main-slider/1-t.jpg) no-repeat center top";
+    // background-image: url('#{$imgBgPath}/main-slider/1-t.jpg');
+    background: linear-gradient(
+        to top right,
+        rgba(9, 9, 9, 0.85) 0%,
+        rgba(205, 41, 41, 0.85) 100%
+      ),
+      rgba(9, 9, 9, 0.85) url(#{$imgBgPath}/main-slider/1-t.jpg) no-repeat
+        center top;
     background-size: cover;
   }
 
   #main-slide-3 .background {
-    background-image: url("${imgBgPath}/main-slider/3-t.jpg");
+    background-image: url("#{$imgBgPath}/main-slider/3-t.jpg");
   }
 
   #main-slide-4 {
     .background {
-      background: url("${imgBgPath}/main-slider/screenshot-t.png") no-repeat
+      background: url("#{$imgBgPath}/main-slider/screenshot-t.png") no-repeat
           center bottom,
-        url("${imgBgPath}/main-slider/4-t.jpg") no-repeat center top/cover;
+        url("#{$imgBgPath}/main-slider/4-t.jpg") no-repeat center top/cover;
     }
 
     .content {
@@ -254,7 +259,7 @@
     @include rhombusSize($rhombusSize107);
 
     div {
-      background-image: url("${imgBgPath}/after-slider-d.png");
+      background-image: url("#{$imgBgPath}/after-slider-d.png");
     }
   }
 
@@ -274,7 +279,7 @@
   #about {
     padding-bottom: 189px;
     // height: 787px;
-    background-image: url("${imgBgPath}/about-t.jpg");
+    background-image: url("#{$imgBgPath}/about-t.jpg");
 
     .socials {
       justify-content: space-between;
@@ -312,7 +317,7 @@
 
   #testimonials {
     // height: 514px;
-    background-image: url("${imgBgPath}/testimonials-t.jpg");
+    background-image: url("#{$imgBgPath}/testimonials-t.jpg");
 
     .thumbs {
       // top: 226px;
@@ -362,9 +367,14 @@
   #statistics {
     padding-bottom: 169px;
     // height: 726px;
-    // background-image: url('${imgBgPath}/statistics-t.jpg');
-    linear-gradient: "to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%",
-      "${darkSectionBgColor} url(${imgBgPath}/statistics-t.jpg) no-repeat center top";
+    // background-image: url('#{$imgBgPath}/statistics-t.jpg');
+    background: linear-gradient(
+        to top right,
+        rgba(9, 9, 9, 0.1) 0%,
+        rgba(205, 41, 41, 0.1) 100%
+      ),
+      #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-t.jpg) no-repeat center
+        top;
 
     .section-description {
       margin-bottom: 0;
@@ -392,7 +402,7 @@
 
   #socials-feedback {
     // height: 563px;
-    background-image: url("${imgBgPath}/socials-feedback-t.jpg");
+    background-image: url("#{$imgBgPath}/socials-feedback-t.jpg");
 
     .carousel-container {
       height: 406px;
@@ -485,7 +495,7 @@
 
   #clients {
     // height: 600px;
-    background-image: url("${imgBgPath}/clients-t.jpg");
+    background-image: url("#{$imgBgPath}/clients-t.jpg");
 
     p {
       margin-bottom: 71px;
@@ -502,7 +512,7 @@
 
   #contacts {
     // height: 1507px;
-    background-image: url("${imgBgPath}/map-t.jpg");
+    background-image: url("#{$imgBgPath}/map-t.jpg");
 
     form {
       // margin-top: 137px;
@@ -694,21 +704,26 @@
   }
 
   #main-slide-1 .background {
-    linear-gradient: "to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%",
-      "rgba(9, 9, 9, .85) url(${imgBgPath}/main-slider/1-d.jpg) no-repeat center top";
+    background: linear-gradient(
+        to top right,
+        rgba(9, 9, 9, 0.85) 0%,
+        rgba(205, 41, 41, 0.85) 100%
+      ),
+      rgba(9, 9, 9, 0.85) url(#{$imgBgPath}/main-slider/1-d.jpg) no-repeat
+        center top;
     background-size: cover;
   }
 
   #main-slide-3 .background {
-    background-image: url("${imgBgPath}/main-slider/3-d.jpg");
+    background-image: url("#{$imgBgPath}/main-slider/3-d.jpg");
   }
 
   #main-slide-4 {
     .background {
-      // background-image: url('${imgBgPath}/main-slider/4-d.jpg');
-      background: url("${imgBgPath}/main-slider/screenshot-d.png") no-repeat
+      // background-image: url('#{$imgBgPath}/main-slider/4-d.jpg');
+      background: url("#{$imgBgPath}/main-slider/screenshot-d.png") no-repeat
           center 600px,
-        url("${imgBgPath}/main-slider/4-d.jpg") no-repeat center top/cover;
+        url("#{$imgBgPath}/main-slider/4-d.jpg") no-repeat center top/cover;
     }
 
     .slide-description {
@@ -740,7 +755,7 @@
     // padding-top: -6px;
     padding-bottom: 172px;
     // height: 725px;
-    background-image: url("${imgBgPath}/about-d.jpg");
+    background-image: url("#{$imgBgPath}/about-d.jpg");
   }
 
   #portfolio {
@@ -763,7 +778,7 @@
 
   #testimonials {
     // height: 520px;
-    background-image: url("${imgBgPath}/testimonials-d.jpg");
+    background-image: url("#{$imgBgPath}/testimonials-d.jpg");
 
     .thumbs {
       // top: 226px;
@@ -787,9 +802,14 @@
   #statistics {
     padding-bottom: 183px;
     // height: 724px;
-    // background-image: url('${imgBgPath}/statistics-d.jpg');
-    linear-gradient: "to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%",
-      "${darkSectionBgColor} url(${imgBgPath}/statistics-d.jpg) no-repeat center top";
+    // background-image: url('#{$imgBgPath}/statistics-d.jpg');
+    background: linear-gradient(
+        to top right,
+        rgba(9, 9, 9, 0.1) 0%,
+        rgba(205, 41, 41, 0.1) 100%
+      ),
+      #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-d.jpg) no-repeat center
+        top;
   }
 
   #blog-news {
@@ -804,7 +824,7 @@
 
   #socials-feedback {
     // height: 540px;
-    background-image: url("${imgBgPath}/socials-feedback-d.jpg");
+    background-image: url("#{$imgBgPath}/socials-feedback-d.jpg");
 
     .carousel-container {
       height: 387px;
@@ -849,7 +869,7 @@
 
   #clients {
     // height: 600px;
-    background-image: url("${imgBgPath}/clients-d.jpg");
+    background-image: url("#{$imgBgPath}/clients-d.jpg");
 
     .carousel-container {
       height: 218px;
@@ -858,7 +878,7 @@
 
   #contacts {
     // height: 1714px;
-    background-image: url("${imgBgPath}/map-d.jpg");
+    background-image: url("#{$imgBgPath}/map-d.jpg");
   }
 
   #to-top {
