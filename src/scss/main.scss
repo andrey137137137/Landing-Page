@@ -71,7 +71,7 @@ header {
   div {
     color: $white;
     border-color: $white;
-    transition: "border #{$transitionTime}";
+    transition: border #{$transitionTime};
   }
 
   &.bars div {
@@ -572,7 +572,7 @@ header {
 
 #grid-switcher-squares,
 #grid-switcher-rhombuses {
-  flex-grow: 0, "!important";
+  flex-grow: 0 !important;
 
   a {
     padding: 0;
@@ -975,7 +975,7 @@ header {
 
       .rhombus {
         position: absolute;
-        font: 8px / $defaultRhombusSize "Exo2.0 Regular", sans-serif;
+        font: unquote("8px/#{$defaultRhombusSize}") "Exo2.0 Regular", sans-serif;
 
         &:before {
           position: absolute;
@@ -1649,7 +1649,8 @@ header {
     height: $contactInputLineHeight;
     //font: 200 14px/17px 'Exo 2', sans-serif;
     //font: 14px/17px 'Exo2.0-Extra-Light', sans-serif;
-    font: 14px / $contactInputLineHeight "Exo2.0-Extra-Light", sans-serif;
+    font: unquote("14px/#{$contactInputLineHeight}") "Exo2.0-Extra-Light",
+      sans-serif;
     text-align: center;
     color: rgba(245, 245, 245, 0.25);
     background: none;
@@ -1857,7 +1858,8 @@ footer {
     margin-top: 14px;
     font-family: inherit;
     font-style: normal;
-    font-size: 11px/1.2 "Open Sans Light", sans-serif;
+    // font-size: 11px/1.2 "Open Sans Light", sans-serif;
+    font-family: 11px/1.2 "Open Sans Light", sans-serif;
     color: rgba(245, 245, 245, 0.5);
   }
 
@@ -1923,7 +1925,8 @@ footer {
   width: 0;
   height: 0;
   opacity: 0;
-  transition: "width 1s, height 1s, opacity 1s, left 1s, bottom 1s, padding #{$transitionTime}";
+  transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s,
+    padding #{$transitionTime};
 
   &.active {
     padding: 18px;

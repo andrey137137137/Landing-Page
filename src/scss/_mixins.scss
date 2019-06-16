@@ -69,7 +69,7 @@
 }
 
 @mixin opacityRhombusTransition($isSocialsRhombus: 0, $additionalValues: "") {
-  @if $isSocialsRhombus = 0 {
+  @if $isSocialsRhombus == 0 {
     transition: border $transitionTime,
       background-color $transitionTime unquote($additionalValues);
   } @else if $isSocialsRhombus > 0 {
