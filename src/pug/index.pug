@@ -16,18 +16,14 @@ body
 
 	//- BEGIN HEADER
 
-	header.light-background
-		.container
+	header.section.section--light_bg.header
+		.container.header-container
 
-			a.logo(href="#")
-				.rhombus-wrap.fill-rhombus
-				.rhombus-wrap.empty-rhombus
-				h1 rubiko
-			
+			+logo("", true)
 
-			nav
-				#menu-checker.rhombus-wrap.button.bars
-					.rhombus
+			nav.header-nav
+				#menu-checker.rhombus-wrap.button.bars.header-menu_checker
+					.rhombus.header-menu_checker_rhombus
 
 				//- main menu
 
@@ -35,7 +31,7 @@ body
 
 	//- BEGIN MAIN-SLIDER SECTION
 
-	section#main-slider.dark-background.slider-container
+	section#main-slider.section--dark_bg.slider-container
 		#main-slider-demonstration.slider-demonstration
 
 			#main-slide-1.slide
@@ -154,7 +150,7 @@ body
 			
 		]
 
-	section#features.light-background
+	section#features.section--light_bg
 		.container
 
 			a.anchor(name="features")
@@ -173,7 +169,7 @@ body
 
 	//- BEGIN ABOUT SECTION
 
-	section#about.dark-background
+	section#about.section--dark_bg
 		.container
 
 			h2 about us
@@ -193,7 +189,7 @@ body
 
 	//- BEGIN PORTFOLIO SECTION
 
-	section#portfolio.light-background
+	section#portfolio.section--light_bg
 		.container.dynamic-blocks-container
 
 			a.anchor(name="portfolio")
@@ -235,7 +231,7 @@ body
 					address: "6"}
 		]
 
-	section#testimonials.dark-background.carousel-section
+	section#testimonials.section--dark_bg.carousel-section
 		.container
 
 			h2 testimonials
@@ -327,7 +323,7 @@ body
 								prs: 77}
 		]
 
-	section#skills.light-background
+	section#skills.section--light_bg
 		.container
 
 			a.anchor(name="skills")
@@ -357,7 +353,7 @@ body
 
 	//- BEGIN STATISTICS SECTION
 
-	section#statistics.dark-background
+	section#statistics.section--dark_bg
 		.container
 
 			h2.some.cool statistics
@@ -385,7 +381,7 @@ body
 
 	//- BEGIN BLOG-NEWS SECTION
 
-	section#blog-news.light-background
+	section#blog-news.section--light_bg
 		.container.dynamic-blocks-container
 
 			a.anchor(name="blog-news")
@@ -545,7 +541,7 @@ body
 			"dribbble"
 		]
 
-	section#socials-feedback.dark-background.carousel-section
+	section#socials-feedback.section--dark_bg.carousel-section
 		.container
 
 			.carousel-container
@@ -566,7 +562,7 @@ body
 
 	//- BEGIN TEAM SECTION
 
-	section#team.light-background.carousel-section
+	section#team.section--light_bg.carousel-section
 		.container
 
 			a.anchor(name="team")
@@ -694,7 +690,7 @@ body
 
 	//- BEGIN CLIENTS SECTION
 
-	section#clients.dark-background.carousel-section
+	section#clients.section--dark_bg.carousel-section
 		.container
 
 			h2 meet our lovely clients
@@ -741,7 +737,7 @@ body
 
 	//- BEGIN CONTACTS SECTION
 
-	section#contacts.light-background
+	section#contacts.section--light_bg
 		.container
 
 			a.anchor(name="contacts")
@@ -812,7 +808,7 @@ body
 
 	//- BEGIN FOOTER
 
-	footer.dark-background
+	footer.section--dark_bg
 		.container
 
 			a#footer-logo.logo(href="#")

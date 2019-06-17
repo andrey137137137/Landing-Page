@@ -16,7 +16,9 @@
 
 // BEGIN HEADER
 
-header {
+.header {
+  $block: &;
+
   position: fixed;
   top: 0;
   // left: 50%;
@@ -29,79 +31,79 @@ header {
   // transform: translateX(-50%);
   transition: height 1s;
 
-  &.light-background {
+  &.section--light_bg {
     padding: 0;
   }
 
-  .container {
+  &-container {
     justify-content: space-between;
     padding: 0 20px;
     outline: none;
     overflow: visible;
   }
 
-  a.logo {
+  &-logo {
     //margin-top: 9px;
     margin-top: 21px;
+  }
+
+  &-menu_checker {
+    margin-top: 19px;
+    // rhombus-size: 47px;
+    @include rhombusSize(33px);
+    cursor: pointer;
+
+    &_rhombus {
+      color: $white;
+      border-color: $white;
+      transition: border #{$transitionTime};
+    }
+
+    &.bars &_rhombus {
+      &:before,
+      &:after {
+        position: relative;
+        display: block;
+        left: 7px;
+        width: 50%;
+        border-bottom: 2px $white solid;
+        // transform: translateX(-50%);
+        content: "";
+      }
+
+      &:before {
+        // font: 21px/33px FontAwesome;
+        // text-align: center;
+        // content: $faBars;
+        padding-top: 10px;
+      }
+
+      &:after {
+        margin-top: 3px;
+        border-top: 2px $white solid;
+        padding-top: 3px;
+      }
+    }
+
+    &.close {
+      padding: 8px;
+    }
   }
 
   &.min {
     height: 56px;
 
-    .logo {
+    &-logo {
       margin-top: 15px;
     }
 
-    #menu-checker {
+    #{$block}-menu_checker {
       margin-top: 12px;
     }
 
     #main-menu {
       top: 57px;
     }
-  }
-}
-
-#menu-checker {
-  margin-top: 19px;
-  // rhombus-size: 47px;
-  @include rhombusSize(33px);
-  cursor: pointer;
-
-  div {
-    color: $white;
-    border-color: $white;
-    transition: border #{$transitionTime};
-  }
-
-  &.bars div {
-    &:before,
-    &:after {
-      position: relative;
-      display: block;
-      left: 7px;
-      width: 50%;
-      border-bottom: 2px $white solid;
-      // transform: translateX(-50%);
-      content: "";
-    }
-
-    &:before {
-      // font: 21px/33px FontAwesome;
-      // text-align: center;
-      // content: $faBars;
-      padding-top: 10px;
-    }
-
-    &:after {
-      margin-top: 3px;
-      border-top: 2px $white solid;
-      padding-top: 3px;
-    }
-  }
-
-  &.close {
-    padding: 8px;
   }
 }
 
@@ -1847,7 +1849,7 @@ footer {
   background: $darkColor;
   overflow: hidden;
 
-  &.dark-background {
+  &.section--dark_bg {
     // padding: 50px 0 0;
     // padding: 65px 0 0;
     padding: 64px 0 0;

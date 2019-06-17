@@ -18,9 +18,9 @@
 }
 
 @media only screen and (min-width: 768px) {
-  $darkBgBlock: ".dark-background";
+  $darkBgBlock: ".section--dark_bg";
 
-  .light-background {
+  .section--light_bg {
     // padding: 210px 0 0;
     padding-top: $lightSectionPaddingTopTb;
   }
@@ -554,7 +554,7 @@
 }
 
 @media only screen and (min-width: 883px) {
-  #menu-checker {
+  .header-menu_checker {
     display: none;
   }
 
@@ -594,7 +594,7 @@
     }
   }
 
-  header {
+  .header {
     #main-menu.visible {
       display: flex;
     }
@@ -606,14 +606,14 @@
 }
 
 @media only screen and (min-width: 1170px) {
-  .light-background {
+  .section--light_bg {
     // padding-top: 206px;
     padding-top: $lightSectionPaddingTopDs;
   }
 
-  .dark-background,
-  #statistics.dark-background,
-  #socials-feedback.dark-background {
+  .section--dark_bg,
+  #statistics.section--dark_bg,
+  #socials-feedback.section--dark_bg {
     // padding-top: 153px;
     padding-top: $darkSectionPaddingTopDs;
   }

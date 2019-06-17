@@ -1,3 +1,12 @@
+mixin logo(id="", isMain=false)
+  a.logo(id=id class={"header-logo": isMain} href="#")
+    .rhombus-wrap.fill-rhombus.logo-rhombus.logo-fill_rhombus
+    .rhombus-wrap.empty-rhombus.logo-rhombus.logo-empty_rhombus
+    if isMain
+      h1.logo-title rubiko
+    else
+      span.logo-title rubiko
+
 mixin socials(classes="", count=6)
   -
     var items = [
