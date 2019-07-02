@@ -71,7 +71,7 @@ section .container {
 
 // BEGIN RHOMBUSES
 
-.rhombus-wrap,
+.rhombus_wrap,
 .socials li,
 .thumbs li {
   transform: rotate(45deg);
@@ -179,7 +179,7 @@ section .container {
   }
 }
 
-.navigation .rhombus-wrap,
+.navigation .rhombus_wrap,
 input.button {
   cursor: pointer;
 }
@@ -310,17 +310,17 @@ h3 {
     left: 4px;
     // rhombus-size: 27px;
     @include rhombusSize(19px);
-  }
 
-  &-fill_rhombus {
-    background-color: $black;
-  }
+    &--fill {
+      background-color: $black;
+    }
 
-  &-empty_rhombus {
-    //left: 6px;
-    left: 10px;
-    border: 1px solid $black;
-    transition: left $transitionTime;
+    &--empty {
+      //left: 6px;
+      left: 10px;
+      border: 1px solid $black;
+      transition: left $transitionTime;
+    }
   }
 
   &-title {
@@ -332,7 +332,7 @@ h3 {
     }
   }
 
-  &:hover &-empty_rhombus {
+  &:hover &-rhombus--empty {
     left: 4px;
   }
 }
@@ -401,7 +401,7 @@ h3 {
     justify-content: center;
   }
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     margin: 0 12.5px;
     padding: 18px;
     background-color: $linkColor;

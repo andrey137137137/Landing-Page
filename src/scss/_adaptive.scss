@@ -220,7 +220,7 @@
     width: 768px;
     transform: translateX(-50%);
 
-    .rhombus-wrap {
+    .rhombus_wrap {
       padding: 29px;
       @include rhombusSize($rhombusSize107);
     }
@@ -451,7 +451,7 @@
       justify-content: space-between;
     }
 
-    .rhombus-wrap {
+    .rhombus_wrap {
       margin-left: 37px;
       margin-right: 37px;
     }
@@ -644,7 +644,7 @@
       top: 171px;
     }
 
-    .rhombus-wrap {
+    .rhombus_wrap {
       @include rhombusSize($defaultRhombusSize);
     }
 

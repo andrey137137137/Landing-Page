@@ -208,7 +208,7 @@
     line-height: 22px;
   }
 
-  // .rhombus-wrap {
+  // .rhombus_wrap {
   //    transition: opacity $transitionTime;
   // }
 }
@@ -305,7 +305,7 @@
   // .more,
   // .arrow-left,
   // .arrow-right {
-  .rhombus-wrap {
+  .rhombus_wrap {
     position: absolute;
     // padding: 18px;
     @include opacityRhombus(
@@ -401,7 +401,7 @@
     line-height: 1.2;
   }
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     margin: 0 auto 43px;
     @include rhombusSize($rhombusSize107);
     background-color: $linkColor;
@@ -502,17 +502,39 @@
   }
 }
 
-#about-logo {
-  margin: 57px auto 0;
-  align-self: center;
-  color: $greyColor;
+.logo {
+  $block: &;
 
-  .fill-rhombus {
-    background-color: $greyColor;
+  &--about {
+    margin: 57px auto 0;
+    align-self: center;
+    color: $greyColor;
+
+    #{$block}-rhombus {
+      &--fill {
+        background-color: $greyColor;
+      }
+
+      &--empty {
+        border-color: $greyColor;
+      }
+    }
   }
 
-  .empty-rhombus {
-    border-color: $greyColor;
+  &--footer {
+    align-self: center;
+    margin: 0 auto;
+    color: $white;
+
+    #{$block}-rhombus {
+      &--fill {
+        background-color: $white;
+      }
+
+      &--empty {
+        border-color: $white;
+      }
+    }
   }
 }
 
@@ -683,7 +705,7 @@
     position: relative;
   }
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     position: relative;
     margin: 14px auto 29px;
     border: 1px solid $linkColor;
@@ -964,7 +986,7 @@
     display: flex;
     justify-content: center;
 
-    .rhombus-wrap {
+    .rhombus_wrap {
       margin: 0 11.5px;
     }
 
@@ -1028,7 +1050,7 @@
     margin-top: 22px;
   }
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     text-align: center;
   }
 
@@ -1404,7 +1426,7 @@
   }
 }
 
-#team-navigation .rhombus-wrap,
+#team-navigation .rhombus_wrap,
 .team-socials li {
   @include opacityRhombus($black, rgba(0, 0, 0, 0.2), $hoverColor: $white);
   // transition: 'border #{$transitionTime}, background-color #{$transitionTime}';
@@ -1417,7 +1439,7 @@
   // left: 50%;
   justify-content: center;
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     // margin: 15px 17px;
     margin: 15px 16px;
     @include rhombusSize($rhombusSize107);
@@ -1818,7 +1840,7 @@
     left: 50%;
     margin: 0 auto;
     border: 1px solid $linkColor;
-    border-radius: "50%";
+    border-radius: 50%;
     transform: translate(-50%, -50%);
   }
 
@@ -1868,20 +1890,6 @@ footer {
   .flex-container {
     flex-flow: row nowrap;
     justify-content: space-between;
-  }
-}
-
-#footer-logo {
-  align-self: center;
-  margin: 0 auto;
-  color: $white;
-
-  .fill-rhombus {
-    background-color: $white;
-  }
-
-  .empty-rhombus {
-    border-color: $white;
   }
 }
 
@@ -2018,7 +2026,7 @@ footer {
   // top: $defaultNegativeRhombusMargin;
   top: $defaultNegativeRhombusMargin - 90px;
 
-  .rhombus-wrap {
+  .rhombus_wrap {
     position: absolute;
     top: 90px;
     // margin: 0 13.5px;
