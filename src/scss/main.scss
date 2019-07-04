@@ -7,8 +7,8 @@
 
 // ------------------------------- BEGIN SECTIONS ------------------------------
 
-#features,
-#skills {
+.features,
+.skills {
   .container {
     justify-content: center;
   }
@@ -101,13 +101,13 @@
       margin-top: 12px;
     }
 
-    #main-menu {
+    .main-menu {
       top: 57px;
     }
   }
 }
 
-#main-menu {
+.main-menu {
   position: absolute;
   top: 71px;
   //left: 50%;
@@ -178,21 +178,21 @@
 
 // BEGIN MAIN-SLIDER SECTION
 
-#main-slider {
+.main_slider {
   padding: 0;
   height: 405px;
   color: $white;
   background-color: #171717;
 
-  .background {
+  &-background {
     background-size: cover;
   }
 
-  .content {
+  &-content {
     padding-top: 70px;
   }
 
-  h2 {
+  &-title {
     color: inherit;
 
     &:after {
@@ -202,7 +202,7 @@
     }
   }
 
-  p {
+  &-desc {
     margin: 0 20px;
     font-size: 12px;
     line-height: 22px;
@@ -213,7 +213,7 @@
   // }
 }
 
-#main-slide-1 {
+.main-slide-1 {
   .background {
     background: linear-gradient(
         to top right,
@@ -240,20 +240,20 @@
   }
 }
 
-#main-slide-2 .background {
+.main-slide-2 .background {
   background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/2.jpg") center
     top;
   // background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/2.jpg';
 }
 
-#main-slide-3 .background {
+.main-slide-3 .background {
   background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/3-m.jpg")
     no-repeat center top;
   //background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/3-m.jpg') no-repeat;
   background-size: cover;
 }
 
-#main-slide-4 {
+.main-slide-4 {
   .background {
     //background: url('#{$imgBgPath}/main-slider/4-m.jpg') no-repeat center -5px;
     background: url("#{$imgBgPath}/main-slider/4-m.jpg") no-repeat center top;
@@ -271,7 +271,7 @@
   // 	margin-left: 20px;
   // }
 
-  .slide-description-wrap {
+  .slide-desc-wrap {
     margin-left: 20px;
   }
 
@@ -293,7 +293,7 @@
   }
 }
 
-#main-slider-navigation {
+.main-slider-nav {
   // left: 50%;
   //bottom: -27px;
   // bottom: 12px;
@@ -325,30 +325,30 @@
   }
 }
 
-#main-slider-prev,
-#main-slider-next {
+.main-slider-prev,
+.main-slider-next {
   // top: -53px;
   top: -65px;
 }
 
-#main-slider-prev {
+.main-slider-prev {
   left: 50%;
   margin-left: -$defaultRhombusSize - 13px;
 }
 
-#main-slider-next {
+.main-slider-next {
   right: 50%;
   margin-right: -$defaultRhombusSize - 12px;
 }
 
-#more-wrap {
+.more-wrap {
   position: relative;
   border: 1px solid $white;
   padding: 0;
   background: none;
 }
 
-#main-slider-more {
+.main-slider-more {
   // position: absolute;
   // top: -1px;
   // left: -1px;
@@ -369,7 +369,7 @@
   }
 }
 
-#main-slider-after-section {
+.main-slider-after-section {
   bottom: $defaultNegativeRhombusMargin;
   margin-left: $defaultNegativeRhombusMargin;
   padding: 0;
@@ -385,11 +385,11 @@
 
 // BEGIN FEATURES SECTION
 
-#features {
+.features {
   padding-bottom: 0;
   // height: 1673px;
 
-  .section-description {
+  .section-desc {
     margin-bottom: 131px;
   }
 
@@ -428,7 +428,7 @@
     margin-bottom: 81px;
   }
 
-  p:not(.section-description) {
+  p:not(.section-desc) {
     color: rgba(33, 33, 33, 0.75);
   }
 }
@@ -437,7 +437,7 @@
 
 // BEGIN ABOUT SECTION
 
-#about {
+.about {
   padding-bottom: 149px;
   // height: 788px;
   background: #1f1f1f url("#{$imgBgPath}/about-m.jpg") no-repeat center 0;
@@ -542,7 +542,7 @@
 
 // BEGIN PORTFOLIO SECTION
 
-#portfolio {
+.portfolio {
   padding-bottom: 114px;
   // height: 1578px;
 
@@ -561,7 +561,7 @@
   }
 }
 
-#portfolio-menu {
+.portfolio-menu {
   // flex-grow: 1;
   justify-content: flex-start;
   //display: table;
@@ -594,8 +594,8 @@
   }
 }
 
-#grid-switcher-squares,
-#grid-switcher-rhombuses {
+.grid-switcher-squares,
+.grid-switcher-rhombuses {
   flex-grow: 0 !important;
 
   a {
@@ -610,13 +610,13 @@
   }
 }
 
-#grid-switcher-squares a:before {
+.grid-switcher-squares a:before {
   font-family: SimpleLineIcons;
   font-size: 22px;
   content: $sliGrid;
 }
 
-#grid-switcher-rhombuses a:before {
+.grid-switcher-rhombuses a:before {
   font-family: Icomoon;
   font-size: 25px;
   content: $icomoonRhombuses;
@@ -626,7 +626,7 @@
 
 // BEGIN TESTIMONIALS SECTION
 
-#testimonials {
+.testimonials {
   padding-top: 76px;
   // height: 417px;
   background: $darkSectionBgColor url("#{$imgBgPath}/testimonials-m.jpg")
@@ -652,7 +652,7 @@
     overflow: hidden;
   }
 
-  // .carousel-navigation {
+  // .carousel-nav {
   // 	top: 124px;
   // }
 
@@ -675,7 +675,7 @@
   }
 }
 
-// #testimonials-slider-demonstration
+// .testimonials-slider-demo
 // {
 // 	position: relative;
 // 	width: 100%;
@@ -692,11 +692,11 @@
 
 // BEGIN SKILLS SECTION
 
-#skills {
+.skills {
   padding-bottom: 83px;
   // height: 1119px;
 
-  .section-description,
+  .section-desc,
   .block {
     margin-bottom: 58px;
   }
@@ -744,7 +744,7 @@
   }
 }
 
-#skills-block0 {
+.skills-block0 {
   .background {
     top: 5%;
   }
@@ -754,7 +754,7 @@
   }
 }
 
-#skills-block1 {
+.skills-block1 {
   .background {
     top: 23%;
   }
@@ -764,7 +764,7 @@
   }
 }
 
-#skills-block2 {
+.skills-block2 {
   .background {
     top: 1%;
   }
@@ -774,7 +774,7 @@
   }
 }
 
-#skills-block3 {
+.skills-block3 {
   .background {
     top: 38%;
   }
@@ -784,7 +784,7 @@
   }
 }
 
-#skills-block4 {
+.skills-block4 {
   .background {
     top: 15%;
   }
@@ -794,7 +794,7 @@
   }
 }
 
-#skills-technologies {
+.skills-technologies {
   margin: 83px 10px 0;
   width: 100%;
   font: 15px/40px "Exo2.0 Black", sans-serif;
@@ -893,19 +893,19 @@
   }
 }
 
-#skills-item0 .item-container {
+.skills-item0 .item-container {
   width: 65%;
 }
 
-#skills-item1 .item-container {
+.skills-item1 .item-container {
   width: 85%;
 }
 
-#skills-item2 .item-container {
+.skills-item2 .item-container {
   width: 95%;
 }
 
-#skills-item3 .item-container {
+.skills-item3 .item-container {
   width: 77%;
 }
 
@@ -913,7 +913,7 @@
 
 // BEGIN STATISTICS SECTION
 
-#statistics {
+.statistics {
   padding: 80px 0 120px;
   // height: 875px;
   background: linear-gradient(
@@ -967,7 +967,7 @@
 
 // BEGIN BLOG-NEWS SECTION
 
-#blog-news {
+.blog-news {
   padding-bottom: 165px;
   // height: 899px;
 
@@ -976,12 +976,12 @@
   }
 }
 
-#blog-news-lightbox {
+.blog-news-lightbox {
   position: relative;
   margin: 117px auto 0;
   max-width: 728px;
 
-  .navigation {
+  .nav {
     top: $defaultNegativeRhombusMargin;
     display: flex;
     justify-content: center;
@@ -1020,7 +1020,7 @@
   }
 }
 
-#blog-news-content {
+.blog-news-content {
   display: flex;
   flex-flow: column wrap;
   text-align: left;
@@ -1095,7 +1095,7 @@
   }
 }
 
-#blog-comments {
+.blog-comments {
   // margin-top: 28px;
 
   h4 {
@@ -1273,7 +1273,7 @@
 
 // BEGIN SOCIALS-FEEDBACK SECTION
 
-#socials-feedback {
+.socials-feedback {
   // padding-top: 84px;
   padding-top: 74px;
   // height: 448px;
@@ -1292,7 +1292,7 @@
     height: 374px;
   }
 
-  // .carousel-navigation {
+  // .carousel-nav {
   // 	top: 160px;
   // }
 
@@ -1405,7 +1405,7 @@
 
 // BEGIN TEAM SECTION
 
-#team {
+.team {
   // height: 974px;
 
   .container {
@@ -1414,7 +1414,7 @@
     padding: 0;
   }
 
-  .section-description {
+  .section-desc {
     margin: 0 20px;
   }
 
@@ -1426,13 +1426,13 @@
   }
 }
 
-#team-navigation .rhombus_wrap,
+.team-nav .rhombus_wrap,
 .team-socials li {
   @include opacityRhombus($black, rgba(0, 0, 0, 0.2), $hoverColor: $white);
   // transition: 'border #{$transitionTime}, background-color #{$transitionTime}';
 }
 
-#team-navigation {
+.team-nav {
   // position: absolute;
   // top: 414px;
   top: 87px;
@@ -1457,7 +1457,7 @@
   }
 }
 
-#team-demonstration {
+.team-demo {
   // flex-wrap: nowrap;
   // align-self: flex-start;
   // position: relative;
@@ -1547,21 +1547,21 @@
   }
 }
 
-#team-person-1 img {
+.team-person-1 img {
   // left: -27%;
   left: -17%;
 }
 
-#team-person-2 img {
+.team-person-2 img {
   // left: -25%;
   left: -17%;
 }
 
-#team-person-3 img {
+.team-person-3 img {
   left: -55%;
 }
 
-#team-person-4 img {
+.team-person-4 img {
   top: -12%;
   left: -8%;
 }
@@ -1570,7 +1570,7 @@
 
 // BEGIN CLIENTS SECTION
 
-#clients {
+.clients {
   padding-top: 76px;
   // height: 579px;
   background: #171717 url("#{$imgBgPath}/clients-m.jpg") no-repeat top center;
@@ -1584,7 +1584,7 @@
     height: 222px;
   }
 
-  // .carousel-navigation {
+  // .carousel-nav {
   // 	top: 445px;
   // }
 
@@ -1606,7 +1606,7 @@
 
 // BEGIN CONTACTS SECTION
 
-#contacts {
+.contacts {
   position: relative;
   padding-bottom: 116px;
   // height: 1499px;
@@ -1687,7 +1687,7 @@
     }
   }
 
-  #text-area-container {
+  .text-area-container {
     height: 700px;
   }
 
@@ -1701,7 +1701,7 @@
   }
 }
 
-#contacts-form-error {
+.contacts-form-error {
   position: absolute;
   top: 1000px;
   left: 50%;
@@ -1731,7 +1731,7 @@
   }
 }
 
-#contacts-address {
+.contacts-address {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -1792,12 +1792,12 @@
     }
   }
 
-  #contacts-mail-and-phone {
+  .contacts-mail-and-phone {
     margin-top: 18px;
   }
 }
 
-#contacts-send-button {
+.contacts-send-button {
   position: absolute;
   //top: 50%;
   // left: 50%;
@@ -1826,7 +1826,7 @@
   }
 }
 
-#map-point {
+.map-point {
   position: absolute;
   left: 50%;
   bottom: 116px;
@@ -1893,7 +1893,7 @@ footer {
   }
 }
 
-#footer-socials-container {
+.footer-socials-container {
   bottom: -300px;
   padding: 0 20px;
   max-width: 768px;
@@ -1924,7 +1924,7 @@ footer {
 
 // BEGIN TO-TOP
 
-#to-top {
+.to-top {
   position: fixed;
   left: 88%;
   // bottom: 46px;
@@ -1957,7 +1957,7 @@ footer {
 
 // BEGIN PORTFOLIO LIGHTBOX
 
-#portfolio-lightbox {
+.portfolio-lightbox {
   position: fixed;
   top: 0;
   left: 0;
@@ -2013,7 +2013,7 @@ footer {
   }
 }
 
-#portfolio-slider-close {
+.portfolio-slider-close {
   position: absolute;
   top: -$defaultRhombusSize - 13px;
   left: 50%;
@@ -2022,7 +2022,7 @@ footer {
   @include rhombusSize;
 }
 
-#portfolio-slider-navigation {
+.portfolio-slider-nav {
   // top: $defaultNegativeRhombusMargin;
   top: $defaultNegativeRhombusMargin - 90px;
 
@@ -2033,12 +2033,12 @@ footer {
   }
 }
 
-#portfolio-slider-prev {
+.portfolio-slider-prev {
   left: 50%;
   margin-left: -$defaultRhombusSize - 13px;
 }
 
-#portfolio-slider-next {
+.portfolio-slider-next {
   right: 50%;
   margin-right: -$defaultRhombusSize - 12px;
 }

@@ -23,7 +23,7 @@ body
 
 			nav.header-nav
 				#menu-checker.rhombus_wrap.button.bars.header-menu_checker
-					.rhombus.header-menu_checker_rhombus
+					.rhombus_wrap-content.header-menu_checker_rhombus
 
 				//- main menu
 
@@ -31,61 +31,61 @@ body
 
 	//- BEGIN MAIN-SLIDER SECTION
 
-	section#main-slider.section--dark_bg.slider-container
-		#main-slider-demonstration.slider-demonstration
+	section#main-slider.section--dark_bg.slider-container.main_slider
+		#main-slider-demonstration.slider-demo.main_slider-demo
 
 			#main-slide-1.slide
-				.background
-				.content
+				.main_slider-background
+				.main_slider-content
 
-					.slide-description-wrap
-						.slide-description
-							h2 image background
-							p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
+					.slide-desc-wrap
+						.slide-desc
+							h2.main_slider-title image background
+							p.section-desc.main_slider-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-2.slide
-				.background
-				.content
+				.main_slider-background
+				.main_slider-content
 
-					.slide-description-wrap
-						.slide-description
-							h2 pattern background
-							p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
+					.slide-desc-wrap
+						.slide-desc
+							h2.main_slider-title pattern background
+							p.section-desc.main_slider-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-3.slide
-				.background
-				.content
+				.main_slider-background
+				.main_slider-content
 
-					.slide-description-wrap
-						.slide-description
-							h2 video background
-							p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining
+					.slide-desc-wrap
+						.slide-desc
+							h2.main_slider-title video background
+							p.section-desc.main_slider-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-4.slide
-				.background
-				.content.flex-container
+				.main_slider-background
+				.main_slider-content.flex_container
 
-					.slide-description-wrap
-						.slide-description
-							h2
+					.slide-desc-wrap
+						.slide-desc
+							h2.main_slider-title
 								| your work
 								br
 								| presentation here
-							p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only
+							p.section-desc.main_slider-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only
 
-					.image-container
-						img(src="img/bg/main-slider/hand.png" alt="hand with iphone")
+					.img_wrap
+						img.img_wrap-img(src="img/bg/main-slider/hand.png" alt="hand with iphone")
 
 		#main-slider-navigation.navigation
 			a#main-slider-more.rhombus_wrap.more(href="#")
-				.rhombus
+				.rhombus_wrap-content
 			a#main-slider-prev.rhombus_wrap.arrow-left(href="#")
-				.rhombus
+				.rhombus_wrap-content
 			a#main-slider-next.rhombus_wrap.arrow-right(href="#")
-				.rhombus
+				.rhombus_wrap-content
 
 		a#main-slider-after-section.after-section.rhombus_wrap(href="#features")
-			.rhombus
+			.rhombus_wrap-content
 
 	//- END MAIN-SLIDER SECTION
 
@@ -150,18 +150,18 @@ body
 			
 		]
 
-	section#features.section--light_bg
+	section#features.section--light_bg.features
 		.container
 
 			a.anchor(name="features")
 
 			h2 theme features
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
 			each item in features
 				.block
 					.rhombus_wrap
-						div(class="rhombus sl-icon-" + item.icon)
+						.rhombus_wrap-content(class="sl-icon-" + item.icon)
 					h3= item.title
 					p= item.desc
 
@@ -169,30 +169,30 @@ body
 
 	//- BEGIN ABOUT SECTION
 
-	section#about.section--dark_bg
+	section#about.section--dark_bg.about
 		.container
 
 			h2 about us
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
 
 			+logo("about")
 			+socials
 
 			a#to-portfolio.rhombus_wrap.after-section.arrow-bottom(href="#portfolio")
-				.rhombus
+				.rhombus_wrap-content
 
 	//- END ABOUT SECTION
 
 	//- BEGIN PORTFOLIO SECTION
 
-	section#portfolio.section--light_bg
-		.container.dynamic-blocks-container
+	section#portfolio.section--light_bg.portfolio
+		.container.dynamic_blocks-container
 
 			a.anchor(name="portfolio")
 
 			h2 our portfolio gallery
 
-			#portfolio-blocks.dynamic-blocks.display-rhombuses
+			#portfolio-blocks.dynamic_blocks.display-rhombuses
 				//- portfolio menu
 				//- portfolio items
 
@@ -227,7 +227,7 @@ body
 					address: "6"}
 		]
 
-	section#testimonials.section--dark_bg.carousel-section
+	section#testimonials.section--dark_bg.carousel-section.testimonials
 		.container
 
 			h2 testimonials
@@ -235,11 +235,11 @@ body
 			.carousel-container
 				each item in testimonials
 					div
-						p.section-description= item.desc
+						p.section-desc= item.desc
 						address= item.address
 
 		a#to-skills.rhombus_wrap.after-section.arrow-bottom(href="#skills")
-			.rhombus
+			.rhombus_wrap-content
 
 	//- END TESTIMONIALS SECTION
 
@@ -319,19 +319,19 @@ body
 								prs: 77}
 		]
 
-	section#skills.section--light_bg
+	section#skills.section--light_bg.skills
 		.container
 
 			a.anchor(name="skills")
 
 			h2 our skills
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
 			each item, index in topSkills
 				.block(id="skills-block" + index)
 					.rhombus_wrap
-						.rhombus= item.prs
-						.rhombus.background-container
+						.rhombus_wrap-content= item.prs
+						.rhombus_wrap-content.background-container
 							.background
 								.block-percents= item.prs
 					h3= item.title
@@ -349,13 +349,13 @@ body
 
 	//- BEGIN STATISTICS SECTION
 
-	section#statistics.section--dark_bg
+	section#statistics.section--dark_bg.statistics
 		.container
 
 			h2.some.cool statistics
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
-			.flex-container
+			.flex_container
 
 				.sl-icon-people.block
 					span 568
@@ -371,27 +371,27 @@ body
 					h3 awards
 
 		a#to-blog-news.rhombus_wrap.after-section.arrow-bottom(href="#blog-news")
-			.rhombus
+			.rhombus_wrap-content
 
 	//- END STATISTICS SECTION
 
 	//- BEGIN BLOG-NEWS SECTION
 
-	section#blog-news.section--light_bg
-		.container.dynamic-blocks-container
+	section#blog-news.section--light_bg.blog_news
+		.container.dynamic_blocks-container
 
 			a.anchor(name="blog-news")
 
 			h2 blog / news
 
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
 			#blog-news-lightbox.lightbox.hidden
 
 				#blog-news-content
 
-					.image-container
-						img(src="img/blog-news/1.jpg" alt="7")
+					.img_wrap
+						img.img_wrap-img(src="img/blog-news/1.jpg" alt="7")
 					
 
 					#blog-description
@@ -409,11 +409,8 @@ body
 						p Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed feugiat sem eu est sollicitudin sagittis. Nam eget adipiscing lectus, ac facilisis tortor. Nulla accumsan faucibus orci, nec tincidunt turpis blandit et. Pellentesque pulvinar fermentum ante quis fringilla. Etiam at quam justo. Suspendisse posuere fringilla tortor. Maecenas eu nunc non augue lacinia gravida sed in massa. Nullam ac nibh placerat, hendrerit quam in, aliquet augue. Duis metus sem, dictum eu turpis sodales, consequat suscipit purus.
 						
 						p Proin pretium felis quis eros interdum venenatis. Mauris vitae ultricies augue. Nunc ultrices neque at mollis mattis. Integer luctus, libero sed imperdiet interdum, dolor velit ullamcorper lectus, a elementum tortor leo ac sapien. Duis velit leo, mattis sit amet aliquam quis, molestie eget ante. Mauris rhoncus, arcu quis dictum fringilla, purus eros convallis leo, sit amet tincidunt purus nunc id eros. Nulla vitae egestas lectus. Maecenas semper sem sed sapien porta tincidunt quis et risus. Quisque in lobortis ipsum. Nam tincidunt gravida elit, vel auctor urna placerat ut. Sed nisl nibh, pulvinar ut sapien tincidunt, dictum sollicitudin justo. Sed tempor et nibh et eleifend. Integer nibh felis, fermentum in enim eget.
-						
-						.rhombus_wrap.socials-rhombus
-							+socials
-							.rhombus_wrap.show-socials
-								.rhombus
+
+						+socials-rhombus
 
 					#blog-comments
 
@@ -494,7 +491,7 @@ body
 						
 
 						form(action="index.html")
-							.flex-container
+							.flex_container
 								input.form-element(type="text" placeholder="Name*")
 								input.form-element(type="email" placeholder="Email*")
 							
@@ -502,7 +499,7 @@ body
 							textarea(placeholder="Your comment*")
 
 							.button.rhombus_wrap
-								input.rhombus(type="submit" value="send")
+								input.rhombus_wrap-content(type="submit" value="send")
 							
 						
 
@@ -513,17 +510,17 @@ body
 				.navigation
 
 					.rhombus_wrap.category
-						.rhombus 5 comments
+						.rhombus_wrap-content 5 comments
 
 					.arrows
 						.rhombus_wrap.arrow-left
-							.rhombus
+							.rhombus_wrap-content
 						.rhombus_wrap.arrow-right
-							.rhombus
+							.rhombus_wrap-content
 					.rhombus_wrap.date
-						.rhombus Jan 15 2014
+						.rhombus_wrap-content Jan 15 2014
 
-			#blog-news-blocks.dynamic-blocks.display-rhombuses blog and news items
+			#blog-news-blocks.dynamic_blocks.display-rhombuses blog and news items
 
 	//- END BLOG-NEWS SECTION
 
@@ -537,20 +534,20 @@ body
 			"dribbble"
 		]
 
-	section#socials-feedback.section--dark_bg.carousel-section
+	section#socials-feedback.section--dark_bg.carousel-section.socials_feedback
 		.container
 
 			.carousel-container
 				each item in socialsFeedback
 					.slide(class=item + "-slide")
 						h2
-						p.section-description I bought Rubiko theme that looks and works fantastically all recommendations!
+						p.section-desc I bought Rubiko theme that looks and works fantastically all recommendations!
 						address.author
 							a(href="#") @blazrobar #webdesign
 						address.time 2 hours ago
 
 		a#to-team.rhombus_wrap.after-section.arrow-bottom(href="#team")
-			.rhombus
+			.rhombus_wrap-content
 
 
 
@@ -558,14 +555,14 @@ body
 
 	//- BEGIN TEAM SECTION
 
-	section#team.section--light_bg.carousel-section
+	section#team.section--light_bg.carousel-section.team
 		.container
 
 			a.anchor(name="team")
 
 			h2 meet team
 
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
 			.carousel-container
 
@@ -573,25 +570,25 @@ body
 					.arrows
 
 						#team-carousel-prev.rhombus_wrap.arrow-left
-							.rhombus
+							.rhombus_wrap-content
 						
 
 						#team-carousel-next.rhombus_wrap.arrow-right
-							.rhombus
+							.rhombus_wrap-content
 						
 
 					
 				
 
-				#team-demonstration.carousel-demonstration
+				#team-demonstration.carousel-demo
 					.carousel-row
 
-						.flex-container.slide
+						.flex_container.slide
 
 							#team-person-1.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus.photo-block
+										.rhombus_wrap-content.photo-block
 											picture
 												source(srcset="img/team/d/1.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/1.jpg" media="(min-width: 768px)")
@@ -611,7 +608,7 @@ body
 							#team-person-2.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus.photo-block
+										.rhombus_wrap-content.photo-block
 											picture
 												source(srcset="img/team/d/2.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/2.jpg" media="(min-width: 768px)")
@@ -630,12 +627,12 @@ body
 
 						
 
-						.flex-container.slide
+						.flex_container.slide
 
 							#team-person-3.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus.photo-block
+										.rhombus_wrap-content.photo-block
 											picture
 												source(srcset="img/team/d/3.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/3.jpg" media="(min-width: 768px)")
@@ -655,7 +652,7 @@ body
 							#team-person-4.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus.photo-block
+										.rhombus_wrap-content.photo-block
 											picture
 												source(srcset="img/team/d/4.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/4.jpg" media="(min-width: 768px)")
@@ -686,11 +683,11 @@ body
 
 	//- BEGIN CLIENTS SECTION
 
-	section#clients.section--dark_bg.carousel-section
+	section#clients.section--dark_bg.carousel-section.clients
 		.container
 
 			h2 meet our lovely clients
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
 			.carousel-container
 				a(class="block slide" href="#")
@@ -725,7 +722,7 @@ body
 		
 
 		a#to-contacts.rhombus_wrap.after-section.arrow-bottom(href="#contacts")
-			.rhombus
+			.rhombus_wrap-content
 		
 
 
@@ -733,16 +730,16 @@ body
 
 	//- BEGIN CONTACTS SECTION
 
-	section#contacts.section--light_bg
+	section#contacts.section--light_bg.contacts
 		.container
 
 			a.anchor(name="contacts")
 
 			h2 get in touch
-			p.section-description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
 			form#contacts_form.rhombus_wrap(action="index.html")
-				.rhombus
+				.rhombus_wrap-content
 
 					.form-element-container.first
 						input(class="form-element require" type="text" name="contacts_name" placeholder="Name")
@@ -762,13 +759,13 @@ body
 					
 
 					#contacts-form-error.rhombus_wrap.error
-						.rhombus
+						.rhombus_wrap-content
 					
 
 				
 
 				#contacts-address.rhombus_wrap
-					.rhombus
+					.rhombus_wrap-content
 
 						h3 Rubiko Digital Agency
 
@@ -787,7 +784,7 @@ body
 				
 
 				#contacts-send-button.rhombus_wrap.button
-					input.rhombus(type="submit" name="contacts_submit" value="send")
+					input.rhombus_wrap-content(type="submit" name="contacts_submit" value="send")
 
 
 			
@@ -805,20 +802,16 @@ body
 
 	//- BEGIN FOOTER
 
-	footer.section--dark_bg
+	footer.section--dark_bg.footer
 		.container
 
-			//- a#footer-logo.logo(href="#")
-			//- 	.rhombus_wrap.fill-rhombus
-			//- 	.rhombus_wrap.empty-rhombus
-			//- 	h2 rubiko
 			+logo("footer", false, true)
 
 			address Copyright © 2014. Rubiko Studio. All Rights Reserved.
 
 		
 
-		#footer-socials-container.content.flex-container
+		#footer-socials-container.content.flex_container
 
 			//- ul#footer-left-socials.socials.flex-container
 			//- 	li
@@ -827,7 +820,7 @@ body
 			//- 		a.twitter(href="#")
 			//- 	li
 			//- 		a.dribbble(href="#")
-			+socials("flex-container", 3, 0, "footer-left-socials")
+			+socials("flex_container", 3, 0, "footer-left-socials")
 
 
 			//- ul#footer-right-socials.socials.flex-container
@@ -837,12 +830,12 @@ body
 			//- 		a.linkedin(href="#")
 			//- 	li
 			//- 		a.pinterest(href="#")
-			+socials("flex-container", 3, 3, "footer-right-socials")
+			+socials("flex_container", 3, 3, "footer-right-socials")
 
 		
 
 		a#to-top.rhombus_wrap.after-section.arrow-top(href="google.ru")
-			.rhombus
+			.rhombus_wrap-content
 		
 
 
@@ -855,38 +848,43 @@ body
 	//- 	.lightbox-wrap
 	//- 		.slider-container
 
-	//- 			#portfolio-slider-demonstration.slider-demonstration
-	//- 				.image-container
+	//- 			#portfolio-slider-demonstration.slider-demo
+	//- 				.img_wrap
 	//- 					//- image
 					
 	//- 				p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				
 
 	//- 			a#portfolio-slider-close.rhombus_wrap.button close(href="#")
-	//- 				.rhombus
+	//- 				.rhombus_wrap-content
 				
 
 	//- 			#portfolio-slider-navigation.navigation
 	//- 				a#portfolio-slider-prev.rhombus_wrap.arrow-left(href="#")
-	//- 					.rhombus
+	//- 					.rhombus_wrap-content
 					
 
 	//- 				a#portfolio-slider-next.rhombus_wrap.arrow-right(href="#")
-	//- 					.rhombus
+	//- 					.rhombus_wrap-content
 					
 				
 
 	//- 			.rhombus_wrap.socials-rhombus
 	//- 				ul.socials
-	//- 					lia.pinterest(href="#")
-	//- 					lia.linkedin(href="#")
-	//- 					lia.facebook(href="#")
-	//- 					lia.dribbble(href="#")
-	//- 					lia.twitter(href="#")
+	//- 					li
+									a.pinterest(href="#")
+	//- 					li
+									a.linkedin(href="#")
+	//- 					li
+									a.facebook(href="#")
+	//- 					li
+									a.dribbble(href="#")
+	//- 					li
+									a.twitter(href="#")
 					
 
 	//- 				.rhombus_wrap.show-socials
-	//- 					.rhombus
+	//- 					.rhombus_wrap-content
 					
 				
 

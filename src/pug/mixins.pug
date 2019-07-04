@@ -26,3 +26,9 @@ mixin socials(classes="", count=6, from=0, id="")
     - for (var i = from; i < fixedCount; i++)
       li.rhombus_wrap
         a.rhombus_wrap-content(class=items[i] href="#")
+
+mixin socials-rhombus
+  .rhombus_wrap.socials-rhombus
+    +socials
+    .rhombus_wrap.show-socials
+      .rhombus_wrap-content
