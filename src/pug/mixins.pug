@@ -20,15 +20,14 @@ mixin socials(classes="", count=6, from=0, id="")
       "pinterest"
     ]
   - var fixedCount = count + from
-  - var listClasses = (classes ? classes + " " : "") + "socials"
 
-  ul(id=id class=(classes ? classes + " " : "") + "socials")
+  ul(id=id class=(classes ? classes + " " : "") + "social-list")
     - for (var i = from; i < fixedCount; i++)
-      li.rhombus_wrap
-        a.rhombus_wrap-content(class=items[i] href="#")
+      li.rhombus_wrap.social-item
+        a.rhombus_wrap-content.social-link(class=items[i] href="#")
 
 mixin socials-rhombus
-  .rhombus_wrap.socials-rhombus
+  .rhombus_wrap.social-rhombus
     +socials
-    .rhombus_wrap.show-socials
+    .rhombus_wrap.social-show
       .rhombus_wrap-content
