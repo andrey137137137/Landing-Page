@@ -655,34 +655,36 @@ textarea {
 
 // BEGIN PORTFOLIO AND BLOG-NEWS DYNAMIC BLOCKS
 
-.dynamic_blocks-container.container {
-  flex-flow: column;
-  // padding: 0;
-  padding: 0 20px;
-}
-
 .dynamic_blocks {
   justify-content: flex-start;
   align-self: center;
 
-  .photo-block-wrap {
-    margin: -34px 31px 0 51px;
-    opacity: 0;
-    transform: rotate(45deg);
-    transition: opacity $transitionTime;
+  &-container.container {
+    flex-flow: column;
+    // padding: 0;
+    padding: 0 20px;
+  }
 
-    img {
+  .photo_block {
+    &-wrap {
+      margin: -34px 31px 0 51px;
+      opacity: 0;
+      transform: rotate(45deg);
+      transition: opacity $transitionTime;
+    }
+
+    &-content {
+      transform: rotate(-45deg);
+    }
+
+    &-img {
       left: -20%;
       height: 100%;
     }
   }
-
-  .photo-block {
-    transform: rotate(-45deg);
-  }
 }
 
-.display-rhombuses {
+.display_rhombuses {
   // padding: 132px 0 40px;
 
   .first-in-odd-row {
@@ -708,7 +710,7 @@ textarea {
   &.col {
     // width: 211px;
 
-    // .photo-block-wrap {
+    // .photo_block-wrap {
     // 	margin-left: 31px;
     // }
 
@@ -738,79 +740,83 @@ textarea {
   }
 }
 
-.photo-block-wrap {
-  flex-shrink: 0;
-  @include rhombusSize($rhombusSize211);
-  overflow: hidden;
+.photo_block {
+  $block: &;
 
-  .photo-block,
-  img,
-  .foreground,
-  h3,
-  .category,
-  .more,
-  li {
+  &-content,
+  &-img,
+  &-foreground,
+  &-title,
+  &-category,
+  &-more,
+  &-item {
     position: absolute;
   }
 
-  .category,
-  .more,
-  li {
+  &-category,
+  &-more,
+  &-item {
     opacity: 0;
   }
 
-  &:hover {
-    .category,
-    .more,
-    li {
-      opacity: 1;
-    }
+  &-wrap {
+    flex-shrink: 0;
+    @include rhombusSize($rhombusSize211);
+    overflow: hidden;
 
-    .foreground {
-      background-color: rgba(33, 33, 33, 0.95);
-    }
+    &:hover {
+      #{$block}-category,
+      #{$block}-more,
+      #{$block}-item {
+        opacity: 1;
+      }
 
-    h3 {
-      top: 97px;
-    }
+      #{$block}-foreground {
+        background-color: rgba(33, 33, 33, 0.95);
+      }
 
-    .category {
-      top: 0;
-      left: 0;
-    }
+      #{$block}-title {
+        top: 97px;
+      }
 
-    .more {
-      bottom: 0;
-      right: 0;
-    }
+      #{$block}-category {
+        top: 0;
+        left: 0;
+      }
 
-    li:nth-child(1) {
-      right: 103px;
-      bottom: 0;
-    }
+      #{$block}-more {
+        bottom: 0;
+        right: 0;
+      }
 
-    li:nth-child(2) {
-      right: 52px;
-      bottom: 0;
-    }
+      #{$block}-item:nth-child(1) {
+        right: 103px;
+        bottom: 0;
+      }
 
-    li:nth-child(3) {
-      right: 0;
-      bottom: 0;
-    }
+      #{$block}-item:nth-child(2) {
+        right: 52px;
+        bottom: 0;
+      }
 
-    li:nth-child(4) {
-      right: 0;
-      bottom: 52px;
-    }
+      #{$block}-item:nth-child(3) {
+        right: 0;
+        bottom: 0;
+      }
 
-    li:nth-child(5) {
-      right: 0;
-      bottom: 103px;
+      #{$block}-item:nth-child(4) {
+        right: 0;
+        bottom: 52px;
+      }
+
+      #{$block}-item:nth-child(5) {
+        right: 0;
+        bottom: 103px;
+      }
     }
   }
 
-  .photo-block-frame {
+  &-frame {
     position: relative;
     border: 1px solid $darkColor;
     width: 100%;
@@ -818,7 +824,7 @@ textarea {
     overflow: hidden;
   }
 
-  .photo-block {
+  &-content {
     top: -21%;
     left: -21%;
     width: 142%;
@@ -826,11 +832,11 @@ textarea {
     background-color: $darkColor;
   }
 
-  img {
+  &-img {
     width: auto;
   }
 
-  .foreground {
+  &-foreground {
     top: 0;
     left: 0;
     width: 100%;
@@ -839,7 +845,7 @@ textarea {
     transition: background-color $transitionTime;
   }
 
-  h3 {
+  &-title {
     // top: -37px;
     // top: -52px;
     top: -72px;
@@ -856,7 +862,7 @@ textarea {
     }
   }
 
-  .category {
+  &-category {
     top: $defaultNegativeButtonMargin;
     left: $defaultNegativeButtonMargin;
     transition: top #{$transitionTime}, left #{$transitionTime},
@@ -871,7 +877,7 @@ textarea {
     }
   }
 
-  .more {
+  &-more {
     bottom: $defaultNegativeButtonMargin;
     right: $defaultNegativeButtonMargin;
     padding: 11px;
