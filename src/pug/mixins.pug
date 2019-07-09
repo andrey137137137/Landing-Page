@@ -1,5 +1,5 @@
 mixin logo(id="", isMain=false, titleH=false)
-  a.logo(id=id ? id + "-logo" : "" class=isMain ? "header-logo" : "logo--" + id href="#")
+  a.logo(id=id ? id + "-logo" : "" class=isMain ? "header-logo" : id + "logo" href="#")
     .rhombus_wrap.logo-rhombus.logo-rhombus--fill
     .rhombus_wrap.logo-rhombus.logo-rhombus--empty
     if isMain
