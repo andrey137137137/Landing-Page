@@ -9,7 +9,7 @@
 
 .features,
 .skills {
-  .container {
+  &-container {
     justify-content: center;
   }
 }
@@ -204,7 +204,7 @@
     }
   }
 
-  &-desc {
+  &-text_content {
     margin: 0 20px;
     font-size: 12px;
     line-height: 22px;
@@ -236,7 +236,7 @@
       margin-bottom: 11px;
     }
 
-    #{$block}-desc {
+    #{$block}-text_content {
       line-height: 18px;
     }
   }
@@ -272,7 +272,7 @@
     // 	margin-left: 20px;
     // }
 
-    #{$block}-desc-wrap {
+    #{$block}-text_wrap {
       margin-left: 20px;
     }
 
@@ -281,7 +281,7 @@
       margin-bottom: 15px;
     }
 
-    #{$block}-desc {
+    #{$block}-text_content {
       margin: 0;
       line-height: 14.4px;
     }
@@ -370,7 +370,7 @@
     }
   }
 
-  &-after-section {
+  &-after_section {
     bottom: $defaultNegativeRhombusMargin;
     margin-left: $defaultNegativeRhombusMargin;
     padding: 0;
@@ -393,7 +393,7 @@
   padding-bottom: 0;
   // height: 1673px;
 
-  .section-desc#{$block}-main_desc {
+  .section-main_desc#{$block}-main_desc {
     margin-bottom: 131px;
   }
 

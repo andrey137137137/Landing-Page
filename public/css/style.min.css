@@ -1184,6 +1184,34 @@ body {
   overflow-x: hidden;
 }
 
+.section-container,
+.section-flex_container,
+.hor_menu,
+.arrows,
+.social-list,
+.thumbs,
+.dynamic_blocks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.section-container,
+.slider-content {
+  margin: 0 auto;
+  min-width: 100px;
+  max-width: 1170px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
 .section-container {
   overflow: visible;
 }
@@ -1211,7 +1239,7 @@ body {
   color: #f5f5f5;
 }
 
-.section-desc {
+.section-main_desc {
   -ms-flex-negative: 1;
   flex-shrink: 1;
 }
@@ -1237,41 +1265,6 @@ body {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-}
-
-.container,
-.flex_container,
-.hor_menu,
-.arrows,
-.socials,
-.thumbs,
-.dynamic_blocks {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-}
-
-.container,
-.content {
-  margin: 0 auto;
-  min-width: 100px;
-  max-width: 1170px;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-}
-
-.content {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
 }
 
 .rhombus_wrap {
@@ -1498,40 +1491,47 @@ textarea {
   overflow: hidden;
 }
 
-.slider-demo-part_block,
-.slider-demo-item,
-.slider-demo-background {
+.slider-part_block,
+.slider-item,
+.slider-background {
   position: absolute;
 }
 
-.slider-demo-part_block,
-.slider-demo-item {
+.slider-part_block,
+.slider-item {
   display: none;
 }
 
-.slider-demo-item--prev,
-.slider-demo-item--active,
-.slider-demo-item--working {
+.slider-item,
+.slider-background {
+  height: 100%;
+  width: 100%;
+}
+
+.slider-item--prev,
+.slider-item--active,
+.slider-item--working {
   display: block;
 }
 
-.slider-demo-item--prev {
+.slider-item--prev {
   z-index: 10;
 }
 
-.slider-demo-item--active {
+.slider-item--active {
   z-index: 20;
 }
 
-.slider-demo-item--content {
+.slider-item--content {
   z-index: 30;
   height: 100%;
 }
 
-.slider-demo-item,
-.slider-demo-background {
-  height: 100%;
-  width: 100%;
+.slider-content {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
 }
 
 .slider-nav {
@@ -1966,8 +1966,8 @@ textarea {
   display: none !important;
 }
 
-.features .container,
-.skills .container {
+.features-container,
+.skills-container {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -2146,7 +2146,7 @@ textarea {
   color: inherit;
 }
 
-.main_slider-desc {
+.main_slider-text_content {
   margin: 0 20px;
   font-size: 12px;
   line-height: 22px;
@@ -2162,7 +2162,7 @@ textarea {
   margin-bottom: 11px;
 }
 
-.main_slider-item_1 .main_slider-desc {
+.main_slider-item_1 .main_slider-text_content {
   line-height: 18px;
 }
 
@@ -2188,7 +2188,7 @@ textarea {
   justify-content: space-between;
 }
 
-.main_slider-item_4 .main_slider-desc-wrap {
+.main_slider-item_4 .main_slider-text_wrap {
   margin-left: 20px;
 }
 
@@ -2196,7 +2196,7 @@ textarea {
   margin-bottom: 15px;
 }
 
-.main_slider-item_4 .main_slider-desc {
+.main_slider-item_4 .main_slider-text_content {
   margin: 0;
   line-height: 14.4px;
 }
@@ -2269,7 +2269,7 @@ textarea {
   left: 7px;
 }
 
-.main_slider-after-section {
+.main_slider-after_section {
   bottom: -26.5px;
   margin-left: -26.5px;
   padding: 0;
@@ -2277,7 +2277,7 @@ textarea {
   height: 53px;
 }
 
-.main_slider-after-section .rhombus_wrap-content {
+.main_slider-after_section .rhombus_wrap-content {
   border: none;
   background: url("../img/bg/after-slider.png") no-repeat center center;
 }
@@ -2286,7 +2286,7 @@ textarea {
   padding-bottom: 0;
 }
 
-.features .section-desc.features-main_desc {
+.features .section-main_desc.features-main_desc {
   margin-bottom: 131px;
 }
 
