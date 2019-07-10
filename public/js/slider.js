@@ -305,7 +305,7 @@ var Slider = function() {
 
     document
       .getElementById(getSlideID(curIndex))
-      .classList.add("slider_item--active");
+      .classList.add("slider-item--active");
 
     window.addEventListener("resize", isVisibleSlider);
     window.addEventListener("scroll", isVisibleSlider);
@@ -472,7 +472,7 @@ var Slider = function() {
     function afterAnimation() {
       if (animationID) {
         activeSlide.removeAttribute("style");
-        prevSlide.classList.remove("slider_item--prev");
+        prevSlide.classList.remove("slider-item--prev");
         definedChangingStyles = false;
 
         // clearInterval(animationID);
@@ -531,9 +531,9 @@ var Slider = function() {
     }
 
     function changeClasses() {
-      prevSlide.classList.add("slider_item--prev");
-      prevSlide.classList.remove("slider_item--active");
-      activeSlide.classList.add("slider_item--active");
+      prevSlide.classList.add("slider-item--prev");
+      prevSlide.classList.remove("slider-item--active");
+      activeSlide.classList.add("slider-item--active");
     }
 
     function changeStyles(exitCondition) {
@@ -559,14 +559,14 @@ var Slider = function() {
         var thumbs = document.querySelectorAll("#" + navButtons.thumbs + " a");
 
         prevIndex = document.querySelector(
-          "#" + navButtons.thumbs + " .slider_item--active"
+          "#" + navButtons.thumbs + " .slider-item--active"
         ).dataset.number;
 
         for (var i = 0; i < thumbs.length; i++) {
-          thumbs[i].classList.remove("slider_item--active");
+          thumbs[i].classList.remove("slider-item--active");
         }
 
-        // thumbs[elem.dataset.number].classList.add('slider_item--active');
+        // thumbs[elem.dataset.number].classList.add('slider-item--active');
 
         curIndex = elem.dataset.number;
 
@@ -575,7 +575,7 @@ var Slider = function() {
         // direction = direction;
         // effect = effect;
         animation(1);
-        elem.classList.add("slider_item--active");
+        elem.classList.add("slider-item--active");
       }
     }
   }

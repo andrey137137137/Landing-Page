@@ -21,7 +21,7 @@ body {
 
 .section-container,
 .slider-content {
-  margin: 0 auto;
+  @include margin("* auto");
   min-width: 100px;
   // min-width: 480px;
   // max-width: 480px;
@@ -430,17 +430,17 @@ textarea {
     &--active {
       z-index: $zLevel2;
     }
-
-    &--content {
-      z-index: $zLevel3;
-      height: 100%;
-    }
   }
 
   &-content {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+  }
+
+  &-content {
+    z-index: $zLevel3;
+    height: 100%;
   }
 
   &-nav {
@@ -453,7 +453,7 @@ textarea {
     }
 
     .rhombus_wrap {
-      margin: 0 12.5px;
+      @include margin("* 12.5px");
       padding: 18px;
       background-color: $linkColor;
       @include rhombusSize;
@@ -625,7 +625,7 @@ textarea {
   li {
     // margin: 21px 7px 17px;
     // margin: 21px 5px 17px;
-    margin: 0 5px;
+    @include margin("* 5px");
     @include rhombusSize($rhombusSize11);
     border: 1px solid $lightColor;
     background-color: rgba(0, 0, 0, 0);
@@ -658,15 +658,15 @@ textarea {
   justify-content: flex-start;
   align-self: center;
 
-  &-container.container {
+  &-container.section-container {
     flex-flow: column;
     // padding: 0;
-    padding: 0 20px;
+    @include padding("* 20px");
   }
 
   .photo_block {
     &-wrap {
-      margin: -34px 31px 0 51px;
+      @include margin("-34px 31px * 51px");
       opacity: 0;
       transform: rotate(45deg);
       transition: opacity $transitionTime;
@@ -854,7 +854,7 @@ textarea {
 
     &:after {
       display: block;
-      margin: 5px auto 0;
+      @include margin("5px auto *");
       font: 7px Icomoon;
       color: $linkColor;
       content: $icomoonSeparator;

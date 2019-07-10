@@ -1204,7 +1204,8 @@ body {
 
 .section-container,
 .slider-content {
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
   min-width: 100px;
   max-width: 1170px;
   width: 100%;
@@ -1522,16 +1523,16 @@ textarea {
   z-index: 20;
 }
 
-.slider-item--content {
-  z-index: 30;
-  height: 100%;
-}
-
 .slider-content {
   position: absolute;
   left: 50%;
   -webkit-transform: translate(-50%);
   transform: translate(-50%);
+}
+
+.slider-content {
+  z-index: 30;
+  height: 100%;
 }
 
 .slider-nav {
@@ -1547,7 +1548,8 @@ textarea {
 }
 
 .slider-nav .rhombus_wrap {
-  margin: 0 12.5px;
+  margin-right: 12.5px;
+  margin-left: 12.5px;
   padding: 18px;
   background-color: #cd2929;
   width: 53px;
@@ -1724,7 +1726,8 @@ textarea {
 }
 
 .thumbs li {
-  margin: 0 5px;
+  margin-right: 5px;
+  margin-left: 5px;
   width: 8px;
   height: 8px;
   border: 1px solid #f5f5f5;
@@ -1756,16 +1759,19 @@ textarea {
   align-self: center;
 }
 
-.dynamic_blocks-container.container {
+.dynamic_blocks-container.section-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-flow: column;
   flex-flow: column;
-  padding: 0 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .dynamic_blocks .photo_block-wrap {
-  margin: -34px 31px 0 51px;
+  margin-top: -34px;
+  margin-right: 31px;
+  margin-left: 51px;
   opacity: 0;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -1924,7 +1930,9 @@ textarea {
 
 .photo_block-title:after {
   display: block;
-  margin: 5px auto 0;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
   font: 7px Icomoon;
   color: #cd2929;
   content: "";
@@ -2238,12 +2246,12 @@ textarea {
   top: -65px;
 }
 
-.main_slider-prev {
+.main_slider-prev.rhombus_wrap {
   left: 50%;
   margin-left: -66px;
 }
 
-.main_slider-next {
+.main_slider-next.rhombus_wrap {
   right: 50%;
   margin-right: -65px;
 }
@@ -2255,17 +2263,17 @@ textarea {
   background: none;
 }
 
-.main_slider-more {
+.main_slider-more.rhombus_wrap {
   top: -104.5px;
   left: 50%;
   margin-left: -26.5px;
 }
 
-.main_slider-more .rhombus_wrap-content:before {
+.main_slider-more.rhombus_wrap .rhombus_wrap-content:before {
   top: 7px;
 }
 
-.main_slider-more .rhombus_wrap-content:after {
+.main_slider-more.rhombus_wrap .rhombus_wrap-content:after {
   left: 7px;
 }
 
@@ -2286,7 +2294,7 @@ textarea {
   padding-bottom: 0;
 }
 
-.features .section-main_desc.features-main_desc {
+.features-main_desc.section-main_desc {
   margin-bottom: 131px;
 }
 
