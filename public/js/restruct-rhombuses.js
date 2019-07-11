@@ -1,215 +1,196 @@
-var RestructRhombuses = function()
-{
-	'use strict';
+var RestructRhombuses = function() {
+  "use strict";
 
-	function Construct(params)
-	{
-		if ( !(this instanceof Construct) )
-		{
-			return new Construct(params);
-		}
-		
-		this.init.apply(this, params);
-	}
+  function Construct(params) {
+    if (!(this instanceof Construct)) {
+      return new Construct(params);
+    }
 
-	Construct.prototype = Object.create(ReasanikBase());
+    this.init.apply(this, params);
+  }
 
-	// Construct.prototype = {
+  Construct.prototype = Object.create(ReasanikBase());
 
-		Construct.prototype.constructor = Construct;
+  // Construct.prototype = {
 
-		Construct.prototype.pluginName = 'RestructRhombuses';
+  Construct.prototype.constructor = Construct;
 
-		Construct.prototype.init = function(params)
-		{
-			var self = this;
+  Construct.prototype.pluginName = "RestructRhombuses";
 
-			params = this.extend(
-				{
-					selector: false,
-					childElem: false,
-					wait: false,
-					maxCols: 0,
-					spaceBetweenBlocks: 20,
-					colClassPrefix: 'col',
-					firstInOddRowClass: 'first-in-odd-row',
-					firstInEvenRowClass: 'first-in-even-row',
-					lastInEvenRowClass: 'last-in-even-row'
-				},
-				params
-			);
+  Construct.prototype.init = function(params) {
+    var self = this;
 
-			if (!params.selector || !params.childElem)
-			{
-				this.setErrorMessage(this.pluginName);
-				return false;
-			}
+    params = this.extend(
+      {
+        selector: false,
+        childElem: false,
+        wait: false,
+        maxCols: 0,
+        spaceBetweenBlocks: 20,
+        colClassPrefix: "col",
+        firstInOddRowClass: "col--first_in_odd_row",
+        firstInEvenRowClass: "col--first_in_even_row",
+        lastInEvenRowClass: "col--last_in_even_row"
+      },
+      params
+    );
 
-			this.selector = params.selector;
-			this.childElem = params.childElem;
+    if (!params.selector || !params.childElem) {
+      this.setErrorMessage(this.pluginName);
+      return false;
+    }
 
-			this.colClassPrefix = params.colClassPrefix;
-			this.firstInOddRowClass = params.firstInOddRowClass;
-			this.firstInEvenRowClass = params.firstInEvenRowClass;
-			this.lastInEvenRowClass = params.lastInEvenRowClass;
-			this.maxCols = params.maxCols;
-			this.spaceBetweenBlocks = params.spaceBetweenBlocks;
+    this.selector = params.selector;
+    this.childElem = params.childElem;
 
-			var wait = params.wait;
+    this.colClassPrefix = params.colClassPrefix;
+    this.firstInOddRowClass = params.firstInOddRowClass;
+    this.firstInEvenRowClass = params.firstInEvenRowClass;
+    this.lastInEvenRowClass = params.lastInEvenRowClass;
+    this.maxCols = params.maxCols;
+    this.spaceBetweenBlocks = params.spaceBetweenBlocks;
 
-	    params = null;
+    var wait = params.wait;
 
-			this.countInRow = 0;
+    params = null;
 
-			this.elemWidth;
-			// this.marginLeft;
-			// this.marginEvenRow;
-			this.oldColClass;
-			// this.evenRowsExist;
+    this.countInRow = 0;
 
-			this.oldElemWidth = 0;
-			this.oldCountInRow = 0;
-			this.oldElemsCount = 0;
+    this.elemWidth;
+    // this.marginLeft;
+    // this.marginEvenRow;
+    this.oldColClass;
+    // this.evenRowsExist;
 
-			if (!wait)
-			{
-				self.run();
-			}
+    this.oldElemWidth = 0;
+    this.oldCountInRow = 0;
+    this.oldElemsCount = 0;
 
-			window.addEventListener('resize', function(){
-					// self.run();
-				self.resizeWindowWidth(self.run);
-			});
-		};
+    if (!wait) {
+      self.run();
+    }
 
-		Construct.prototype.run = function(restruct)
-		{
-			restruct = restruct || false;
+    window.addEventListener("resize", function() {
+      // self.run();
+      self.resizeWindowWidth(self.run);
+    });
+  };
 
-			var elems = document.querySelectorAll(this.selector + ' ' + this.childElem);
-			var parent = document.querySelector(this.selector);
+  Construct.prototype.run = function(restruct) {
+    restruct = restruct || false;
 
-			if (!elems.length)
-			{
-				parent.classList.remove(this.oldColClass);
-				return;
-			}
+    var elems = document.querySelectorAll(this.selector + " " + this.childElem);
+    var parent = document.querySelector(this.selector);
 
-			var parentWidth = parent.parentNode.offsetWidth;
-			// var parentWidthWithMargins;
-			var countElems = elems.length;
-			// var tempCountInRow;
-			var firstOddElemIndex;
-			var firstEvenElemIndex;
-			// var lastEvenElemIndex;
-			var step;
-			var newColClass = this.colClassPrefix;
+    if (!elems.length) {
+      parent.classList.remove(this.oldColClass);
+      return;
+    }
 
-			// this.elemWidth = this.getWidth(elems[0], true);
-			this.elemWidth = this.getWidth(elems[0]);
-			var rightMargin = this.getStyle(elems[0], 'marginRight', 'px');
-			this.elemWidth = this.elemWidth + rightMargin*2;
-			console.log(parentWidth);
-			console.log(this.elemWidth);
-			this.countInRow = parseInt(parentWidth/this.elemWidth);
-			// tempCountInRow = parseInt(parentWidth/this.elemWidth);
+    var parentWidth = parent.parentNode.offsetWidth;
+    // var parentWidthWithMargins;
+    var countElems = elems.length;
+    // var tempCountInRow;
+    var firstOddElemIndex;
+    var firstEvenElemIndex;
+    // var lastEvenElemIndex;
+    var step;
+    var newColClass = this.colClassPrefix;
 
-			// parentWidthWithMargins = parentWidth + this.spaceBetweenBlocks*(tempCountInRow - 1);
+    // this.elemWidth = this.getWidth(elems[0], true);
+    this.elemWidth = this.getWidth(elems[0]);
+    var rightMargin = this.getStyle(elems[0], "marginRight", "px");
+    this.elemWidth = this.elemWidth + rightMargin * 2;
+    console.log(parentWidth);
+    console.log(this.elemWidth);
+    this.countInRow = parseInt(parentWidth / this.elemWidth);
+    // tempCountInRow = parseInt(parentWidth/this.elemWidth);
 
-			// this.countInRow = parseInt(parentWidthWithMargins/this.elemWidth);
+    // parentWidthWithMargins = parentWidth + this.spaceBetweenBlocks*(tempCountInRow - 1);
 
-			if (countElems <= this.countInRow)
-			{
-				this.countInRow = countElems;
-			}
+    // this.countInRow = parseInt(parentWidthWithMargins/this.elemWidth);
 
-			console.log('---------------');
-			console.log(this.oldElemWidth);
-			console.log(this.oldCountInRow);
-			console.log(this.oldElemsCount);
-			console.log(restruct);
+    if (countElems <= this.countInRow) {
+      this.countInRow = countElems;
+    }
 
-			if (this.oldElemWidth === this.elemWidth &&
-					this.oldCountInRow === this.countInRow &&
-					this.oldElemsCount === countElems && !restruct)
-			{
-				return;
-			}
+    console.log("---------------");
+    console.log(this.oldElemWidth);
+    console.log(this.oldCountInRow);
+    console.log(this.oldElemsCount);
+    console.log(restruct);
 
-			console.log(this.elemWidth);
-			console.log(this.countInRow);
-			console.log(countElems);
+    if (
+      this.oldElemWidth === this.elemWidth &&
+      this.oldCountInRow === this.countInRow &&
+      this.oldElemsCount === countElems &&
+      !restruct
+    ) {
+      return;
+    }
 
-			if (this.maxCols > 0 && this.countInRow > this.maxCols)
-			{
-				this.countInRow = this.maxCols;
-			}
+    console.log(this.elemWidth);
+    console.log(this.countInRow);
+    console.log(countElems);
 
-			this.oldElemWidth = this.elemWidth;
-			this.oldCountInRow = this.countInRow;
-			this.oldElemsCount = countElems;
+    if (this.maxCols > 0 && this.countInRow > this.maxCols) {
+      this.countInRow = this.maxCols;
+    }
 
-			firstOddElemIndex = 0;
-			firstEvenElemIndex = this.countInRow;
+    this.oldElemWidth = this.elemWidth;
+    this.oldCountInRow = this.countInRow;
+    this.oldElemsCount = countElems;
 
-			if (this.countInRow > 1)
-			{
-				step = this.countInRow*2 - 1;
-			}
-			else
-			{
-				step = 2;
-			}
+    firstOddElemIndex = 0;
+    firstEvenElemIndex = this.countInRow;
 
-			for (var i = 0; i < countElems; i++)
-			{
-				elems[i].classList.remove(this.firstInOddRowClass);
-				elems[i].classList.remove(this.firstInEvenRowClass);
-				// elems[i].classList.remove(this.lastInEvenRowClass);
+    if (this.countInRow > 1) {
+      step = this.countInRow * 2 - 1;
+    } else {
+      step = 2;
+    }
 
-				if (firstOddElemIndex == i)
-				{
-					elems[i].classList.add(this.firstInOddRowClass);
-				}
+    for (var i = 0; i < countElems; i++) {
+      elems[i].classList.remove(this.firstInOddRowClass);
+      elems[i].classList.remove(this.firstInEvenRowClass);
+      // elems[i].classList.remove(this.lastInEvenRowClass);
 
-				if (firstEvenElemIndex == i)
-				{
-					elems[i].classList.add(this.firstInEvenRowClass);
+      if (firstOddElemIndex == i) {
+        elems[i].classList.add(this.firstInOddRowClass);
+      }
 
-					// lastEvenElemIndex = firstEvenElemIndex + this.countInRow - 2;
-					// firstOddElemIndex = lastEvenElemIndex + 1;
-					if (this.countInRow > 1)
-					{
-						firstOddElemIndex = firstEvenElemIndex + this.countInRow - 1;
-					}
-					else
-					{
-						firstOddElemIndex += step;
-					}
+      if (firstEvenElemIndex == i) {
+        elems[i].classList.add(this.firstInEvenRowClass);
 
-					firstEvenElemIndex += step;
-				}
+        // lastEvenElemIndex = firstEvenElemIndex + this.countInRow - 2;
+        // firstOddElemIndex = lastEvenElemIndex + 1;
+        if (this.countInRow > 1) {
+          firstOddElemIndex = firstEvenElemIndex + this.countInRow - 1;
+        } else {
+          firstOddElemIndex += step;
+        }
 
-				// if (lastEvenElemIndex == i)
-				// {
-				// 	elems[i].classList.add(this.lastInEvenRowClass);
-				// }
-			}
+        firstEvenElemIndex += step;
+      }
 
-			if (this.countInRow > 1)
-			{
-				newColClass += this.countInRow;
-			}
+      // if (lastEvenElemIndex == i)
+      // {
+      // 	elems[i].classList.add(this.lastInEvenRowClass);
+      // }
+    }
 
-			if (this.oldColClass)
-			{
-				parent.classList.remove(this.oldColClass);
-			}
+    if (this.countInRow > 1) {
+      newColClass += "_" + this.countInRow;
+    }
 
-			parent.classList.add(newColClass);
-			this.oldColClass = newColClass;
-		};
-	// };
+    if (this.oldColClass) {
+      parent.classList.remove(this.oldColClass);
+    }
 
-	return Construct(arguments);
+    parent.classList.add(newColClass);
+    this.oldColClass = newColClass;
+  };
+  // };
+
+  return Construct(arguments);
 };

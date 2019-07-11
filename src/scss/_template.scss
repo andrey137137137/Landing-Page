@@ -103,8 +103,8 @@ body {
   overflow: hidden;
 
   &-content {
-    width: 100%;
-    height: 100%;
+    display: block;
+    @include size("100%");
     transform: rotate(-45deg);
   }
 
@@ -486,7 +486,9 @@ textarea {
   &-item {
     @include opacityRhombus;
     @include opacityRhombusTransition;
+  }
 
+  &-link {
     &--facebook:before {
       content: $faFacebook;
     }
@@ -686,17 +688,19 @@ textarea {
 .display_rhombuses {
   // padding: 132px 0 40px;
 
-  .first_in_odd_row {
-    margin-left: 31px;
-  }
+  .col {
+    &--first_in_odd_row {
+      margin-left: 31px;
+    }
 
-  .first_in_even_row {
-    // margin-left: 167px;
-    margin-left: 147px;
-  }
+    &--first_in_even_row {
+      // margin-left: 167px;
+      margin-left: 147px;
+    }
 
-  .last_in_even_row {
-    margin-right: 147px;
+    &--last_in_even_row {
+      margin-right: 147px;
+    }
   }
 
   // &.col_2,

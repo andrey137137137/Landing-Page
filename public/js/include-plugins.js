@@ -58,7 +58,7 @@
 
     AnimateBlocks({
       parentID: "about",
-      childElem: "li",
+      childElem: ".social-item",
       outPosition: -3000,
       transform: false
     });
@@ -77,7 +77,7 @@
     });
 
     RestructRhombuses({
-      selector: "#about .socials",
+      selector: ".about-socials",
       childElem: "li"
     });
 

@@ -38,36 +38,36 @@ body
 				.slider-background.main_slider-background
 				.slider-content.main_slider-content
 
-					.main_slider-desc_wrap
-						.main_slider-desc
-							h2.section_title.section_title--main.main_slider-title image background
+					.main_slider-text_wrap
+						.main_slider-text_content
+							h2.section-title.section-title--main.main_slider-title image background
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-2.slider-item.main_slider-item_2
 				.slider-background.main_slider-background
 				.slider-content.main_slider-content
 
-					.main_slider-desc_wrap
-						.main_slider-desc
-							h2.section_title.section_title--main.main_slider-title pattern background
+					.main_slider-text_wrap
+						.main_slider-text_content
+							h2.section-title.section-title--main.main_slider-title pattern background
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-3.slider-item.main_slider-item_3
 				.slider-background.main_slider-background
 				.slider-content.main_slider-content
 
-					.main_slider-desc_wrap
-						.main_slider-desc
-							h2.section_title.section_title--main.main_slider-title video background
+					.main_slider-text_wrap
+						.main_slider-text_content
+							h2.section-title.section-title--main.main_slider-title video background
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-4.slider-item.main_slider-item_4
 				.slider-background.main_slider-background
 				.slider-content.section-flex_container.main_slider-content
 
-					.main_slider-desc_wrap
-						.main_slider-desc
-							h2.section_title.section_title--main.main_slider-title
+					.main_slider-text_wrap
+						.main_slider-text_content
+							h2.section-title.section-title--main.main_slider-title
 								| your work
 								br
 								| presentation here
@@ -151,12 +151,12 @@ body
 		]
 
 	section#features.section.section--light_bg.features
-		.container
+		.section-container
 
 			a.anchor(name="features")
 
 			h2.section-title.section-title--main theme features
-			p.section-desc.features-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			p.section-main_desc.features-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
 			each item in features
 				.section-block.features-block
@@ -169,16 +169,16 @@ body
 
 	//- BEGIN ABOUT SECTION
 
-	section#about.section--dark_bg.about
-		.container
+	section#about.section.section--dark_bg.about
+		.section-container
 
-			h2 about us
-			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+			h2.section-title.section-title--main about us
+			p.section-main_desc.about-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
 
 			+logo("about")
-			+socials
+			+socials("about-socials")
 
-			a#to-portfolio.rhombus_wrap.after-section.arrow-bottom(href="#portfolio")
+			a#to-portfolio.rhombus_wrap.rhombus_wrap--after_section.rhombus_wrap--arrow_bottom(href="#portfolio")
 				.rhombus_wrap-content
 
 	//- END ABOUT SECTION
