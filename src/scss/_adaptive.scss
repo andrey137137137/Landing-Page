@@ -1,25 +1,25 @@
-@media only screen and (min-width: 300px) {
-  .section {
-    &-container {
-      @include padding("* 10px");
-    }
+// @media only screen and (min-width: 300px) {
+//   .section {
+//     &-container {
+//       @include padding("* 10px");
+//     }
 
-    &-main_desc,
-    &-block {
-      @include margin("* 10px");
-    }
+//     &-main_desc,
+//     &-block {
+//       @include margin("* 10px");
+//     }
 
-    &-block {
-      width: 210px;
-    }
-  }
+//     &-block {
+//       width: 210px;
+//     }
+//   }
 
-  .skills {
-    &-block {
-      width: 120px;
-    }
-  }
-}
+//   .skills {
+//     &-block {
+//       width: 120px;
+//     }
+//   }
+// }
 
 @media only screen and (min-width: 768px) {
   $darkBgBlock: ".section--dark_bg";

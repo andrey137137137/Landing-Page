@@ -37,7 +37,7 @@
 
   &-container {
     justify-content: space-between;
-    padding: 0 20px;
+    @include padding("* 20px");
     outline: none;
     overflow: visible;
   }
@@ -57,32 +57,6 @@
       color: $white;
       border-color: $white;
       transition: border #{$transitionTime};
-    }
-
-    &--bars .rhombus_wrap-content {
-      &:before,
-      &:after {
-        position: relative;
-        display: block;
-        left: 7px;
-        width: 50%;
-        border-bottom: 2px $white solid;
-        // transform: translateX(-50%);
-        content: "";
-      }
-
-      &:before {
-        // font: 21px/33px FontAwesome;
-        // text-align: center;
-        // content: $faBars;
-        padding-top: 10px;
-      }
-
-      &:after {
-        margin-top: 3px;
-        border-top: 2px $white solid;
-        padding-top: 3px;
-      }
     }
 
     &.rhombus_wrap--close {
@@ -106,7 +80,7 @@
     background-color: $lightColor;
     //transform: translateX(-50%);
 
-    &_link {
+    .list-link {
       position: relative;
       margin-top: -1px;
       border-top: 1px solid $menuBorderColor;
@@ -697,6 +671,7 @@
 
   .block {
     position: relative;
+    width: 120px;
   }
 
   .rhombus_wrap {

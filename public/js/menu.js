@@ -61,9 +61,12 @@ var Menu = function() {
 
     this.menu.id = this.menuID;
     // this.menu.classList.add('hor_menu');
+    this.menu.classList.add("list");
+    this.menu.classList.add("header-menu");
 
     for (var i = 0, len = this.items.length; i < len; i++) {
       listItems[i] = document.createElement("li");
+      listItems[i].classList.add("list-item");
       tempLink = document.createElement("a");
 
       if (!i) {
@@ -71,6 +74,7 @@ var Menu = function() {
       }
 
       tempLink.innerHTML = this.items[i].name;
+      tempLink.classList.add("list-link");
       tempLink.setAttribute("href", "#" + this.items[i].href);
       tempLink.setAttribute("data-index", i);
 
@@ -133,9 +137,9 @@ var Menu = function() {
         this.menu.classList.remove("visible");
       }
 
-      if (this.buttonChecker.classList.contains("close")) {
-        this.buttonChecker.classList.remove("close");
-        this.buttonChecker.classList.add("bars");
+      if (this.buttonChecker.classList.contains("rhombus_wrap--close")) {
+        this.buttonChecker.classList.remove("rhombus_wrap--close");
+        this.buttonChecker.classList.add("rhombus_wrap--bars");
       }
     } else {
       this.bigScreenWidth = false;
@@ -161,16 +165,16 @@ var Menu = function() {
       this.checked = true;
       console.log(this.checked);
 
-      this.buttonChecker.classList.remove("bars");
-      this.buttonChecker.classList.add("close");
+      this.buttonChecker.classList.remove("rhombus_wrap--bars");
+      this.buttonChecker.classList.add("rhombus_wrap--close");
 
       this.menu.classList.add("visible");
     } else if (this.checked) {
       this.checked = false;
       console.log(this.checked);
 
-      this.buttonChecker.classList.remove("close");
-      this.buttonChecker.classList.add("bars");
+      this.buttonChecker.classList.remove("rhombus_wrap--close");
+      this.buttonChecker.classList.add("rhombus_wrap--bars");
 
       this.menu.classList.remove("visible");
     }

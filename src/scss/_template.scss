@@ -37,6 +37,7 @@ body {
   $block: &;
 
   &-container {
+    @include padding("* 10px");
     overflow: visible;
   }
 
@@ -66,6 +67,11 @@ body {
     }
   }
 
+  &-main_desc,
+  &-block {
+    @include margin("* 10px");
+  }
+
   &-main_desc {
     //text-indent: 29px;
     flex-shrink: 1;
@@ -73,6 +79,10 @@ body {
 
   &-anchor {
     display: none;
+  }
+
+  &-block {
+    width: 210px;
   }
 
   &-address {
@@ -116,6 +126,32 @@ body {
     display: block;
     @include size("100%");
     transform: rotate(-45deg);
+  }
+
+  &--bars &-content {
+    &:before,
+    &:after {
+      position: relative;
+      display: block;
+      left: 7px;
+      width: 50%;
+      border-bottom: 2px $white solid;
+      // transform: translateX(-50%);
+      content: "";
+    }
+
+    &:before {
+      // font: 21px/33px FontAwesome;
+      // text-align: center;
+      // content: $faBars;
+      padding-top: 10px;
+    }
+
+    &:after {
+      margin-top: 3px;
+      border-top: 2px $white solid;
+      padding-top: 3px;
+    }
   }
 
   &--btn,
