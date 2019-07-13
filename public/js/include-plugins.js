@@ -167,28 +167,28 @@
       ]
     });
 
-    Gallery({
-      name: "blog-news",
-      lightBoxID: "lightbox",
-      showCategory: true,
-      showMenu: false,
-      categories: ["blog", "photo", "video"],
-      items: [
-        {
-          category: 1,
-          description: "",
-          title: "rubiko will take you to the next level"
-        },
-        { category: 2, description: "", title: "doctype hi-res" },
-        { category: 1, description: "", title: "unsplash" },
-        { category: 1, description: "", title: "unsplash-2" },
-        {
-          category: 3,
-          description: "",
-          title: "new york from a different view"
-        }
-      ]
-    });
+    // Gallery({
+    //   name: "blog-news",
+    //   lightBoxID: "lightbox",
+    //   showCategory: true,
+    //   showMenu: false,
+    //   categories: ["blog", "photo", "video"],
+    //   items: [
+    //     {
+    //       category: 1,
+    //       description: "",
+    //       title: "rubiko will take you to the next level"
+    //     },
+    //     { category: 2, description: "", title: "doctype hi-res" },
+    //     { category: 1, description: "", title: "unsplash" },
+    //     { category: 1, description: "", title: "unsplash-2" },
+    //     {
+    //       category: 3,
+    //       description: "",
+    //       title: "new york from a different view"
+    //     }
+    //   ]
+    // });
 
     $("#testimonials .carousel-container").slick({
       arrows: false,

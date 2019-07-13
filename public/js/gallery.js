@@ -65,14 +65,14 @@ var Gallery = function() {
     // evenRowsExist;
 
     // this.RestructItems = new RestructRhombuses.Construct({
-    // 	selector: '#' + this.name + '-blocks.display-rhombuses',
+    // 	selector: '#' + this.name + '-blocks.display_rhombuses',
     // 	childElem: '.' + this.childClass,
     // 	wait: true,
     // 	maxCols: 3
     // });
 
     this.RestructItems = RestructRhombuses({
-      selector: "#" + this.name + "-blocks.display-rhombuses",
+      selector: "#" + this.name + "-blocks.display_rhombuses",
       childElem: "." + this.childClass,
       wait: true,
       maxCols: 4
@@ -277,7 +277,7 @@ var Gallery = function() {
         continue;
       }
 
-      // tempInnerHTML += '<div class="' + this.childClass + '"><div class="photo_block-frame"><div class="photo_block-content"><img class="photo_block-img" src="' + this.rootFolder + (i + 1) + '.jpg" alt="' + this.items[i].title + '"><div class="photo_block-foreground"></div><h3>' + this.items[i].title + '</h3></div></div>';
+      // tempInnerHTML += '<div class="' + this.childClass + '"><div class="photo_block-frame"><div class="photo_block-content"><img class="photo_block-img" src="' + this.rootFolder + (i + 1) + '.jpg" alt="' + this.items[i].title + '"><div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' + this.items[i].title + '</h3></div></div>';
 
       tempImageName = i + 1 + ".jpg";
 
@@ -298,19 +298,19 @@ var Gallery = function() {
         tempImageName +
         '" alt="' +
         this.items[i].title +
-        '"></picture><div class="photo_block-foreground"></div><h3>' +
+        '"></picture><div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' +
         this.items[i].title +
         "</h3></div></div>";
 
       if (this.showCategory) {
         tempInnerHTML +=
-          '<div class="rhombus_wrap button photo_block-category blog"><div class="rhombus_wrap-content"></div></div>';
+          '<div class="rhombus_wrap rhombus_wrap--btn photo_block-category blog"><div class="rhombus_wrap-content"></div></div>';
       }
 
       tempInnerHTML +=
         '<a href="#" data-index="' +
         i +
-        '" class="more button rhombus_wrap"><div class="rhombus_wrap-content"></div></a></div>';
+        '" class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--more photo_block-more"><div class="rhombus_wrap-content"></div></a></div>';
 
       this.itemsCount++;
     }
@@ -353,20 +353,20 @@ var Gallery = function() {
     var menu = document.createElement("ul");
     var tempInnerHTML = "";
 
-    container.className = "menu-container flex-container";
+    container.className = "menu-container section-flex_container";
 
     menu.id = this.name + "-menu";
-    menu.className = "hor-menu";
+    menu.className = "hor_menu " + this.name + "-menu";
 
     for (var i = 0, len = this.categories.length; i < len; i++) {
-      tempInnerHTML += '<li class="photo_block-item"><a';
+      tempInnerHTML += '<li class="list-item"><a class="list-link';
 
       if (!i) {
-        tempInnerHTML += ' class="active"';
+        tempInnerHTML += " active";
       }
 
       tempInnerHTML +=
-        ' href="#" data-index="' + i + '">' + this.categories[i] + "</a></li>";
+        '" href="#" data-index="' + i + '">' + this.categories[i] + "</a></li>";
     }
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -393,7 +393,7 @@ var Gallery = function() {
       // 	display = elem.getAttribute('data-display');
       // 	console.log(self.parentElem);
 
-      // 	self.parentElem.classList.remove('display-rhombuses');
+      // 	self.parentElem.classList.remove('display_rhombuses');
       // 	self.parentElem.classList.remove('display-squares');
       // 	self.parentElem.classList.add('display-' + display);
       // }
@@ -402,7 +402,7 @@ var Gallery = function() {
     container.appendChild(menu);
 
     document
-      .querySelector("#" + this.name + " .container")
+      .querySelector("#" + this.name + " .section-container")
       .insertBefore(container, document.getElementById(this.name + "-blocks"));
   };
 

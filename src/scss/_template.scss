@@ -71,6 +71,16 @@ body {
     flex-shrink: 1;
   }
 
+  &-anchor {
+    display: none;
+  }
+
+  &-address {
+    font-family: "Open Sans Light Italic", sans-serif;
+    font-style: normal;
+    color: $addressColor;
+  }
+
   &--light_bg {
     padding-top: 113px;
     color: $darkColor;
@@ -223,6 +233,8 @@ body {
 // BEGIN LISTS, LINKS, BUTTONS, ANCHORS, IMAGES AND FORM ELEMENTS
 
 a {
+  transition: all $transitionTime;
+
   &,
   &:hover,
   &:active,
@@ -248,12 +260,11 @@ a {
 //   display: block;
 // }
 
-a
+// a
 // button,
-// .btn
- {
-  transition: all $transitionTime;
-}
+// .btn {
+//   transition: all $transitionTime;
+// }
 
 ul {
   list-style: none outside none;
@@ -277,15 +288,6 @@ ul {
     display: block;
     width: 100%;
   }
-}
-_.anchor {
-  display: none;
-}
-
-.address {
-  font-family: "Open Sans Light Italic", sans-serif;
-  font-style: normal;
-  color: $addressColor;
 }
 
 textarea {

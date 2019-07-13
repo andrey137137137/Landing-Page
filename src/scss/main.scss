@@ -539,7 +539,7 @@
   padding-bottom: 114px;
   // height: 1578px;
 
-  h2:after {
+  &-title:after {
     //margin-bottom: 20px;
     margin-bottom: 17px;
   }
@@ -549,70 +549,71 @@
   // // margin: 0 20px;
   // }
 
-  .display-rhombuses {
+  &-display_rhombuses {
     padding-top: 132px;
   }
-}
 
-.portfolio-menu {
-  // flex-grow: 1;
-  justify-content: flex-start;
-  //display: table;
-  //margin: 0 auto;
-  margin-top: 1px;
-  font: 15px/37px "Exo2.0 Black", sans-serif;
-  color: $darkColor;
-  max-width: 100%;
+  &-menu {
+    // flex-grow: 1;
+    justify-content: flex-start;
+    //display: table;
+    //margin: 0 auto;
+    margin-top: 1px;
+    font: 15px/37px "Exo2.0 Black", sans-serif;
+    color: $darkColor;
+    max-width: 100%;
 
-  li {
-    flex-grow: 1;
-    // flex-shrink: 1;
-    margin-top: -1px;
-    margin-left: -1px;
-  }
+    .list {
+      &-item {
+        flex-grow: 1;
+        // flex-shrink: 1;
+        margin-top: -1px;
+        margin-left: -1px;
+      }
 
-  a {
-    border: 1px solid $darkColor;
-    padding: 0 21px 0 20px;
+      &-link {
+        border: 1px solid $darkColor;
+        padding: 0 21px 0 20px;
 
-    &.active {
-      color: $lightColor !important;
-      background-color: $darkColor !important;
-    }
+        &.active {
+          color: $lightColor !important;
+          background-color: $darkColor !important;
+        }
 
-    &:hover {
-      color: $darkColor;
-      background-color: rgba(33, 33, 33, 0.1);
-    }
-  }
-}
-
-.grid-switcher-squares,
-.grid-switcher-rhombuses {
-  flex-grow: 0 !important;
-
-  a {
-    padding: 0;
-    width: 43px;
-    height: 39px;
-    line-height: 38px;
-
-    &:before {
-      display: block;
+        &:hover {
+          color: $darkColor;
+          background-color: rgba(33, 33, 33, 0.1);
+        }
+      }
     }
   }
-}
 
-.grid-switcher-squares a:before {
-  font-family: SimpleLineIcons;
-  font-size: 22px;
-  content: $sliGrid;
-}
+  &-grid_switcher {
+    flex-grow: 0 !important;
 
-.grid-switcher-rhombuses a:before {
-  font-family: Icomoon;
-  font-size: 25px;
-  content: $icomoonRhombuses;
+    &_link {
+      padding: 0;
+      width: 43px;
+      height: 39px;
+      line-height: 38px;
+
+      &:before {
+        display: block;
+      }
+    }
+
+    &--squares &_link:before {
+      font-family: SimpleLineIcons;
+      font-size: 22px;
+      content: $sliGrid;
+    }
+
+    &--rhombuses &_link:before {
+      font-family: Icomoon;
+      font-size: 25px;
+      content: $icomoonRhombuses;
+    }
+  }
 }
 
 // END PORTFOLIO SECTION
