@@ -601,34 +601,38 @@
     no-repeat center top;
   //background: $darkSectionBgColor url('#{$imgBgPath}/testimonials-m.jpg') no-repeat -425px -299px;
 
-  .container {
+  &-container {
     padding: 0;
   }
 
-  h2:after {
+  &-title:after {
     display: none;
   }
 
-  .thumbs {
-    top: 117px;
+  &-thumbs {
+    // top: 117px;
+    top: 113px;
   }
 
-  .carousel-container {
+  &-carousel_container {
     margin-top: 46px;
-    width: 100%;
-    height: 273px;
+    @include size("100% 273px");
     overflow: hidden;
+  }
+
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
   }
 
   // .carousel-nav {
   // 	top: 124px;
   // }
 
-  p {
+  &-main_desc {
     font-size: 19px;
   }
 
-  address {
+  &-address {
     // margin-top: 10px;
     margin-top: 17px;
 
@@ -660,222 +664,228 @@
 
 // BEGIN SKILLS SECTION
 
+.skills-main_desc,
+.skill_block {
+  margin-bottom: 58px;
+}
+
 .skills {
   padding-bottom: 83px;
   // height: 1119px;
+}
 
-  .section-desc,
-  .block {
-    margin-bottom: 58px;
-  }
+.skill {
+  &_block {
+    $block: &;
 
-  .block {
     position: relative;
     width: 120px;
+
+    &-rhombus {
+      position: relative;
+      margin: 14px auto 29px;
+      border: 1px solid $linkColor;
+      // rhombus-size: 93px;
+      @include rhombusSize(65px);
+      font: 31px/61px "Exo2.0 Black", sans-serif;
+      color: $linkColor;
+    }
+
+    &-bg_wrap {
+      position: absolute;
+      top: -21%;
+      left: -21%;
+      width: 142%;
+      height: 142%;
+      color: $white;
+    }
+
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $linkColor;
+      overflow: hidden;
+    }
+
+    &-percents {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 31px;
+      line-height: 28px;
+      transform: translateY(-50%);
+    }
+
+    &--item_1 {
+      #{$block}-bg {
+        top: 5%;
+      }
+
+      #{$block}-percents {
+        top: 45%;
+      }
+    }
+
+    &--item_2 {
+      #{$block}-bg {
+        top: 23%;
+      }
+
+      #{$block}-percents {
+        top: 27%;
+      }
+    }
+
+    &--item_3 {
+      #{$block}-bg {
+        top: 1%;
+      }
+
+      #{$block}-percents {
+        top: 49%;
+      }
+    }
+
+    &--item_4 {
+      #{$block}-bg {
+        top: 38%;
+      }
+
+      #{$block}-percents {
+        top: 12%;
+      }
+    }
+
+    &--item_5 {
+      #{$block}-bg {
+        top: 15%;
+      }
+
+      #{$block}-percents {
+        top: 35%;
+      }
+    }
   }
 
-  .rhombus_wrap {
-    position: relative;
-    margin: 14px auto 29px;
-    border: 1px solid $linkColor;
-    // rhombus-size: 93px;
-    @include rhombusSize(65px);
-    font: 31px/61px "Exo2.0 Black", sans-serif;
-    color: $linkColor;
-  }
+  &_list {
+    $block: &;
 
-  .background-container {
-    position: absolute;
-    top: -21%;
-    left: -21%;
-    width: 142%;
-    height: 142%;
+    margin: 83px 10px 0;
+    width: 100%;
+    font: 15px/40px "Exo2.0 Black", sans-serif;
+    text-align: left;
+    text-transform: uppercase;
     color: $white;
-  }
 
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $linkColor;
-    overflow: hidden;
-  }
+    &-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 17px;
+      height: 42px;
+      cursor: pointer;
+      overflow: hidden;
 
-  .block-percents {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 31px;
-    line-height: 28px;
-    transform: translateY(-50%);
-  }
-}
+      &:after {
+        display: block;
+        // border-top: 21px solid transparent;
+        // border-left: 20px solid $linkColor;
+        // border-bottom: 21px solid transparent;
+        // width: 0;
+        // height: 0;
+        margin: 6px 6px 0 -15px;
+        border-top: 1px solid $linkColor;
+        border-right: 1px solid $linkColor;
+        // rhombus-size: 42px;
+        @include rhombusSize(30px);
+        transform: rotate(45deg);
+        content: "";
+      }
 
-.skills-block0 {
-  .background {
-    top: 5%;
-  }
+      &.active:after {
+        border-top-color: #007;
+        border-right-color: #007;
+      }
 
-  .block-percents {
-    top: 45%;
-  }
-}
+      &--item_1 #{$block}-wrap {
+        width: 65%;
+      }
 
-.skills-block1 {
-  .background {
-    top: 23%;
-  }
+      &--item_2 #{$block}-wrap {
+        width: 85%;
+      }
 
-  .block-percents {
-    top: 27%;
-  }
-}
+      &--item_3 #{$block}-wrap {
+        width: 95%;
+      }
 
-.skills-block2 {
-  .background {
-    top: 1%;
-  }
+      &--item_4 #{$block}-wrap {
+        width: 77%;
+      }
+    }
 
-  .block-percents {
-    top: 49%;
-  }
-}
-
-.skills-block3 {
-  .background {
-    top: 38%;
-  }
-
-  .block-percents {
-    top: 12%;
-  }
-}
-
-.skills-block4 {
-  .background {
-    top: 15%;
-  }
-
-  .block-percents {
-    top: 35%;
-  }
-}
-
-.skills-technologies {
-  margin: 83px 10px 0;
-  width: 100%;
-  font: 15px/40px "Exo2.0 Black", sans-serif;
-  text-align: left;
-  text-transform: uppercase;
-  color: $white;
-
-  li {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 17px;
-    height: 42px;
-    cursor: pointer;
-    overflow: hidden;
-
-    &:after {
-      display: block;
-      // border-top: 21px solid transparent;
-      // border-left: 20px solid $linkColor;
-      // border-bottom: 21px solid transparent;
-      // width: 0;
-      // height: 0;
-      margin: 6px 6px 0 -15px;
+    &-frame {
       border-top: 1px solid $linkColor;
-      border-right: 1px solid $linkColor;
-      // rhombus-size: 42px;
-      @include rhombusSize(30px);
-      transform: rotate(45deg);
-      content: "";
-    }
-  }
-
-  .item-frame {
-    border-top: 1px solid $linkColor;
-    border-left: 1px solid $linkColor;
-    border-bottom: 1px solid $linkColor;
-    width: 100%;
-  }
-
-  .item-container {
-    display: flex;
-    justify-content: space-between;
-
-    &:after {
-      display: block;
-      margin: -1px 0;
-      border-top: 21px solid transparent;
-      border-left: 20px solid $linkColor;
-      border-bottom: 21px solid transparent;
-      width: 0;
-      height: 0;
-      content: "";
-      transition: border-left $transitionTime;
-    }
-  }
-
-  .item-content {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 12px;
-    padding-right: 5px;
-    width: 100%;
-    background-color: $linkColor;
-    transition: background-color $transitionTime;
-  }
-
-  .item-title,
-  .item-percents {
-    &::-moz-selection {
-      background-color: $darkColor;
+      border-left: 1px solid $linkColor;
+      border-bottom: 1px solid $linkColor;
+      width: 100%;
     }
 
-    &::selection {
-      background-color: $darkColor;
+    &-wrap {
+      display: flex;
+      justify-content: space-between;
+
+      &:after {
+        display: block;
+        margin: -1px 0;
+        border-top: 21px solid transparent;
+        border-left: 20px solid $linkColor;
+        border-bottom: 21px solid transparent;
+        width: 0;
+        height: 0;
+        content: "";
+        transition: border-left $transitionTime;
+      }
+    }
+
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 12px;
+      padding-right: 5px;
+      width: 100%;
+      background-color: $linkColor;
+      transition: background-color $transitionTime;
+    }
+
+    &-title,
+    &-percents {
+      &::-moz-selection {
+        background-color: $darkColor;
+      }
+
+      &::selection {
+        background-color: $darkColor;
+      }
+    }
+
+    .active &-frame {
+      border-top-color: #007;
+      border-left-color: #007;
+      border-bottom-color: #007;
+    }
+
+    .active &-content {
+      background-color: #007;
+    }
+
+    .active &-wrap:after {
+      border-left-color: #007;
     }
   }
-
-  .active .item-frame {
-    border-top-color: #007;
-    border-left-color: #007;
-    border-bottom-color: #007;
-  }
-
-  .active .item-content {
-    background-color: #007;
-  }
-
-  .active .item-container:after {
-    border-left-color: #007;
-  }
-
-  li.active:after {
-    border-top-color: #007;
-    border-right-color: #007;
-  }
-}
-
-.skills-item0 .item-container {
-  width: 65%;
-}
-
-.skills-item1 .item-container {
-  width: 85%;
-}
-
-.skills-item2 .item-container {
-  width: 95%;
-}
-
-.skills-item3 .item-container {
-  width: 77%;
 }
 
 // END SKILLS SECTION

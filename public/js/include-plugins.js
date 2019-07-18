@@ -190,11 +190,25 @@
     //   ]
     // });
 
+    $("#testimonials .carousel-container").on("init", function(e, slick) {
+      const $items = slick.$dots.find("li");
+      $items.addClass("list-item thumbs-item");
+      // $items
+      //   .first()
+      //   .find(".main_slider__thumb_link")
+      //   .addClass("active");
+    });
+
     $("#testimonials .carousel-container").slick({
       arrows: false,
       dots: true,
-      dotsClass: "thumbs",
-      appendDots: $("#testimonials")
+      dotsClass: "list thumbs testimonials-thumbs",
+      appendDots: $("#testimonials"),
+      customPaging(slick, i) {
+        return `<a class="list-link thumbs-link">
+          <div class="rhombus_wrap thumbs-rhombus"></div>
+        </a>`;
+      }
     });
 
     $("#socials-feedback .carousel-container").slick({

@@ -227,18 +227,29 @@ body
 					address: "6"}
 		]
 
-	section#testimonials.section--dark_bg.carousel-section.testimonials
-		.container
+	section#testimonials.section.section--dark_bg.carousel-section.testimonials
+		.section-container.testimonials-container
 
-			h2 testimonials
+			h2.section-title.section-title--main.testimonials-title testimonials
 
-			.carousel-container
+			.carousel-container.testimonials-carousel_container
 				each item in testimonials
 					div
-						p.section-desc= item.desc
-						address= item.address
+						p.section-main_desc.testimonials-main_desc= item.desc
+						address.section-address.testimonials-address= item.address
 
-		a#to-skills.rhombus_wrap.after-section.arrow-bottom(href="#skills")
+			ul.list.thumbs.testimonials-thumbs
+			//- 	- for (var i=0; i < 6; i++)
+			//- 		if i == 0
+			//- 			li.list-item.thumbs-item.slick-active
+			//- 				a.list-link.thumbs-link(href="#")
+			//- 					.rhombus_wrap.thumbs-rhombus
+			//- 		else
+			//- 			li.list-item.thumbs-item
+			//- 				a.list-link.thumbs-link(href="#")
+			//- 					.rhombus_wrap.thumbs-rhombus
+
+		a#to-skills.rhombus_wrap.rhombus_wrap--after_section.rhombus_wrap--arrow_bottom(href="#skills")
 			.rhombus_wrap-content
 
 	//- END TESTIMONIALS SECTION
@@ -319,31 +330,31 @@ body
 								prs: 77}
 		]
 
-	section#skills.section--light_bg.skills
-		.container
+	section#skills.section.section--light_bg.skills
+		.section-container
 
 			a.section-anchor(name="skills")
 
-			h2 our skills
-			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+			h2.section-title.section-title--main our skills
+			p.section-main_desc.skills-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
 			each item, index in topSkills
-				.block(id="skills-block" + index)
-					.rhombus_wrap
+				.section-block.skill_block(class="skill_block--item_" + (index + 1))
+					.rhombus_wrap.skill_block-rhombus
 						.rhombus_wrap-content= item.prs
-						.rhombus_wrap-content.background-container
-							.background
-								.block-percents= item.prs
-					h3= item.title
+						.rhombus_wrap-content.skill_block-bg_wrap
+							.skill_block-bg
+								.skill_block-percents= item.prs
+					h3.section-title= item.title
 
-			ul#skills-technologies
+			ul#skills-technologies.skill_list
 				each item, index in bottomSkills
-					li(id="skills-item" + index)
-						.item-frame
-							.item-container
-								.item-content
-									.item-title= item.title
-									.item-percents= item.prs
+					li.skill_list-item(class="skill_list-item--item_" + (index + 1))
+						.skill_list-frame
+							.skill_list-wrap
+								.skill_list-content
+									.skill_list-title= item.title
+									.skill_list-percents= item.prs
 
 	//- END SKILLS SECTION
 
