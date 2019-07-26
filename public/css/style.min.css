@@ -2757,36 +2757,36 @@ textarea {
   background: linear-gradient(to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%), #191919 url("../img/bg/statistics-m.jpg") no-repeat center top;
 }
 
-.statistics h2 {
+.statistics-main_title {
   font-size: 31px;
   line-height: 31px;
 }
 
-.statistics h2:after {
+.statistics-main_title:after {
   margin-top: 17px;
 }
 
-.statistics p {
+.statistics-main_desc {
   margin-bottom: 26px;
 }
 
-.statistics .block {
+.statistics-item {
   position: relative;
 }
 
-.statistics .block:before {
+.statistics-item:before {
   display: block;
   margin: 63px 0 20px;
   font-size: 75px;
   line-height: 75px;
 }
 
-.statistics span {
+.statistics-number {
   font: 55px/55px "Exo2.0 Black", sans-serif;
   color: #cd2929;
 }
 
-.statistics h3 {
+.statistics-title {
   margin-top: 5px;
   font: 14px/14px "Exo2.0-Extra-Light", sans-serif;
 }

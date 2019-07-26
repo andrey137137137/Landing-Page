@@ -903,7 +903,7 @@
     #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-m.jpg) no-repeat center top;
   //background: $darkSectionBgColor url('#{$imgBgPath}/statistics-m.jpg') no-repeat -583px -5px;
 
-  h2 {
+  &-main_title {
     font-size: 31px;
     line-height: 31px;
 
@@ -912,11 +912,11 @@
     }
   }
 
-  p {
+  &-main_desc {
     margin-bottom: 26px;
   }
 
-  .block {
+  &-item {
     position: relative;
 
     &:before {
@@ -929,12 +929,12 @@
     }
   }
 
-  span {
+  &-number {
     font: 55px/55px "Exo2.0 Black", sans-serif;
     color: $linkColor;
   }
 
-  h3 {
+  &-title {
     // margin-top: 10px;
     margin-top: 5px;
     //font: 200 14px/14px 'Exo 2', sans-serif;
