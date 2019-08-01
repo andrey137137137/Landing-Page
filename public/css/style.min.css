@@ -1257,6 +1257,22 @@ body {
   display: none;
 }
 
+.section-to_next {
+  position: absolute;
+  left: 50%;
+  bottom: -38px;
+  z-index: 1000;
+  margin-left: -38px;
+  padding: 30px;
+  width: 76px;
+  height: 76px;
+  background-color: #cd2929;
+}
+
+.section-to_next:hover {
+  padding: 20px;
+}
+
 .section-block {
   width: 210px;
 }
@@ -1362,22 +1378,6 @@ body {
 .rhombus_wrap--arrow_bottom .rhombus_wrap-content {
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
-}
-
-.rhombus_wrap--after_section {
-  position: absolute;
-  left: 50%;
-  bottom: -38px;
-  z-index: 1000;
-  margin-left: -38px;
-  padding: 30px;
-  width: 76px;
-  height: 76px;
-  background-color: #cd2929;
-}
-
-.rhombus_wrap--after_section:hover {
-  padding: 20px;
 }
 
 .rhombus_wrap--close .rhombus_wrap-content,
@@ -2757,12 +2757,12 @@ textarea {
   background: linear-gradient(to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%), #191919 url("../img/bg/statistics-m.jpg") no-repeat center top;
 }
 
-.statistics-main_title {
+.statistics-title {
   font-size: 31px;
   line-height: 31px;
 }
 
-.statistics-main_title:after {
+.statistics-title:after {
   margin-top: 17px;
 }
 
@@ -2770,23 +2770,23 @@ textarea {
   margin-bottom: 26px;
 }
 
-.statistics-item {
+.statistic {
   position: relative;
 }
 
-.statistics-item:before {
+.statistic:before {
   display: block;
   margin: 63px 0 20px;
   font-size: 75px;
   line-height: 75px;
 }
 
-.statistics-number {
+.statistic-number {
   font: 55px/55px "Exo2.0 Black", sans-serif;
   color: #cd2929;
 }
 
-.statistics-title {
+.statistic-title {
   margin-top: 5px;
   font: 14px/14px "Exo2.0-Extra-Light", sans-serif;
 }

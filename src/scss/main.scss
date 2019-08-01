@@ -903,7 +903,7 @@
     #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-m.jpg) no-repeat center top;
   //background: $darkSectionBgColor url('#{$imgBgPath}/statistics-m.jpg') no-repeat -583px -5px;
 
-  &-main_title {
+  &-title {
     font-size: 31px;
     line-height: 31px;
 
@@ -915,18 +915,18 @@
   &-main_desc {
     margin-bottom: 26px;
   }
+}
 
-  &-item {
-    position: relative;
+.statistic {
+  position: relative;
 
-    &:before {
-      display: block;
-      // margin: 63px 0 26px;
-      margin: 63px 0 20px;
-      // font: 75px/75px SimpleLineIcons;
-      font-size: 75px;
-      line-height: 75px;
-    }
+  &:before {
+    display: block;
+    // margin: 63px 0 26px;
+    margin: 63px 0 20px;
+    // font: 75px/75px SimpleLineIcons;
+    font-size: 75px;
+    line-height: 75px;
   }
 
   &-number {

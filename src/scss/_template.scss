@@ -81,6 +81,21 @@ body {
     display: none;
   }
 
+  &-to_next {
+    position: absolute;
+    left: 50%;
+    bottom: -38px;
+    z-index: $zLevel8;
+    margin-left: -38px;
+    padding: 30px;
+    @include rhombusSize($rhombusSize107);
+    background-color: $linkColor;
+
+    &:hover {
+      padding: 20px;
+    }
+  }
+
   &-block {
     width: 210px;
   }
@@ -195,21 +210,6 @@ body {
   &--arrow_bottom &-content {
     border-right: 1px solid $white;
     border-bottom: 1px solid $white;
-  }
-
-  &--after_section {
-    position: absolute;
-    left: 50%;
-    bottom: -38px;
-    z-index: $zLevel8;
-    margin-left: -38px;
-    padding: 30px;
-    @include rhombusSize($rhombusSize107);
-    background-color: $linkColor;
-
-    &:hover {
-      padding: 20px;
-    }
   }
 
   &--close,

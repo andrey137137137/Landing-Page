@@ -84,7 +84,7 @@ body
 			a#main-slider-next.rhombus_wrap.rhombus_wrap--arrow_right.main_slider-next(href="#")
 				.rhombus_wrap-content
 
-		a#main-slider-after-section.rhombus_wrap.rhombus_wrap--after_section.main_slider-after_section(href="#features")
+		a#main-slider-after-section.section-to_next.rhombus_wrap.main_slider-after_section(href="#features")
 			.rhombus_wrap-content
 
 	//- END MAIN-SLIDER SECTION
@@ -178,7 +178,7 @@ body
 			+logo("about")
 			+socials("about-socials")
 
-			a#to-portfolio.rhombus_wrap.rhombus_wrap--after_section.rhombus_wrap--arrow_bottom(href="#portfolio")
+			a#to-portfolio.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#portfolio")
 				.rhombus_wrap-content
 
 	//- END ABOUT SECTION
@@ -249,7 +249,7 @@ body
 			//- 				a.list-link.thumbs-link(href="#")
 			//- 					.rhombus_wrap.thumbs-rhombus
 
-		a#to-skills.rhombus_wrap.rhombus_wrap--after_section.rhombus_wrap--arrow_bottom(href="#skills")
+		a#to-skills.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#skills")
 			.rhombus_wrap-content
 
 	//- END TESTIMONIALS SECTION
@@ -361,27 +361,27 @@ body
 	//- BEGIN STATISTICS SECTION
 
 	section#statistics.section.section--dark_bg.statistics
-		.container
+		.section-container
 
-			h2.section-title.section-title--main.statistics-main_title some cool statistics
+			h2.section-title.section-title--main.statistics-title some cool statistics
 			p.section-main_desc.statistics-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
-			.flex_container
+			.section-flex_container
 
-				.sl-icon-people.section-block
-					span 568
-					h3 Happy clients!
-				.sl-icon-social-twitter.section-block
-					span 3578
-					h3 Followers on Twitter
-				.sl-icon-social-facebook.section-block
-					span 2387
-					h3 Friends on Facebook
-				.sl-icon-trophy.section-block
-					span 128
-					h3 awards
+				.sl-icon-people.section-block.statistic
+					span.statistic-number 568
+					h3.section-title.statistic-title Happy clients!
+				.sl-icon-social-twitter.section-block.statistic
+					span.statistic-number 3578
+					h3.section-title.statistic-title Followers on Twitter
+				.sl-icon-social-facebook.section-block.statistic
+					span.statistic-number 2387
+					h3.section-title.statistic-title Friends on Facebook
+				.sl-icon-trophy.section-block.statistic
+					span.statistic-number 128
+					h3.section-title.statistic-title awards
 
-		a#to-blog-news.rhombus_wrap.after-section.arrow-bottom(href="#blog-news")
+		a#to-blog-news.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#blog-news")
 			.rhombus_wrap-content
 
 	//- END STATISTICS SECTION
@@ -557,10 +557,8 @@ body
 							a(href="#") @blazrobar #webdesign
 						address.time 2 hours ago
 
-		a#to-team.rhombus_wrap.after-section.arrow-bottom(href="#team")
+		a#to-team.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#team")
 			.rhombus_wrap-content
-
-
 
 	//- END SOCIALS-FEEDBACK SECTION
 
@@ -732,10 +730,8 @@ body
 
 		
 
-		a#to-contacts.rhombus_wrap.after-section.arrow-bottom(href="#contacts")
+		a#to-contacts.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#contacts")
 			.rhombus_wrap-content
-		
-
 
 	//- END CLIENTS SECTION
 
@@ -831,7 +827,7 @@ body
 			//- 		a.twitter(href="#")
 			//- 	li
 			//- 		a.dribbble(href="#")
-			+socials("flex_container", 3, 0, "footer-left-socials")
+			+socials("section-flex_container", 3, 0, "footer-left-socials")
 
 
 			//- ul#footer-right-socials.socials.flex-container
@@ -841,15 +837,12 @@ body
 			//- 		a.linkedin(href="#")
 			//- 	li
 			//- 		a.pinterest(href="#")
-			+socials("flex_container", 3, 3, "footer-right-socials")
+			+socials("section-flex_container", 3, 3, "footer-right-socials")
 
 		
 
-		a#to-top.rhombus_wrap.after-section.arrow-top(href="google.ru")
+		a#to-top.section-to_next.rhombus_wrap.rhombus_wrap--arrow_top(href="google.ru")
 			.rhombus_wrap-content
-		
-
-
 
 	//- END FOOTER
 
