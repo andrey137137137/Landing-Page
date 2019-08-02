@@ -946,129 +946,132 @@
 
 // BEGIN BLOG-NEWS SECTION
 
-.blog-news {
+.blog_news {
   padding-bottom: 165px;
   // height: 899px;
 
-  .display-rhombuses {
+  .display_rhombuses {
     padding-top: 100px;
   }
-}
 
-.blog-news-lightbox {
-  position: relative;
-  margin: 117px auto 0;
-  max-width: 728px;
+  &-lightbox {
+    position: relative;
+    margin: 117px auto 0;
+    max-width: 728px;
 
-  .nav {
-    top: $defaultNegativeRhombusMargin;
-    display: flex;
-    justify-content: center;
+    .nav {
+      top: $defaultNegativeRhombusMargin;
+      display: flex;
+      justify-content: center;
 
-    .rhombus_wrap {
-      margin: 0 11.5px;
-    }
+      .rhombus_wrap {
+        margin: 0 11.5px;
+      }
 
-    .category,
-    .date {
-      position: relative;
-      padding: 0;
-      color: $lightColor;
-      background-color: $darkColor;
+      .photo_block {
+        .category,
+        .date {
+          position: relative;
+          padding: 0;
+          color: $lightColor;
+          background-color: $darkColor;
 
-      .rhombus {
-        position: absolute;
-        font: unquote("8px/#{$defaultRhombusSize}") "Exo2.0 Regular", sans-serif;
+          .rhombus {
+            position: absolute;
+            font: unquote("8px/#{$defaultRhombusSize}") "Exo2.0 Regular",
+              sans-serif;
 
-        &:before {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          font-size: 12px;
-          line-height: 1;
-          transform: translateX(-50%);
+            &:before {
+              position: absolute;
+              top: 0;
+              left: 50%;
+              font-size: 12px;
+              line-height: 1;
+              transform: translateX(-50%);
+            }
+          }
+        }
+
+        .date .rhombus:before {
+          display: block;
+          font-family: SimpleLineIcons;
+          content: $sliDate;
         }
       }
     }
-
-    .date .rhombus:before {
-      display: block;
-      font-family: SimpleLineIcons;
-      content: $sliDate;
-    }
-  }
-}
-
-.blog-news-content {
-  display: flex;
-  flex-flow: column wrap;
-  text-align: left;
-
-  .image-container {
-    height: 295px;
   }
 
-  h3 {
-    margin-top: 41px;
-    font: 24px/22px "Exo2.0 Black", sans-serif;
+  &-content {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: left;
 
-    &:after {
-      display: block;
-      margin: 18px auto 14px;
-      font: 11px Icomoon;
-      color: $darkColor;
-      content: $icomoonSeparator;
-    }
-  }
-
-  .first-p {
-    margin: 0;
-  }
-
-  p {
-    margin-top: 22px;
-  }
-
-  .rhombus_wrap {
-    text-align: center;
-  }
-
-  .socials-rhombus {
-    margin: 33px auto;
-
-    li {
-      @include opacityRhombus($darkColor, rgba(33, 33, 33, 0.2), $darkColor);
+    .image-container {
+      height: 295px;
     }
 
-    &:hover {
-      li:nth-child(1) {
-        right: $rhombusPositionStep * 2;
-        bottom: 0;
+    h3 {
+      margin-top: 41px;
+      font: 24px/22px "Exo2.0 Black", sans-serif;
+
+      &:after {
+        display: block;
+        margin: 18px auto 14px;
+        font: 11px Icomoon;
+        color: $darkColor;
+        content: $icomoonSeparator;
+      }
+    }
+
+    .first-p {
+      margin: 0;
+    }
+
+    p {
+      margin-top: 22px;
+    }
+
+    .rhombus_wrap {
+      text-align: center;
+    }
+
+    .socials-rhombus {
+      margin: 33px auto;
+
+      li {
+        @include opacityRhombus($darkColor, rgba(33, 33, 33, 0.2), $darkColor);
       }
 
-      li:nth-child(2) {
-        right: $rhombusPositionStep;
-        bottom: 0;
-      }
+      &:hover {
+        li:nth-child(1) {
+          right: $rhombusPositionStep * 2;
+          bottom: 0;
+        }
 
-      li:nth-child(3) {
-        right: 0;
-        bottom: $rhombusPositionStep;
-      }
+        li:nth-child(2) {
+          right: $rhombusPositionStep;
+          bottom: 0;
+        }
 
-      li:nth-child(4) {
-        right: 0;
-        bottom: $rhombusPositionStep * 2;
-      }
+        li:nth-child(3) {
+          right: 0;
+          bottom: $rhombusPositionStep;
+        }
 
-      li:nth-child(5) {
-        right: $rhombusPositionStep;
-        bottom: $rhombusPositionStep * 2;
-      }
+        li:nth-child(4) {
+          right: 0;
+          bottom: $rhombusPositionStep * 2;
+        }
 
-      li:nth-child(6) {
-        right: $rhombusPositionStep * 2;
-        bottom: $rhombusPositionStep;
+        li:nth-child(5) {
+          right: $rhombusPositionStep;
+          bottom: $rhombusPositionStep * 2;
+        }
+
+        li:nth-child(6) {
+          right: $rhombusPositionStep * 2;
+          bottom: $rhombusPositionStep;
+        }
       }
     }
   }
