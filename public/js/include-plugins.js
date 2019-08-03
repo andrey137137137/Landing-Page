@@ -167,32 +167,42 @@
       ]
     });
 
-    // Gallery({
-    //   name: "blog-news",
-    //   lightBoxID: "lightbox",
-    //   showCategory: true,
-    //   showMenu: false,
-    //   categories: ["blog", "photo", "video"],
-    //   items: [
-    //     {
-    //       category: 1,
-    //       description: "",
-    //       title: "rubiko will take you to the next level"
-    //     },
-    //     { category: 2, description: "", title: "doctype hi-res" },
-    //     { category: 1, description: "", title: "unsplash" },
-    //     { category: 1, description: "", title: "unsplash-2" },
-    //     {
-    //       category: 3,
-    //       description: "",
-    //       title: "new york from a different view"
-    //     }
-    //   ]
-    // });
+    Gallery({
+      name: "blog-news",
+      lightBoxID: "lightbox",
+      showCategory: true,
+      showMenu: false,
+      categories: ["blog", "photo", "video"],
+      items: [
+        {
+          category: 1,
+          description: "",
+          title: "rubiko will take you to the next level"
+        },
+        { category: 2, description: "", title: "doctype hi-res" },
+        { category: 1, description: "", title: "unsplash" },
+        { category: 1, description: "", title: "unsplash-2" },
+        {
+          category: 3,
+          description: "",
+          title: "new york from a different view"
+        }
+      ]
+    });
+
+    var thumbs = {
+      listClass: "list thumbs",
+      listClassPostfix: "thumbs",
+      itemClass: "list-item thumbs-item",
+      itemElem: "li",
+      linkContent: `<a class="list-link thumbs-link">
+        <div class="rhombus_wrap thumbs-rhombus"></div>
+      </a>`
+    };
 
     $("#testimonials .carousel-container").on("init", function(e, slick) {
-      const $items = slick.$dots.find("li");
-      $items.addClass("list-item thumbs-item");
+      const $items = slick.$dots.find(thumbs.itemElem);
+      $items.addClass(thumbs.itemClass);
       // $items
       //   .first()
       //   .find(".main_slider__thumb_link")
@@ -202,20 +212,27 @@
     $("#testimonials .carousel-container").slick({
       arrows: false,
       dots: true,
-      dotsClass: "list thumbs testimonials-thumbs",
+      dotsClass: thumbs.listClass + " testimonials-" + thumbs.listClassPostfix,
       appendDots: $("#testimonials"),
       customPaging(slick, i) {
-        return `<a class="list-link thumbs-link">
-          <div class="rhombus_wrap thumbs-rhombus"></div>
-        </a>`;
+        return thumbs.linkContent;
       }
     });
 
-    $("#socials-feedback .carousel-container").slick({
+    $("#social-feedback .carousel-container").on("init", function(e, slick) {
+      const $items = slick.$dots.find(thumbs.itemElem);
+      $items.addClass(thumbs.itemClass);
+    });
+
+    $("#social-feedback .carousel-container").slick({
       arrows: false,
       dots: true,
-      dotsClass: "thumbs",
-      appendDots: $("#socials-feedback")
+      dotsClass:
+        thumbs.listClass + " social_feedback-" + thumbs.listClassPostfix,
+      appendDots: $("#social-feedback"),
+      customPaging(slick, i) {
+        return thumbs.linkContent;
+      }
     });
 
     Carousel({
