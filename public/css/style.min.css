@@ -1341,13 +1341,12 @@ body {
 }
 
 .rhombus_wrap--btn,
-.rhombus_wrap--show_socials {
+.rhombus_wrap--red_bg {
   background-color: #cd2929;
 }
 
-.rhombus_wrap--after_section .rhombus_wrap-content,
 .rhombus_wrap--btn .rhombus_wrap-content,
-.rhombus_wrap--show_socials .rhombus_wrap-content {
+.rhombus_wrap--red_bg .rhombus_wrap-content {
   color: #fff;
   border-color: #fff;
 }
@@ -2008,7 +2007,7 @@ textarea {
   content: "";
 }
 
-.lightbox.hidden {
+.lightbox.lightbox--hidden {
   display: none !important;
 }
 
@@ -2053,7 +2052,6 @@ textarea {
   margin-top: 19px;
   width: 33px;
   height: 33px;
-  cursor: pointer;
 }
 
 .header-menu_checker .rhombus_wrap-content {
@@ -2805,52 +2803,7 @@ textarea {
   max-width: 728px;
 }
 
-.blog_news-lightbox .nav {
-  top: -26.5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.blog_news-lightbox .nav .rhombus_wrap {
-  margin: 0 11.5px;
-}
-
-.blog_news-lightbox .nav .photo_block .category,
-.blog_news-lightbox .nav .photo_block .date {
-  position: relative;
-  padding: 0;
-  color: #f5f5f5;
-  background-color: #212121;
-}
-
-.blog_news-lightbox .nav .photo_block .category .rhombus,
-.blog_news-lightbox .nav .photo_block .date .rhombus {
-  position: absolute;
-  font: 8px/53px "Exo2.0 Regular", sans-serif;
-}
-
-.blog_news-lightbox .nav .photo_block .category .rhombus:before,
-.blog_news-lightbox .nav .photo_block .date .rhombus:before {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  font-size: 12px;
-  line-height: 1;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.blog_news-lightbox .nav .photo_block .date .rhombus:before {
-  display: block;
-  font-family: SimpleLineIcons;
-  content: "";
-}
-
-.blog_news-content {
+.blog_news-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2861,16 +2814,16 @@ textarea {
   text-align: left;
 }
 
-.blog_news-content .image-container {
+.blog_news-img_wrap {
   height: 295px;
 }
 
-.blog_news-content h3 {
+.blog_news-title {
   margin-top: 41px;
   font: 24px/22px "Exo2.0 Black", sans-serif;
 }
 
-.blog_news-content h3:after {
+.blog_news-title:after {
   display: block;
   margin: 18px auto 14px;
   font: 11px Icomoon;
@@ -2878,68 +2831,113 @@ textarea {
   content: "";
 }
 
-.blog_news-content .first-p {
-  margin: 0;
-}
-
-.blog_news-content p {
+.blog_news-desc {
   margin-top: 22px;
 }
 
-.blog_news-content .rhombus_wrap {
+.blog_news-desc--first {
+  margin: 0;
+}
+
+.blog_news-rhombus_wrap {
   text-align: center;
 }
 
-.blog_news-content .socials-rhombus {
+.blog_news-social_rhombus {
   margin: 33px auto;
 }
 
-.blog_news-content .socials-rhombus li {
+.blog_news-social_rhombus .social-item {
   border: 1px solid #212121;
   color: #212121;
   background-color: rgba(33, 33, 33, .2);
 }
 
-.blog_news-content .socials-rhombus li:hover {
+.blog_news-social_rhombus .social-item:hover {
   border: 1px solid #1ab4ef;
   color: #1ab4ef;
   background-color: rgba(27, 182, 239, .2);
 }
 
-.blog_news-content .socials-rhombus li:hover div,
-.blog_news-content .socials-rhombus li:hover div:before,
-.blog_news-content .socials-rhombus li:hover div:after {
+.blog_news-social_rhombus .social-item:hover div,
+.blog_news-social_rhombus .social-item:hover div:before,
+.blog_news-social_rhombus .social-item:hover div:after {
   border-color: #1ab4ef;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(1) {
+.blog_news-social_rhombus:hover .social-item:nth-child(1) {
   right: 112px;
   bottom: 0;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(2) {
+.blog_news-social_rhombus:hover .social-item:nth-child(2) {
   right: 56px;
   bottom: 0;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(3) {
+.blog_news-social_rhombus:hover .social-item:nth-child(3) {
   right: 0;
   bottom: 56px;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(4) {
+.blog_news-social_rhombus:hover .social-item:nth-child(4) {
   right: 0;
   bottom: 112px;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(5) {
+.blog_news-social_rhombus:hover .social-item:nth-child(5) {
   right: 56px;
   bottom: 112px;
 }
 
-.blog_news-content .socials-rhombus:hover li:nth-child(6) {
+.blog_news-social_rhombus:hover .social-item:nth-child(6) {
   right: 112px;
   bottom: 56px;
+}
+
+.blog_news .nav {
+  top: -26.5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.blog_news .nav .rhombus_wrap {
+  margin: 0 11.5px;
+}
+
+.blog_news .nav .photo_block .category,
+.blog_news .nav .photo_block .date {
+  position: relative;
+  padding: 0;
+  color: #f5f5f5;
+  background-color: #212121;
+}
+
+.blog_news .nav .photo_block .category .rhombus,
+.blog_news .nav .photo_block .date .rhombus {
+  position: absolute;
+  font: 8px/53px "Exo2.0 Regular", sans-serif;
+}
+
+.blog_news .nav .photo_block .category .rhombus:before,
+.blog_news .nav .photo_block .date .rhombus:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 12px;
+  line-height: 1;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.blog_news .nav .photo_block .date .rhombus:before {
+  display: block;
+  font-family: SimpleLineIcons;
+  content: "";
 }
 
 .blog-comments h4 {
@@ -3762,7 +3760,7 @@ footer .flex-container {
   left: 50%;
 }
 
-.portfolio-lightbox {
+.portfolio_lightbox {
   position: fixed;
   top: 0;
   left: 0;
@@ -3789,11 +3787,11 @@ footer .flex-container {
   transition: background 0.5s;
 }
 
-.portfolio-lightbox .lightbox-wrap {
+.portfolio_lightbox-container {
   padding-top: 44px;
 }
 
-.portfolio-lightbox .slider-container {
+.portfolio_lightbox-slider_container {
   position: relative;
   margin: auto;
   width: 440px;
@@ -3801,24 +3799,24 @@ footer .flex-container {
   background-color: rgba(30, 30, 30, .9);
 }
 
-.portfolio-lightbox .image-container {
+.portfolio_lightbox-img_wrap {
   height: 312px;
 }
 
-.portfolio-lightbox img {
+.portfolio_lightbox-img_wrap .img_wrap-img {
   margin: 0 auto;
   width: auto;
   height: 100%;
 }
 
-.portfolio-lightbox p {
+.portfolio_lightbox p {
   padding: 17px 14px;
   min-height: 113px;
   max-height: 254px;
   overflow-y: auto;
 }
 
-.portfolio-lightbox .socials-rhombus {
+.portfolio_lightbox-social_rhombus {
   position: absolute;
   top: -44px;
   left: 50%;

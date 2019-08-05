@@ -51,7 +51,7 @@
     margin-top: 19px;
     // rhombus-size: 47px;
     @include rhombusSize(33px);
-    cursor: pointer;
+    // cursor: pointer;
 
     .rhombus_wrap-content {
       color: $white;
@@ -954,120 +954,122 @@
     position: relative;
     margin: 117px auto 0;
     max-width: 728px;
+  }
 
-    .nav {
-      top: $defaultNegativeRhombusMargin;
-      display: flex;
-      justify-content: center;
+  &-container {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: left;
+  }
 
-      .rhombus_wrap {
-        margin: 0 11.5px;
-      }
+  &-img_wrap {
+    height: 295px;
+  }
 
-      .photo_block {
-        .category,
-        .date {
-          position: relative;
-          padding: 0;
-          color: $lightColor;
-          background-color: $darkColor;
+  &-title {
+    margin-top: 41px;
+    font: 24px/22px "Exo2.0 Black", sans-serif;
 
-          .rhombus {
-            position: absolute;
-            font: unquote("8px/#{$defaultRhombusSize}") "Exo2.0 Regular",
-              sans-serif;
+    &:after {
+      display: block;
+      margin: 18px auto 14px;
+      font: 11px Icomoon;
+      color: $darkColor;
+      content: $icomoonSeparator;
+    }
+  }
 
-            &:before {
-              position: absolute;
-              top: 0;
-              left: 50%;
-              font-size: 12px;
-              line-height: 1;
-              transform: translateX(-50%);
-            }
-          }
+  &-desc {
+    margin-top: 22px;
+
+    &--first {
+      margin: 0;
+    }
+  }
+
+  &-rhombus_wrap {
+    text-align: center;
+  }
+
+  &-social_rhombus {
+    margin: 33px auto;
+
+    .social-item {
+      @include opacityRhombus($darkColor, rgba(33, 33, 33, 0.2), $darkColor);
+    }
+
+    &:hover {
+      .social-item {
+        &:nth-child(1) {
+          right: $rhombusPositionStep * 2;
+          bottom: 0;
         }
 
-        .date .rhombus:before {
-          display: block;
-          font-family: SimpleLineIcons;
-          content: $sliDate;
+        &:nth-child(2) {
+          right: $rhombusPositionStep;
+          bottom: 0;
+        }
+
+        &:nth-child(3) {
+          right: 0;
+          bottom: $rhombusPositionStep;
+        }
+
+        &:nth-child(4) {
+          right: 0;
+          bottom: $rhombusPositionStep * 2;
+        }
+
+        &:nth-child(5) {
+          right: $rhombusPositionStep;
+          bottom: $rhombusPositionStep * 2;
+        }
+
+        &:nth-child(6) {
+          right: $rhombusPositionStep * 2;
+          bottom: $rhombusPositionStep;
         }
       }
     }
   }
 
-  &-content {
+  .nav {
+    top: $defaultNegativeRhombusMargin;
     display: flex;
-    flex-flow: column wrap;
-    text-align: left;
-
-    .image-container {
-      height: 295px;
-    }
-
-    h3 {
-      margin-top: 41px;
-      font: 24px/22px "Exo2.0 Black", sans-serif;
-
-      &:after {
-        display: block;
-        margin: 18px auto 14px;
-        font: 11px Icomoon;
-        color: $darkColor;
-        content: $icomoonSeparator;
-      }
-    }
-
-    .first-p {
-      margin: 0;
-    }
-
-    p {
-      margin-top: 22px;
-    }
+    justify-content: center;
 
     .rhombus_wrap {
-      text-align: center;
+      margin: 0 11.5px;
     }
 
-    .socials-rhombus {
-      margin: 33px auto;
+    .photo_block {
+      .category,
+      .date {
+        position: relative;
+        padding: 0;
+        color: $lightColor;
+        background-color: $darkColor;
 
-      li {
-        @include opacityRhombus($darkColor, rgba(33, 33, 33, 0.2), $darkColor);
+        .rhombus {
+          position: absolute;
+          font: unquote("8px/#{$defaultRhombusSize}") "Exo2.0 Regular",
+            sans-serif;
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            font-size: 12px;
+            line-height: 1;
+            transform: translateX(-50%);
+          }
+        }
       }
 
-      &:hover {
-        li:nth-child(1) {
-          right: $rhombusPositionStep * 2;
-          bottom: 0;
-        }
-
-        li:nth-child(2) {
-          right: $rhombusPositionStep;
-          bottom: 0;
-        }
-
-        li:nth-child(3) {
-          right: 0;
-          bottom: $rhombusPositionStep;
-        }
-
-        li:nth-child(4) {
-          right: 0;
-          bottom: $rhombusPositionStep * 2;
-        }
-
-        li:nth-child(5) {
-          right: $rhombusPositionStep;
-          bottom: $rhombusPositionStep * 2;
-        }
-
-        li:nth-child(6) {
-          right: $rhombusPositionStep * 2;
-          bottom: $rhombusPositionStep;
-        }
+      .date .rhombus:before {
+        display: block;
+        font-family: SimpleLineIcons;
+        content: $sliDate;
       }
     }
   }
@@ -1971,7 +1973,7 @@ footer {
 
 // BEGIN PORTFOLIO LIGHTBOX
 
-.portfolio-lightbox {
+.portfolio_lightbox {
   position: fixed;
   top: 0;
   left: 0;
@@ -1990,11 +1992,11 @@ footer {
 
   transition: background $transitionTime;
 
-  .lightbox-wrap {
+  &-container {
     padding-top: $lightBoxPaddingTop;
   }
 
-  .slider-container {
+  &-slider_container {
     position: relative;
     margin: auto;
     width: 440px;
@@ -2002,14 +2004,14 @@ footer {
     background-color: rgba(30, 30, 30, 0.9);
   }
 
-  .image-container {
+  &-img_wrap {
     height: 312px;
-  }
 
-  img {
-    margin: 0 auto;
-    width: auto;
-    height: 100%;
+    .img_wrap-img {
+      margin: 0 auto;
+      width: auto;
+      height: 100%;
+    }
   }
 
   p {
@@ -2019,7 +2021,7 @@ footer {
     overflow-y: auto;
   }
 
-  .socials-rhombus {
+  &-social_rhombus {
     position: absolute;
     top: -$lightBoxPaddingTop;
     left: 50%;

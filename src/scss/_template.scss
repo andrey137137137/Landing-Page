@@ -170,13 +170,9 @@ body {
   }
 
   &--btn,
-  &--show_socials {
+  &--red_bg {
     background-color: $linkColor;
-  }
 
-  &--after_section,
-  &--btn,
-  &--show_socials {
     #{$block}-content {
       color: $white;
       border-color: $white;
@@ -952,7 +948,7 @@ textarea {
   content: $sliBlog;
 }
 
-.lightbox.hidden {
+.lightbox.lightbox--hidden {
   display: none !important;
 }
 

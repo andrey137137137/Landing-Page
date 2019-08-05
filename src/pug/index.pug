@@ -386,18 +386,17 @@ body
 
 			p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
-			#blog-news-lightbox.lightbox.hidden
+			#blog-news-lightbox.lightbox.lightbox--hidden
 
-				#blog-news-content
+				#blog-news-content.lightbox-container.blog_news-container
 
-					.img_wrap
-						img.img_wrap-img(src="img/blog-news/1.jpg" alt="7")
-					
+					.img_wrap.blog_news-img_wrap
+						img.img_wrap-img(src="img/blog-news/d/1.jpg" alt="7")
 
 					#blog-description
 
-						h3 rubiko will take you to the next level
-						
+						h3.section-title.blog_news-title rubiko will take you to the next level
+
 						p.first-p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed molestie neque, id venenatis nisl. Aliquam magna magna, interdum quis nisl quis, eleifend sollicitudin nibh. Morbi nec felis ut nisl sagittis rhoncus. Vestibulum condimentum ligula ac mattis commodo. Etiam pharetra, dolor tempor volutpat auctor, nisi urna lacinia diam, ac consectetur turpis velit non neque. Sed erat eros, porttitor ac pretium vel, posuere a ante. Ut mattis interdum magna egestas accumsan. Vestibulum eget eros quam.
 						
 						p Cras tristique mi mauris, nec ornare nisi sagittis eu. Aliquam erat volutpat. Ut a magna vel neque eleifend accumsan sit amet nec mauris. Nulla faucibus ac felis at viverra. Morbi quis elit nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In quis augue tincidunt nisl viverra vulputate sit amet eu justo.
@@ -410,7 +409,7 @@ body
 						
 						p Proin pretium felis quis eros interdum venenatis. Mauris vitae ultricies augue. Nunc ultrices neque at mollis mattis. Integer luctus, libero sed imperdiet interdum, dolor velit ullamcorper lectus, a elementum tortor leo ac sapien. Duis velit leo, mattis sit amet aliquam quis, molestie eget ante. Mauris rhoncus, arcu quis dictum fringilla, purus eros convallis leo, sit amet tincidunt purus nunc id eros. Nulla vitae egestas lectus. Maecenas semper sem sed sapien porta tincidunt quis et risus. Quisque in lobortis ipsum. Nam tincidunt gravida elit, vel auctor urna placerat ut. Sed nisl nibh, pulvinar ut sapien tincidunt, dictum sollicitudin justo. Sed tempor et nibh et eleifend. Integer nibh felis, fermentum in enim eget.
 
-						+socials-rhombus
+						+social-rhombus("blog_news-social_rhombus")
 
 					#blog-comments
 
@@ -837,53 +836,29 @@ body
 
 	//- BEGIN LIGHTBOX
 
-	//- #portfolio-lightbox.lightbox hidden
-	//- 	.lightbox-wrap
-	//- 		.slider-container
+	#portfolio-lightbox.lightbox.lightbox--hidden.portfolio_lightbox
+		.lightbox-container.portfolio_lightbox-container
+			.slider-container.portfolio_lightbox-slider_container
 
-	//- 			#portfolio-slider-demonstration.slider-demo
-	//- 				.img_wrap
-	//- 					//- image
-					
-	//- 				p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				#portfolio-slider-demonstration.slider-demo
+					.portfolio_lightbox-img_wrap
+						//- image
+
+					p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				
 
-	//- 			a#portfolio-slider-close.rhombus_wrap.button close(href="#")
-	//- 				.rhombus_wrap-content
+				a#portfolio-slider-close.rhombus_wrap.button.close(href="#")
+					.rhombus_wrap-content
 				
 
-	//- 			#portfolio-slider-navigation.navigation
-	//- 				a#portfolio-slider-prev.rhombus_wrap.arrow-left(href="#")
-	//- 					.rhombus_wrap-content
-					
+				#portfolio-slider-navigation.nav
+					a#portfolio-slider-prev.rhombus_wrap.arrow-left(href="#")
+						.rhombus_wrap-content
 
-	//- 				a#portfolio-slider-next.rhombus_wrap.arrow-right(href="#")
-	//- 					.rhombus_wrap-content
-					
-				
+					a#portfolio-slider-next.rhombus_wrap.arrow-right(href="#")
+						.rhombus_wrap-content
 
-	//- 			.rhombus_wrap.socials-rhombus
-	//- 				ul.socials
-	//- 					li
-									a.pinterest(href="#")
-	//- 					li
-									a.linkedin(href="#")
-	//- 					li
-									a.facebook(href="#")
-	//- 					li
-									a.dribbble(href="#")
-	//- 					li
-									a.twitter(href="#")
-					
-
-	//- 				.rhombus_wrap.show-socials
-	//- 					.rhombus_wrap-content
-					
-				
-
-			
-		
-
+				+social-rhombus("portfolio_lightbox-social_rhombus")
 
 	//- END LIGHTBOX
 
