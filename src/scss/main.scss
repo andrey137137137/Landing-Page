@@ -946,7 +946,7 @@
   padding-bottom: 165px;
   // height: 899px;
 
-  .display_rhombuses {
+  &-display_rhombuses {
     padding-top: 100px;
   }
 
@@ -954,12 +954,22 @@
     position: relative;
     margin: 117px auto 0;
     max-width: 728px;
-  }
 
-  &-container {
-    display: flex;
-    flex-flow: column wrap;
-    text-align: left;
+    &_container {
+      display: flex;
+      flex-flow: column wrap;
+      text-align: left;
+    }
+
+    &_desc_container {
+      p {
+        margin-top: 22px;
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
   }
 
   &-img_wrap {
@@ -976,14 +986,6 @@
       font: 11px Icomoon;
       color: $darkColor;
       content: $icomoonSeparator;
-    }
-  }
-
-  &-desc {
-    margin-top: 22px;
-
-    &--first {
-      margin: 0;
     }
   }
 
@@ -1033,7 +1035,7 @@
     }
   }
 
-  .nav {
+  &-nav {
     top: $defaultNegativeRhombusMargin;
     display: flex;
     justify-content: center;
@@ -1075,15 +1077,17 @@
   }
 }
 
-.blog-comments {
+.comments {
+  $block: &;
+
   // margin-top: 28px;
 
-  h4 {
+  &-title {
     margin-bottom: 28px;
     font: 19px/19px "Exo2.0 Black", sans-serif;
   }
 
-  li {
+  &-item {
     margin-top: 22px;
 
     &:first-child {
@@ -1091,32 +1095,34 @@
     }
   }
 
-  .comment-text-content {
+  .comment-text {
     max-width: 100%;
   }
 
-  .sub-comments {
-    margin-top: 18px;
-    background: url("#{$imgBgPath}/blog-comments/vertical-line.png") repeat-y
-        left 20px,
-      url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
+  &-list {
+    &--sub {
+      margin-top: 18px;
+      background: url("#{$imgBgPath}/blog-comments/vertical-line.png") repeat-y
+          left 20px,
+        url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
 
-    li {
-      padding-top: 4px;
+      #{$block}-item {
+        padding-top: 4px;
+      }
+    }
+
+    &--level_2 {
+      padding-left: 31px;
+    }
+
+    &--final {
+      background: url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
     }
   }
 
-  .final-comments {
-    background: url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
-  }
-
-  .comment-text {
+  .comment-desc {
     margin-top: 14px;
     font-family: "Exo2.0 Extra Light", sans-serif;
-  }
-
-  .level-2 {
-    padding-left: 31px;
   }
 
   form {
@@ -1185,29 +1191,57 @@
   background-color: $commentBackground;
   box-shadow: 0px 2px rgba(66, 77, 90, 0.08);
 
-  .avatar {
+  &-avatar {
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-  }
 
-  .guest-avatar {
-    background-color: $darkColor;
+    &--guest {
+      background-color: $darkColor;
 
-    &:before {
-      display: block;
-      font: 27px/60px SimpleLineIcons;
-      text-align: center;
-      color: $lightColor;
-      content: $sliGuest;
+      &:before {
+        display: block;
+        font: 27px/60px SimpleLineIcons;
+        text-align: center;
+        color: $lightColor;
+        content: $sliGuest;
+      }
+    }
+
+    &--admin {
+      background: $linkColor url("#{$imgBgPath}/logo.png") no-repeat center
+        center;
     }
   }
 
-  .admin-avatar {
-    background: $linkColor url("#{$imgBgPath}/logo.png") no-repeat center center;
+  &-text {
+    margin-left: 27px;
+    line-height: 18px;
   }
 
-  .show-more {
+  &-author_wrap,
+  &-date {
+    display: block;
+    font-family: "Exo2.0 Regular", sans-serif;
+  }
+
+  &-author {
+    &_wrap {
+      margin-top: -3px;
+    }
+
+    & {
+      font-size: 15px;
+      text-transform: capitalize;
+    }
+  }
+
+  &-date {
+    font-size: 12px;
+    color: rgba(33, 33, 33, 0.5);
+  }
+
+  &-more {
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -1222,30 +1256,6 @@
     // 	display: block;
     // 	content: '\e605';
     // }
-  }
-}
-
-.comment-text-content {
-  margin-left: 27px;
-  line-height: 18px;
-
-  span {
-    display: block;
-    font-family: "Exo2.0 Regular", sans-serif;
-  }
-
-  .author {
-    margin-top: -3px;
-  }
-
-  b {
-    font-size: 15px;
-    text-transform: capitalize;
-  }
-
-  .date {
-    font-size: 12px;
-    color: rgba(33, 33, 33, 0.5);
   }
 }
 

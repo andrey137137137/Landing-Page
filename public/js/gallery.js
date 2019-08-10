@@ -107,7 +107,7 @@ var Gallery = function() {
         event.preventDefault();
 
         if (elem.id === closeID) {
-          self.lightBox.classList.add("hidden");
+          self.lightBox.classList.add("lightbox--hidden");
         } else if (elem.id === prevID) {
           self.changeSlide(-1);
         } else if (elem.id === nextID) {
@@ -142,7 +142,7 @@ var Gallery = function() {
 
           // console.log(self.lightBox);
           self.lightBox.setAttribute("data-index", index);
-          self.lightBox.classList.remove("hidden");
+          self.lightBox.classList.remove("lightbox--hidden");
           self.changeSlide(0);
 
           // }
@@ -181,7 +181,7 @@ var Gallery = function() {
 
   Construct.prototype.changeSlide = function(direction) {
     var index = +this.lightBox.getAttribute("data-index");
-    var imgContainer = this.lightBox.querySelector(".image-container");
+    var imgContainer = this.lightBox.querySelector(".img_wrap");
     var tempInnerHTML;
     var tempImageName;
 
@@ -195,7 +195,7 @@ var Gallery = function() {
 
     tempImageName = index + 1 + ".jpg";
 
-    console.log(index);
+    // console.log(index);
 
     this.lightBox.setAttribute("data-index", index);
 
