@@ -322,8 +322,23 @@ ul {
   }
 }
 
-textarea {
-  resize: none;
+.form {
+  &-elem {
+    &--textarea {
+      resize: none;
+    }
+  }
+
+  &-btn {
+    .rhombus_wrap-content {
+      display: block;
+      border: none;
+      background: none;
+      font-size: 13px;
+      // line-height: 49px;
+      text-transform: uppercase;
+    }
+  }
 }
 
 // END LISTS, LINKS, BUTTONS, ANCHORS, IMAGES AND FORM ELEMENTS

@@ -1467,8 +1467,16 @@ ul {
   width: 100%;
 }
 
-textarea {
+.form-elem--textarea {
   resize: none;
+}
+
+.form-btn .rhombus_wrap-content {
+  display: block;
+  border: none;
+  background: none;
+  font-size: 13px;
+  text-transform: uppercase;
 }
 
 .logo {
@@ -2940,103 +2948,37 @@ textarea {
   content: "";
 }
 
-.comments-title {
+.comments-main_title {
   margin-bottom: 28px;
   font: 19px/19px "Exo2.0 Black", sans-serif;
 }
 
-.comments-item {
-  margin-top: 22px;
-}
-
-.comments-item:first-child {
-  margin: 0;
-}
-
-.comments .comment-text {
-  max-width: 100%;
-}
-
-.comments-list--sub {
+.comment-list--sub {
   margin-top: 18px;
   background: url("../img/bg/blog-comments/vertical-line.png") repeat-y left 20px, url("../img/bg/blog-comments/sub.png") no-repeat;
 }
 
-.comments-list--sub .comments-item {
+.comment-list--sub .comment-item {
   padding-top: 4px;
 }
 
-.comments-list--level_2 {
+.comment-list--level_2 {
   padding-left: 31px;
 }
 
-.comments-list--final {
+.comment-list--final {
   background: url("../img/bg/blog-comments/sub.png") no-repeat;
 }
 
-.comments .comment-desc {
-  margin-top: 14px;
-  font-family: "Exo2.0 Extra Light", sans-serif;
+.comment-item {
+  margin-top: 22px;
 }
 
-.comments form {
-  margin-top: 106px;
-}
-
-.comments .form-element,
-.comments textarea {
-  border: 1px solid rgba(33, 33, 33, .4);
-  padding: 0 14px;
-  background-color: rgba(93, 109, 126, .08);
-}
-
-.comments .flex-container {
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.comments .form-element {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+.comment-item:first-child {
   margin: 0;
-  width: 210px;
-  font-size: 13px;
-  line-height: 48px;
-  height: 50px;
 }
 
-.comments .form-element:nth-child(1) {
-  margin-right: 20px;
-}
-
-.comments textarea {
-  margin-top: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  width: 100%;
-  min-height: 230px;
-  line-height: 18px;
-}
-
-.comments .button {
-  margin: -28px auto 0;
-  width: 53px;
-  height: 53px;
-  font-family: "Exo2.0 Black", sans-serif;
-  color: #f5f5f5;
-}
-
-.comments .button input {
-  display: block;
-  border: none;
-  background: none;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-
-.comment {
+.comment-wrap {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3078,16 +3020,17 @@ textarea {
 
 .comment-text {
   margin-left: 27px;
+  max-width: 100%;
   line-height: 18px;
 }
 
-.comment-author_wrap,
+.comment-title,
 .comment-date {
   display: block;
   font-family: "Exo2.0 Regular", sans-serif;
 }
 
-.comment-author_wrap {
+.comment-title {
   margin-top: -3px;
 }
 
@@ -3109,6 +3052,65 @@ textarea {
   width: 17px;
   height: 13px;
   background: url("../img/bg/arrow.png") no-repeat;
+}
+
+.comment-desc {
+  margin-top: 14px;
+  font-family: "Exo2.0 Extra Light", sans-serif;
+}
+
+.comment-form {
+  margin-top: 106px;
+}
+
+.comment-form_input_wrap {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.comment-form .form-elem {
+  border: 1px solid rgba(33, 33, 33, .4);
+  padding: 0 14px;
+  background-color: rgba(93, 109, 126, .08);
+}
+
+.comment-form .form-elem--input {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin: 0;
+  width: 210px;
+  font-size: 13px;
+  line-height: 48px;
+  height: 50px;
+}
+
+.comment-form .form-elem--input:nth-child(1) {
+  margin-right: 20px;
+}
+
+.comment-form .form-elem--textarea {
+  margin-top: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  min-height: 230px;
+  line-height: 18px;
+}
+
+.comment-form .form-btn {
+  margin: -28px auto 0;
+  width: 53px;
+  height: 53px;
+  font-family: "Exo2.0 Black", sans-serif;
+  color: #f5f5f5;
+}
+
+.comment-form .form-btn .rhombus_wrap-content {
+  display: block;
+  background: none;
+  font-size: 13px;
 }
 
 .social_feedback {

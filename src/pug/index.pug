@@ -412,18 +412,18 @@ body
 
 						+social-rhombus("blog_news-social_rhombus")
 
-					#blog-comments
+					#blog-comments.comments
 
-						h4 5 Comments
+						h4.section-title.comments-main_title 5 Comments
 
-						ul.level-1
+						ul.comment-list.comment-list--level_1
 
-							li
-								.comment
+							li.comment-item
+								.comment-wrap
 									.comment-avatar.comment-avatar--guest
 									
 									.comment-text
-										span.comment-wrap_author
+										span.comment-title
 											b.comment-author Remington 
 											| says:
 										span.comment-date October 17, 2013 at 3:55 am
@@ -433,12 +433,12 @@ body
 								
 							
 
-							li
-								.comment
+							li.comment-item
+								.comment-wrap
 									.comment-avatar.comment-avatar--admin
 									
 									.comment-text
-										span.comment-wrap_author
+										span.comment-title
 											b.comment-author Rubiko 
 											| says:
 										span.comment-date October 17, 2013 at 3:55 am
@@ -447,14 +447,14 @@ body
 									a.comment-more(href="#")
 								
 
-								ul.sub-comments.level-2
+								ul.comment-list.comment-list--sub.comment-list--level_2
 
-									li
-										.comment
+									li.comment-item
+										.comment-wrap
 											.comment-avatar.comment-avatar--guest
 											
 											.comment-text
-												span.comment-wrap_author
+												span.comment-title
 													b.comment-author Remington 
 													| says:
 												span.comment-date October 17, 2013 at 3:55 am
@@ -464,12 +464,12 @@ body
 										
 									
 
-									li
-										.comment
+									li.comment-item
+										.comment-wrap
 											.comment-avatar.comment-avatar--guest
 											
 											.comment-text
-												span.comment-wrap_author
+												span.comment-title
 													b.comment-author Remington 
 													| says:
 												span.comment-date October 17, 2013 at 3:55 am
@@ -483,12 +483,12 @@ body
 
 							
 
-							li
-								.comment
+							li.comment-item
+								.comment-wrap
 									.comment-avatar.comment-avatar--guest
 									
 									.comment-text
-										span.comment-wrap_author
+										span.comment-title
 											b.comment-author Remington 
 											| says:
 										span.comment-date October 17, 2013 at 3:55 am
@@ -496,22 +496,15 @@ body
 									
 									a.comment-more(href="#")
 
-						form(action="index.html")
-							.section-flex_container
-								input.form-element(type="text" placeholder="Name*")
-								input.form-element(type="email" placeholder="Email*")
-							
+						form.form.comment-form(action="index.html")
+							.section-flex_container.comment-form_input_wrap
+								input.form-elem.form-elem--input(type="text" placeholder="Name*")
+								input.form-elem.form-elem--input(type="email" placeholder="Email*")
 
-							textarea(placeholder="Your comment*")
+							textarea.form-elem.form-elem--textarea(placeholder="Your comment*")
 
-							.button.rhombus_wrap
+							.rhombus_wrap.rhombus_wrap--btn.form-btn
 								input.rhombus_wrap-content(type="submit" value="send")
-							
-						
-
-					
-
-				
 
 				.nav.blog_news-nav
 
@@ -740,25 +733,23 @@ body
 			h2 get in touch
 			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
-			form#contacts_form.rhombus_wrap(action="index.html")
+			form#contacts_form.form.rhombus_wrap(action="index.html")
 				.rhombus_wrap-content
 
-					.form-element-container.first
-						input(class="form-element require" type="text" name="contacts_name" placeholder="Name")
+					.form-elem_wrap.first
+						input.form-elem.form-elem--require(type="text" name="contacts_name" placeholder="Name")
 					
-					.form-element-container
-						input(class="form-element require" type="email" name="contacts_email" placeholder="Email")
+					.form-elem_wrap
+						input.form-elem.form-elem--require(type="email" name="contacts_email" placeholder="Email")
 					
-					.form-element-container
-						input(class="form-element require" type="text" name="contacts_website" placeholder="Website")
+					.form-elem_wrap
+						input.form-elem.form-elem--require(type="text" name="contacts_website" placeholder="Website")
 					
-					.form-element-container
-						input(class="form-element require" type="text" name="contacts_subject" placeholder="Subject")
-					
+					.form-elem_wrap
+						input.form-elem.form-elem--require(type="text" name="contacts_subject" placeholder="Subject")
 
-					#text-area-container.form-element-container
-						textarea(class="form-element require" name="contacts_message" placeholder="Your Message")
-					
+					#text-area-container.form-elem_wrap
+						textarea.form-elem.form-elem--require(name="contacts_message" placeholder="Your Message")
 
 					#contacts-form-error.rhombus_wrap.error
 						.rhombus_wrap-content

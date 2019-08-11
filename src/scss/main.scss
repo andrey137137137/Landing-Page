@@ -1078,26 +1078,16 @@
 }
 
 .comments {
-  $block: &;
-
   // margin-top: 28px;
 
-  &-title {
+  &-main_title {
     margin-bottom: 28px;
     font: 19px/19px "Exo2.0 Black", sans-serif;
   }
+}
 
-  &-item {
-    margin-top: 22px;
-
-    &:first-child {
-      margin: 0;
-    }
-  }
-
-  .comment-text {
-    max-width: 100%;
-  }
+.comment {
+  $block: &;
 
   &-list {
     &--sub {
@@ -1120,76 +1110,25 @@
     }
   }
 
-  .comment-desc {
-    margin-top: 14px;
-    font-family: "Exo2.0 Extra Light", sans-serif;
+  &-item {
+    margin-top: 22px;
+
+    &:first-child {
+      margin: 0;
+    }
   }
 
-  form {
-    margin-top: 106px;
-  }
-
-  .form-element,
-  textarea {
-    border: 1px solid rgba(33, 33, 33, 0.4);
-    padding: 0 14px;
-    // color: $darkColor;
+  &-wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    border: 1px solid rgba(93, 109, 126, 0.08);
+    // padding: 37px 21px 33px 37px;
+    padding: 36px 20px 32px 36px;
     background-color: $commentBackground;
+    box-shadow: 0px 2px rgba(66, 77, 90, 0.08);
   }
-
-  .flex-container {
-    justify-content: space-between;
-  }
-
-  .form-element {
-    flex-grow: 1;
-    margin: 0;
-    width: 210px;
-    font-size: 13px;
-    line-height: 48px;
-    height: 50px;
-
-    &:nth-child(1) {
-      margin-right: 20px;
-    }
-  }
-
-  textarea {
-    margin-top: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 100%;
-    min-height: 230px;
-    line-height: 18px;
-  }
-
-  .button {
-    margin: -28px auto 0;
-    @include rhombusSize;
-    font-family: "Exo2.0 Black", sans-serif;
-    color: $lightColor;
-
-    input {
-      display: block;
-      border: none;
-      background: none;
-      font-size: 13px;
-      // line-height: 49px;
-      text-transform: uppercase;
-    }
-  }
-}
-
-.comment {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  border: 1px solid rgba(93, 109, 126, 0.08);
-  // padding: 37px 21px 33px 37px;
-  padding: 36px 20px 32px 36px;
-  background-color: $commentBackground;
-  box-shadow: 0px 2px rgba(66, 77, 90, 0.08);
 
   &-avatar {
     flex-shrink: 0;
@@ -1216,24 +1155,23 @@
 
   &-text {
     margin-left: 27px;
+    max-width: 100%;
     line-height: 18px;
   }
 
-  &-author_wrap,
+  &-title,
   &-date {
     display: block;
     font-family: "Exo2.0 Regular", sans-serif;
   }
 
-  &-author {
-    &_wrap {
-      margin-top: -3px;
-    }
+  &-title {
+    margin-top: -3px;
+  }
 
-    & {
-      font-size: 15px;
-      text-transform: capitalize;
-    }
+  &-author {
+    font-size: 15px;
+    text-transform: capitalize;
   }
 
   &-date {
@@ -1256,6 +1194,62 @@
     // 	display: block;
     // 	content: '\e605';
     // }
+  }
+
+  &-desc {
+    margin-top: 14px;
+    font-family: "Exo2.0 Extra Light", sans-serif;
+  }
+
+  &-form {
+    margin-top: 106px;
+
+    &_input_wrap {
+      justify-content: space-between;
+    }
+
+    .form-elem {
+      border: 1px solid rgba(33, 33, 33, 0.4);
+      padding: 0 14px;
+      // color: $darkColor;
+      background-color: $commentBackground;
+
+      &--input {
+        flex-grow: 1;
+        margin: 0;
+        width: 210px;
+        font-size: 13px;
+        line-height: 48px;
+        height: 50px;
+
+        &:nth-child(1) {
+          margin-right: 20px;
+        }
+      }
+
+      &--textarea {
+        margin-top: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+        min-height: 230px;
+        line-height: 18px;
+      }
+    }
+
+    .form-btn {
+      margin: -28px auto 0;
+      @include rhombusSize;
+      font-family: "Exo2.0 Black", sans-serif;
+      color: $lightColor;
+
+      .rhombus_wrap-content {
+        display: block;
+        background: none;
+        font-size: 13px;
+        // line-height: 49px;
+      }
+    }
   }
 }
 
