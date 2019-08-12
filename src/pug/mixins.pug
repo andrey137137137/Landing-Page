@@ -24,10 +24,10 @@ mixin socials(classes="", count=6, from=0, id="")
   ul(id=id class=(classes ? classes + " " : "") + "social-list")
     - for (var i = from; i < fixedCount; i++)
       li.rhombus_wrap.social-item
-        a.rhombus_wrap-content.social-link(class="social-link--" + items[i] href="#")
+        a.rhombus_wrap-rhombus.social-link(class="social-link--" + items[i] href="#")
 
 mixin social-rhombus(classes="")
   .rhombus_wrap.social-rhombus(class=classes)
     +socials
     .rhombus_wrap.rhombus_wrap--red_bg.social-show
-      .rhombus_wrap-content
+      .rhombus_wrap-rhombus

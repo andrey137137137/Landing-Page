@@ -53,7 +53,7 @@
     @include rhombusSize(33px);
     // cursor: pointer;
 
-    .rhombus_wrap-content {
+    .rhombus_wrap-rhombus {
       color: $white;
       border-color: $white;
       transition: border #{$transitionTime};
@@ -164,7 +164,7 @@
     background-size: cover;
   }
 
-  &-content {
+  &-item_content {
     padding-top: 70px;
   }
 
@@ -189,7 +189,7 @@
   // }
 
   &-item_1 {
-    #{$block}-background {
+    #{$block}-item_background {
       background: linear-gradient(
           to top right,
           rgba(9, 9, 9, 0.85) 0%,
@@ -201,7 +201,7 @@
       background-size: cover;
     }
 
-    #{$block}-content {
+    #{$block}-item_content {
       //linear-gradient: 'to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%';
     }
 
@@ -215,13 +215,13 @@
     }
   }
 
-  &-item_2 &-background {
+  &-item_2 &-item_background {
     background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/2.jpg")
       center top;
     // background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/2.jpg';
   }
 
-  &-item_3 &-background {
+  &-item_3 &-item_background {
     background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/3-m.jpg")
       no-repeat center top;
     //background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/3-m.jpg') no-repeat;
@@ -229,14 +229,14 @@
   }
 
   &-item_4 {
-    #{$block}-background {
+    #{$block}-item_background {
       //background: url('#{$imgBgPath}/main-slider/4-m.jpg') no-repeat center -5px;
       background: url("#{$imgBgPath}/main-slider/4-m.jpg") no-repeat center top;
       //background: url('#{$imgBgPath}/main-slider/4-m.jpg');
       background-size: cover;
     }
 
-    #{$block}-content {
+    #{$block}-item_content {
       flex-wrap: nowrap;
       justify-content: space-between;
       // background: url('#{$imgBgPath}/main-slider/hand.png') no-repeat 289px bottom;
@@ -277,82 +277,90 @@
     //width: 155px;
     // width: 156px;
 
+    position: absolute;
+    z-index: $zLevel3;
+    width: 100%;
+
     // .more,
     // .arrow-left,
     // .arrow-right {
     .rhombus_wrap {
       position: absolute;
-      // padding: 18px;
+      @include margin("* 12.5px");
+      padding: 18px;
+      background-color: $linkColor;
+      @include rhombusSize;
       @include opacityRhombus(
         $borderHoverColor: $white,
         $backgroundHoverColor: rgba(255, 255, 255, 0.5)
       );
-      // @include opacityRhombusTransition;
+      @include opacityRhombusTransition;
     }
 
     // > div {
     // 	margin: 0 auto;
     // }
 
-    .arrows {
+    .nav-arrows {
       position: relative;
+      justify-content: center;
       margin-top: -14px;
     }
-  }
 
-  &-prev,
-  &-next {
-    // top: -53px;
-    top: -65px;
-  }
-
-  &-prev.rhombus_wrap {
-    left: 50%;
-    margin-left: -$defaultRhombusSize - 13px;
-  }
-
-  &-next.rhombus_wrap {
-    right: 50%;
-    margin-right: -$defaultRhombusSize - 12px;
-  }
-
-  &-more {
-    &_wrap {
-      position: relative;
-      border: 1px solid $white;
-      padding: 0;
-      background: none;
+    &_prev,
+    &_next {
+      // top: -53px;
+      top: -65px;
     }
 
-    &.rhombus_wrap {
-      // position: absolute;
-      // top: -1px;
-      // left: -1px;
-      // margin: 0;
-      // transform: rotate(0deg);
-      top: $defaultNegativeRhombusMargin - $defaultRhombusSize - 25px;
+    &_prev.rhombus_wrap {
       left: 50%;
-      margin-left: $defaultNegativeRhombusMargin;
+      margin-left: -$defaultRhombusSize - 13px;
+    }
 
-      .rhombus_wrap-content {
-        &:before {
-          top: 7px;
-        }
+    &_next.rhombus_wrap {
+      right: 50%;
+      margin-right: -$defaultRhombusSize - 12px;
+    }
 
-        &:after {
-          left: 7px;
+    &_more {
+      &_wrap {
+        position: relative;
+        border: 1px solid $white;
+        padding: 0;
+        background: none;
+      }
+
+      &.rhombus_wrap {
+        // position: absolute;
+        // top: -1px;
+        // left: -1px;
+        // margin: 0;
+        // transform: rotate(0deg);
+        top: $defaultNegativeRhombusMargin - $defaultRhombusSize - 25px;
+        left: 50%;
+        margin-left: $defaultNegativeRhombusMargin;
+
+        .rhombus_wrap-rhombus {
+          &:before {
+            top: 7px;
+          }
+
+          &:after {
+            left: 7px;
+          }
         }
       }
     }
   }
 
-  &-after_section {
+  &-btn_to_bottom {
     bottom: $defaultNegativeRhombusMargin;
     margin-left: $defaultNegativeRhombusMargin;
     padding: 0;
     @include rhombusSize;
 
-    .rhombus_wrap-content {
+    .rhombus_wrap-rhombus {
       border: none;
       background: url("#{$imgBgPath}/after-slider.png") no-repeat center center;
     }
@@ -386,7 +394,7 @@
     @include rhombusSize($rhombusSize107);
     background-color: $linkColor;
 
-    .rhombus_wrap-content {
+    .rhombus_wrap-rhombus {
       color: $white;
 
       &:before {
@@ -1243,7 +1251,7 @@
       font-family: "Exo2.0 Black", sans-serif;
       color: $lightColor;
 
-      .rhombus_wrap-content {
+      .rhombus_wrap-rhombus {
         display: block;
         background: none;
         font-size: 13px;
@@ -1422,6 +1430,18 @@
   top: 87px;
   // left: 50%;
   justify-content: center;
+
+  &-nav {
+    position: absolute;
+    left: 50%;
+    z-index: $zLevel3;
+    transform: translateX(-50%);
+  }
+
+  &-nav_item {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
   .rhombus_wrap {
     // margin: 15px 17px;
@@ -1944,7 +1964,7 @@ footer {
 
 // BEGIN TO-TOP
 
-.to-top {
+.to_top {
   position: fixed;
   left: 88%;
   // bottom: 46px;

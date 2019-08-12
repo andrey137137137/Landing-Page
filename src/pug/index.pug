@@ -23,7 +23,7 @@ body
 
 			nav.header-nav
 				#menu-checker.rhombus_wrap.rhombus_wrap--btn.rhombus_wrap--bars.header-menu_checker
-					.rhombus_wrap-content
+					.rhombus_wrap-rhombus
 
 				//- main menu
 
@@ -35,8 +35,8 @@ body
 		#main-slider-demonstration.slider-demo.main_slider-demo
 
 			#main-slide-1.slider-item.main_slider-item_1
-				.slider-background.main_slider-background
-				.slider-content.main_slider-content
+				.slider-item_background.main_slider-item_background
+				.slider-item_content.main_slider-item_content
 
 					.main_slider-text_wrap
 						.main_slider-text_content
@@ -44,8 +44,8 @@ body
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-2.slider-item.main_slider-item_2
-				.slider-background.main_slider-background
-				.slider-content.main_slider-content
+				.slider-item_background.main_slider-item_background
+				.slider-item_content.main_slider-item_content
 
 					.main_slider-text_wrap
 						.main_slider-text_content
@@ -53,8 +53,8 @@ body
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-3.slider-item.main_slider-item_3
-				.slider-background.main_slider-background
-				.slider-content.main_slider-content
+				.slider-item_background.main_slider-item_background
+				.slider-item_content.main_slider-item_content
 
 					.main_slider-text_wrap
 						.main_slider-text_content
@@ -62,8 +62,8 @@ body
 							p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining
 
 			#main-slide-4.slider-item.main_slider-item_4
-				.slider-background.main_slider-background
-				.slider-content.section-flex_container.main_slider-content
+				.slider-item_background.main_slider-item_background
+				.slider-item_content.section-flex_container.main_slider-item_content
 
 					.main_slider-text_wrap
 						.main_slider-text_content
@@ -76,16 +76,16 @@ body
 					.img_wrap.main_slider-img_wrap
 						img.img_wrap-img(src="img/bg/main-slider/hand.png" alt="hand with iphone")
 
-		#main-slider-navigation.slider-nav.main_slider-nav
-			a#main-slider-more.rhombus_wrap.rhombus_wrap--more.main_slider-more(href="#")
-				.rhombus_wrap-content
-			a#main-slider-prev.rhombus_wrap.rhombus_wrap--arrow_left.main_slider-prev(href="#")
-				.rhombus_wrap-content
-			a#main-slider-next.rhombus_wrap.rhombus_wrap--arrow_right.main_slider-next(href="#")
-				.rhombus_wrap-content
+		#main-slider-navigation.nav.main_slider-nav
+			a#main-slider-more.rhombus_wrap.rhombus_wrap--more.main_slider-nav_more(href="#")
+				.rhombus_wrap-rhombus
+			a#main-slider-prev.rhombus_wrap.rhombus_wrap--arrow.nav-prev.main_slider-nav_prev(href="#")
+				.rhombus_wrap-rhombus
+			a#main-slider-next.rhombus_wrap.rhombus_wrap--arrow.nav-next.main_slider-nav_next(href="#")
+				.rhombus_wrap-rhombus
 
-		a#main-slider-after-section.section-to_next.rhombus_wrap.main_slider-after_section(href="#features")
-			.rhombus_wrap-content
+		a#main-slider-after-section.section-btn_to.rhombus_wrap.main_slider-btn_to_bottom(href="#features")
+			.rhombus_wrap-rhombus
 
 	//- END MAIN-SLIDER SECTION
 
@@ -161,7 +161,7 @@ body
 			each item in features
 				.section-block.features-block
 					.rhombus_wrap.features-rhombus_wrap
-						.rhombus_wrap-content(class="sl_icon-" + item.icon)
+						.rhombus_wrap-rhombus(class="sl_icon-" + item.icon)
 					h3.section-title.features-title= item.title
 					p.features-desc= item.desc
 
@@ -178,8 +178,8 @@ body
 			+logo("about")
 			+socials("about-socials")
 
-			a#to-portfolio.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#portfolio")
-				.rhombus_wrap-content
+			a#to-portfolio.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#portfolio")
+				.rhombus_wrap-rhombus
 
 	//- END ABOUT SECTION
 
@@ -238,8 +238,8 @@ body
 						p.section-main_desc.testimonials-main_desc= item.desc
 						address.section-address.testimonials-address= item.address
 
-		a#to-skills.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#skills")
-			.rhombus_wrap-content
+		a#to-skills.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#skills")
+			.rhombus_wrap-rhombus
 
 	//- END TESTIMONIALS SECTION
 
@@ -330,8 +330,8 @@ body
 			each item, index in topSkills
 				.section-block.skill_block(class="skill_block--item_" + (index + 1))
 					.rhombus_wrap.skill_block-rhombus
-						.rhombus_wrap-content= item.prs
-						.rhombus_wrap-content.skill_block-bg_wrap
+						.rhombus_wrap-rhombus= item.prs
+						.rhombus_wrap-rhombus.skill_block-bg_wrap
 							.skill_block-bg
 								.skill_block-percents= item.prs
 					h3.section-title= item.title
@@ -370,8 +370,8 @@ body
 					span.statistic-number 128
 					h3.section-title.statistic-title awards
 
-		a#to-blog-news.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#blog-news")
-			.rhombus_wrap-content
+		a#to-blog-news.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#blog-news")
+			.rhombus_wrap-rhombus
 
 	//- END STATISTICS SECTION
 
@@ -504,20 +504,20 @@ body
 							textarea.form-elem.form-elem--textarea(placeholder="Your comment*")
 
 							.rhombus_wrap.rhombus_wrap--btn.form-btn
-								input.rhombus_wrap-content(type="submit" value="send")
+								input.rhombus_wrap-rhombus(type="submit" value="send")
 
 				.nav.blog_news-nav
 
-					.rhombus_wrap.category
-						.rhombus_wrap-content 5 comments
+					.rhombus_wrap.nav-rhombus_wrap.nav-category
+						.rhombus_wrap-rhombus 5 comments
 
-					.arrows
-						.rhombus_wrap.rhombus_wrap--arrow_left
-							.rhombus_wrap-content
-						.rhombus_wrap.rhombus_wrap--arrow_right
-							.rhombus_wrap-content
-					.rhombus_wrap.date
-						.rhombus_wrap-content Jan 15 2014
+					.nav-arrows
+						.rhombus_wrap.nav-rhombus_wrap.nav-prev
+							.rhombus_wrap-rhombus
+						.rhombus_wrap.nav-rhombus_wrap.nav-next
+							.rhombus_wrap-rhombus
+					.rhombus_wrap.nav-rhombus_wrap.nav-date
+						.rhombus_wrap-rhombus Jan 15 2014
 
 			#blog-news-blocks.dynamic_blocks.display_rhombuses.blog_news-display_rhombuses blog and news items
 
@@ -545,8 +545,8 @@ body
 							a(href="#") @blazrobar #webdesign
 						address.section-address.social_feedback-time 2 hours ago
 
-		a#to-team.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#team")
-			.rhombus_wrap-content
+		a#to-team.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#team")
+			.rhombus_wrap-rhombus
 
 	//- END SOCIAL-FEEDBACK SECTION
 
@@ -563,19 +563,13 @@ body
 
 			.carousel-container
 
-				#team-navigation.navigation.carousel-navigation
-					.arrows
+				#team-navigation.nav.team-nav
+					.nav-arrows
 
-						#team-carousel-prev.rhombus_wrap.arrow-left
-							.rhombus_wrap-content
-						
-
-						#team-carousel-next.rhombus_wrap.arrow-right
-							.rhombus_wrap-content
-						
-
-					
-				
+						#team-carousel-prev.rhombus_wrap.nav-rhombus_wrap.nav-prev
+							.rhombus_wrap-rhombus
+						#team-carousel-next.rhombus_wrap.nav-rhombus_wrap.nav-next
+							.rhombus_wrap-rhombus
 
 				#team-demonstration.carousel-demo
 					.carousel-row
@@ -585,7 +579,7 @@ body
 							#team-person-1.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus_wrap-content.photo-block
+										.rhombus_wrap-rhombus.photo-block
 											picture
 												source(srcset="img/team/d/1.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/1.jpg" media="(min-width: 768px)")
@@ -605,7 +599,7 @@ body
 							#team-person-2.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus_wrap-content.photo-block
+										.rhombus_wrap-rhombus.photo-block
 											picture
 												source(srcset="img/team/d/2.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/2.jpg" media="(min-width: 768px)")
@@ -629,7 +623,7 @@ body
 							#team-person-3.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus_wrap-content.photo-block
+										.rhombus_wrap-rhombus.photo-block
 											picture
 												source(srcset="img/team/d/3.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/3.jpg" media="(min-width: 768px)")
@@ -649,7 +643,7 @@ body
 							#team-person-4.block
 								.rhombus_wrap.photo-block-wrap
 									.photo-block-frame
-										.rhombus_wrap-content.photo-block
+										.rhombus_wrap-rhombus.photo-block
 											picture
 												source(srcset="img/team/d/4.jpg" media="(min-width: 1170px)")
 												source(srcset="img/team/t/4.jpg" media="(min-width: 768px)")
@@ -718,8 +712,8 @@ body
 
 		
 
-		a#to-contacts.section-to_next.rhombus_wrap.rhombus_wrap--arrow_bottom(href="#contacts")
-			.rhombus_wrap-content
+		a#to-contacts.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#contacts")
+			.rhombus_wrap-rhombus
 
 	//- END CLIENTS SECTION
 
@@ -734,7 +728,7 @@ body
 			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
 			form#contacts_form.form.rhombus_wrap(action="index.html")
-				.rhombus_wrap-content
+				.rhombus_wrap-rhombus
 
 					.form-elem_wrap.first
 						input.form-elem.form-elem--require(type="text" name="contacts_name" placeholder="Name")
@@ -752,13 +746,13 @@ body
 						textarea.form-elem.form-elem--require(name="contacts_message" placeholder="Your Message")
 
 					#contacts-form-error.rhombus_wrap.error
-						.rhombus_wrap-content
+						.rhombus_wrap-rhombus
 					
 
 				
 
 				#contacts-address.rhombus_wrap
-					.rhombus_wrap-content
+					.rhombus_wrap-rhombus
 
 						h3 Rubiko Digital Agency
 
@@ -777,7 +771,7 @@ body
 				
 
 				#contacts-send-button.rhombus_wrap.button
-					input.rhombus_wrap-content(type="submit" name="contacts_submit" value="send")
+					input.rhombus_wrap-rhombus(type="submit" name="contacts_submit" value="send")
 
 
 			
@@ -827,8 +821,8 @@ body
 
 		
 
-		a#to-top.section-to_next.rhombus_wrap.rhombus_wrap--arrow_top(href="google.ru")
-			.rhombus_wrap-content
+		a#to-top.section-btn_to.section-btn_to--top.rhombus_wrap.rhombus_wrap--arrow(href="google.ru")
+			.rhombus_wrap-rhombus
 
 	//- END FOOTER
 
@@ -846,15 +840,15 @@ body
 						p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 				a#portfolio-slider-close.rhombus_wrap.button.close(href="#")
-					.rhombus_wrap-content
+					.rhombus_wrap-rhombus
 				
 
 				#portfolio-slider-navigation.nav
-					a#portfolio-slider-prev.rhombus_wrap.arrow-left(href="#")
-						.rhombus_wrap-content
+					a#portfolio-slider-prev.rhombus_wrap.nav-rhombus_wrap.nav-prev(href="#")
+						.rhombus_wrap-rhombus
 
-					a#portfolio-slider-next.rhombus_wrap.arrow-right(href="#")
-						.rhombus_wrap-content
+					a#portfolio-slider-next.rhombus_wrap.nav-rhombus_wrap.nav-next(href="#")
+						.rhombus_wrap-rhombus
 
 				+social-rhombus("portfolio_lightbox-social_rhombus")
 

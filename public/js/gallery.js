@@ -277,14 +277,14 @@ var Gallery = function() {
         continue;
       }
 
-      // tempInnerHTML += '<div class="' + this.childClass + '"><div class="photo_block-frame"><div class="photo_block-content"><img class="photo_block-img" src="' + this.rootFolder + (i + 1) + '.jpg" alt="' + this.items[i].title + '"><div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' + this.items[i].title + '</h3></div></div>';
+      // tempInnerHTML += '<div class="' + this.childClass + '"><div class="photo_block-frame"><div class="photo_block-rhombus"><img class="photo_block-img" src="' + this.rootFolder + (i + 1) + '.jpg" alt="' + this.items[i].title + '"><div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' + this.items[i].title + '</h3></div></div>';
 
       tempImageName = i + 1 + ".jpg";
 
       tempInnerHTML +=
         '<div class="' +
         this.childClass +
-        '"><div class="photo_block-frame"><div class="photo_block-content"><picture><source srcset="' +
+        '"><div class="photo_block-frame"><div class="photo_block-rhombus"><picture><source srcset="' +
         this.rootFolder +
         "/d/" +
         tempImageName +
@@ -304,13 +304,13 @@ var Gallery = function() {
 
       if (this.showCategory) {
         tempInnerHTML +=
-          '<div class="rhombus_wrap rhombus_wrap--btn photo_block-category blog"><div class="rhombus_wrap-content"></div></div>';
+          '<div class="rhombus_wrap rhombus_wrap--btn photo_block-category blog"><div class="rhombus_wrap-rhombus"></div></div>';
       }
 
       tempInnerHTML +=
         '<a href="#" data-index="' +
         i +
-        '" class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--more photo_block-more"><div class="rhombus_wrap-content"></div></a></div>';
+        '" class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--more photo_block-more"><div class="rhombus_wrap-rhombus"></div></a></div>';
 
       this.itemsCount++;
     }
