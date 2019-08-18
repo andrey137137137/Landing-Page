@@ -508,15 +508,15 @@ body
 
 				.nav.blog_news-nav
 
-					.rhombus_wrap.nav-rhombus_wrap.nav-category
+					.rhombus_wrap.rhombus_wrap--category.blog_news-nav_category
 						.rhombus_wrap-rhombus 5 comments
 
 					.nav-arrows
-						.rhombus_wrap.nav-rhombus_wrap.nav-prev
+						.rhombus_wrap.rhombus_wrap--arrow.nav-prev
 							.rhombus_wrap-rhombus
-						.rhombus_wrap.nav-rhombus_wrap.nav-next
+						.rhombus_wrap.rhombus_wrap--arrow.nav-next
 							.rhombus_wrap-rhombus
-					.rhombus_wrap.nav-rhombus_wrap.nav-date
+					.rhombus_wrap.blog_news-nav_date
 						.rhombus_wrap-rhombus Jan 15 2014
 
 			#blog-news-blocks.dynamic_blocks.display_rhombuses.blog_news-display_rhombuses blog and news items
@@ -538,7 +538,7 @@ body
 
 			.carousel-container.social_feedback-carousel_container
 				each item in socialFeedback
-					.slide(class=item + "-slide")
+					.carousel-slide.social_feedback-slide(class="social_feedback-slide--" + item)
 						h2.section-title.section-title--main.social_feedback-title
 						p.section-main_desc.social_feedback-main_desc I bought Rubiko theme that looks and works fantastically all recommendations!
 						address.section-address.social_feedback-author
@@ -552,16 +552,16 @@ body
 
 	//- BEGIN TEAM SECTION
 
-	section#team.section--light_bg.carousel-section.team
-		.container
+	section#team.section.section--light_bg.carousel.team
+		.section-container.team-container
 
 			a.section-anchor(name="team")
 
-			h2 meet team
+			h2.section-title.section-title--main meet team
 
-			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			p.section-main_desc.team-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
-			.carousel-container
+			.carousel-container.team-carousel_container
 
 				#team-navigation.nav.team-nav
 					.nav-arrows
@@ -574,16 +574,16 @@ body
 				#team-demonstration.carousel-demo
 					.carousel-row
 
-						.flex_container.slide
+						.section-flex_container.carousel-slide.team-slide
 
-							#team-person-1.block
-								.rhombus_wrap.photo-block-wrap
-									.photo-block-frame
-										.rhombus_wrap-rhombus.photo-block
-											picture
-												source(srcset="img/team/d/1.jpg" media="(min-width: 1170px)")
-												source(srcset="img/team/t/1.jpg" media="(min-width: 768px)")
-												img(srcset="img/team/m/1.jpg" alt="1")
+							#team-person-1.section-block.team-block
+								.rhombus_wrap.photo_block-wrap
+									.photo_block-frame
+										.rhombus_wrap-rhombus.photo_block-rhombus
+											//- picture
+											//- 	source(srcset="img/team/d/1.jpg" media="(min-width: 1170px)")
+											//- 	source(srcset="img/team/t/1.jpg" media="(min-width: 768px)")
+											img.photo_block-img(srcset="img/team/m/1.jpg" alt="1")
 											
 										
 
@@ -592,18 +592,18 @@ body
 								
 
 								span art director
-								h3 adam clark
+								h3.section-title adam clark
 								p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
 							
 
-							#team-person-2.block
-								.rhombus_wrap.photo-block-wrap
-									.photo-block-frame
-										.rhombus_wrap-rhombus.photo-block
-											picture
-												source(srcset="img/team/d/2.jpg" media="(min-width: 1170px)")
-												source(srcset="img/team/t/2.jpg" media="(min-width: 768px)")
-												img(srcset="img/team/m/2.jpg" alt="2")
+							#team-person-2.section-block.team-block
+								.rhombus_wrap.photo_block-wrap
+									.photo_block-frame
+										.rhombus_wrap-rhombus.photo_block-rhombus
+											//- picture
+											//- 	source(srcset="img/team/d/2.jpg" media="(min-width: 1170px)")
+											//- 	source(srcset="img/team/t/2.jpg" media="(min-width: 768px)")
+											img.photo_block-img(srcset="img/team/m/2.jpg" alt="2")
 											
 										
 									
@@ -612,22 +612,22 @@ body
 								
 
 								span graphic designer
-								h3 isabella moro
+								h3.section-title isabella moro
 								p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
 							
 
 						
 
-						.flex_container.slide
+						.section-flex_container.carousel-slide.team-slide
 
-							#team-person-3.block
-								.rhombus_wrap.photo-block-wrap
-									.photo-block-frame
-										.rhombus_wrap-rhombus.photo-block
-											picture
-												source(srcset="img/team/d/3.jpg" media="(min-width: 1170px)")
-												source(srcset="img/team/t/3.jpg" media="(min-width: 768px)")
-												img(srcset="img/team/m/3.jpg" alt="3")
+							#team-person-3.section-block.team-block
+								.rhombus_wrap.photo_block-wrap
+									.photo_block-frame
+										.rhombus_wrap-rhombus.photo_block-rhombus
+											//- picture
+											//- 	source(srcset="img/team/d/3.jpg" media="(min-width: 1170px)")
+											//- 	source(srcset="img/team/t/3.jpg" media="(min-width: 768px)")
+											img.photo_block-img(srcset="img/team/m/3.jpg" alt="3")
 											
 										
 									
@@ -636,18 +636,18 @@ body
 								
 
 								span General Manager
-								h3 TOM WEERD
+								h3.section-title TOM WEERD
 								p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
 							
 
-							#team-person-4.block
-								.rhombus_wrap.photo-block-wrap
-									.photo-block-frame
-										.rhombus_wrap-rhombus.photo-block
-											picture
-												source(srcset="img/team/d/4.jpg" media="(min-width: 1170px)")
-												source(srcset="img/team/t/4.jpg" media="(min-width: 768px)")
-												img(srcset="img/team/m/4.jpg" alt="4")
+							#team-person-4.section-block.team-block
+								.rhombus_wrap.photo_block-wrap
+									.photo_block-frame
+										.rhombus_wrap-rhombus.photo_block-rhombus
+											//- picture
+											//- 	source(srcset="img/team/d/4.jpg" media="(min-width: 1170px)")
+											//- 	source(srcset="img/team/t/4.jpg" media="(min-width: 768px)")
+											img.photo_block-img(srcset="img/team/m/4.jpg" alt="4")
 											
 										
 									
@@ -656,7 +656,7 @@ body
 								
 
 								span Lead Developer
-								h3 JOHN HAMMOND
+								h3.section-title JOHN HAMMOND
 								p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
 							
 

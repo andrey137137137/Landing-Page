@@ -304,7 +304,7 @@ var Gallery = function() {
 
       if (this.showCategory) {
         tempInnerHTML +=
-          '<div class="rhombus_wrap rhombus_wrap--btn photo_block-category blog"><div class="rhombus_wrap-rhombus"></div></div>';
+          '<div class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--category photo_block-category"><div class="rhombus_wrap-rhombus"></div></div>';
       }
 
       tempInnerHTML +=
