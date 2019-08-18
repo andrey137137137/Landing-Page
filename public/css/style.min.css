@@ -3124,7 +3124,7 @@ ul {
 }
 
 .social_feedback-thumbs {
-  top: 162px;
+  top: 157px;
 }
 
 .social_feedback-carousel_container {
@@ -3198,7 +3198,7 @@ ul {
   margin-top: 19px;
 }
 
-.social_feedback-author a {
+.social_feedback a.social_feedback-link {
   display: inline;
   text-transform: none;
   color: #19b3ef;
@@ -3255,16 +3255,13 @@ ul {
 }
 
 .team-nav {
+  position: absolute;
   top: 87px;
+  left: 50%;
+  z-index: 30;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-.team-nav-nav {
-  position: absolute;
-  left: 50%;
-  z-index: 30;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
@@ -3282,7 +3279,7 @@ ul {
   transition: border 0.5s, background-color 0.5s;
 }
 
-.team-nav .rhombus {
+.team-nav .rhombus_wrap-rhombus {
   position: relative;
   top: 50%;
   left: 50%;
@@ -3320,24 +3317,24 @@ ul {
   background-color: #cd2929;
 }
 
-.team-block {
+.team_block {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.team-block .photo-block-wrap {
+.team_block-photo_block_wrap {
   margin: 31px auto;
   width: 149px;
   height: 149px;
 }
 
-.team-block .photo-block-wrap:hover img {
+.team_block-photo_block_wrap:hover .team_block-img {
   filter: url("data:image/svg+xml;charset=utf-8,<svg xmlns=http://www.w3.org/2000/svg><filter id=filter><feColorMatrix type=matrix color-interpolation-filters=sRGB values=1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 /></filter></svg>#filter");
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
 }
 
-.team-block img {
+.team_block-img {
   filter: url("data:image/svg+xml;charset=utf-8,<svg xmlns=http://www.w3.org/2000/svg><filter id=filter><feColorMatrix type=matrix color-interpolation-filters=sRGB values=0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0 /></filter></svg>#filter");
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -3347,7 +3344,7 @@ ul {
   transition: filter 0.5s, -webkit-filter 0.5s;
 }
 
-.team-block span {
+.team_block-status {
   display: block;
   margin-top: 64px;
   font: 15px/1.2 "Exo2.0 Black", sans-serif;
@@ -3355,13 +3352,13 @@ ul {
   text-transform: capitalize;
 }
 
-.team-block h3 {
+.team_block-title {
   margin-top: -1px;
   font: 24px/1.2 "Exo2.0 Black", sans-serif;
   color: #212121;
 }
 
-.team-block h3:after {
+.team_block-title:after {
   display: block;
   margin: 9px auto 12px;
   font: 11px Icomoon;
@@ -3369,24 +3366,24 @@ ul {
   content: "";
 }
 
-.team-block p {
+.team_block-desc {
   line-height: 1.2;
   color: rgba(33, 33, 33, .75);
 }
 
-.team-block .team-person-1 img {
+.team_block--item_1 .team_block-img {
   left: -17%;
 }
 
-.team-block .team-person-2 img {
+.team_block--item_2 .team_block-img {
   left: -17%;
 }
 
-.team-block .team-person-3 img {
+.team_block--item_3 .team_block-img {
   left: -55%;
 }
 
-.team-block .team-person-4 img {
+.team_block--item_4 .team_block-img {
   top: -12%;
   left: -8%;
 }
