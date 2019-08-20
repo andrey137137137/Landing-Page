@@ -539,60 +539,61 @@
       </div>
     </div>
   </section>
-  <section class="section--dark_bg carousel-section clients" id="clients">
-    <div class="container">
-      <h2>meet our lovely clients</h2>
-      <p class="section-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.</p>
-      <div class="carousel-container"><a class="block slide" href="#">
+  <section class="section section--dark_bg carousel clients" id="clients">
+    <div class="section-container">
+      <h2 class="section-title section-title--main">meet our lovely clients</h2>
+      <p class="section-main_desc clients-main_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.</p>
+      <div class="carousel-container clients-carousel_container"><a class="section-block carousel-slide client" href="#">
           <picture>
-            <source srcset="img/clients/t/1.png" media="(min-width: 768px)"><img srcset="img/clients/m/1.png" alt="graphicriver">
-          </picture></a><a class="block slide" href="#">
+            <source srcset="img/clients/t/1.png" media="(min-width: 768px)"><img class="client-img" srcset="img/clients/m/1.png" alt="graphicriver">
+          </picture></a><a class="section-block carousel-slide client" href="#">
           <picture>
-            <source srcset="img/clients/t/2.png" media="(min-width: 768px)"><img srcset="img/clients/m/2.png" alt="themeforest">
-          </picture></a><a class="block slide" href="#">
+            <source srcset="img/clients/t/2.png" media="(min-width: 768px)"><img class="client-img" srcset="img/clients/m/2.png" alt="themeforest">
+          </picture></a><a class="section-block carousel-slide client" href="#">
           <picture>
-            <source srcset="img/clients/t/3.png" media="(min-width: 768px)"><img srcset="img/clients/m/3.png" alt="activeden">
-          </picture></a><a class="block slide" href="#">
+            <source srcset="img/clients/t/3.png" media="(min-width: 768px)"><img class="client-img" srcset="img/clients/m/3.png" alt="activeden">
+          </picture></a><a class="section-block carousel-slide client" href="#">
           <picture>
-            <source srcset="img/clients/t/4.png" media="(min-width: 768px)"><img srcset="img/clients/m/4.png" alt="codecanyon">
-          </picture></a></div>
+            <source srcset="img/clients/t/4.png" media="(min-width: 768px)"><img class="client-img" srcset="img/clients/m/4.png" alt="codecanyon">
+          </picture></a>
+      </div>
     </div><a class="section-btn_to section-btn_to--bottom rhombus_wrap rhombus_wrap--arrow" id="to-contacts" href="#contacts">
       <div class="rhombus_wrap-rhombus"></div></a>
   </section>
-  <section class="section--light_bg contacts" id="contacts">
-    <div class="container"><a class="section-anchor" name="contacts"></a>
-      <h2>get in touch</h2>
-      <p class="section-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining</p>
-      <form class="form rhombus_wrap" id="contacts_form" action="index.html">
-        <div class="rhombus_wrap-rhombus">
-          <div class="form-elem_wrap first">
-            <input class="form-elem form-elem--require" type="text" name="contacts_name" placeholder="Name">
+  <section class="section section--light_bg feedback" id="contacts">
+    <div class="section-container feedback-container"><a class="section-anchor" name="contacts"></a>
+      <h2 class="section-title section-title--main">get in touch</h2>
+      <p class="section-main_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining</p>
+      <form class="rhombus_wrap form feedback-form" id="contacts_form" action="index.html">
+        <div class="rhombus_wrap-rhombus feedback-rhombus">
+          <div class="form-elem_wrap feedback-elem_wrap feedback-elem_wrap--first">
+            <input class="form-elem form-elem--required feedback-elem" type="text" name="contacts_name" placeholder="Name">
           </div>
-          <div class="form-elem_wrap">
-            <input class="form-elem form-elem--require" type="email" name="contacts_email" placeholder="Email">
+          <div class="form-elem_wrap feedback-elem_wrap">
+            <input class="form-elem form-elem--required feedback-elem" type="email" name="contacts_email" placeholder="Email">
           </div>
-          <div class="form-elem_wrap">
-            <input class="form-elem form-elem--require" type="text" name="contacts_website" placeholder="Website">
+          <div class="form-elem_wrap feedback-elem_wrap">
+            <input class="form-elem form-elem--required feedback-elem" type="text" name="contacts_website" placeholder="Website">
           </div>
-          <div class="form-elem_wrap">
-            <input class="form-elem form-elem--require" type="text" name="contacts_subject" placeholder="Subject">
+          <div class="form-elem_wrap feedback-elem_wrap">
+            <input class="form-elem form-elem--required feedback-elem" type="text" name="contacts_subject" placeholder="Subject">
           </div>
-          <div class="form-elem_wrap" id="text-area-container">
-            <textarea class="form-elem form-elem--require" name="contacts_message" placeholder="Your Message"></textarea>
+          <div class="form-elem_wrap form-elem_wrap--textarea feedback-elem_wrap" id="text-area-container">
+            <textarea class="form-elem form-elem--textarea form-elem--required feedback-elem feedback-elem--textarea" name="contacts_message" placeholder="Your Message"></textarea>
           </div>
-          <div class="rhombus_wrap error" id="contacts-form-error">
-            <div class="rhombus_wrap-rhombus"></div>
+          <div class="rhombus_wrap feedback-error" id="contacts-form-error">
+            <div class="rhombus_wrap-rhombus feedback-rhombus"></div>
           </div>
         </div>
-        <div class="rhombus_wrap" id="contacts-address">
-          <div class="rhombus_wrap-rhombus">
-            <h3>Rubiko Digital Agency</h3>
-            <p>111 Fifth Avenue, 34th Floor<br>New York, United States</p>
-            <p id="contacts-mail-and-phone"><a href="mailto:hello@rubiko.com">hello@rubiko.com</a>0987 6543 2100</p>
+        <div class="rhombus_wrap feedback-address" id="contacts-address">
+          <div class="rhombus_wrap-rhombus feedback-rhombus">
+            <h3 class="section-title feedback-address_title">Rubiko Digital Agency</h3>
+            <p class="feedback-address_article">111 Fifth Avenue, 34th Floor<br>New York, United States</p>
+            <p class="feedback-address_article feedback-address_contacts" id="contacts-mail-and-phone"><a class="feedback-address_link" href="mailto:hello@rubiko.com">hello@rubiko.com</a>0987 6543 2100</p>
           </div>
         </div>
         <div class="rhombus_wrap button" id="contacts-send-button">
-          <input class="rhombus_wrap-rhombus" type="submit" name="contacts_submit" value="send">
+          <input class="rhombus_wrap-rhombus feedback-rhombus" type="submit" name="contacts_submit" value="send">
         </div>
       </form>
       <div id="map-point">
@@ -602,20 +603,20 @@
       </div>
     </div>
   </section>
-  <footer class="section--dark_bg footer">
-    <div class="container"><a class="logo footer-logo" id="footer-logo" href="#">
+  <footer class="section section--dark_bg footer">
+    <div class="section-container"><a class="logo footer-logo" id="footer-logo" href="#">
         <div class="rhombus_wrap logo-rhombus logo-rhombus--fill"></div>
         <div class="rhombus_wrap logo-rhombus logo-rhombus--empty"></div>
         <h2 class="logo-title">rubiko</h2></a>
-      <address>Copyright © 2014. Rubiko Studio. All Rights Reserved.</address>
+      <address class="section-address footer-address">Copyright © 2014. Rubiko Studio. All Rights Reserved.</address>
     </div>
-    <div class="content flex_container" id="footer-socials-container">
-      <ul class="section-flex_container social-list" id="footer-left-socials">
+    <div class="slider-item_content section-flex_container footer-flex_container footer-socials_container" id="footer-socials-container">
+      <ul class="section-flex_container footer-flex_container social-list" id="footer-socials">
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--facebook" href="#"></a></li>
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--twitter" href="#"></a></li>
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--dribbble" href="#"></a></li>
       </ul>
-      <ul class="section-flex_container social-list" id="footer-right-socials">
+      <ul class="section-flex_container footer-flex_container social-list" id="footer-socials">
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--tumblr" href="#"></a></li>
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--linkedin" href="#"></a></li>
         <li class="rhombus_wrap social-item"><a class="rhombus_wrap-rhombus social-link social-link--pinterest" href="#"></a></li>

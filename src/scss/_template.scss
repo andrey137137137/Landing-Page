@@ -344,6 +344,14 @@ ul {
 }
 
 .form {
+  &-elem_wrap {
+    width: 100%;
+
+    &--textarea {
+      height: 700px;
+    }
+  }
+
   &-elem {
     &--textarea {
       resize: none;

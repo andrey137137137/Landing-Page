@@ -1579,11 +1579,11 @@
   // height: 579px;
   background: #171717 url("#{$imgBgPath}/clients-m.jpg") no-repeat top center;
 
-  p {
+  &-main_desc {
     margin-bottom: 105px;
   }
 
-  .carousel-container {
+  &-carousel_container {
     // margin: 0 auto;
     height: 222px;
   }
@@ -1592,35 +1592,37 @@
   // 	top: 445px;
   // }
 
-  .block {
-    flex-shrink: 1;
+  &-thumbs {
+    top: 90px;
   }
+}
 
-  img {
+.client {
+  flex-shrink: 1;
+
+  &-img {
     margin: 0 auto;
     width: auto;
-  }
-
-  .thumbs {
-    top: 90px;
   }
 }
 
 // END CLIENTS SECTION
 
-// BEGIN CONTACTS SECTION
+// BEGIN FEEDBACK SECTION
 
-.contacts {
+.feedback {
+  $block: &;
+
   position: relative;
   padding-bottom: 116px;
   // height: 1499px;
   background: url("#{$imgBgPath}/map-m.jpg") no-repeat center bottom;
 
-  .container {
+  &-container {
     overflow: hidden;
   }
 
-  form {
+  &-form {
     flex-shrink: 0;
     margin: 242px auto 139px;
     // rhombus-size: 953px;
@@ -1628,7 +1630,7 @@
     background-color: $darkColor;
   }
 
-  .rhombus {
+  &-rhombus {
     position: relative;
     top: -21%;
     left: -21%;
@@ -1636,42 +1638,7 @@
     height: 142%;
   }
 
-  .form-element-container {
-    // position: relative;
-    margin-top: -1px;
-    border: 1px solid #4e4e4e;
-    width: 100%;
-    background-color: $darkColor;
-    transition: background-color $transitionTime;
-
-    &:nth-child(1) input {
-      width: 80px;
-    }
-
-    &:nth-child(2) input {
-      width: 250px;
-    }
-
-    &:hover {
-      background-color: #2e2e2e;
-    }
-
-    &:hover .form-element {
-      color: $lightColor;
-    }
-  }
-
-  .first {
-    margin: 0;
-
-    input {
-      padding-top: 28px;
-      // height: 113px;
-      height: $contactInputLineHeight + 28px;
-    }
-  }
-
-  .form-element {
+  &-elem {
     border: none;
     width: $contactElementWidth;
     height: $contactInputLineHeight;
@@ -1689,119 +1656,152 @@
       color: $lightColor;
       // background-color: #1c1c1c;
     }
-  }
 
-  .text-area-container {
-    height: 700px;
-  }
-
-  textarea.form-element {
-    padding: 28px 0;
-    min-width: $contactElementWidth;
-    max-width: $contactElementWidth;
-    min-height: $contactTextAreaHeight;
-    max-height: $contactTextAreaHeight;
-    line-height: 17px;
-  }
-}
-
-.contacts-form-error {
-  position: absolute;
-  top: 1000px;
-  left: 50%;
-  z-index: $zLevel1;
-  //display: none;
-  padding-top: 50px;
-  margin-left: -95px;
-  // rhombus-size: 269px;
-  @include rhombusSize($rhombusSize269);
-  //font: 200 14px/17px 'Exo 2', sans-serif;
-  font: 14px/17px "Exo2.0-Extra-Light", sans-serif;
-  color: $white;
-  background-color: rgba(244, 156, 20, 0.8);
-  transition: top $transitionTime;
-
-  // div {
-  // 	display: table-cell;
-  // 	vertical-align: middle;
-  // }
-
-  &:before {
-    font: 27px/22px SimpleLineIcons;
-  }
-
-  &.active {
-    display: block;
-  }
-}
-
-.contacts-address {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: $zLevel1;
-  @include rhombusSize($rhombusSize269);
-  @include resetRhombusRotate;
-  text-align: center;
-  background-color: $linkColor;
-
-  .rhombus {
-    padding-top: 64px;
-    color: $white;
-  }
-
-  h3,
-  p,
-  a {
-    &::-moz-selection {
-      background-color: $darkColor;
-    }
-
-    &::selection {
-      background-color: $darkColor;
+    &--textarea {
+      padding: 28px 0;
+      min-width: $contactElementWidth;
+      max-width: $contactElementWidth;
+      min-height: $contactTextAreaHeight;
+      max-height: $contactTextAreaHeight;
+      line-height: 17px;
     }
   }
 
-  h3,
-  p {
-    font-size: 12px;
-    line-height: 1.2;
-  }
+  &-elem_wrap {
+    // position: relative;
+    margin-top: -1px;
+    border: 1px solid #4e4e4e;
+    background-color: $darkColor;
+    transition: background-color $transitionTime;
 
-  h3 {
-    font-family: "Exo2.0 Regular", sans-serif;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-
-    &:before {
-      display: block;
-      // margin-bottom: 23px;
-      margin-bottom: 19px;
-      font: 11px Icomoon;
-      color: $white;
-      content: $icomoonSeparator;
+    &:nth-child(1) #{$block}-elem {
+      width: 80px;
     }
-  }
 
-  p {
-    margin-top: 2px;
-  }
-
-  a {
-    text-transform: none;
+    &:nth-child(2) #{$block}-elem {
+      width: 250px;
+    }
 
     &:hover {
-      background-color: $darkColor;
+      background-color: #2e2e2e;
+    }
+
+    &:hover #{$block}-elem {
+      color: $lightColor;
+    }
+
+    &--first {
+      margin-top: 0;
+
+      #{$block}-elem {
+        padding-top: 28px;
+        // height: 113px;
+        height: $contactInputLineHeight + 28px;
+      }
     }
   }
 
-  .contacts-mail-and-phone {
-    margin-top: 18px;
+  &-error {
+    position: absolute;
+    top: 1000px;
+    left: 50%;
+    z-index: $zLevel1;
+    //display: none;
+    padding-top: 50px;
+    margin-left: -95px;
+    // rhombus-size: 269px;
+    @include rhombusSize($rhombusSize269);
+    //font: 200 14px/17px 'Exo 2', sans-serif;
+    font: 14px/17px "Exo2.0-Extra-Light", sans-serif;
+    color: $white;
+    background-color: rgba(244, 156, 20, 0.8);
+    transition: top $transitionTime;
+
+    // div {
+    // 	display: table-cell;
+    // 	vertical-align: middle;
+    // }
+
+    &:before {
+      font: 27px/22px SimpleLineIcons;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &-address {
+    $elem: &;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: $zLevel1;
+    @include rhombusSize($rhombusSize269);
+    @include resetRhombusRotate;
+    text-align: center;
+    background-color: $linkColor;
+
+    #{$block}-rhombus {
+      padding-top: 64px;
+      color: $white;
+    }
+
+    &_title,
+    &_article,
+    &_link {
+      &::-moz-selection {
+        background-color: $darkColor;
+      }
+
+      &::selection {
+        background-color: $darkColor;
+      }
+    }
+
+    &_title,
+    &_article {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    &_title {
+      font-family: "Exo2.0 Regular", sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+
+      &:before {
+        display: block;
+        // margin-bottom: 23px;
+        margin-bottom: 19px;
+        font: 11px Icomoon;
+        color: $white;
+        content: $icomoonSeparator;
+      }
+    }
+
+    &_article {
+      margin-top: 2px;
+    }
+
+    a#{$elem}_link {
+      display: block;
+      text-transform: none;
+
+      &:hover {
+        background-color: $darkColor;
+      }
+    }
+
+    &_contacts {
+      margin-top: 18px;
+    }
   }
 }
 
-.contacts-send-button {
+.feedback-send-button {
   position: absolute;
   //top: 50%;
   // left: 50%;
@@ -1865,11 +1865,13 @@
   }
 }
 
-// END CONTACTS SECTION
+// END FEEDBACK SECTION
 
 // BEGIN FOOTER
 
-footer {
+.footer {
+  $block: &;
+
   position: relative;
   height: 286px;
   background: $darkColor;
@@ -1881,43 +1883,23 @@ footer {
     padding: 64px 0 0;
   }
 
-  .logo {
-    $block: &;
+  &-logo {
+    align-self: center;
+    margin: 0 auto;
+    color: $white;
 
-    &--about {
-      margin: 57px auto 0;
-      align-self: center;
-      color: $greyColor;
-
-      #{$block}-rhombus {
-        &--fill {
-          background-color: $greyColor;
-        }
-
-        &--empty {
-          border-color: $greyColor;
-        }
+    .logo-rhombus {
+      &--fill {
+        background-color: $white;
       }
-    }
 
-    &--footer {
-      align-self: center;
-      margin: 0 auto;
-      color: $white;
-
-      #{$block}-rhombus {
-        &--fill {
-          background-color: $white;
-        }
-
-        &--empty {
-          border-color: $white;
-        }
+      &--empty {
+        border-color: $white;
       }
     }
   }
 
-  address {
+  &-address {
     // margin-top: 32px;
     margin-top: 14px;
     font-family: inherit;
@@ -1927,35 +1909,35 @@ footer {
     color: rgba(245, 245, 245, 0.5);
   }
 
-  .flex-container {
+  &-flex_container {
     flex-flow: row nowrap;
     justify-content: space-between;
   }
-}
 
-.footer-socials-container {
-  bottom: -300px;
-  padding: 0 20px;
-  max-width: 768px;
-  transition: bottom $transitionTime ease $transitionTime + 0.2s;
+  &-socials_container {
+    bottom: -300px;
+    padding: 0 20px;
+    max-width: 768px;
+    transition: bottom $transitionTime ease $transitionTime + 0.2s;
 
-  &.visible {
-    bottom: 0;
+    &#{$block}--visible {
+      bottom: 0;
+    }
   }
 
-  .socials {
+  &-socials {
     flex-wrap: wrap;
     margin: 11px 0 -8px;
     width: 197px;
-  }
 
-  li {
-    flex-shrink: 0;
-    margin: 0 11px;
+    .social-item {
+      flex-shrink: 0;
+      margin: 0 11px;
 
-    &:nth-child(1) {
-      // margin-bottom: 53px;
-      margin: 0 72px;
+      &:nth-child(1) {
+        // margin-bottom: 53px;
+        margin: 0 72px;
+      }
     }
   }
 }

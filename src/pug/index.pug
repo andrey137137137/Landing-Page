@@ -639,104 +639,73 @@ body
 
 	//- BEGIN CLIENTS SECTION
 
-	section#clients.section--dark_bg.carousel-section.clients
-		.container
+	- var clients = ["graphicriver", "themeforest", "activeden", "codecanyon"];
 
-			h2 meet our lovely clients
-			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
+	section#clients.section.section--dark_bg.carousel.clients
+		.section-container
 
-			.carousel-container
-				a(class="block slide" href="#")
-					picture
-						source(srcset="img/clients/t/1.png" media="(min-width: 768px)")
-						img(srcset="img/clients/m/1.png" alt="graphicriver")
-					
-				
+			h2.section-title.section-title--main meet our lovely clients
+			p.section-main_desc.clients-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only.
 
-				a(class="block slide" href="#")
-					picture
-						source(srcset="img/clients/t/2.png" media="(min-width: 768px)")
-						img(srcset="img/clients/m/2.png" alt="themeforest")
-					
-				
-
-				a(class="block slide" href="#")
-					picture
-						source(srcset="img/clients/t/3.png" media="(min-width: 768px)")
-						img(srcset="img/clients/m/3.png" alt="activeden")
-					
-				
-
-				a(class="block slide" href="#")
-					picture
-						source(srcset="img/clients/t/4.png" media="(min-width: 768px)")
-						img(srcset="img/clients/m/4.png" alt="codecanyon")
-					
-				
-			
-
-		
+			.carousel-container.clients-carousel_container
+				each item, index in clients
+					a.section-block.carousel-slide.client(href="#")
+						picture
+							source(srcset="img/clients/t/" + (index + 1) + ".png" media="(min-width: 768px)")
+							img.client-img(srcset="img/clients/m/" + (index + 1) + ".png" alt=item)
 
 		a#to-contacts.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#contacts")
 			.rhombus_wrap-rhombus
 
 	//- END CLIENTS SECTION
 
-	//- BEGIN CONTACTS SECTION
+	//- BEGIN FEEDBACK SECTION
 
-	section#contacts.section--light_bg.contacts
-		.container
+	section#contacts.section.section--light_bg.feedback
+		.section-container.feedback-container
 
 			a.section-anchor(name="contacts")
 
-			h2 get in touch
-			p.section-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+			h2.section-title.section-title--main get in touch
+			p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
 
-			form#contacts_form.form.rhombus_wrap(action="index.html")
-				.rhombus_wrap-rhombus
+			form#contacts_form.rhombus_wrap.form.feedback-form(action="index.html")
+				.rhombus_wrap-rhombus.feedback-rhombus
 
-					.form-elem_wrap.first
-						input.form-elem.form-elem--require(type="text" name="contacts_name" placeholder="Name")
+					.form-elem_wrap.feedback-elem_wrap.feedback-elem_wrap--first
+						input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_name" placeholder="Name")
 					
-					.form-elem_wrap
-						input.form-elem.form-elem--require(type="email" name="contacts_email" placeholder="Email")
+					.form-elem_wrap.feedback-elem_wrap
+						input.form-elem.form-elem--required.feedback-elem(type="email" name="contacts_email" placeholder="Email")
 					
-					.form-elem_wrap
-						input.form-elem.form-elem--require(type="text" name="contacts_website" placeholder="Website")
+					.form-elem_wrap.feedback-elem_wrap
+						input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_website" placeholder="Website")
 					
-					.form-elem_wrap
-						input.form-elem.form-elem--require(type="text" name="contacts_subject" placeholder="Subject")
+					.form-elem_wrap.feedback-elem_wrap
+						input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_subject" placeholder="Subject")
 
-					#text-area-container.form-elem_wrap
-						textarea.form-elem.form-elem--require(name="contacts_message" placeholder="Your Message")
+					#text-area-container.form-elem_wrap.form-elem_wrap--textarea.feedback-elem_wrap
+						textarea.form-elem.form-elem--textarea.form-elem--required.feedback-elem.feedback-elem--textarea(name="contacts_message" placeholder="Your Message")
 
-					#contacts-form-error.rhombus_wrap.error
-						.rhombus_wrap-rhombus
-					
+					#contacts-form-error.rhombus_wrap.feedback-error
+						.rhombus_wrap-rhombus.feedback-rhombus
 
-				
+				#contacts-address.rhombus_wrap.feedback-address
+					.rhombus_wrap-rhombus.feedback-rhombus
 
-				#contacts-address.rhombus_wrap
-					.rhombus_wrap-rhombus
+						h3.section-title.feedback-address_title Rubiko Digital Agency
 
-						h3 Rubiko Digital Agency
-
-						p
+						p.feedback-address_article
 							| 111 Fifth Avenue, 34th Floor
 							br
 							| New York, United States
-						
 
-						p#contacts-mail-and-phone
-							a(href="mailto:hello@rubiko.com") hello@rubiko.com
+						p#contacts-mail-and-phone.feedback-address_article.feedback-address_contacts
+							a.feedback-address_link(href="mailto:hello@rubiko.com") hello@rubiko.com
 							| 0987 6543 2100
-						
-
-					
-				
 
 				#contacts-send-button.rhombus_wrap.button
-					input.rhombus_wrap-rhombus(type="submit" name="contacts_submit" value="send")
+					input.rhombus_wrap-rhombus.feedback-rhombus(type="submit" name="contacts_submit" value="send")
 
 
 			
@@ -750,20 +719,17 @@ body
 		
 
 
-	//- END CONTACTS SECTION
+	//- END FEEDBACK SECTION
 
 	//- BEGIN FOOTER
 
-	footer.section--dark_bg.footer
-		.container
+	footer.section.section--dark_bg.footer
+		.section-container
 
 			+logo("footer", false, true)
+			address.section-address.footer-address Copyright © 2014. Rubiko Studio. All Rights Reserved.
 
-			address Copyright © 2014. Rubiko Studio. All Rights Reserved.
-
-		
-
-		#footer-socials-container.content.flex_container
+		#footer-socials-container.slider-item_content.section-flex_container.footer-flex_container.footer-socials_container
 
 			//- ul#footer-left-socials.socials.flex-container
 			//- 	li
@@ -772,8 +738,7 @@ body
 			//- 		a.twitter(href="#")
 			//- 	li
 			//- 		a.dribbble(href="#")
-			+socials("section-flex_container", 3, 0, "footer-left-socials")
-
+			+socials("section-flex_container footer-flex_container", 3, 0, "footer-socials")
 
 			//- ul#footer-right-socials.socials.flex-container
 			//- 	li
@@ -782,9 +747,7 @@ body
 			//- 		a.linkedin(href="#")
 			//- 	li
 			//- 		a.pinterest(href="#")
-			+socials("section-flex_container", 3, 3, "footer-right-socials")
-
-		
+			+socials("section-flex_container footer-flex_container", 3, 3, "footer-socials")
 
 		a#to-top.section-btn_to.section-btn_to--top.rhombus_wrap.rhombus_wrap--arrow(href="google.ru")
 			.rhombus_wrap-rhombus
