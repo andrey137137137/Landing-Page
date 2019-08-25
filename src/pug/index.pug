@@ -84,7 +84,7 @@ body
 			a#main-slider-next.rhombus_wrap.rhombus_wrap--arrow.nav-next.main_slider-nav_next(href="#")
 				.rhombus_wrap-rhombus
 
-		a#main-slider-after-section.section-btn_to.rhombus_wrap.main_slider-btn_to_bottom(href="#features")
+		a#main-slider-after-section.section-btn_to.section-btn_to--bottom.rhombus_wrap.main_slider-btn_to_bottom(href="#features")
 			.rhombus_wrap-rhombus
 
 	//- END MAIN-SLIDER SECTION
@@ -504,7 +504,7 @@ body
 							textarea.form-elem.form-elem--textarea(placeholder="Your comment*")
 
 							.rhombus_wrap.rhombus_wrap--btn.form-btn
-								input.rhombus_wrap-rhombus(type="submit" value="send")
+								input.rhombus_wrap-rhombus.form-btn_elem(type="submit" value="send")
 
 				.nav.blog_news-nav
 
@@ -704,20 +704,13 @@ body
 							a.feedback-address_link(href="mailto:hello@rubiko.com") hello@rubiko.com
 							| 0987 6543 2100
 
-				#contacts-send-button.rhombus_wrap.button
-					input.rhombus_wrap-rhombus.feedback-rhombus(type="submit" name="contacts_submit" value="send")
+				#contacts-send-button.rhombus_wrap.rhombus_wrap--btn.form-btn.feedback-btn
+					input.rhombus_wrap-rhombus.form-btn_elem.feedback-rhombus.feedback-btn_elem(type="submit" name="contacts_submit" value="send")
 
-
-			
-
-			#map-point
-				.oval.oval-1
-				.oval.oval-2
-				.oval.oval-3
-			
-
-		
-
+			#map-point.map_pointer
+				.map_pointer-oval.map_pointer-oval--small
+				.map_pointer-oval.map_pointer-oval--medium
+				.map_pointer-oval.map_pointer-oval--large
 
 	//- END FEEDBACK SECTION
 
@@ -738,7 +731,7 @@ body
 			//- 		a.twitter(href="#")
 			//- 	li
 			//- 		a.dribbble(href="#")
-			+socials("section-flex_container footer-flex_container", 3, 0, "footer-socials")
+			+socials("section-flex_container footer-flex_container footer-socials", 3, 0)
 
 			//- ul#footer-right-socials.socials.flex-container
 			//- 	li
@@ -747,9 +740,9 @@ body
 			//- 		a.linkedin(href="#")
 			//- 	li
 			//- 		a.pinterest(href="#")
-			+socials("section-flex_container footer-flex_container", 3, 3, "footer-socials")
+			+socials("section-flex_container footer-flex_container footer-socials", 3, 3)
 
-		a#to-top.section-btn_to.section-btn_to--top.rhombus_wrap.rhombus_wrap--arrow(href="google.ru")
+		a#to-top.section-btn_to.section-btn_to--top.rhombus_wrap.rhombus_wrap--arrow(href="")
 			.rhombus_wrap-rhombus
 
 	//- END FOOTER

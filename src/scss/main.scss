@@ -1799,38 +1799,38 @@
       margin-top: 18px;
     }
   }
-}
 
-.feedback-send-button {
-  position: absolute;
-  //top: 50%;
-  // left: 50%;
-  right: 0;
-  bottom: $rhombusSize269 + 3px;
-  z-index: $zLevel1;
-  //margin-top: -95px;
-  //margin-right: 42px;
-  // margin-left: -95px;
-  // margin-bottom: 41px;
-  border: 1px solid $linkColor;
-  @include rhombusSize($rhombusSize269);
-  transform: rotate(0deg);
+  &-btn {
+    position: absolute;
+    //top: 50%;
+    // left: 50%;
+    right: 0;
+    bottom: $rhombusSize269 + 3px;
+    z-index: $zLevel1;
+    //margin-top: -95px;
+    //margin-right: 42px;
+    // margin-left: -95px;
+    // margin-bottom: 41px;
+    border: 1px solid $linkColor;
+    @include rhombusSize($rhombusSize269);
+    transform: rotate(0deg);
 
-  input {
-    border: none;
-    font: 24px "Exo2.0 Black", sans-serif;
-    text-transform: uppercase;
-    color: $white;
-    background-color: #772525;
-    transition: background-color $transitionTime;
+    &_elem {
+      border: none;
+      font: 24px "Exo2.0 Black", sans-serif;
+      text-transform: uppercase;
+      color: $white;
+      background-color: #772525;
+      transition: background-color $transitionTime;
 
-    &:hover {
-      background-color: $linkColor;
+      &:hover {
+        background-color: $linkColor;
+      }
     }
   }
 }
 
-.map-point {
+.map_pointer {
   position: absolute;
   left: 50%;
   bottom: 116px;
@@ -1838,7 +1838,7 @@
   height: 49px;
   transform: translate(-50%, 50%);
 
-  .oval {
+  &-oval {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1846,22 +1846,22 @@
     border: 1px solid $linkColor;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-  }
 
-  .oval-1 {
-    width: 30px;
-    height: 19px;
-    background-color: rgba(205, 41, 41, 0.3);
-  }
+    &--small {
+      width: 30px;
+      height: 19px;
+      background-color: rgba(205, 41, 41, 0.3);
+    }
 
-  .oval-2 {
-    width: 54px;
-    height: 33px;
-  }
+    &--medium {
+      width: 54px;
+      height: 33px;
+    }
 
-  .oval-3 {
-    width: 100%;
-    height: 100%;
+    &--large {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -1912,6 +1912,7 @@
   &-flex_container {
     flex-flow: row nowrap;
     justify-content: space-between;
+    height: auto;
   }
 
   &-socials_container {
@@ -1920,7 +1921,7 @@
     max-width: 768px;
     transition: bottom $transitionTime ease $transitionTime + 0.2s;
 
-    &#{$block}--visible {
+    &--visible {
       bottom: 0;
     }
   }
@@ -1946,34 +1947,34 @@
 
 // BEGIN TO-TOP
 
-.to_top {
-  position: fixed;
-  left: 88%;
-  // bottom: 46px;
-  bottom: 45px;
-  z-index: $zLevel9;
-  margin-left: $defaultNegativeRhombusMargin;
-  padding: 0;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s,
-    padding #{$transitionTime};
+// .to_top {
+//   position: fixed;
+//   left: 88%;
+//   // bottom: 46px;
+//   bottom: 45px;
+//   z-index: $zLevel9;
+//   margin-left: $defaultNegativeRhombusMargin;
+//   padding: 0;
+//   width: 0;
+//   height: 0;
+//   opacity: 0;
+//   transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s,
+//     padding #{$transitionTime};
 
-  &.active {
-    padding: 18px;
-    @include rhombusSize;
-    opacity: 1;
+//   &--active {
+//     padding: 18px;
+//     @include rhombusSize;
+//     opacity: 1;
 
-    &:hover {
-      padding: 10px;
-    }
-  }
+//     &:hover {
+//       padding: 10px;
+//     }
+//   }
 
-  &.finally {
-    left: 50%;
-  }
-}
+//   &--finally {
+//     left: 50%;
+//   }
+// }
 
 // END TO-TOP
 

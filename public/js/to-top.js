@@ -1,105 +1,92 @@
-var ToTop = function()
-{
-	'use strict';
+var ToTop = function() {
+  "use strict";
 
-	function Construct(params)
-	{
-		if ( !(this instanceof Construct) )
-		{
-			return new Construct(params);
-		}
-		
-		this.init.apply(this, params);
-	}
+  function Construct(params) {
+    if (!(this instanceof Construct)) {
+      return new Construct(params);
+    }
 
-	Construct.prototype = Object.create(ReasanikBase());
+    this.init.apply(this, params);
+  }
 
-	// Construct.prototype = {
+  Construct.prototype = Object.create(ReasanikBase());
 
-		Construct.prototype.constructor = Construct;
+  // Construct.prototype = {
 
-		Construct.prototype.pluginName = 'ToTop';
+  Construct.prototype.constructor = Construct;
 
-		Construct.prototype.init = function(params)
-		{
-			var self = this;
+  Construct.prototype.pluginName = "ToTop";
 
-			params = this.extend(
-				{
-					buttonID: false,
-					border: 300,
-					defaultScrollStep: 70
-				},
-				params
-			);
+  Construct.prototype.init = function(params) {
+    var self = this;
 
-			if (!params.buttonID)
-			{
-				this.setErrorMessage(this.pluginName);
-				return false;
-			}
+    params = this.extend(
+      {
+        buttonID: false,
+        border: 300,
+        defaultScrollStep: 70
+      },
+      params
+    );
 
-			this.border = params.border;
+    if (!params.buttonID) {
+      this.setErrorMessage(this.pluginName);
+      return false;
+    }
 
-			this.elem = document.getElementById(params.buttonID);
-			this.socialsContainer = document.getElementById('footer-socials-container');
+    this.border = params.border;
 
-			// this.ToTopButton = new ScrollEffect.Construct({
-			// 	buttonID: params.buttonID,
-			// 	direction: -1,
-			// 	defaultScrollStep: 70
-			// });
+    this.elem = document.getElementById(params.buttonID);
+    this.socialsContainer = document.getElementById("footer-socials-container");
 
-			this.ToTopButton = ScrollEffect({
-				buttonID: params.buttonID,
-				defaultScrollStep: params.defaultScrollStep,
-				direction: -1
-			});
+    // this.ToTopButton = new ScrollEffect.Construct({
+    // 	buttonID: params.buttonID,
+    // 	direction: -1,
+    // 	defaultScrollStep: 70
+    // });
 
-	    params = null;
+    this.ToTopButton = ScrollEffect({
+      buttonID: params.buttonID,
+      defaultScrollStep: params.defaultScrollStep,
+      direction: -1
+    });
 
-			window.addEventListener('scroll', function(){
-				self.showHideToTop();
-			});
+    params = null;
 
-			this.showHideToTop();
-		};
+    window.addEventListener("scroll", function() {
+      self.showHideToTop();
+    });
 
-		Construct.prototype.showHideToTop = function()
-		{
-			var self = this;
-			// var endPage = document.documentElement.scrollHeight - window.innerHeight;
-			var endPage = this.getScrollHeight() - window.innerHeight;
+    this.showHideToTop();
+  };
 
-			this.ToTopButton.scrollY = this.getScrollY();
+  Construct.prototype.showHideToTop = function() {
+    var self = this;
+    // var endPage = document.documentElement.scrollHeight - window.innerHeight;
+    var endPage = this.getScrollHeight() - window.innerHeight;
 
-			if (this.ToTopButton.scrollY > this.border)
-			{
-				this.elem.classList.add('active');
-			}
-			else
-			{
-				this.elem.classList.remove('active');
-			}
+    this.ToTopButton.scrollY = this.getScrollY();
 
-			if (parseInt(this.ToTopButton.scrollY) === endPage)
-			{
-				setTimeout(
-					function(){
-						self.elem.classList.add('finally');
-					},
-					200
-				);
+    if (this.ToTopButton.scrollY > this.border) {
+      this.elem.classList.add("section-btn_to--top_active");
+    } else {
+      this.elem.classList.remove("section-btn_to--top_active");
+    }
 
-				this.socialsContainer.classList.add('visible');
-			}
-			else
-			{
-				this.elem.classList.remove('finally');
-				this.socialsContainer.classList.remove('visible');
-			}
-		};
-	// };
+    if (parseInt(this.ToTopButton.scrollY) === endPage) {
+      setTimeout(function() {
+        self.elem.classList.add("section-btn_to--top_finally");
+      }, 200);
 
-	return Construct(arguments);
+      this.socialsContainer.classList.add("footer-socials_container--visible");
+    } else {
+      this.elem.classList.remove("section-btn_to--top_finally");
+      this.socialsContainer.classList.remove(
+        "footer-socials_container--visible"
+      );
+    }
+  };
+  // };
+
+  return Construct(arguments);
 };

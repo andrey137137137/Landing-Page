@@ -82,13 +82,13 @@ body {
   }
 
   &-btn_to {
-    position: absolute;
-    left: 50%;
-    bottom: -38px;
-    z-index: $zLevel8;
-    margin-left: -38px;
-    padding: 30px;
-    @include rhombusSize($rhombusSize107);
+    // position: absolute;
+    // left: 50%;
+    // bottom: -38px;
+    // z-index: $zLevel8;
+    // margin-left: -38px;
+    // padding: 30px;
+    // @include rhombusSize($rhombusSize107);
     background-color: $linkColor;
 
     &:hover {
@@ -96,6 +96,14 @@ body {
     }
 
     &--bottom {
+      position: absolute;
+      left: 50%;
+      bottom: -38px;
+      z-index: $zLevel8;
+      margin-left: -38px;
+      padding: 30px;
+      @include rhombusSize($rhombusSize107);
+
       .rhombus_wrap-rhombus {
         border-right: 1px solid $white;
         border-bottom: 1px solid $white;
@@ -103,9 +111,36 @@ body {
     }
 
     &--top {
+      position: fixed;
+      left: 88%;
+      // bottom: 46px;
+      bottom: 45px;
+      z-index: $zLevel9;
+      margin-left: $defaultNegativeRhombusMargin;
+      // padding: 0;
+      // width: 0;
+      // height: 0;
+      opacity: 0;
+      transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s,
+        padding #{$transitionTime};
+
       .rhombus_wrap-rhombus {
         border-top: 1px solid $white;
         border-left: 1px solid $white;
+      }
+
+      &_active {
+        padding: 18px;
+        @include rhombusSize;
+        opacity: 1;
+
+        &:hover {
+          padding: 10px;
+        }
+      }
+
+      &_finally {
+        left: 50%;
       }
     }
   }
@@ -359,7 +394,7 @@ ul {
   }
 
   &-btn {
-    .rhombus_wrap-rhombus {
+    &_elem {
       display: block;
       border: none;
       background: none;
