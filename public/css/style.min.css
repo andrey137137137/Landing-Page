@@ -1941,27 +1941,27 @@ ul {
   right: 0;
 }
 
-.photo_block-wrap:hover .photo_block-item:nth-child(1) {
+.photo_block-wrap:hover .social-item:nth-child(1) {
   right: 103px;
   bottom: 0;
 }
 
-.photo_block-wrap:hover .photo_block-item:nth-child(2) {
+.photo_block-wrap:hover .social-item:nth-child(2) {
   right: 52px;
   bottom: 0;
 }
 
-.photo_block-wrap:hover .photo_block-item:nth-child(3) {
+.photo_block-wrap:hover .social-item:nth-child(3) {
   right: 0;
   bottom: 0;
 }
 
-.photo_block-wrap:hover .photo_block-item:nth-child(4) {
+.photo_block-wrap:hover .social-item:nth-child(4) {
   right: 0;
   bottom: 52px;
 }
 
-.photo_block-wrap:hover .photo_block-item:nth-child(5) {
+.photo_block-wrap:hover .social-item:nth-child(5) {
   right: 0;
   bottom: 103px;
 }

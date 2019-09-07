@@ -901,29 +901,31 @@ ul {
         right: 0;
       }
 
-      #{$block}-item:nth-child(1) {
-        right: 103px;
-        bottom: 0;
-      }
+      .social {
+        &-item:nth-child(1) {
+          right: 103px;
+          bottom: 0;
+        }
 
-      #{$block}-item:nth-child(2) {
-        right: 52px;
-        bottom: 0;
-      }
+        &-item:nth-child(2) {
+          right: 52px;
+          bottom: 0;
+        }
 
-      #{$block}-item:nth-child(3) {
-        right: 0;
-        bottom: 0;
-      }
+        &-item:nth-child(3) {
+          right: 0;
+          bottom: 0;
+        }
 
-      #{$block}-item:nth-child(4) {
-        right: 0;
-        bottom: 52px;
-      }
+        &-item:nth-child(4) {
+          right: 0;
+          bottom: 52px;
+        }
 
-      #{$block}-item:nth-child(5) {
-        right: 0;
-        bottom: 103px;
+        &-item:nth-child(5) {
+          right: 0;
+          bottom: 103px;
+        }
       }
     }
   }
