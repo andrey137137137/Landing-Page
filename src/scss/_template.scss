@@ -374,7 +374,7 @@ ul {
 
   &-img {
     display: block;
-    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -455,8 +455,6 @@ ul {
   position: relative;
   padding-left: 36px;
   height: 27px;
-  //font: 23px/27px 'Exo2.0 Black', sans-serif;
-  font: 23px/23px "Exo2.0 Black", sans-serif;
   text-transform: uppercase;
 
   &-rhombus {
@@ -479,8 +477,8 @@ ul {
   }
 
   &-title {
-    font-size: inherit;
-    line-height: inherit;
+    //font: 23px/27px 'Exo2.0 Black', sans-serif;
+    font: 23px/24px "Exo2.0 Black", sans-serif;
 
     &:after {
       display: none;

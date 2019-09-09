@@ -124,9 +124,9 @@ var Menu = function() {
     this.scrollY = this.getScrollY();
 
     if (this.scrollY > this.headerHeight) {
-      document.querySelector("header").classList.add("min");
+      document.querySelector("header").classList.add("header--min");
     } else {
-      document.querySelector("header").classList.remove("min");
+      document.querySelector("header").classList.remove("header--min");
     }
 
     if (this.getStyle(this.buttonChecker, "display") === "none") {

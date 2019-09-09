@@ -203,21 +203,23 @@ var Gallery = function() {
     // imgContainer.alt = this.items[index].title + ' ' + (index + 1);
 
     imgContainer.innerHTML =
-      '<picture><source srcset="' +
-      this.rootFolder +
-      "/d/" +
-      tempImageName +
-      '" media="(min-width: 768px)"><source srcset="' +
-      this.rootFolder +
-      "/t/" +
-      tempImageName +
-      '" media="(min-width: 320px)"><img class="photo_block-img" srcset="' +
+      // '<picture><source srcset="' +
+      // this.rootFolder +
+      // "/d/" +
+      // tempImageName +
+      // '" media="(min-width: 768px)"><source srcset="' +
+      // this.rootFolder +
+      // "/t/" +
+      // tempImageName +
+      // '" media="(min-width: 320px)">
+      '<img class="img_wrap-img" src="' +
       this.rootFolder +
       "/m/" +
       tempImageName +
       '" alt="' +
       this.items[index].title +
-      '"></picture>';
+      '">';
+    // </picture>';
 
     if (this.items[index].description) {
       tempInnerHTML = this.items[index].description;

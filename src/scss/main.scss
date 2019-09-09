@@ -947,7 +947,7 @@
 
 // BEGIN BLOG-NEWS SECTION
 
-.blog_news {
+.blog {
   $block: &;
 
   padding-bottom: 165px;
@@ -1886,7 +1886,6 @@
   &-logo {
     align-self: center;
     margin: 0 auto;
-    color: $white;
 
     .logo-rhombus {
       &--fill {
@@ -1896,6 +1895,10 @@
       &--empty {
         border-color: $white;
       }
+    }
+
+    .logo-title {
+      color: $white;
     }
   }
 
