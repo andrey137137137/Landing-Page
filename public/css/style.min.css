@@ -3814,7 +3814,7 @@ ul {
   height: 100%;
 }
 
-.portfolio_lightbox p {
+.portfolio_lightbox-desc_container p {
   padding: 17px 14px;
   min-height: 113px;
   max-height: 254px;
@@ -3828,7 +3828,7 @@ ul {
   margin-left: -83px;
 }
 
-.portfolio-slider-close {
+.portfolio_lightbox-close {
   position: absolute;
   top: -66px;
   left: 50%;
@@ -3838,21 +3838,21 @@ ul {
   height: 53px;
 }
 
-.portfolio-slider-nav {
+.portfolio_lightbox-nav {
   top: -116.5px;
 }
 
-.portfolio-slider-nav .rhombus_wrap {
+.portfolio_lightbox-nav .rhombus_wrap {
   position: absolute;
   top: 90px;
 }
 
-.portfolio-slider-prev {
+.portfolio_lightbox-prev {
   left: 50%;
   margin-left: -66px;
 }
 
-.portfolio-slider-next {
+.portfolio_lightbox-next {
   right: 50%;
   margin-right: -65px;
 }

@@ -201,9 +201,9 @@
       background-size: cover;
     }
 
-    #{$block}-item_content {
-      //linear-gradient: 'to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%';
-    }
+    // #{$block}-item_content {
+    //   linear-gradient: 'to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%';
+    // }
 
     #{$block}-text_content {
       line-height: 18px;
@@ -1356,8 +1356,7 @@
     font: 65px/1.2 SimpleLineIcons;
     color: $socialHoverColor;
 
-    &:before {
-    }
+    // &:before {}
 
     &:after {
       display: none;
@@ -2024,11 +2023,13 @@
     }
   }
 
-  p {
-    padding: 17px 14px;
-    min-height: 113px;
-    max-height: 254px;
-    overflow-y: auto;
+  &-desc_container {
+    p {
+      padding: 17px 14px;
+      min-height: 113px;
+      max-height: 254px;
+      overflow-y: auto;
+    }
   }
 
   &-social_rhombus {
@@ -2037,36 +2038,36 @@
     left: 50%;
     margin-left: -83px;
   }
-}
 
-.portfolio-slider-close {
-  position: absolute;
-  top: -$defaultRhombusSize - 13px;
-  left: 50%;
-  z-index: $zLevel1;
-  margin-left: $defaultNegativeRhombusMargin;
-  @include rhombusSize;
-}
-
-.portfolio-slider-nav {
-  // top: $defaultNegativeRhombusMargin;
-  top: $defaultNegativeRhombusMargin - 90px;
-
-  .rhombus_wrap {
+  &-close {
     position: absolute;
-    top: 90px;
-    // margin: 0 13.5px;
+    top: -$defaultRhombusSize - 13px;
+    left: 50%;
+    z-index: $zLevel1;
+    margin-left: $defaultNegativeRhombusMargin;
+    @include rhombusSize;
   }
-}
 
-.portfolio-slider-prev {
-  left: 50%;
-  margin-left: -$defaultRhombusSize - 13px;
-}
+  &-nav {
+    // top: $defaultNegativeRhombusMargin;
+    top: $defaultNegativeRhombusMargin - 90px;
 
-.portfolio-slider-next {
-  right: 50%;
-  margin-right: -$defaultRhombusSize - 12px;
+    .rhombus_wrap {
+      position: absolute;
+      top: 90px;
+      // margin: 0 13.5px;
+    }
+  }
+
+  &-prev {
+    left: 50%;
+    margin-left: -$defaultRhombusSize - 13px;
+  }
+
+  &-next {
+    right: 50%;
+    margin-right: -$defaultRhombusSize - 12px;
+  }
 }
 
 // END PORTFOLIO LIGHTBOX
