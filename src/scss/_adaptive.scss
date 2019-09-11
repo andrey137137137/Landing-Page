@@ -43,6 +43,16 @@
       width: 167px;
     }
 
+    &-btn_to {
+      &--top {
+        left: 94%;
+
+        &_finally {
+          bottom: -8px;
+        }
+      }
+    }
+
     &--light_bg {
       // padding: 210px 0 0;
       padding-top: $lightSectionPaddingTopTb;
@@ -279,11 +289,11 @@
     padding-bottom: 169px;
     // height: 1242px;
 
-    .section-desc {
+    &-main_desc {
       margin-bottom: 97px;
     }
 
-    p {
+    &-desc {
       margin-bottom: 55px;
     }
   }
@@ -293,19 +303,19 @@
     // height: 787px;
     background-image: url("#{$imgBgPath}/about-t.jpg");
 
-    .socials {
+    &-socials {
       justify-content: space-between;
       margin-left: 0;
       margin-right: 0;
 
-      &.col6 {
+      .social-item {
+        flex-shrink: 1;
+        margin-left: 11px;
+      }
+
+      &.col_6 {
         width: 600px;
       }
-    }
-
-    li {
-      flex-shrink: 1;
-      margin-left: 11px;
     }
   }
 
@@ -314,7 +324,7 @@
     padding: 163px 0 149px;
     // height: 1268px;
 
-    h2:after {
+    &-title:after {
       margin-bottom: 29px;
     }
 
@@ -322,7 +332,7 @@
       padding: 0 20px;
     }
 
-    .display-rhombuses {
+    &-display_rhombuses {
       padding-top: 127px;
     }
   }
@@ -331,12 +341,13 @@
     // height: 514px;
     background-image: url("#{$imgBgPath}/testimonials-t.jpg");
 
-    .thumbs {
+    &-thumbs {
       // top: 226px;
-      top: 228px;
+      // top: 228px;
+      top: 223px;
     }
 
-    .carousel-container {
+    &-carousel_container {
       margin-top: 63px;
       // height: 248px;
       height: 249px;
@@ -346,7 +357,7 @@
       top: 226px;
     }
 
-    address {
+    &-address {
       // margin-top: 18px;
       margin-top: 16px;
     }
@@ -356,24 +367,26 @@
     padding-bottom: 156px;
     // height: 1097px;
 
-    .container {
+    &-container {
       justify-content: space-between;
     }
 
-    .section-desc {
+    &-main_desc {
       margin-bottom: 92px;
     }
+  }
 
-    .block {
+  .skill {
+    &_block {
       margin-left: 0;
       margin-right: 0;
       margin-bottom: 106px;
       width: 128px;
     }
-  }
 
-  .skills-technologies {
-    margin-top: 0;
+    &_list {
+      margin-top: 0;
+    }
   }
 
   .statistics {
@@ -388,60 +401,60 @@
       #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-t.jpg) no-repeat center
         top;
 
-    .section-desc {
+    &-main_desc {
       margin-bottom: 0;
-    }
-
-    .block:before {
-      margin-top: 61px;
     }
   }
 
-  .blog-news {
+  .statistic:before {
+    margin-top: 61px;
+  }
+
+  .blog {
     padding: 144px 0 201px;
     // height: 933px;
 
-    .display-rhombuses {
+    &-display_rhombuses {
       padding-top: 159px;
     }
   }
 
-  .blog-comments {
+  .comments {
     margin-left: auto;
     margin-right: auto;
     width: 570px;
   }
 
-  .socials-feedback {
+  .social_feedback {
     // height: 563px;
     background-image: url("#{$imgBgPath}/socials-feedback-t.jpg");
 
-    .carousel-container {
+    &-carousel_container {
       height: 406px;
     }
 
-    h2 {
-      // position: relative;
-      // top: 0;
-    }
+    // h2 {
+    //   position: relative;
+    //   top: 0;
+    // }
 
     // .carousel-nav {
     // 	top: 255px;
     // }
 
-    .thumbs {
+    &-thumbs {
       top: 257px;
     }
 
-    p {
+    &-main_desc {
       margin-top: 60px;
     }
 
-    .author {
+    &-author {
       margin-top: 14px;
     }
 
-    .time {
+    &-time {
       margin-top: 4px;
     }
   }
@@ -450,117 +463,107 @@
     padding-top: 158px;
     // height: 960px;
 
-    .carousel-container {
+    &-carousel_container {
       padding-top: 67px;
       height: 632px;
     }
-  }
 
-  .team-nav {
-    top: 68px;
+    &-nav {
+      top: 68px;
 
-    .arrows {
-      justify-content: space-between;
+      .nav-arrows {
+        justify-content: space-between;
+      }
+
+      .rhombus_wrap {
+        margin-left: 37px;
+        margin-right: 37px;
+      }
     }
 
-    .rhombus_wrap {
-      margin-left: 37px;
-      margin-right: 37px;
-    }
-  }
-
-  .team-demo {
-    .block {
+    &_block {
       width: 270px;
+
+      &-photo_block_wrap {
+        margin-top: 35px;
+        margin-bottom: 35px;
+      }
+
+      &-status {
+        margin-top: 53px;
+      }
+
+      &-desc {
+        // width: 270px;
+        line-height: 20px;
+      }
+
+      &--item_1 &-img {
+        left: -18%;
+      }
+
+      &--item_2 &-img {
+        left: -18%;
+      }
+
+      &--item_3 &-img {
+        left: -44%;
+      }
+
+      &--item_4 &-img {
+        left: -2%;
+      }
     }
-
-    .photo-block-wrap {
-      margin-top: 35px;
-      margin-bottom: 35px;
-    }
-
-    span {
-      margin-top: 53px;
-    }
-
-    p {
-      // width: 270px;
-      line-height: 20px;
-    }
-  }
-
-  .team-person-1 img {
-    left: -18%;
-  }
-
-  .team-person-2 img {
-    left: -18%;
-  }
-
-  .team-person-3 img {
-    left: -44%;
-  }
-
-  .team-person-4 img {
-    left: -2%;
   }
 
   .clients {
     // height: 600px;
     background-image: url("#{$imgBgPath}/clients-t.jpg");
 
-    p {
+    &-main_desc {
       margin-bottom: 71px;
     }
 
-    .carousel-container {
+    &-carousel_container {
       height: 202px;
     }
 
-    .thumbs {
+    &-thumbs {
       top: 81px;
     }
   }
 
-  .contacts {
+  .feedback {
     // height: 1507px;
     background-image: url("#{$imgBgPath}/map-t.jpg");
 
-    form {
+    &-form {
       // margin-top: 137px;
       margin-top: 176px;
     }
+
+    &-btn {
+      bottom: $rhombusSize269 * 2.5 + 8px;
+    }
   }
 
-  .contacts-send-button {
-    bottom: $rhombusSize269 * 2.5 + 8px;
-  }
-
-  footer {
+  .footer {
     height: 226px;
-  }
 
-  .footer-socials-container {
-    padding: 0 5px;
+    &-socials_container {
+      padding: 0 5px;
+    }
 
-    .socials {
+    &-socials {
       width: auto;
-    }
 
-    li {
-      margin: 0 26px;
-
-      &:nth-child(1) {
+      .social-item {
         margin: 0 26px;
+
+        &:nth-child(1) {
+          margin: 0 26px;
+        }
       }
-    }
-  }
-
-  .to-top {
-    left: 94%;
-
-    &.finally {
-      bottom: -8px;
     }
   }
 }
