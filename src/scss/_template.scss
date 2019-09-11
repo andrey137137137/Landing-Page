@@ -283,7 +283,7 @@ body {
   z-index: $zLevel3;
   width: 100%;
 
-  .rhombus_wrap {
+  &-rhombus_wrap {
     padding: 18px;
     @include rhombusSize;
     cursor: pointer;

@@ -277,14 +277,13 @@
     //width: 155px;
     // width: 156px;
 
-    position: absolute;
-    z-index: $zLevel3;
-    width: 100%;
+    // position: absolute;
+    // z-index: $zLevel3;
+    // width: 100%;
 
-    // .more,
-    // .arrow-left,
-    // .arrow-right {
-    .rhombus_wrap {
+    &_more,
+    &_prev,
+    &_next {
       position: absolute;
       @include margin("* 12.5px");
       @include rhombusSize;
@@ -310,17 +309,26 @@
       top: -65px;
     }
 
-    &_prev.rhombus_wrap {
+    &_prev {
       left: 50%;
       margin-left: -$defaultRhombusSize - 13px;
     }
 
-    &_next.rhombus_wrap {
+    &_next {
       right: 50%;
       margin-right: -$defaultRhombusSize - 12px;
     }
 
     &_more {
+      // position: absolute;
+      // top: -1px;
+      // left: -1px;
+      // margin: 0;
+      // transform: rotate(0deg);
+      top: $defaultNegativeRhombusMargin - $defaultRhombusSize - 25px;
+      left: 50%;
+      margin-left: $defaultNegativeRhombusMargin;
+
       &_wrap {
         position: relative;
         border: 1px solid $white;
@@ -328,24 +336,13 @@
         background: none;
       }
 
-      &.rhombus_wrap {
-        // position: absolute;
-        // top: -1px;
-        // left: -1px;
-        // margin: 0;
-        // transform: rotate(0deg);
-        top: $defaultNegativeRhombusMargin - $defaultRhombusSize - 25px;
-        left: 50%;
-        margin-left: $defaultNegativeRhombusMargin;
+      .rhombus_wrap-rhombus {
+        &:before {
+          top: 7px;
+        }
 
-        .rhombus_wrap-rhombus {
-          &:before {
-            top: 7px;
-          }
-
-          &:after {
-            left: 7px;
-          }
+        &:after {
+          left: 7px;
         }
       }
     }
