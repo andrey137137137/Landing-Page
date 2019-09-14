@@ -2202,41 +2202,42 @@ ul {
   color: inherit;
 }
 
-.main_slider-text_content {
-  margin: 0 20px;
+.main_slider-desc {
+  margin-right: 20px;
+  margin-left: 20px;
   font-size: 12px;
   line-height: 22px;
 }
 
-.main_slider-item_1 .main_slider-item_background {
+.main_slider_item_1-background {
   background: -webkit-gradient(linear, left bottom, right top, from(rgba(9, 9, 9, .85)), to(rgba(205, 41, 41, .85))), rgba(9, 9, 9, .85) url("../img/bg/main-slider/1-m.jpg") no-repeat center top;
   background: linear-gradient(to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%), rgba(9, 9, 9, .85) url("../img/bg/main-slider/1-m.jpg") no-repeat center top;
   background-size: cover;
 }
 
-.main_slider-item_1 .main_slider-text_content {
-  line-height: 18px;
-}
-
-.main_slider-item_1 .main_slider-title:after {
+.main_slider_item_1-title:after {
   margin-bottom: 11px;
 }
 
-.main_slider-item_2 .main_slider-item_background {
+.main_slider_item_1-desc {
+  line-height: 18px;
+}
+
+.main_slider_item_2-background {
   background: rgba(9, 9, 9, .85) url("../img/bg/main-slider/2.jpg") center top;
 }
 
-.main_slider-item_3 .main_slider-item_background {
+.main_slider_item_3-background {
   background: rgba(9, 9, 9, .85) url("../img/bg/main-slider/3-m.jpg") no-repeat center top;
   background-size: cover;
 }
 
-.main_slider-item_4 .main_slider-item_background {
+.main_slider_item_4-background {
   background: url("../img/bg/main-slider/4-m.jpg") no-repeat center top;
   background-size: cover;
 }
 
-.main_slider-item_4 .main_slider-item_content {
+.main_slider_item_4-content {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   -webkit-box-pack: justify;
@@ -2244,20 +2245,21 @@ ul {
   justify-content: space-between;
 }
 
-.main_slider-item_4 .main_slider-text_wrap {
+.main_slider_item_4-text_wrap {
   margin-left: 20px;
 }
 
-.main_slider-item_4 .main_slider-text_content {
-  margin: 0;
-  line-height: 14.4px;
-}
-
-.main_slider-item_4 .main_slider-title:after {
+.main_slider_item_4-title:after {
   margin-bottom: 15px;
 }
 
-.main_slider-item_4 .main_slider-img_wrap {
+.main_slider_item_4-desc {
+  margin-right: 0;
+  margin-left: 0;
+  line-height: 14.4px;
+}
+
+.main_slider_item_4-img_wrap {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-top: -46px;
