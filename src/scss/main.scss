@@ -1270,7 +1270,7 @@
 
 // END BLOG-NEWS SECTION
 
-// BEGIN SOCIALS-FEEDBACK SECTION
+// BEGIN SOCIAL-FEEDBACK SECTION
 
 .social_feedback {
   $block: &;
@@ -1286,7 +1286,8 @@
   }
 
   &-thumbs {
-    top: 157px;
+    // top: 157px;
+    top: 252px;
   }
 
   &-carousel_container {
@@ -1361,7 +1362,7 @@
   }
 
   &-title {
-    font: 65px/1.2 SimpleLineIcons;
+    font: 65px/1.2 SimpleLineIcons !important;
     color: $socialHoverColor;
 
     // &:before {}
@@ -1403,7 +1404,7 @@
   }
 }
 
-// END SOCIALS-FEEDBACK SECTION
+// END SOCIAL-FEEDBACK SECTION
 
 // BEGIN TEAM SECTION
 

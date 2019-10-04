@@ -93,61 +93,34 @@ html(lang="en")
 
 		-
 			var features = [
-				
 					{
 						icon: "vector",
-					
 					title: "unique design",
 					desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
-				
-
-				
 					{
 						icon: "equalizer",
-					
 					title: "simple backend",
 					desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
-				
-
-				
 					{
 						icon: "graph",
-					
 					title: "seo tools",
 					desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
-				
-
-				
 					{
 						icon: "screen-smartphone",
-					
 					title: "responsive",
 					desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
-				
-
-				
 					{
 						icon: "picture",
-					
 					title: "retina support",
-					desc: "Rubiko will look beautiful on any device. Servehigh-resolution images to devices with retinadisplays.span ULTRA SHARP GRAPHICS"},
-				
-
-				
+					desc: "Rubiko will look beautiful on any device. Servehigh-resolution images to devices with retinadisplays. <span> ULTRA SHARP GRAPHICS </span>"},
 					{
 						icon: "speedometer",
-					
 					title: "top support",
 					desc: "Rubiko has a forum for you to report issues, find answers and get latest updates before we publish them on ThemeForest."},
-				
-
-				
 					{
 						icon: "layers",
-					
 					title: "documentation",
-					desc: "Rubiko includes Step by step customization. All packed in one nice document thatcomes with download. span IT'S FREE AND ALWAYS WILL BE"}
-				
+					desc: "Rubiko includes Step by step customization. All packed in one nice document thatcomes with download. <span> IT'S FREE AND ALWAYS WILL BE </span>"}
 			]
 
 		section#features.section.section--light_bg.features
@@ -163,7 +136,7 @@ html(lang="en")
 						.rhombus_wrap.features-rhombus_wrap
 							.rhombus_wrap-rhombus(class="sl_icon-" + item.icon)
 						h3.section-title.features-title= item.title
-						p.features-desc= item.desc
+						p.features-desc !{item.desc}
 
 		//- END FEATURES SECTION
 
@@ -272,13 +245,8 @@ html(lang="en")
 				
 
 				{
-						prs: 62,
-							
-						
-					
+					prs: 62,
 					title: "marketing"},
-				
-
 				{
 						prs: 85,
 							

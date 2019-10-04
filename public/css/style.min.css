@@ -1297,18 +1297,18 @@ body {
   border-left: 1px solid #fff;
 }
 
-.section-btn_to--top_active {
+.section-btn_to--top.section-btn_to--top_active {
   padding: 18px;
   width: 53px;
   height: 53px;
   opacity: 1;
 }
 
-.section-btn_to--top_active:hover {
+.section-btn_to--top.section-btn_to--top_active:hover {
   padding: 10px;
 }
 
-.section-btn_to--top_finally {
+.section-btn_to--top.section-btn_to--top_finally {
   left: 50%;
 }
 
@@ -3165,7 +3165,7 @@ ul {
 }
 
 .social_feedback-thumbs {
-  top: 157px;
+  top: 252px;
 }
 
 .social_feedback-carousel_container {
@@ -3222,7 +3222,7 @@ ul {
 }
 
 .social_feedback-title {
-  font: 65px/1.2 SimpleLineIcons;
+  font: 65px/1.2 SimpleLineIcons !important;
   color: #1ab4ef;
 }
 
