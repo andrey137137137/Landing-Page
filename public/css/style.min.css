@@ -3892,7 +3892,7 @@ ul {
   .section--dark_bg,
   .testimonials.section--dark_bg,
   .statistics.section--dark_bg,
-  .socials-feedback.section--dark_bg,
+  .social-feedback.section--dark_bg,
   .clients.section--dark_bg {
     padding-top: 157px;
   }
@@ -4317,7 +4317,7 @@ ul {
     display: none;
   }
 
-  .main-menu {
+  .header-menu {
     position: static;
     left: 0;
     display: -webkit-box;
@@ -4330,64 +4330,62 @@ ul {
     color: #212121;
   }
 
-  .main-menu a {
+  .header-menu .list-link {
     margin-top: 0;
     margin-left: -1px;
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 0 20px;
   }
 
-  .main-menu a:after {
+  .header-menu .list-link:after {
     display: none;
   }
 
-  .main-menu a:hover,
-  .main-menu a.active {
+  .header-menu .list-link:hover,
+  .header-menu .list-link.active {
     border: 1px solid #212121;
     color: inherit;
     background-color: rgba(33, 33, 33, .1);
   }
 
-  .main-menu a.active {
+  .header-menu .list-link.active {
     border: 1px solid #212121;
     color: inherit;
     background-color: rgba(33, 33, 33, .1);
   }
 
-  .header .main-menu.visible {
+  .header-menu.visible {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
 
-  .header.min .main-menu {
+  .header--min .header-menu {
     line-height: 54px;
   }
 }
 
 @media only screen and (min-width: 1170px) {
+  .section-container {
+    padding: 0;
+  }
+
+  .section-title--main {
+    font-size: 46px;
+  }
+
+  .section-block {
+    width: 270px;
+  }
+
   .section--light_bg {
     padding-top: 206px;
   }
 
   .section--dark_bg,
   .statistics.section--dark_bg,
-  .socials-feedback.section--dark_bg {
+  .social-feedback.section--dark_bg {
     padding-top: 153px;
-  }
-
-  .container {
-    padding: 0;
-  }
-
-  h2,
-  .main-slider h2,
-  .statistics h2 {
-    font-size: 46px;
-  }
-
-  .block {
-    width: 270px;
   }
 
   .photo-block-wrap {

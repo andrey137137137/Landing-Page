@@ -61,7 +61,7 @@
   #{$darkBgBlock},
   .testimonials#{$darkBgBlock},
   .statistics#{$darkBgBlock},
-  .socials-feedback#{$darkBgBlock},
+  .social-feedback#{$darkBgBlock},
   .clients#{$darkBgBlock} {
     // padding: 157px 0 0;
     padding-top: $darkSectionPaddingTopTb;
@@ -572,88 +572,98 @@
 }
 
 @media only screen and (min-width: 883px) {
-  .header-menu_checker {
-    display: none;
-  }
-
-  .main-menu {
-    position: static;
-    left: 0;
-    display: flex;
-    margin: 0 -20px 0 1px;
-    width: 100%;
-    font: 14px/68px "Exo2.0 Black", sans-serif;
-    // font: 14px/70px 'Exo2.0 Black', sans-serif;
-    text-align: center;
-    color: $darkColor;
-
-    a {
-      margin-top: 0;
-      margin-left: -1px;
-      border: 1px solid rgba(0, 0, 0, 0);
-      padding: 0 20px;
-
-      &:after {
-        display: none;
-      }
-
-      &:hover,
-      &.active {
-        border: 1px solid $darkColor;
-        color: inherit;
-        background-color: rgba(33, 33, 33, 0.1);
-      }
-
-      &.active {
-        border: 1px solid $darkColor;
-        color: inherit;
-        background-color: rgba(33, 33, 33, 0.1);
-      }
-    }
-  }
-
   .header {
-    .main-menu.visible {
-      display: flex;
+    $block: &;
+
+    &-menu_checker {
+      display: none;
     }
 
-    &.min .main-menu {
+    &-menu {
+      position: static;
+      left: 0;
+      display: flex;
+      margin: 0 -20px 0 1px;
+      width: 100%;
+      font: 14px/68px "Exo2.0 Black", sans-serif;
+      // font: 14px/70px 'Exo2.0 Black', sans-serif;
+      text-align: center;
+      color: $darkColor;
+
+      .list-link {
+        margin-top: 0;
+        margin-left: -1px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        padding: 0 20px;
+
+        &:after {
+          display: none;
+        }
+
+        &:hover,
+        &.active {
+          border: 1px solid $darkColor;
+          color: inherit;
+          background-color: rgba(33, 33, 33, 0.1);
+        }
+
+        &.active {
+          border: 1px solid $darkColor;
+          color: inherit;
+          background-color: rgba(33, 33, 33, 0.1);
+        }
+      }
+
+      &.visible {
+        display: flex;
+      }
+    }
+
+    &--min &-menu {
       line-height: 54px;
     }
   }
 }
 
 @media only screen and (min-width: 1170px) {
-  .section--light_bg {
-    // padding-top: 206px;
-    padding-top: $lightSectionPaddingTopDs;
+  $darkBgBlock: ".section--dark_bg";
+
+  .section {
+    &-container {
+      padding: 0;
+    }
+
+    &-title--main {
+      font-size: 46px;
+    }
+
+    &-block {
+      // margin: 0;
+      width: 270px;
+    }
+
+    &--light_bg {
+      // padding-top: 206px;
+      padding-top: $lightSectionPaddingTopDs;
+    }
   }
 
-  .section--dark_bg,
-  .statistics.section--dark_bg,
-  .socials-feedback.section--dark_bg {
+  #{$darkBgBlock},
+  .statistics#{$darkBgBlock},
+  .social-feedback#{$darkBgBlock} {
     // padding-top: 153px;
     padding-top: $darkSectionPaddingTopDs;
   }
 
-  .container {
-    padding: 0;
-  }
+  // h2,
+  // .main-slider h2,
+  // .statistics h2 {
+  //   font-size: 46px;
 
-  h2,
-  .main-slider h2,
-  .statistics h2 {
-    font-size: 46px;
-
-    &:after {
-      // margin-top: $afterH2marginTopDs;
-    }
-  }
-
-  .block {
-    // margin: 0;
-    width: 270px;
-  }
+  //   // &:after {
+  //   //   margin-top: $afterH2marginTopDs;
+  //   // }
+  // }
 
   .photo-block-wrap {
     @include rhombusSize($rhombusSize369);
