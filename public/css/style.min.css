@@ -3943,7 +3943,7 @@ ul {
   }
 
   .main_slider {
-    padding-top: 0;
+    padding-top: 0 !important;
     height: 1070px;
   }
 
@@ -4378,6 +4378,10 @@ ul {
     width: 270px;
   }
 
+  .section-btn_to--top {
+    left: 97%;
+  }
+
   .section--light_bg {
     padding-top: 206px;
   }
@@ -4388,95 +4392,95 @@ ul {
     padding-top: 153px;
   }
 
-  .photo-block-wrap {
+  .photo_block-wrap {
     width: 261px;
     height: 261px;
   }
 
-  .photo-block-wrap:hover h3 {
+  .photo_block-wrap:hover .photo_block-title {
     top: 171px;
   }
 
-  .photo-block-wrap .rhombus_wrap {
+  .photo_block-more {
     width: 53px;
     height: 53px;
   }
 
-  .photo-block-wrap h3 {
+  .photo_block-title {
     left: 5%;
     width: 90%;
     font-size: 24px;
     line-height: 22px;
   }
 
-  .dynamic-blocks .photo-block-wrap {
+  .dynamic_blocks .photo_block-wrap {
     margin: -60px 54px 0 84px;
   }
 
-  .display-rhombuses .first-in-odd-row {
+  .display_rhombuses .col--first_in_odd_row {
     margin-left: 54px;
   }
 
-  .display-rhombuses .first-in-even-row {
+  .display_rhombuses .col--first_in_even_row {
     margin-left: 254px;
   }
 
-  .display-rhombuses .last-in-even-row {
+  .display_rhombuses .col--last_in_even_row {
     margin-right: 254px;
   }
 
-  .display-rhombuses.col2 {
+  .display_rhombuses.col_2 {
     width: 768px;
   }
 
-  .display-rhombuses.col3 {
+  .display_rhombuses.col_3 {
     width: 1167px;
   }
 
-  .display-rhombuses.col4 {
+  .display_rhombuses.col_4 {
     width: 1566px;
   }
 
-  .main-slider h2:after {
+  .main_slider-title:after {
     margin-top: 28px;
   }
 
-  .main-slider .slide-desc {
+  .main_slider-text_content {
     padding-top: 150px;
     width: 110%;
     height: 110%;
   }
 
-  .main-slide-1 .background {
+  .main_slider_item_1-background {
     background: -webkit-gradient(linear, left bottom, right top, from(rgba(9, 9, 9, .85)), to(rgba(205, 41, 41, .85))), rgba(9, 9, 9, .85) url("../img/bg/main-slider/1-d.jpg") no-repeat center top;
     background: linear-gradient(to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%), rgba(9, 9, 9, .85) url("../img/bg/main-slider/1-d.jpg") no-repeat center top;
     background-size: cover;
   }
 
-  .main-slide-3 .background {
+  .main_slider_item_3-background {
     background-image: url("../img/bg/main-slider/3-d.jpg");
   }
 
-  .main-slide-4 .background {
+  .main_slider_item_4-background {
     background: url("../img/bg/main-slider/screenshot-d.png") no-repeat center 600px, url("../img/bg/main-slider/4-d.jpg") no-repeat center top/cover;
   }
 
-  .main-slide-4 .slide-desc {
+  .main_slider_item_4-text_content {
     padding-top: 100px;
   }
 
-  .main-slider-nav {
+  .main_slider-nav {
     left: 0;
     width: 100%;
     -webkit-transform: none;
     transform: none;
   }
 
-  .main-slider-prev {
+  .main_slider-nav_prev {
     left: -12px;
   }
 
-  .main-slider-next {
+  .main_slider-nav_next {
     right: -12px;
   }
 
@@ -4498,23 +4502,23 @@ ul {
     padding: 0;
   }
 
-  .portfolio .display-rhombuses {
-    padding-top: 167px;
-  }
-
   .portfolio-menu {
     width: 100%;
+  }
+
+  .portfolio-display_rhombuses {
+    padding-top: 167px;
   }
 
   .testimonials {
     background-image: url("../img/bg/testimonials-d.jpg");
   }
 
-  .testimonials .thumbs {
-    top: 240px;
+  .testimonials-thumbs {
+    top: 235px;
   }
 
-  .testimonials .carousel-container {
+  .testimonials-carousel_container {
     height: 249px;
   }
 
@@ -4522,7 +4526,7 @@ ul {
     padding-bottom: 246px;
   }
 
-  .skills .block {
+  .skill_block {
     width: 234px;
   }
 
@@ -4532,19 +4536,19 @@ ul {
     background: linear-gradient(to top right, rgba(9, 9, 9, .1) 0%, rgba(205, 41, 41, .1) 100%), #191919 url("../img/bg/statistics-d.jpg") no-repeat center top;
   }
 
-  .blog-news {
+  .blog {
     padding-top: 206px;
   }
 
-  .blog-news-container {
+  .blog-container {
     max-width: 570px;
   }
 
-  .socials-feedback {
+  .social_feedback {
     background-image: url("../img/bg/socials-feedback-d.jpg");
   }
 
-  .socials-feedback .carousel-container {
+  .social_feedback-carousel_container {
     height: 387px;
   }
 
@@ -4552,7 +4556,7 @@ ul {
     padding-top: 207px;
   }
 
-  .team .carousel-container {
+  .team-carousel_container {
     height: 690px;
   }
 
@@ -4581,15 +4585,11 @@ ul {
     background-image: url("../img/bg/clients-d.jpg");
   }
 
-  .clients .carousel-container {
+  .clients-carousel_container {
     height: 218px;
   }
 
-  .contacts {
+  .feedback {
     background-image: url("../img/bg/map-d.jpg");
-  }
-
-  .to-top {
-    left: 97%;
   }
 }
