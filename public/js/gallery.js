@@ -212,9 +212,9 @@ var Gallery = function() {
       // "/t/" +
       // tempImageName +
       // '" media="(min-width: 320px)">
-      '<img class="img_wrap-img" src="' +
+      '<img class="img_wrap-img blog-img" src="' +
       this.rootFolder +
-      "/m/" +
+      "/d/" +
       tempImageName +
       '" alt="' +
       this.items[index].title +

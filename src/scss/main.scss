@@ -953,7 +953,7 @@
 
 // END STATISTICS SECTION
 
-// BEGIN BLOG-NEWS SECTION
+// BEGIN BLOG SECTION
 
 .blog {
   $block: &;
@@ -989,6 +989,10 @@
 
   &-img_wrap {
     height: 295px;
+  }
+
+  &-img {
+    width: 100%;
   }
 
   &-title {
@@ -1268,7 +1272,7 @@
   }
 }
 
-// END BLOG-NEWS SECTION
+// END BLOG SECTION
 
 // BEGIN SOCIAL-FEEDBACK SECTION
 

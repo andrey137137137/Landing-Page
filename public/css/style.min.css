@@ -2875,6 +2875,10 @@ ul {
   height: 295px;
 }
 
+.blog-img {
+  width: 100%;
+}
+
 .blog-title {
   margin-top: 41px;
   font: 24px/22px "Exo2.0 Black", sans-serif;
@@ -4191,7 +4195,7 @@ ul {
   }
 
   .social_feedback-thumbs {
-    top: 257px;
+    top: 252px;
   }
 
   .social_feedback-main_desc {
