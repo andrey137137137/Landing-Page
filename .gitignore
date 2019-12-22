@@ -1,3 +1,4 @@
 /node_modules
 /public/css/style.min.css
+/public/index.html
 package-lock.json

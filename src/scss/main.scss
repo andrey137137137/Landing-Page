@@ -85,7 +85,7 @@
 
   &-container {
     justify-content: space-between;
-    @include padding("* 20px");
+    @include padding("* 20px !important");
     outline: none;
     overflow: visible;
   }

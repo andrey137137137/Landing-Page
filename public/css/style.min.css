@@ -2042,65 +2042,6 @@ ul {
   display: none !important;
 }
 
-.example {
-  position: relative;
-  padding-top: 70px;
-  width: 100%;
-  height: 700px;
-  background-color: #070;
-  overflow: hidden;
-}
-
-.example-slider {
-  width: 100%;
-  height: 50%;
-  background-color: blue;
-}
-
-.example-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-}
-
-.example-item {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  margin: 10px;
-  width: 370px;
-  height: auto;
-  background-color: #050;
-}
-
-.example-nav {
-  position: relative;
-}
-
-.example-prev,
-.example-next {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  font-weight: 700;
-  font-size: 57px;
-  line-height: 100px;
-  text-align: center;
-  color: #050;
-  background-color: white;
-}
-
-.example-prev {
-  left: -32px;
-}
-
-.example-next {
-  right: -32px;
-}
-
 .features-container,
 .skills-container {
   -webkit-box-pack: center;
@@ -2128,8 +2069,8 @@ ul {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
   outline: none;
   overflow: visible;
 }
