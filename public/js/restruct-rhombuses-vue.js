@@ -154,7 +154,8 @@ var baseMixin = {
   }
 };
 
-var RhombusList = {
+var vm = new Vue({
+  el: '#portfolio-blocks',
   props: {
     selector: { type: String, required: true },
     childElem: { type: String, required: true },
@@ -305,4 +306,4 @@ var RhombusList = {
       self.resizeWindowWidth(self.run);
     });
   }
-};
+});
