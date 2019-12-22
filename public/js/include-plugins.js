@@ -18,303 +18,303 @@
       ]
     });
 
-    Slider({
-      sliderID: "main",
-      countSlides: 4,
-      navButtons: {
-        prev: true,
-        next: true
-      }
-    });
+    // Slider({
+    //   sliderID: "main",
+    //   countSlides: 4,
+    //   navButtons: {
+    //     prev: true,
+    //     next: true
+    //   }
+    // });
 
-    ScrollEffect({
-      buttonID: "main-slider-after-section",
-      finalElemID: "features"
-    });
+    // ScrollEffect({
+    //   buttonID: "main-slider-after-section",
+    //   finalElemID: "features"
+    // });
 
-    ScrollEffect({
-      buttonID: "to-portfolio",
-      finalElemID: "portfolio"
-    });
+    // ScrollEffect({
+    //   buttonID: "to-portfolio",
+    //   finalElemID: "portfolio"
+    // });
 
-    ScrollEffect({
-      buttonID: "to-skills",
-      finalElemID: "skills"
-    });
+    // ScrollEffect({
+    //   buttonID: "to-skills",
+    //   finalElemID: "skills"
+    // });
 
-    ScrollEffect({
-      buttonID: "to-team",
-      finalElemID: "team"
-    });
+    // ScrollEffect({
+    //   buttonID: "to-team",
+    //   finalElemID: "team"
+    // });
 
-    ScrollEffect({
-      buttonID: "to-contacts",
-      finalElemID: "contacts"
-    });
+    // ScrollEffect({
+    //   buttonID: "to-contacts",
+    //   finalElemID: "contacts"
+    // });
 
-    AnimateBlocks({
-      parentID: "features"
-    });
+    // AnimateBlocks({
+    //   parentID: "features"
+    // });
 
-    AnimateBlocks({
-      parentID: "about",
-      childElem: ".social-item",
-      outPosition: -3000,
-      transform: false
-    });
+    // AnimateBlocks({
+    //   parentID: "about",
+    //   childElem: ".social-item",
+    //   outPosition: -3000,
+    //   transform: false
+    // });
 
-    AnimateBlocks({
-      parentID: "skills"
-    });
+    // AnimateBlocks({
+    //   parentID: "skills"
+    // });
 
-    AnimateBlocks({
-      parentID: "skills-technologies",
-      childElem: "li"
-    });
+    // AnimateBlocks({
+    //   parentID: "skills-technologies",
+    //   childElem: "li"
+    // });
 
-    AnimateBlocks({
-      parentID: "statistics"
-    });
+    // AnimateBlocks({
+    //   parentID: "statistics"
+    // });
 
-    RestructRhombuses({
-      selector: ".about-socials",
-      childElem: "li"
-    });
+    // RestructRhombuses({
+    //   selector: ".about-socials",
+    //   childElem: "li"
+    // });
 
-    Gallery({
-      name: "portfolio",
-      lightBoxID: "lightbox",
-      categories: [
-        "graphic",
-        "logo",
-        "website design",
-        "photography",
-        "branding",
-        "illustration",
-        "video"
-      ],
-      items: [
-        {
-          category: 5,
-          description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          title: "Vinyl Record"
-        },
-        {
-          category: 2,
-          description:
-            "3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo ",
-          title: "3D Wooden Logo"
-        },
-        {
-          category: 4,
-          description:
-            "Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book ",
-          title: "Hard Cover Book"
-        },
-        {
-          category: 3,
-          description:
-            "Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 ",
-          title: "Macbook-Air600"
-        },
-        {
-          category: 2,
-          description:
-            "Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping ",
-          title: "Silver Stamping"
-        },
-        {
-          category: 6,
-          description: "",
-          title: "T-Shirt MockUp"
-        },
-        {
-          category: 1,
-          description: "",
-          title: "Fashion Glasses"
-        },
-        {
-          category: 4,
-          description: "",
-          title: "picjumbo"
-        },
-        {
-          category: 2,
-          description: "",
-          title: "Embossed Leather"
-        },
-        {
-          category: 3,
-          description: "",
-          title: "Billboard"
-        },
-        {
-          category: 7,
-          description: "",
-          title: "macbook pro"
-        },
-        {
-          category: 5,
-          description: "",
-          title: "Vintage Car"
-        },
-        {
-          category: 3,
-          description: "",
-          title: "madebyvadim"
-        }
-      ]
-    });
+    // Gallery({
+    //   name: "portfolio",
+    //   lightBoxID: "lightbox",
+    //   categories: [
+    //     "graphic",
+    //     "logo",
+    //     "website design",
+    //     "photography",
+    //     "branding",
+    //     "illustration",
+    //     "video"
+    //   ],
+    //   items: [
+    //     {
+    //       category: 5,
+    //       description:
+    //         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    //       title: "Vinyl Record"
+    //     },
+    //     {
+    //       category: 2,
+    //       description:
+    //         "3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo ",
+    //       title: "3D Wooden Logo"
+    //     },
+    //     {
+    //       category: 4,
+    //       description:
+    //         "Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book ",
+    //       title: "Hard Cover Book"
+    //     },
+    //     {
+    //       category: 3,
+    //       description:
+    //         "Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 ",
+    //       title: "Macbook-Air600"
+    //     },
+    //     {
+    //       category: 2,
+    //       description:
+    //         "Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping ",
+    //       title: "Silver Stamping"
+    //     },
+    //     {
+    //       category: 6,
+    //       description: "",
+    //       title: "T-Shirt MockUp"
+    //     },
+    //     {
+    //       category: 1,
+    //       description: "",
+    //       title: "Fashion Glasses"
+    //     },
+    //     {
+    //       category: 4,
+    //       description: "",
+    //       title: "picjumbo"
+    //     },
+    //     {
+    //       category: 2,
+    //       description: "",
+    //       title: "Embossed Leather"
+    //     },
+    //     {
+    //       category: 3,
+    //       description: "",
+    //       title: "Billboard"
+    //     },
+    //     {
+    //       category: 7,
+    //       description: "",
+    //       title: "macbook pro"
+    //     },
+    //     {
+    //       category: 5,
+    //       description: "",
+    //       title: "Vintage Car"
+    //     },
+    //     {
+    //       category: 3,
+    //       description: "",
+    //       title: "madebyvadim"
+    //     }
+    //   ]
+    // });
 
-    Gallery({
-      name: "blog-news",
-      lightBoxID: "lightbox",
-      showCategory: true,
-      showMenu: false,
-      categories: ["blog", "photo", "video"],
-      items: [
-        {
-          category: 1,
-          description: "",
-          title: "rubiko will take you to the next level"
-        },
-        { category: 2, description: "", title: "doctype hi-res" },
-        { category: 1, description: "", title: "unsplash" },
-        { category: 1, description: "", title: "unsplash-2" },
-        {
-          category: 3,
-          description: "",
-          title: "new york from a different view"
-        }
-      ]
-    });
+    // Gallery({
+    //   name: "blog-news",
+    //   lightBoxID: "lightbox",
+    //   showCategory: true,
+    //   showMenu: false,
+    //   categories: ["blog", "photo", "video"],
+    //   items: [
+    //     {
+    //       category: 1,
+    //       description: "",
+    //       title: "rubiko will take you to the next level"
+    //     },
+    //     { category: 2, description: "", title: "doctype hi-res" },
+    //     { category: 1, description: "", title: "unsplash" },
+    //     { category: 1, description: "", title: "unsplash-2" },
+    //     {
+    //       category: 3,
+    //       description: "",
+    //       title: "new york from a different view"
+    //     }
+    //   ]
+    // });
 
-    var thumbs = {
-      listClass: "list thumbs",
-      listClassPostfix: "thumbs",
-      itemClass: "list-item thumbs-item",
-      itemElem: "li",
-      linkContent: `<a class="list-link thumbs-link">
-        <div class="rhombus_wrap thumbs-rhombus"></div>
-      </a>`
-    };
+    // var thumbs = {
+    //   listClass: "list thumbs",
+    //   listClassPostfix: "thumbs",
+    //   itemClass: "list-item thumbs-item",
+    //   itemElem: "li",
+    //   linkContent: `<a class="list-link thumbs-link">
+    //     <div class="rhombus_wrap thumbs-rhombus"></div>
+    //   </a>`
+    // };
 
-    $("#testimonials .carousel-container").on("init", function(e, slick) {
-      const $items = slick.$dots.find(thumbs.itemElem);
-      $items.addClass(thumbs.itemClass);
-      // $items
-      //   .first()
-      //   .find(".main_slider__thumb_link")
-      //   .addClass("active");
-    });
+    // $("#testimonials .carousel-container").on("init", function(e, slick) {
+    //   const $items = slick.$dots.find(thumbs.itemElem);
+    //   $items.addClass(thumbs.itemClass);
+    //   // $items
+    //   //   .first()
+    //   //   .find(".main_slider__thumb_link")
+    //   //   .addClass("active");
+    // });
 
-    $("#testimonials .carousel-container").slick({
-      arrows: false,
-      dots: true,
-      dotsClass: thumbs.listClass + " testimonials-" + thumbs.listClassPostfix,
-      appendDots: $("#testimonials"),
-      customPaging(slick, i) {
-        return thumbs.linkContent;
-      }
-    });
+    // $("#testimonials .carousel-container").slick({
+    //   arrows: false,
+    //   dots: true,
+    //   dotsClass: thumbs.listClass + " testimonials-" + thumbs.listClassPostfix,
+    //   appendDots: $("#testimonials"),
+    //   customPaging(slick, i) {
+    //     return thumbs.linkContent;
+    //   }
+    // });
 
-    $("#social-feedback .carousel-container").on("init", function(e, slick) {
-      const $items = slick.$dots.find(thumbs.itemElem);
-      $items.addClass(thumbs.itemClass);
-    });
+    // $("#social-feedback .carousel-container").on("init", function(e, slick) {
+    //   const $items = slick.$dots.find(thumbs.itemElem);
+    //   $items.addClass(thumbs.itemClass);
+    // });
 
-    $("#social-feedback .carousel-container").slick({
-      arrows: false,
-      dots: true,
-      dotsClass:
-        thumbs.listClass + " social_feedback-" + thumbs.listClassPostfix,
-      appendDots: $("#social-feedback"),
-      customPaging(slick, i) {
-        return thumbs.linkContent;
-      }
-    });
+    // $("#social-feedback .carousel-container").slick({
+    //   arrows: false,
+    //   dots: true,
+    //   dotsClass:
+    //     thumbs.listClass + " social_feedback-" + thumbs.listClassPostfix,
+    //   appendDots: $("#social-feedback"),
+    //   customPaging(slick, i) {
+    //     return thumbs.linkContent;
+    //   }
+    // });
 
-    Carousel({
-      sliderID: "team",
-      countSlides: 2,
-      responsible: true,
-      navButtons: {
-        direction: {
-          notCreate: true,
-          prev: true,
-          next: true
-        }
-      }
-    });
+    // Carousel({
+    //   sliderID: "team",
+    //   countSlides: 2,
+    //   responsible: true,
+    //   navButtons: {
+    //     direction: {
+    //       notCreate: true,
+    //       prev: true,
+    //       next: true
+    //     }
+    //   }
+    // });
 
-    // $("#team .carousel-container").slick({
+    // // $("#team .carousel-container").slick({
+    // //   responsive: [
+    // //     {
+    // //       breakpoint: 1170,
+    // //       settings: "unslick"
+    // //     },
+    // //     {
+    // //       breakpoint: 768,
+    // //       settings: {
+    // //         appendArrows: $("#team .arrows")
+    // //       }
+    // //     }
+    // //   ]
+    // // });
+
+    // $("#clients .carousel-container").slick({
+    //   arrows: false,
+    //   dotsClass: "thumbs",
+    //   infinite: false,
+    //   variableWidth: true,
+
+    //   // dots: true,
+
     //   responsive: [
     //     {
     //       breakpoint: 1170,
-    //       settings: "unslick"
+    //       settings: {
+    //         variableWidth: true,
+    //         slidesToShow: 4
+    //       }
+    //     },
+    //     {
+    //       breakpoint: 910,
+    //       settings: {
+    //         dots: true,
+    //         variableWidth: false,
+    //         slidesToShow: 3
+    //       }
     //     },
     //     {
     //       breakpoint: 768,
     //       settings: {
-    //         appendArrows: $("#team .arrows")
+    //         dots: true,
+    //         variableWidth: false,
+    //         slidesToShow: 2,
+    //         slidesToScroll: 2
+    //       }
+    //     },
+    //     {
+    //       breakpoint: 460,
+    //       settings: {
+    //         dots: true,
+    //         centerMode: true,
+    //         variableWidth: false
     //       }
     //     }
     //   ]
     // });
 
-    $("#clients .carousel-container").slick({
-      arrows: false,
-      dotsClass: "thumbs",
-      infinite: false,
-      variableWidth: true,
+    // FormValidate({
+    //   formID: "contacts_form",
+    //   onlySubmitChecking: true
+    // });
 
-      // dots: true,
-
-      responsive: [
-        {
-          breakpoint: 1170,
-          settings: {
-            variableWidth: true,
-            slidesToShow: 4
-          }
-        },
-        {
-          breakpoint: 910,
-          settings: {
-            dots: true,
-            variableWidth: false,
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            dots: true,
-            variableWidth: false,
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 460,
-          settings: {
-            dots: true,
-            centerMode: true,
-            variableWidth: false
-          }
-        }
-      ]
-    });
-
-    FormValidate({
-      formID: "contacts_form",
-      onlySubmitChecking: true
-    });
-
-    ToTop({
-      buttonID: "to-top",
-      border: 300
-    });
+    // ToTop({
+    //   buttonID: "to-top",
+    //   border: 300
+    // });
   });
 })();
