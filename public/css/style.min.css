@@ -3447,7 +3447,7 @@ ul {
 }
 
 .clients-thumbs {
-  top: 90px;
+  bottom: 120px;
 }
 
 .client {
@@ -4280,7 +4280,7 @@ ul {
   }
 
   .clients-thumbs {
-    top: 81px;
+    bottom: 108px;
   }
 
   .feedback {

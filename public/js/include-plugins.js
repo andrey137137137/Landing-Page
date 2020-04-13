@@ -1,7 +1,7 @@
-(function() {
+(function () {
   "use strict";
 
-  window.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener("DOMContentLoaded", function () {
     Menu({
       menuID: "main-menu",
       buttonCheckerID: "menu-checker",
@@ -14,8 +14,8 @@
         { name: "skills", href: "skills" },
         { name: "blog", href: "blog-news" },
         { name: "team", href: "team" },
-        { name: "contact", href: "contacts" }
-      ]
+        { name: "contact", href: "contacts" },
+      ],
     });
 
     Slider({
@@ -23,62 +23,62 @@
       countSlides: 4,
       navButtons: {
         prev: true,
-        next: true
-      }
+        next: true,
+      },
     });
 
     ScrollEffect({
       buttonID: "main-slider-after-section",
-      finalElemID: "features"
+      finalElemID: "features",
     });
 
     ScrollEffect({
       buttonID: "to-portfolio",
-      finalElemID: "portfolio"
+      finalElemID: "portfolio",
     });
 
     ScrollEffect({
       buttonID: "to-skills",
-      finalElemID: "skills"
+      finalElemID: "skills",
     });
 
     ScrollEffect({
       buttonID: "to-team",
-      finalElemID: "team"
+      finalElemID: "team",
     });
 
     ScrollEffect({
       buttonID: "to-contacts",
-      finalElemID: "contacts"
+      finalElemID: "contacts",
     });
 
     AnimateBlocks({
-      parentID: "features"
+      parentID: "features",
     });
 
     AnimateBlocks({
       parentID: "about",
       childElem: ".social-item",
       outPosition: -3000,
-      transform: false
+      transform: false,
     });
 
     AnimateBlocks({
-      parentID: "skills"
+      parentID: "skills",
     });
 
     AnimateBlocks({
       parentID: "skills-technologies",
-      childElem: "li"
+      childElem: "li",
     });
 
     AnimateBlocks({
-      parentID: "statistics"
+      parentID: "statistics",
     });
 
     RestructRhombuses({
       selector: ".about-socials",
-      childElem: "li"
+      childElem: "li",
     });
 
     Gallery({
@@ -91,80 +91,80 @@
         "photography",
         "branding",
         "illustration",
-        "video"
+        "video",
       ],
       items: [
         {
           category: 5,
           description:
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          title: "Vinyl Record"
+          title: "Vinyl Record",
         },
         {
           category: 2,
           description:
             "3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo 3D Wooden Logo ",
-          title: "3D Wooden Logo"
+          title: "3D Wooden Logo",
         },
         {
           category: 4,
           description:
             "Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book Hard Cover Book ",
-          title: "Hard Cover Book"
+          title: "Hard Cover Book",
         },
         {
           category: 3,
           description:
             "Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 Macbook-Air600 ",
-          title: "Macbook-Air600"
+          title: "Macbook-Air600",
         },
         {
           category: 2,
           description:
             "Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping Silver Stamping ",
-          title: "Silver Stamping"
+          title: "Silver Stamping",
         },
         {
           category: 6,
           description: "",
-          title: "T-Shirt MockUp"
+          title: "T-Shirt MockUp",
         },
         {
           category: 1,
           description: "",
-          title: "Fashion Glasses"
+          title: "Fashion Glasses",
         },
         {
           category: 4,
           description: "",
-          title: "picjumbo"
+          title: "picjumbo",
         },
         {
           category: 2,
           description: "",
-          title: "Embossed Leather"
+          title: "Embossed Leather",
         },
         {
           category: 3,
           description: "",
-          title: "Billboard"
+          title: "Billboard",
         },
         {
           category: 7,
           description: "",
-          title: "macbook pro"
+          title: "macbook pro",
         },
         {
           category: 5,
           description: "",
-          title: "Vintage Car"
+          title: "Vintage Car",
         },
         {
           category: 3,
           description: "",
-          title: "madebyvadim"
-        }
-      ]
+          title: "madebyvadim",
+        },
+      ],
     });
 
     Gallery({
@@ -177,7 +177,7 @@
         {
           category: 1,
           description: "",
-          title: "rubiko will take you to the next level"
+          title: "rubiko will take you to the next level",
         },
         { category: 2, description: "", title: "doctype hi-res" },
         { category: 1, description: "", title: "unsplash" },
@@ -185,9 +185,9 @@
         {
           category: 3,
           description: "",
-          title: "new york from a different view"
-        }
-      ]
+          title: "new york from a different view",
+        },
+      ],
     });
 
     var thumbs = {
@@ -197,10 +197,10 @@
       itemElem: "li",
       linkContent: `<a class="list-link thumbs-link">
         <div class="rhombus_wrap thumbs-rhombus"></div>
-      </a>`
+      </a>`,
     };
 
-    $("#testimonials .carousel-container").on("init", function(e, slick) {
+    $("#testimonials .carousel-container").on("init", function (e, slick) {
       const $items = slick.$dots.find(thumbs.itemElem);
       $items.addClass(thumbs.itemClass);
       // $items
@@ -216,10 +216,10 @@
       appendDots: $("#testimonials"),
       customPaging(slick, i) {
         return thumbs.linkContent;
-      }
+      },
     });
 
-    $("#social-feedback .carousel-container").on("init", function(e, slick) {
+    $("#social-feedback .carousel-container").on("init", function (e, slick) {
       const $items = slick.$dots.find(thumbs.itemElem);
       $items.addClass(thumbs.itemClass);
     });
@@ -232,7 +232,7 @@
       appendDots: $("#social-feedback"),
       customPaging(slick, i) {
         return thumbs.linkContent;
-      }
+      },
     });
 
     Carousel({
@@ -243,9 +243,9 @@
         direction: {
           notCreate: true,
           prev: true,
-          next: true
-        }
-      }
+          next: true,
+        },
+      },
     });
 
     // $("#team .carousel-container").slick({
@@ -265,7 +265,11 @@
 
     $("#clients .carousel-container").slick({
       arrows: false,
-      dotsClass: "thumbs",
+      dotsClass: thumbs.listClass + " clients-" + thumbs.listClassPostfix,
+      appendDots: $("#clients"),
+      customPaging(slick, i) {
+        return thumbs.linkContent;
+      },
       infinite: false,
       variableWidth: true,
 
@@ -276,16 +280,16 @@
           breakpoint: 1170,
           settings: {
             variableWidth: true,
-            slidesToShow: 4
-          }
+            slidesToShow: 4,
+          },
         },
         {
           breakpoint: 910,
           settings: {
             dots: true,
             variableWidth: false,
-            slidesToShow: 3
-          }
+            slidesToShow: 3,
+          },
         },
         {
           breakpoint: 768,
@@ -293,28 +297,28 @@
             dots: true,
             variableWidth: false,
             slidesToShow: 2,
-            slidesToScroll: 2
-          }
+            slidesToScroll: 2,
+          },
         },
         {
           breakpoint: 460,
           settings: {
             dots: true,
             centerMode: true,
-            variableWidth: false
-          }
-        }
-      ]
+            variableWidth: false,
+          },
+        },
+      ],
     });
 
     FormValidate({
       formID: "contacts_form",
-      onlySubmitChecking: true
+      onlySubmitChecking: true,
     });
 
     ToTop({
       buttonID: "to-top",
-      border: 300
+      border: 300,
     });
   });
 })();
