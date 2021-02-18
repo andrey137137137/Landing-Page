@@ -200,76 +200,75 @@
       </a>`,
     };
 
-    $("#testimonials .carousel-container").on("init", function (e, slick) {
-      const $items = slick.$dots.find(thumbs.itemElem);
-      $items.addClass(thumbs.itemClass);
-      // $items
-      //   .first()
-      //   .find(".main_slider__thumb_link")
-      //   .addClass("active");
-    });
+    function setNavItems(e, $slick) {
+      const $items = $slick.$dots
+        .find(thumbs.itemElem)
+        .addClass(thumbs.itemClass);
+    }
+
+    function getDotsClass(blockClass) {
+      return (
+        thumbs.listClass + " " + blockClass + "-" + thumbs.listClassPostfix
+      );
+    }
+
+    function customPaging($slick, i) {
+      return thumbs.linkContent;
+    }
+
+    $("#testimonials .carousel-container").on("init", setNavItems);
 
     $("#testimonials .carousel-container").slick({
       arrows: false,
       dots: true,
-      dotsClass: thumbs.listClass + " testimonials-" + thumbs.listClassPostfix,
+      dotsClass: getDotsClass("testimonials"),
       appendDots: $("#testimonials"),
-      customPaging(slick, i) {
-        return thumbs.linkContent;
-      },
+      customPaging,
     });
 
-    $("#social-feedback .carousel-container").on("init", function (e, slick) {
-      const $items = slick.$dots.find(thumbs.itemElem);
-      $items.addClass(thumbs.itemClass);
-    });
+    $("#social-feedback .carousel-container").on("init", setNavItems);
 
     $("#social-feedback .carousel-container").slick({
       arrows: false,
       dots: true,
-      dotsClass:
-        thumbs.listClass + " social_feedback-" + thumbs.listClassPostfix,
+      dotsClass: getDotsClass("social_feedback"),
       appendDots: $("#social-feedback"),
-      customPaging(slick, i) {
-        return thumbs.linkContent;
-      },
+      customPaging,
     });
 
-    Carousel({
-      sliderID: "team",
-      countSlides: 2,
-      responsible: true,
-      navButtons: {
-        direction: {
-          notCreate: true,
-          prev: true,
-          next: true,
-        },
-      },
-    });
-
-    // $("#team .carousel-container").slick({
-    //   responsive: [
-    //     {
-    //       breakpoint: 1170,
-    //       settings: "unslick"
+    // Carousel({
+    //   sliderID: "team",
+    //   countSlides: 2,
+    //   responsible: true,
+    //   navButtons: {
+    //     direction: {
+    //       notCreate: true,
+    //       prev: true,
+    //       next: true,
     //     },
-    //     {
-    //       breakpoint: 768,
-    //       settings: {
-    //         appendArrows: $("#team .arrows")
-    //       }
-    //     }
-    //   ]
+    //   },
     // });
+
+    $("#team .carousel-container").slick({
+      // responsive: [
+      //   {
+      //     breakpoint: 1170,
+      //     settings: "unslick",
+      //   },
+      //   {
+      //     breakpoint: 768,
+      //     settings: {
+      //       appendArrows: $("#team .arrows"),
+      //     },
+      //   },
+      // ],
+    });
 
     $("#clients .carousel-container").slick({
       arrows: false,
-      dotsClass: thumbs.listClass + " clients-" + thumbs.listClassPostfix,
+      dotsClass: getDotsClass("clients"),
       appendDots: $("#clients"),
-      customPaging(slick, i) {
-        return thumbs.linkContent;
-      },
+      customPaging,
       infinite: false,
       variableWidth: true,
 
