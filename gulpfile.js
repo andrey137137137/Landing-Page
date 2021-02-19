@@ -43,10 +43,11 @@ for (path in pathes) {
 }
 
 function html() {
+  const { src, dest } = pathes.html;
   const locals = {};
 
   return gulp
-    .src(pathes.html.src + "/index.pug")
+    .src(src + "/index.pug")
     .pipe($gp.plumber())
     .pipe(
       $gp.pug({
@@ -54,7 +55,8 @@ function html() {
         pretty: true,
       })
     )
-    .pipe(gulp.dest(pathes.html.dest));
+    .pipe(gulp.dest(dest))
+    .pipe(browserSync.stream());
 }
 
 function css() {
@@ -82,28 +84,40 @@ function css() {
       // .pipe(minifyCSS())
       .pipe($gp.rename("style.min.css"))
       .pipe(gulp.dest(pathes.css.dest))
+      .pipe(browserSync.stream())
   );
 }
 
-function browser_sync() {
+function serve() {
+  const { dest } = pathes;
+
   browserSync.init({
-    server: pathes.dest,
+    server: dest,
     // notify: false
   });
-  browserSync.watch(pathes.dest + "/**/*.*", browserSync.reload);
+  browserSync.watch(dest + "/**/*.*", browserSync.reload);
 }
 
 function watch() {
-  gulp.watch(`${pathes.html.src}/*.pug`, gulp.series(html));
-  gulp.watch(`${pathes.css.src}/*.scss`, gulp.series(css));
+  const htmlSrc = pathes.html.src;
+  const cssSrc = pathes.css.src;
+  const pugTemplate = "*.pug";
+
+  gulp.watch(
+    [`${htmlSrc}/${pugTemplate}`, `${htmlSrc}/includes/${pugTemplate}`],
+    gulp.series(html)
+  );
+  // .on("change", browserSync.reload);
+  gulp.watch(`${cssSrc}/*.scss`, gulp.series(css));
+  // .on("change", browserSync.reload);
 }
 
 exports.html = html;
 exports.css = css;
 exports.watch = watch;
-exports.browser_sync = browser_sync;
+exports.serve = serve;
 
 gulp.task(
   "default",
-  gulp.series(gulp.parallel(html, css), gulp.parallel(watch, browser_sync))
+  gulp.series(gulp.parallel(html, css), gulp.parallel(watch, serve))
 );

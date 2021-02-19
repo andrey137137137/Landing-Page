@@ -1,0 +1,50 @@
+section#contacts.section.section--light_bg.feedback
+  .section-container.feedback-container
+
+    a.section-anchor(name="contacts")
+
+    h2.section-title.section-title--main get in touch
+    p.section-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+
+    form#contacts_form.rhombus_wrap.form.feedback-form(action="index.html")
+      .rhombus_wrap-rhombus.feedback-rhombus
+
+        .form-elem_wrap.feedback-elem_wrap.feedback-elem_wrap--first
+          input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_name" placeholder="Name")
+        
+        .form-elem_wrap.feedback-elem_wrap
+          input.form-elem.form-elem--required.feedback-elem(type="email" name="contacts_email" placeholder="Email")
+        
+        .form-elem_wrap.feedback-elem_wrap
+          input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_website" placeholder="Website")
+        
+        .form-elem_wrap.feedback-elem_wrap
+          input.form-elem.form-elem--required.feedback-elem(type="text" name="contacts_subject" placeholder="Subject")
+
+        #text-area-container.form-elem_wrap.form-elem_wrap--textarea.feedback-elem_wrap
+          textarea.form-elem.form-elem--textarea.form-elem--required.feedback-elem.feedback-elem--textarea(name="contacts_message" placeholder="Your Message")
+
+        #contacts-form-error.rhombus_wrap.feedback-error
+          .rhombus_wrap-rhombus.feedback-rhombus
+
+      #contacts-address.rhombus_wrap.feedback-address
+        .rhombus_wrap-rhombus.feedback-rhombus
+
+          h3.section-title.feedback-address_title Rubiko Digital Agency
+
+          p.feedback-address_article
+            | 111 Fifth Avenue, 34th Floor
+            br
+            | New York, United States
+
+          p#contacts-mail-and-phone.feedback-address_article.feedback-address_contacts
+            a.feedback-address_link(href="mailto:hello@rubiko.com") hello@rubiko.com
+            | 0987 6543 2100
+
+      #contacts-send-button.rhombus_wrap.rhombus_wrap--btn.form-btn.feedback-btn
+        input.rhombus_wrap-rhombus.form-btn_elem.feedback-rhombus.feedback-btn_elem(type="submit" name="contacts_submit" value="send")
+
+    #map-point.map_pointer
+      .map_pointer-oval.map_pointer-oval--small
+      .map_pointer-oval.map_pointer-oval--medium
+      .map_pointer-oval.map_pointer-oval--large

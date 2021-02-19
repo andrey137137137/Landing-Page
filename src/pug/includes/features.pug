@@ -1,0 +1,46 @@
+-
+  var features = [
+      {
+        icon: "vector",
+      title: "unique design",
+      desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
+      {
+        icon: "equalizer",
+      title: "simple backend",
+      desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
+      {
+        icon: "graph",
+      title: "seo tools",
+      desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
+      {
+        icon: "screen-smartphone",
+      title: "responsive",
+      desc: "Rubiko easily and efficiently scales your project with one code base, from phones to tablets to desktops."},
+      {
+        icon: "picture",
+      title: "retina support",
+      desc: "Rubiko will look beautiful on any device. Servehigh-resolution images to devices with retinadisplays. <span> ULTRA SHARP GRAPHICS </span>"},
+      {
+        icon: "speedometer",
+      title: "top support",
+      desc: "Rubiko has a forum for you to report issues, find answers and get latest updates before we publish them on ThemeForest."},
+      {
+        icon: "layers",
+      title: "documentation",
+      desc: "Rubiko includes Step by step customization. All packed in one nice document thatcomes with download. <span> IT'S FREE AND ALWAYS WILL BE </span>"}
+  ]
+
+section#features.section.section--light_bg.features
+  .section-container.features-container
+
+    a.section-anchor(name="features")
+
+    h2.section-title.section-title--main theme features
+    p.section-main_desc.features-main_desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+
+    each item in features
+      .section-block.features-block
+        .rhombus_wrap.features-rhombus_wrap
+          .rhombus_wrap-rhombus(class="sl_icon-" + item.icon)
+        h3.section-title.features-title= item.title
+        p.features-desc !{item.desc}

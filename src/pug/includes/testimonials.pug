@@ -1,0 +1,40 @@
+-
+  var testimonials = [
+    {
+        desc: "\"If there ever was a team to trust with your PPC management, these are the guys. My advice? Grab your spot before they change their minds.\"",
+        address: "Petar Stojakovic, Subotica"},
+
+      {
+        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining",
+        address: "Pattern background"},
+
+      {
+        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining",
+        address: "Video background"},
+
+      {
+        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only",
+        address: "Your work presentation here"},
+
+      {
+        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived  not onlyfive centuries, but also the leap into electronic typesetting, remaining",
+        address: "5"},
+
+      {
+        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not onlyfive centuries, but also the leap into electronic typesetting, remaining",
+        address: "6"}
+  ]
+
+section#testimonials.section.section--dark_bg.carousel.testimonials
+  .section-container.testimonials-container
+
+    h2.section-title.section-title--main.testimonials-title testimonials
+
+    .carousel-container.testimonials-carousel_container
+      each item in testimonials
+        div
+          p.section-main_desc.testimonials-main_desc= item.desc
+          address.section-address.testimonials-address= item.address
+
+  a#to-skills.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#skills")
+    .rhombus_wrap-rhombus
