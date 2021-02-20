@@ -190,51 +190,101 @@
       ],
     });
 
-    var thumbs = {
-      listClass: "list thumbs",
-      listClassPostfix: "thumbs",
-      itemClass: "list-item thumbs-item",
-      itemElem: "li",
-      linkContent: `<a class="list-link thumbs-link">
-        <div class="rhombus_wrap thumbs-rhombus"></div>
-      </a>`,
-    };
-
     function setNavItems(e, $slick) {
-      const $items = $slick.$dots
-        .find(thumbs.itemElem)
-        .addClass(thumbs.itemClass);
+      console.log($slick);
+      $slick.$dots.find("li").addClass("list-item thumbs-item");
     }
 
     function getDotsClass(blockClass) {
-      return (
-        thumbs.listClass + " " + blockClass + "-" + thumbs.listClassPostfix
-      );
+      return "list thumbs " + blockClass + "-thumbs";
     }
 
     function customPaging($slick, i) {
-      return thumbs.linkContent;
+      return `<a class="list-link thumbs-link">
+                <div class="rhombus_wrap thumbs-rhombus"></div>
+              </a>`;
     }
 
-    $("#testimonials .carousel-container").on("init", setNavItems);
+    function getBaseConfig(id, areDots) {
+      return {
+        arrows: false,
+        dots: areDots,
+        dotsClass: getDotsClass(id),
+        appendDots: $("#" + id),
+        customPaging,
+      };
+    }
 
-    $("#testimonials .carousel-container").slick({
-      arrows: false,
-      dots: true,
-      dotsClass: getDotsClass("testimonials"),
-      appendDots: $("#testimonials"),
-      customPaging,
-    });
+    function getDefaultValue(value, isBoolean) {
+      var defaultValue = isBoolean ? false : {};
+      return value || defaultValue;
+    }
 
-    $("#social-feedback .carousel-container").on("init", setNavItems);
+    function createCarousel(id, toSetNavItems, areDots, addConfig) {
+      var addConfig = getDefaultValue(addConfig, false);
+      var data = getBaseConfig(id, areDots);
+      var containerSelector = "#" + id + " .carousel-container";
 
-    $("#social-feedback .carousel-container").slick({
-      arrows: false,
-      dots: true,
-      dotsClass: getDotsClass("social_feedback"),
-      appendDots: $("#social-feedback"),
-      customPaging,
-    });
+      for (var key in addConfig) {
+        if (Object.hasOwnProperty.call(addConfig, key)) {
+          data[key] = addConfig[key];
+        }
+      }
+
+      if (toSetNavItems) {
+        $(containerSelector).on("init", setNavItems);
+      }
+
+      $(containerSelector).slick(data);
+    }
+
+    createCarousel("testimonials", true, true);
+    createCarousel("social_feedback", true, true);
+    createCarousel(
+      "clients",
+      false,
+      // true,
+      false,
+      {
+        infinite: false,
+        variableWidth: true,
+
+        responsive: [
+          {
+            breakpoint: 1170,
+            settings: {
+              variableWidth: true,
+              slidesToShow: 4,
+            },
+          },
+          {
+            breakpoint: 910,
+            settings: {
+              dots: true,
+              variableWidth: false,
+              slidesToShow: 3,
+            },
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              dots: true,
+              variableWidth: false,
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            },
+          },
+          {
+            breakpoint: 460,
+            settings: {
+              dots: true,
+              centerMode: true,
+              variableWidth: false,
+            },
+          },
+        ],
+      }
+    );
 
     // Carousel({
     //   sliderID: "team",
@@ -262,52 +312,6 @@
       //     },
       //   },
       // ],
-    });
-
-    $("#clients .carousel-container").slick({
-      arrows: false,
-      dotsClass: getDotsClass("clients"),
-      appendDots: $("#clients"),
-      customPaging,
-      infinite: false,
-      variableWidth: true,
-
-      // dots: true,
-
-      responsive: [
-        {
-          breakpoint: 1170,
-          settings: {
-            variableWidth: true,
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 910,
-          settings: {
-            dots: true,
-            variableWidth: false,
-            slidesToShow: 3,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            dots: true,
-            variableWidth: false,
-            slidesToShow: 2,
-            slidesToScroll: 2,
-          },
-        },
-        {
-          breakpoint: 460,
-          settings: {
-            dots: true,
-            centerMode: true,
-            variableWidth: false,
-          },
-        },
-      ],
     });
 
     FormValidate({
