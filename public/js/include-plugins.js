@@ -248,17 +248,19 @@
       {
         infinite: false,
         variableWidth: true,
+        slidesToShow: 4,
 
         responsive: [
+          // {
+          //   breakpoint: 1170,
+          //   settings: {
+          //     variableWidth: true,
+          //     slidesToShow: 4,
+          //   },
+          // },
           {
+            // breakpoint: 910,
             breakpoint: 1170,
-            settings: {
-              variableWidth: true,
-              slidesToShow: 4,
-            },
-          },
-          {
-            breakpoint: 910,
             settings: {
               dots: true,
               variableWidth: false,
@@ -286,32 +288,35 @@
       }
     );
 
-    // Carousel({
-    //   sliderID: "team",
-    //   countSlides: 2,
-    //   responsible: true,
-    //   navButtons: {
-    //     direction: {
-    //       notCreate: true,
-    //       prev: true,
-    //       next: true,
-    //     },
-    //   },
-    // });
+    Carousel({
+      sliderID: "old-team",
+      countSlides: 2,
+      responsible: true,
+      navButtons: {
+        direction: {
+          notCreate: true,
+          prev: true,
+          next: true,
+        },
+      },
+    });
 
-    $("#team .carousel-container").slick({
-      // responsive: [
-      //   {
-      //     breakpoint: 1170,
-      //     settings: "unslick",
-      //   },
-      //   {
-      //     breakpoint: 768,
-      //     settings: {
-      //       appendArrows: $("#team .arrows"),
-      //     },
-      //   },
-      // ],
+    $("#team .carousel-demo").slick({
+      responsive: [
+        {
+          breakpoint: 1170,
+          // settings: "unslick",
+          slidesToShow: 4,
+        },
+        {
+          breakpoint: 768,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          settings: {
+            appendArrows: $("#team .nav-arrows"),
+          },
+        },
+      ],
     });
 
     FormValidate({

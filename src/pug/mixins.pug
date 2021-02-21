@@ -31,3 +31,18 @@ mixin social-rhombus(classes="", count=6)
     +socials("", count)
     .rhombus_wrap.rhombus_wrap--red_bg.social-show
       .rhombus_wrap-rhombus
+
+mixin team-item(number, status, name)
+  .section-block.team_block.team_block--item_1
+    .rhombus_wrap.photo_block-wrap.team_block-photo_block_wrap
+      .photo_block-frame
+        .rhombus_wrap-rhombus.photo_block-rhombus
+          //- picture
+          //- 	source(srcset="img/team/d/" + number + ".jpg" media="(min-width: 1170px)")
+          //- 	source(srcset="img/team/t/" + number + ".jpg" media="(min-width: 768px)")
+          img.photo_block-img.team_block-img(srcset="img/team/m/" + number + ".jpg" alt=number)
+      +socials("team-socials", 5)
+
+    span.team_block-status= status
+    h3.section-title.team_block-title= name
+    p.team_block-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
