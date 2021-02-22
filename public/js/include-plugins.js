@@ -301,19 +301,30 @@
       },
     });
 
+    function navArrow(id) {
+      return (
+        `<div id="` +
+        id +
+        `" class="rhombus_wrap.nav-rhombus_wrap.nav-next">
+          <div class="rhombus_wrap-rhombus"></div>
+        </div>`
+      );
+    }
+
     $("#team .carousel-demo").slick({
+      arrows: false,
+      slidesToShow: 4,
       responsive: [
         {
           breakpoint: 1170,
-          // settings: "unslick",
-          slidesToShow: 4,
-        },
-        {
-          breakpoint: 768,
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          // breakpoint: 768,
           settings: {
-            appendArrows: $("#team .nav-arrows"),
+            arrows: true,
+            appendArrows: $("#team-navigation .nav-arrows"),
+            prevArrow: navArrow("team-carousel-prev"),
+            nextArrow: navArrow("team-carousel-next"),
+            slidesToShow: 2,
+            slidesToScroll: 2,
           },
         },
       ],
