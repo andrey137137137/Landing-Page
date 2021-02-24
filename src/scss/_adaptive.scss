@@ -884,28 +884,32 @@
     // .slide {
     //   width: 600px;
     // }
-  }
 
-  .team-nav {
-    display: none;
-  }
+    &-nav {
+      display: none;
+    }
 
-  .team-person-1 img {
-    left: -33%;
-  }
+    &-person-1 img {
+      left: -33%;
+    }
 
-  .team-person-2 img {
-    left: -27%;
-  }
+    &-person-2 img {
+      left: -27%;
+    }
 
-  .team-person-3 img {
-    // top: -2%;
-    left: -54%;
-  }
+    &-person-3 img {
+      // top: -2%;
+      left: -54%;
+    }
 
-  .team-person-4 img {
-    top: -21%;
-    left: -7%;
+    &-person-4 img {
+      top: -21%;
+      left: -7%;
+    }
+
+    &_block {
+      padding-top: 20px;
+    }
   }
 
   .clients {

@@ -4585,6 +4585,10 @@ ul {
     left: -7%;
   }
 
+  .team_block {
+    padding-top: 20px;
+  }
+
   .clients {
     background-image: url("../img/bg/clients-d.jpg");
   }

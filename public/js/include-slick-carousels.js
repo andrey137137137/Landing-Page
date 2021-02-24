@@ -106,14 +106,17 @@ $(function () {
   var $teamSlider = $("#team .carousel-demo");
 
   $teamSlider.slick({
-    slidesToShow: 4,
+    arrows: false,
+    slidesToShow: 3,
+    // variableWidth: true,
+    infinite: false,
     responsive: [
       {
         breakpoint: 1170,
-        // breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          // centerMode: true,
         },
       },
     ],
