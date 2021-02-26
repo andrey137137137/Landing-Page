@@ -1,4 +1,6 @@
 $(function () {
+  "use strict";
+
   function setNavItems(e, $slick) {
     console.log($slick);
     $slick.$dots.find("li").addClass("list-item thumbs-item");
@@ -94,7 +96,7 @@ $(function () {
           },
         },
       ],
-    }
+    },
   );
 
   function setNavArrow(slider, id, isNext) {
