@@ -40,8 +40,10 @@ section#main-slider.section.section--dark_bg.slider-container.main_slider
               | presentation here
             p.section-main_desc.main_slider-desc.main_slider_item_4-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only
 
-        .img_wrap.main_slider-img_wrap.main_slider_item_4-img_wrap
-          img.img_wrap-img(src="img/bg/main-slider/hand.png" alt="hand with iphone")
+        //- .img_wrap.main_slider-img_wrap.main_slider_item_4-img_wrap
+        //-   img.img_wrap-img(src="img/bg/main-slider/hand.png" alt="hand with iphone")
+
+        +picture("img/bg/main-slider", "hand.png", "hand with iphone", ["img_wrap", "main_slider-img_wrap", "main_slider_item_4-img_wrap"], ["img_wrap-img"])
 
   #main-slider-navigation.nav.main_slider-nav
     a#main-slider-more.rhombus_wrap.rhombus_wrap--more.nav-rhombus_wrap.main_slider-nav_more(href="#")

@@ -1,4 +1,4 @@
-var Gallery = function() {
+var Gallery = function () {
   "use strict";
 
   function Construct(params) {
@@ -15,7 +15,7 @@ var Gallery = function() {
 
   Construct.prototype.pluginName = "Gallery";
 
-  Construct.prototype.init = function(params) {
+  Construct.prototype.init = function (params) {
     var self = this;
 
     params = this.extend(
@@ -27,7 +27,7 @@ var Gallery = function() {
         showCategory: false,
         lightBoxID: false,
         showMenu: true,
-        childClass: "photo_block-wrap"
+        childClass: "photo_block-wrap",
       },
       params
     );
@@ -75,7 +75,7 @@ var Gallery = function() {
       selector: "#" + this.name + "-blocks.display_rhombuses",
       childElem: "." + this.childClass,
       wait: true,
-      maxCols: 4
+      maxCols: 4,
     });
 
     if (this.showMenu) {
@@ -83,7 +83,7 @@ var Gallery = function() {
     }
 
     if (this.lightBox) {
-      self.lightBox.addEventListener("click", function(event) {
+      self.lightBox.addEventListener("click", function (event) {
         var elem = event.target;
         var tagName = elem.tagName.toLowerCase();
 
@@ -117,7 +117,7 @@ var Gallery = function() {
 
       document
         .getElementById(this.name + "-blocks")
-        .addEventListener("click", function(event) {
+        .addEventListener("click", function (event) {
           event.preventDefault();
 
           var elem = event.target;
@@ -152,16 +152,16 @@ var Gallery = function() {
     this.eventFuncs = [
       {
         e: "resize",
-        f: function() {
+        f: function () {
           self.showItems();
-        }
+        },
       },
       {
         e: "scroll",
-        f: function() {
+        f: function () {
           self.showItems();
-        }
-      }
+        },
+      },
     ];
 
     for (var i = 0; i < this.eventFuncs.length; i++) {
@@ -179,9 +179,10 @@ var Gallery = function() {
     this.showItems();
   };
 
-  Construct.prototype.changeSlide = function(direction) {
+  Construct.prototype.changeSlide = function (direction) {
     var index = +this.lightBox.getAttribute("data-index");
     var imgContainer = this.lightBox.querySelector(".img_wrap");
+    var dataSrcName = "data-src";
     var tempInnerHTML;
     var tempImageName;
 
@@ -203,23 +204,30 @@ var Gallery = function() {
     // imgContainer.alt = this.items[index].title + ' ' + (index + 1);
 
     imgContainer.innerHTML =
-      // '<picture><source srcset="' +
-      // this.rootFolder +
-      // "/d/" +
-      // tempImageName +
-      // '" media="(min-width: 768px)"><source srcset="' +
-      // this.rootFolder +
-      // "/t/" +
-      // tempImageName +
-      // '" media="(min-width: 320px)">
-      '<img class="img_wrap-img blog-img" src="' +
+      '<picture class="lazy">' +
+      "<source " +
+      dataSrcName +
+      '="' +
+      this.rootFolder +
+      "/d/" +
+      tempImageName +
+      '" srcset="" media="(min-width: 768px)"><source ' +
+      dataSrcName +
+      '="' +
+      this.rootFolder +
+      "/t/" +
+      tempImageName +
+      '" srcset="" media="(min-width: 320px)">' +
+      '<img class="img_wrap-img blog-img" ' +
+      dataSrcName +
+      '="' +
       this.rootFolder +
       "/d/" +
       tempImageName +
       '" alt="' +
       this.items[index].title +
-      '">';
-    // </picture>';
+      '" src="">' +
+      "</picture>";
 
     if (this.items[index].description) {
       tempInnerHTML = this.items[index].description;
@@ -230,7 +238,7 @@ var Gallery = function() {
     this.lightBox.querySelector("p").innerHTML = tempInnerHTML;
   };
 
-  Construct.prototype.getSlideIndex = function(index) {
+  Construct.prototype.getSlideIndex = function (index) {
     if (index >= 0) {
       return index % this.items.length;
     }
@@ -238,7 +246,7 @@ var Gallery = function() {
     return index + this.items.length;
   };
 
-  Construct.prototype.showItems = function() {
+  Construct.prototype.showItems = function () {
     var self = this;
 
     // if (!this.startedAnimation && this.getScrollY() >= this.getElemCenterTop(this.name))
@@ -254,7 +262,7 @@ var Gallery = function() {
     }
   };
 
-  Construct.prototype.getItems = function(catIndex) {
+  Construct.prototype.getItems = function (catIndex) {
     catIndex = catIndex || 0;
 
     var self = this;
@@ -342,13 +350,13 @@ var Gallery = function() {
         this.intervalID = 0;
       }
 
-      this.intervalID = setInterval(function() {
+      this.intervalID = setInterval(function () {
         self.randomShowing();
       }, 170);
     }
   };
 
-  Construct.prototype.createMenu = function() {
+  Construct.prototype.createMenu = function () {
     var self = this;
 
     var container = document.createElement("div");
@@ -376,7 +384,7 @@ var Gallery = function() {
 
     menu.innerHTML = tempInnerHTML;
 
-    menu.addEventListener("click", function(event) {
+    menu.addEventListener("click", function (event) {
       var elem = event.target;
       var index;
       var display;
@@ -408,12 +416,12 @@ var Gallery = function() {
       .insertBefore(container, document.getElementById(this.name + "-blocks"));
   };
 
-  Construct.prototype.createHelpArray = function() {
+  Construct.prototype.createHelpArray = function () {
     // this.shownItems = new Array(this.itemsCount);
     this.shownItems = this.fillArray(new Array(this.itemsCount), 0);
   };
 
-  Construct.prototype.randomShowing = function() {
+  Construct.prototype.randomShowing = function () {
     var elem;
     var index;
 

@@ -9,6 +9,18 @@ mixin logo(id="", isMain=false, titleH=false)
     else
       span.logo-title rubiko
 
+mixin picture(path, name, alt, wrapClasses=[], imgClasses=[], from=0)
+  -
+    var breakpoints = [
+      { path: 'd', value: 1170 },
+      { path: 't', value: 768 },
+    ]
+
+  picture.lazy(class=wrapClasses)
+    - for (var i = from; i < 2; i++)
+      source(data-src=path + "/" + breakpoints[i].path + "/" + name media="(min-width: " + breakpoints[i].value + "px)" srcset="")
+    img(class=imgClasses data-src=path + "/m/" + name src="" alt=alt)
+
 mixin socials(classes="", count=6, from=0, id="")
   -
     var items = [
@@ -33,14 +45,15 @@ mixin social-rhombus(classes="", count=6)
       .rhombus_wrap-rhombus
 
 mixin team-item(number, status, name)
-  .section-block.team_block.team_block--item_1
+  .section-block.team_block(class="team_block--item_" + number)
     .rhombus_wrap.photo_block-wrap.team_block-photo_block_wrap
       .photo_block-frame
         .rhombus_wrap-rhombus.photo_block-rhombus
           //- picture
           //- 	source(srcset="img/team/d/" + number + ".jpg" media="(min-width: 1170px)")
           //- 	source(srcset="img/team/t/" + number + ".jpg" media="(min-width: 768px)")
-          img.photo_block-img.team_block-img(srcset="img/team/m/" + number + ".jpg" alt=number)
+          //-   img.photo_block-img.team_block-img(srcset="img/team/m/" + number + ".jpg" alt=number)
+          +picture("img/team", number + ".jpg", number, [], ["photo_block-img", "team_block-img"])
       +socials("team-socials", 5)
 
     span.team_block-status= status

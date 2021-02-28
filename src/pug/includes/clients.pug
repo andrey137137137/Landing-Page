@@ -9,9 +9,10 @@ section#clients.section.section--dark_bg.carousel.clients
     .carousel-container.clients-carousel_container
       each item, index in clients
         a.section-block.carousel-slide.client(href="#")
-          picture
-            source(srcset="img/clients/t/" + (index + 1) + ".png" media="(min-width: 768px)")
-            img.client-img(srcset="img/clients/m/" + (index + 1) + ".png" alt=item)
+          //- picture
+          //-   source(srcset="img/clients/t/" + (index + 1) + ".png" media="(min-width: 768px)")
+          //-   img.client-img(srcset="img/clients/m/" + (index + 1) + ".png" alt=item)
+          +picture("img/clients", (index + 1) + ".png", item, [], ["client-img"], 1)
 
   a#to-contacts.section-btn_to.section-btn_to--bottom.rhombus_wrap.rhombus_wrap--arrow(href="#contacts")
     .rhombus_wrap-rhombus
