@@ -1,19 +1,12 @@
 $(function () {
   "use strict";
 
-  var isVisible = false;
   var lazyloadThrottleTimeout = 0;
   var srcsetName = "srcset";
   var $images = $(".lazy").children();
-
-  function setSrc($image) {
-    console.log($image);
-    var srcAttr = $image.hasAttribute(srcsetName) ? srcsetName : "src";
-
-    $image[srcAttr] = $image.dataset.src;
-    $image.removeAttribute("data-src");
-    isVisible = true;
-  }
+  var hiddenCount = $images.length;
+  var shownCount = 0;
+  var srcAttr;
 
   function lazyload() {
     if (lazyloadThrottleTimeout) {
@@ -21,15 +14,20 @@ $(function () {
     }
 
     lazyloadThrottleTimeout = setTimeout(function () {
-      const scrollTop = window.pageYOffset;
+      $images.each(function (index, $image) {
+        if ($image.offsetTop < window.innerHeight + window.pageYOffset) {
+          srcAttr = $image.hasAttribute(srcsetName) ? srcsetName : "src";
 
-      // if ($images.offsetTop < window.innerHeight + scrollTop) {
-      $images.each(function () {
-        setSrc(this);
+          $image[srcAttr] = $image.dataset.src;
+          $image.removeAttribute("data-src");
+          shownCount++;
+        }
       });
-      // }
 
-      if (isVisible) {
+      console.log(hiddenCount);
+      console.log(shownCount);
+
+      if (shownCount >= hiddenCount) {
         document.removeEventListener("scroll", lazyload);
         window.removeEventListener("resize", lazyload);
         window.removeEventListener("orientationChange", lazyload);
@@ -37,22 +35,8 @@ $(function () {
     }, 20);
   }
 
-  if ("IntersectionObserver" in window) {
-    var imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          var $image = entry.target;
-          setSrc($image);
-          imageObserver.unobserve($image);
-        }
-      });
-    });
-    $images.each(function () {
-      imageObserver.observe(this);
-    });
-  } else {
-    document.addEventListener("scroll", lazyload);
-    window.addEventListener("resize", lazyload);
-    window.addEventListener("orientationChange", lazyload);
-  }
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+  lazyload();
 });

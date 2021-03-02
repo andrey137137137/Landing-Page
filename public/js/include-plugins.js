@@ -205,7 +205,7 @@
 
     FormValidate({
       formID: "contacts_form",
-      onlySubmitChecking: true,
+      // onlySubmitChecking: true,
     });
 
     ToTop({
