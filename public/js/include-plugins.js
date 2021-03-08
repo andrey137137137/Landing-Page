@@ -190,19 +190,6 @@
       ],
     });
 
-    Carousel({
-      sliderID: "old-team",
-      countSlides: 2,
-      responsible: true,
-      navButtons: {
-        direction: {
-          notCreate: true,
-          prev: true,
-          next: true,
-        },
-      },
-    });
-
     FormValidate({
       formID: "contacts_form",
       // onlySubmitChecking: true,

@@ -889,26 +889,30 @@
       display: none;
     }
 
-    &-person-1 img {
-      left: -33%;
-    }
-
-    &-person-2 img {
-      left: -27%;
-    }
-
-    &-person-3 img {
-      // top: -2%;
-      left: -54%;
-    }
-
-    &-person-4 img {
-      top: -21%;
-      left: -7%;
-    }
-
     &_block {
       padding-top: 20px;
+
+      &-img {
+        height: 100%;
+      }
+
+      &--item_1 &-img {
+        left: -12%;
+      }
+
+      &--item_2 &-img {
+        left: -16%;
+      }
+
+      &--item_3 &-img {
+        // top: -2%;
+        left: -26%;
+      }
+
+      &--item_4 &-img {
+        top: 0%;
+        left: 15%;
+      }
     }
   }
 

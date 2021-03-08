@@ -4568,25 +4568,29 @@ ul {
     display: none;
   }
 
-  .team-person-1 img {
-    left: -33%;
-  }
-
-  .team-person-2 img {
-    left: -27%;
-  }
-
-  .team-person-3 img {
-    left: -54%;
-  }
-
-  .team-person-4 img {
-    top: -21%;
-    left: -7%;
-  }
-
   .team_block {
     padding-top: 20px;
+  }
+
+  .team_block-img {
+    height: 100%;
+  }
+
+  .team_block--item_1 .team_block-img {
+    left: -12%;
+  }
+
+  .team_block--item_2 .team_block-img {
+    left: -16%;
+  }
+
+  .team_block--item_3 .team_block-img {
+    left: -26%;
+  }
+
+  .team_block--item_4 .team_block-img {
+    top: 0%;
+    left: 15%;
   }
 
   .clients {
