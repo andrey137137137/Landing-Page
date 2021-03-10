@@ -116,6 +116,20 @@ var Gallery = function () {
         }
       });
 
+      var sliderTempInnerHTML = "";
+
+      self.items.map(function (item, index) {
+        var tempImageName = index + 1 + ".jpg";
+
+        sliderTempInnerHTML +=
+          '<li><div class="img_wrap portfolio_lightbox-img_wrap">' +
+          self.getPicture(tempImageName, "img_wrap-img blog-img", index) +
+          '</div><div class="lightbox-desc_container portfolio_lightbox-desc_container"><p>' +
+          item.category +
+          "</p></div></li>";
+      });
+      document.getElementById(this.name + "-slider-demonstration").innerHTML = sliderTempInnerHTML;
+
       document.getElementById(this.name + "-blocks").addEventListener("click", function (event) {
         event.preventDefault();
 
@@ -158,19 +172,17 @@ var Gallery = function () {
           self.showItems();
         },
       },
+      {
+        e: "orientationChange",
+        f: function () {
+          self.showItems();
+        },
+      },
     ];
 
     for (var i = 0; i < this.eventFuncs.length; i++) {
       window.addEventListener(this.eventFuncs[i].e, this.eventFuncs[i].f);
     }
-
-    // window.addEventListener('scroll', function(){
-    // 	self.showItems();
-    // });
-
-    // window.addEventListener('resize', function(){
-    // 	self.showItems();
-    // });
 
     this.showItems();
   };
@@ -262,18 +274,15 @@ var Gallery = function () {
 
     // if (!this.startedAnimation && this.getScrollY() >= this.getElemCenterTop(this.name))
     if (!this.startedAnimation && self.isVisibleElem(self.name)) {
-      this.getItems();
+      this.restructItems();
 
       for (var i = 0, len = this.eventFuncs.length; i < len; i++) {
         window.removeEventListener(this.eventFuncs[i].e, this.eventFuncs[i].f);
       }
-
-      // window.removeEventListener('scroll', this.showItems);
-      // window.removeEventListener('resize', this.showItems);
     }
   };
 
-  Construct.prototype.getItems = function (catIndex) {
+  Construct.prototype.restructItems = function (catIndex) {
     catIndex = catIndex || 0;
 
     var self = this;
@@ -384,8 +393,8 @@ var Gallery = function () {
 
     menu.addEventListener("click", function (event) {
       var elem = event.target;
-      var index;
-      var display;
+      // var index;
+      // var display;
 
       if (elem.tagName != "A") {
         return;
@@ -394,7 +403,7 @@ var Gallery = function () {
       event.preventDefault();
 
       if (elem.hasAttribute("data-index")) {
-        self.getItems(+elem.getAttribute("data-index"));
+        self.restructItems(+elem.getAttribute("data-index"));
       }
       // else if (elem.hasAttribute('data-display'))
       // {

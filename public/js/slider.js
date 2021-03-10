@@ -1,4 +1,4 @@
-var Slider = function() {
+var Slider = function () {
   "use strict";
 
   function Construct(params) {
@@ -19,9 +19,9 @@ var Slider = function() {
         slidePrefix: false,
         animationSpeed: 75,
         animationDelay: 5000,
-        autoplayTimeout: 1500
+        autoplayTimeout: 1500,
       },
-      params[0]
+      params[0],
     );
 
     if (!params.sliderID || !params.navButtons || !params.countSlides) {
@@ -77,12 +77,12 @@ var Slider = function() {
     var objectParams;
 
     var transitionMethods = {
-      opacity: function() {
+      opacity: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
-            opacity: { value: 0, step: 0.1 }
+            opacity: { value: 0, step: 0.1 },
           });
         }
 
@@ -93,12 +93,12 @@ var Slider = function() {
         }
       },
 
-      fromTop: function() {
+      fromTop: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
-            bottom: { value: 100, step: 7, measure: "%" }
+            bottom: { value: 100, step: 7, measure: "%" },
           });
         }
 
@@ -108,12 +108,12 @@ var Slider = function() {
         }
       },
 
-      fromLeft: function() {
+      fromLeft: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
-            left: { value: -100, step: 7, measure: "%" }
+            left: { value: -100, step: 7, measure: "%" },
           });
         }
 
@@ -123,12 +123,12 @@ var Slider = function() {
         }
       },
 
-      fromRight: function() {
+      fromRight: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
-            left: { value: 100, step: 7, measure: "%" }
+            left: { value: 100, step: 7, measure: "%" },
           });
         }
 
@@ -138,12 +138,12 @@ var Slider = function() {
         }
       },
 
-      fromBottom: function() {
+      fromBottom: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
-            top: { value: 100, step: 7, measure: "%" }
+            top: { value: 100, step: 7, measure: "%" },
           });
         }
 
@@ -153,13 +153,13 @@ var Slider = function() {
         }
       },
 
-      fromBottomLeft: function() {
+      fromBottomLeft: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
             left: { value: -100, step: 7, measure: "%" },
-            bottom: { value: -100, step: 7, measure: "%" }
+            bottom: { value: -100, step: 7, measure: "%" },
           });
         }
 
@@ -167,19 +167,17 @@ var Slider = function() {
           timingMethod("left");
           timingMethod("bottom");
 
-          changeStyles(
-            changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0
-          );
+          changeStyles(changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0);
         }
       },
 
-      fromBottomRight: function() {
+      fromBottomRight: function () {
         if (!definedChangingStyles) {
           changeClasses();
 
           setChangingStyles({
             right: { value: -100, step: 7, measure: "%" },
-            bottom: { value: -100, step: 7, measure: "%" }
+            bottom: { value: -100, step: 7, measure: "%" },
           });
         }
 
@@ -187,19 +185,17 @@ var Slider = function() {
           timingMethod("right");
           timingMethod("bottom");
 
-          changeStyles(
-            changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0
-          );
+          changeStyles(changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0);
         }
-      }
+      },
     };
 
     var timingMethods = {
-      linear: function() {
+      linear: function () {
         changeStyleValue();
       },
 
-      ease: function() {
+      ease: function () {
         if (
           (changingStyles[timingStyle].value > 30 && timingDirection < 0) ||
           (changingStyles[timingStyle].value < -30 && timingDirection > 0)
@@ -220,12 +216,11 @@ var Slider = function() {
         changeStyleValue();
       },
 
-      quad: function() {
+      quad: function () {
         changingStyles[timingStyle].step =
-          Math.pow(changingStyles[timingStyle].step, 2) +
-          changingStyles[timingStyle].step;
+          Math.pow(changingStyles[timingStyle].step, 2) + changingStyles[timingStyle].step;
         changeStyleValue();
-      }
+      },
     };
 
     for (var prop in navButtons) {
@@ -246,7 +241,7 @@ var Slider = function() {
 
     objectParams = null;
 
-    document.body.addEventListener("keydown", function(event) {
+    document.body.addEventListener("keydown", function (event) {
       switch (event.keyCode) {
         case 37:
           event.preventDefault();
@@ -268,44 +263,34 @@ var Slider = function() {
     });
 
     if (navButtons.prev) {
-      document
-        .getElementById(navButtons.prev)
-        .addEventListener("click", function(event) {
-          event.preventDefault();
-          changeSlide(-1);
-        });
+      document.getElementById(navButtons.prev).addEventListener("click", function (event) {
+        event.preventDefault();
+        changeSlide(-1);
+      });
     }
 
     if (navButtons.next) {
-      document
-        .getElementById(navButtons.next)
-        .addEventListener("click", function(event) {
-          event.preventDefault();
-          changeSlide();
-        });
+      document.getElementById(navButtons.next).addEventListener("click", function (event) {
+        event.preventDefault();
+        changeSlide();
+      });
     }
 
     if (navButtons.play) {
-      document
-        .getElementById(navButtons.play)
-        .addEventListener("click", function(event) {
-          event.preventDefault();
-          autoplay(true);
-        });
+      document.getElementById(navButtons.play).addEventListener("click", function (event) {
+        event.preventDefault();
+        autoplay(true);
+      });
     }
 
     if (navButtons.stop) {
-      document
-        .getElementById(navButtons.stop)
-        .addEventListener("click", function(event) {
-          event.preventDefault();
-          autoplay();
-        });
+      document.getElementById(navButtons.stop).addEventListener("click", function (event) {
+        event.preventDefault();
+        autoplay();
+      });
     }
 
-    document
-      .getElementById(getSlideID(curIndex))
-      .classList.add("slider-item--active");
+    document.getElementById(getSlideID(curIndex)).classList.add("slider-item--active");
 
     window.addEventListener("resize", isVisibleSlider);
     window.addEventListener("scroll", isVisibleSlider);
@@ -346,8 +331,8 @@ var Slider = function() {
         // autoplayID = 1;
         // changeSlide(1, true);
 
-        autoplayID = setTimeout(function() {
-          requestAnimationFrame(function() {
+        autoplayID = setTimeout(function () {
+          requestAnimationFrame(function () {
             changeSlide(1, true);
           });
         }, animationDelay);
@@ -480,8 +465,8 @@ var Slider = function() {
 
         if (sliderVisible) {
           if (autoplayID) {
-            autoplayID = setTimeout(function() {
-              requestAnimationFrame(function() {
+            autoplayID = setTimeout(function () {
+              requestAnimationFrame(function () {
                 changeSlide(1, true);
               });
             }, animationDelay);
@@ -515,8 +500,7 @@ var Slider = function() {
 
       for (var prop in changingStyles) {
         changingStyles[prop].measure = changingStyles[prop].measure || "";
-        activeSlide.style[prop] =
-          changingStyles[prop].value + changingStyles[prop].measure;
+        activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
       }
 
       definedChangingStyles = true;
@@ -542,12 +526,11 @@ var Slider = function() {
       } else {
         for (var prop in changingStyles) {
           changingStyles[prop].measure = changingStyles[prop].measure || "";
-          activeSlide.style[prop] =
-            changingStyles[prop].value + changingStyles[prop].measure;
+          activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
         }
 
         // setTimeout(transitionMethods[selectedTransitionMethod], animationSpeed);
-        setTimeout(function() {
+        setTimeout(function () {
           requestAnimationFrame(transitionMethods[selectedTransitionMethod]);
         }, animationSpeed);
       }
@@ -558,9 +541,8 @@ var Slider = function() {
         // var thumbs = document.querySelectorAll('#testimonials-thumbs a');
         var thumbs = document.querySelectorAll("#" + navButtons.thumbs + " a");
 
-        prevIndex = document.querySelector(
-          "#" + navButtons.thumbs + " .slider-item--active"
-        ).dataset.number;
+        prevIndex = document.querySelector("#" + navButtons.thumbs + " .slider-item--active")
+          .dataset.number;
 
         for (var i = 0; i < thumbs.length; i++) {
           thumbs[i].classList.remove("slider-item--active");
