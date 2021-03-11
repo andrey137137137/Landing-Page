@@ -58,6 +58,7 @@ var Gallery = function () {
     this.startedAnimation = false;
     this.shownItems;
     this.dataSrcName = "data-src";
+    this.$slider;
 
     // elemWidth;
     // marginLeft;
@@ -84,13 +85,39 @@ var Gallery = function () {
     }
 
     if (this.lightBox) {
+      var sliderID = self.name + "-slider-demonstration";
+      var closeID = self.name + "-slider-close";
+      var prevID = self.name + "-slider-prev";
+      var nextID = self.name + "-slider-next";
+      var sliderTempInnerHTML = "";
+
+      self.items.map(function (item, index) {
+        var tempImageName = index + 1 + ".jpg";
+
+        sliderTempInnerHTML +=
+          '<li><div class="img_wrap portfolio_lightbox-img_wrap">' +
+          self.getPicture(tempImageName, "img_wrap-img blog-img", index) +
+          '</div><div class="lightbox-desc_container portfolio_lightbox-desc_container"><p>' +
+          item.category +
+          "</p></div></li>";
+      });
+      document.getElementById(sliderID).innerHTML = sliderTempInnerHTML;
+
+      self.$slider = $("#" + sliderID);
+      self.$slider.slick({
+        arrows: false,
+        dots: false,
+      });
+      $("#" + prevID).on("click", function () {
+        $(self.$slider).slick("slickPrev");
+      });
+      $("#" + nextID).on("click", function () {
+        $(self.$slider).slick("slickNext");
+      });
+
       self.lightBox.addEventListener("click", function (event) {
         var elem = event.target;
         var tagName = elem.tagName.toLowerCase();
-
-        var closeID = self.name + "-slider-close";
-        var prevID = self.name + "-slider-prev";
-        var nextID = self.name + "-slider-next";
 
         if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
           return;
@@ -109,26 +136,13 @@ var Gallery = function () {
 
         if (elem.id === closeID) {
           self.lightBox.classList.add("lightbox--hidden");
-        } else if (elem.id === prevID) {
-          self.changeSlide(-1);
-        } else if (elem.id === nextID) {
-          self.changeSlide(1);
         }
+        // else if (elem.id === prevID) {
+        //   self.changeSlide(-1);
+        // } else if (elem.id === nextID) {
+        //   self.changeSlide(1);
+        // }
       });
-
-      var sliderTempInnerHTML = "";
-
-      self.items.map(function (item, index) {
-        var tempImageName = index + 1 + ".jpg";
-
-        sliderTempInnerHTML +=
-          '<li><div class="img_wrap portfolio_lightbox-img_wrap">' +
-          self.getPicture(tempImageName, "img_wrap-img blog-img", index) +
-          '</div><div class="lightbox-desc_container portfolio_lightbox-desc_container"><p>' +
-          item.category +
-          "</p></div></li>";
-      });
-      document.getElementById(this.name + "-slider-demonstration").innerHTML = sliderTempInnerHTML;
 
       document.getElementById(this.name + "-blocks").addEventListener("click", function (event) {
         event.preventDefault();
@@ -150,11 +164,10 @@ var Gallery = function () {
         index = +elem.getAttribute("data-index");
         // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + self.name + '/' + (index + 1) + '.jpg';
 
-        // console.log(self.lightBox);
-        self.lightBox.setAttribute("data-index", index);
+        // self.lightBox.setAttribute("data-index", index);
+        $(self.$slider).slick("slickGoTo", index, true);
         self.lightBox.classList.remove("lightbox--hidden");
-        self.changeSlide(0);
-
+        // self.changeSlide(0);
         // }
       });
     }
