@@ -169,7 +169,7 @@
 
     Gallery({
       name: "blog-news",
-      lightBoxID: "lightbox",
+      // lightBoxID: "lightbox",
       showCategory: true,
       showMenu: false,
       categories: ["blog", "photo", "video"],
