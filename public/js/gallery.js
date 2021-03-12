@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params
+      params,
     );
 
     if (!params.name || !params.items) {
@@ -39,9 +39,13 @@ var Gallery = function () {
 
     this.name = params.name;
     this.rootFolder = params.rootFolder + this.name;
-    this.items = params.items;
+    // this.items = params.items;
     this.childClass = params.childClass;
-    this.categories = ["all"].concat(params.categories);
+    this.categories = ["all"].concat(
+      params.categories.map(function (category) {
+        return category.title;
+      }),
+    );
     this.showCategory = params.showCategory;
     this.showMenu = params.showMenu;
 
@@ -93,25 +97,12 @@ var Gallery = function () {
       var nextID = self.name + "-slider-next";
       var sliderTempInnerHTML = "";
 
-      console.log(self.items);
-      self.items.map(function (item, index) {
-        // if (index == 0) {
-        var tempImageName = index + 1 + ".jpg";
+      console.log(self.categories);
 
-        sliderTempInnerHTML +=
-          '<div class="' +
-          self.slideCategoryPrefix +
-          item.category +
-          '"><div class="img_wrap ' +
-          self.name +
-          '_lightbox-img_wrap">' +
-          self.getPicture(tempImageName, "img_wrap-img blog-img", index) +
-          '</div><div class="lightbox-desc_container ' +
-          self.name +
-          '_lightbox-desc_container"><p>' +
-          item.description +
-          "</p></div></div>";
-        // }
+      self.categories.forEach(function (category, catIndex) {
+        category.items.map(function (item, itemIndex) {
+          sliderTempInnerHTML += self.slideTemplate(catIndex, item, itemIndex);
+        });
       });
       document.getElementById(sliderID).innerHTML = sliderTempInnerHTML;
 
@@ -159,38 +150,33 @@ var Gallery = function () {
         // }
       });
 
-      document
-        .getElementById(this.name + "-blocks")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
+      document.getElementById(this.name + "-blocks").addEventListener("click", function (event) {
+        event.preventDefault();
 
-          var elem = event.target;
-          var tagName = elem.tagName.toLowerCase();
-          var index;
+        var elem = event.target;
+        var tagName = elem.tagName.toLowerCase();
+        var index;
 
-          if (
-            tagName !== "a" &&
-            elem.parentNode.tagName.toLowerCase() !== "a"
-          ) {
-            return;
-          }
+        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
+          return;
+        }
 
-          // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-          // {
-          if (tagName != "a") {
-            elem = elem.parentNode;
-          }
+        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
+        // {
+        if (tagName != "a") {
+          elem = elem.parentNode;
+        }
 
-          index = +elem.getAttribute("data-index");
-          // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + self.name + '/' + (index + 1) + '.jpg';
+        index = +elem.getAttribute("data-index");
+        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + self.name + '/' + (index + 1) + '.jpg';
 
-          // self.lightBox.setAttribute("data-index", index);
-          // $(self.$slider).slick("slickGoTo", index);
-          $(self.$slider).slick("slickGoTo", 0);
-          self.lightBox.classList.remove("lightbox--hidden");
-          // self.changeSlide(0);
-          // }
-        });
+        // self.lightBox.setAttribute("data-index", index);
+        // $(self.$slider).slick("slickGoTo", index);
+        $(self.$slider).slick("slickGoTo", 0);
+        self.lightBox.classList.remove("lightbox--hidden");
+        // self.changeSlide(0);
+        // }
+      });
     }
 
     this.eventFuncs = [
@@ -219,6 +205,41 @@ var Gallery = function () {
     }
 
     this.showItems();
+  };
+
+  Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
+    return (
+      '<div class="' +
+      this.slideCategoryPrefix +
+      catIndex +
+      '"><div class="img_wrap ' +
+      this.name +
+      '_lightbox-img_wrap">' +
+      this.getPicture(itemIndex + 1 + ".jpg", "img_wrap-img blog-img", itemIndex) +
+      '</div><div class="lightbox-desc_container ' +
+      this.name +
+      '_lightbox-desc_container"><p>' +
+      item.description +
+      "</p></div></div>"
+    );
+  };
+
+  Construct.prototype.addSlide = function (catIndex, item, itemIndex) {
+    $(this.$slider).slick("slickAdd", slideTemplate(catIndex, item, itemIndex));
+  };
+
+  Construct.prototype.setAllSlides = function () {
+    this.categories.forEach(function (category, catIndex) {
+      category.items.forEach(function (item, itemIndex) {
+        this.addSlide(catIndex, item, itemIndex);
+      });
+    });
+  };
+
+  Construct.prototype.setCategorySlides = function (catIndex) {
+    this.categories[catIndex].items.forEach(function (item, itemIndex) {
+      this.addSlide(catIndex, item, itemIndex);
+    });
   };
 
   Construct.prototype.getPictureSources = function (imageName) {
@@ -284,11 +305,7 @@ var Gallery = function () {
     // imgContainer.src = this.rootFolder + (index + 1) + '.jpg';
     // imgContainer.alt = this.items[index].title + ' ' + (index + 1);
 
-    imgContainer.innerHTML = this.getPicture(
-      tempImageName,
-      "img_wrap-img blog-img",
-      index
-    );
+    imgContainer.innerHTML = this.getPicture(tempImageName, "img_wrap-img blog-img", index);
 
     if (this.items[index].description) {
       tempInnerHTML = this.items[index].description;
@@ -421,8 +438,7 @@ var Gallery = function () {
         tempInnerHTML += " active";
       }
 
-      tempInnerHTML +=
-        '" href="#" data-index="' + i + '">' + this.categories[i] + "</a></li>";
+      tempInnerHTML += '" href="#" data-index="' + i + '">' + this.categories[i] + "</a></li>";
     }
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -485,13 +501,7 @@ var Gallery = function () {
     } while (this.shownItems[index]);
 
     elem = document.querySelector(
-      "#" +
-        this.name +
-        "-blocks ." +
-        this.childClass +
-        ":nth-child(" +
-        (index + 1) +
-        ")"
+      "#" + this.name + "-blocks ." + this.childClass + ":nth-child(" + (index + 1) + ")",
     );
 
     // this.items[index].style.opacity = 1;
