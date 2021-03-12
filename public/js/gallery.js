@@ -16,9 +16,9 @@ var Gallery = function () {
   Construct.prototype.pluginName = "Gallery";
 
   Construct.prototype.init = function (params) {
-    var self = this;
+    var _ = this;
 
-    params = this.extend(
+    params = _.extend(
       {
         rootFolder: "img/",
         name: false,
@@ -29,42 +29,38 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params,
+      params
     );
 
-    if (!params.name || !params.items) {
-      this.setErrorMessage(this.pluginName);
+    if (!params.name || !params.categories) {
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
-    this.name = params.name;
-    this.rootFolder = params.rootFolder + this.name;
-    // this.items = params.items;
-    this.childClass = params.childClass;
-    this.categories = ["all"].concat(
-      params.categories.map(function (category) {
-        return category.title;
-      }),
-    );
-    this.showCategory = params.showCategory;
-    this.showMenu = params.showMenu;
+    _.name = params.name;
+    _.rootFolder = params.rootFolder + _.name;
+    // _.items = params.items;
+    _.childClass = params.childClass;
+    _.categories = [{ title: "all", items: [] }].concat(params.categories);
+    _.showCategory = params.showCategory;
+    _.showMenu = params.showMenu;
 
-    var lightBoxID = this.name + "-" + params.lightBoxID;
+    var lightBoxID = _.name + "-" + params.lightBoxID;
 
     params = null;
 
-    this.lightBox = document.getElementById(lightBoxID);
+    _.lightBox = document.getElementById(lightBoxID);
 
     // countInRow = 0;
-    this.iter = 0;
-    this.itemsCount = this.items.length;
-    this.intervalID = 0;
-    this.startedAnimation = false;
-    this.shownItems;
-    this.dataSrcName = "data-src";
-    this.slideCategoryPrefix = "gallery_category_";
-    this.curCategory = 0;
-    this.$slider;
+    _.iter = 0;
+    _.itemsCount;
+    _.intervalID = 0;
+    _.startedAnimation = false;
+    _.shownItems;
+    _.dataSrcName = "data-src";
+    _.slideCategoryPrefix = "gallery_category_";
+    _.curCategory = 0;
+    _.$slider;
 
     // elemWidth;
     // marginLeft;
@@ -72,56 +68,56 @@ var Gallery = function () {
     // oldColClass;
     // evenRowsExist;
 
-    // this.RestructItems = new RestructRhombuses.Construct({
-    // 	selector: '#' + this.name + '-blocks.display_rhombuses',
-    // 	childElem: '.' + this.childClass,
+    // _.RestructItems = new RestructRhombuses.Construct({
+    // 	selector: '#' + _.name + '-blocks.display_rhombuses',
+    // 	childElem: '.' + _.childClass,
     // 	wait: true,
     // 	maxCols: 3
     // });
 
-    this.RestructItems = RestructRhombuses({
-      selector: "#" + this.name + "-blocks.display_rhombuses",
-      childElem: "." + this.childClass,
+    _.RestructItems = RestructRhombuses({
+      selector: "#" + _.name + "-blocks.display_rhombuses",
+      childElem: "." + _.childClass,
       wait: true,
       maxCols: 4,
     });
 
-    if (this.showMenu) {
-      this.createMenu();
+    if (_.showMenu) {
+      _.createMenu();
     }
 
-    if (this.lightBox) {
-      var sliderID = self.name + "-slider-demonstration";
-      var closeID = self.name + "-slider-close";
-      var prevID = self.name + "-slider-prev";
-      var nextID = self.name + "-slider-next";
+    if (_.lightBox) {
+      var sliderID = _.name + "-slider-demonstration";
+      var closeID = _.name + "-slider-close";
+      var prevID = _.name + "-slider-prev";
+      var nextID = _.name + "-slider-next";
       var sliderTempInnerHTML = "";
 
-      console.log(self.categories);
+      console.log(_.categories);
 
-      self.categories.forEach(function (category, catIndex) {
-        category.items.map(function (item, itemIndex) {
-          sliderTempInnerHTML += self.slideTemplate(catIndex, item, itemIndex);
+      _.categories.forEach(function (category, catIndex) {
+        category.items.forEach(function (item, itemIndex) {
+          sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
       document.getElementById(sliderID).innerHTML = sliderTempInnerHTML;
 
-      self.$slider = $("#" + sliderID);
-      self.$slider.slick({
+      _.$slider = $("#" + sliderID);
+      _.$slider.slick({
         arrows: false,
         dots: false,
       });
-      self.$slider.on("reInit", function (event, slick) {
+      _.$slider.on("reInit", function (event, slick) {
         console.log("reInit");
       });
       $("#" + prevID).on("click", function () {
-        $(self.$slider).slick("slickPrev");
+        $(_.$slider).slick("slickPrev");
       });
       $("#" + nextID).on("click", function () {
-        $(self.$slider).slick("slickNext");
+        $(_.$slider).slick("slickNext");
       });
 
-      self.lightBox.addEventListener("click", function (event) {
+      _.lightBox.addEventListener("click", function (event) {
         var elem = event.target;
         var tagName = elem.tagName.toLowerCase();
 
@@ -141,109 +137,103 @@ var Gallery = function () {
         event.preventDefault();
 
         if (elem.id === closeID) {
-          self.lightBox.classList.add("lightbox--hidden");
+          _.lightBox.classList.add("lightbox--hidden");
         }
         // else if (elem.id === prevID) {
-        //   self.changeSlide(-1);
+        //   _.changeSlide(-1);
         // } else if (elem.id === nextID) {
-        //   self.changeSlide(1);
+        //   _.changeSlide(1);
         // }
       });
 
-      document.getElementById(this.name + "-blocks").addEventListener("click", function (event) {
-        event.preventDefault();
+      document
+        .getElementById(_.name + "-blocks")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
 
-        var elem = event.target;
-        var tagName = elem.tagName.toLowerCase();
-        var index;
+          var elem = event.target;
+          var tagName = elem.tagName.toLowerCase();
+          var index;
 
-        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
-          return;
-        }
+          if (
+            tagName !== "a" &&
+            elem.parentNode.tagName.toLowerCase() !== "a"
+          ) {
+            return;
+          }
 
-        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-        // {
-        if (tagName != "a") {
-          elem = elem.parentNode;
-        }
+          // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
+          // {
+          if (tagName != "a") {
+            elem = elem.parentNode;
+          }
 
-        index = +elem.getAttribute("data-index");
-        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + self.name + '/' + (index + 1) + '.jpg';
+          index = +elem.getAttribute("data-index");
+          // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
 
-        // self.lightBox.setAttribute("data-index", index);
-        // $(self.$slider).slick("slickGoTo", index);
-        $(self.$slider).slick("slickGoTo", 0);
-        self.lightBox.classList.remove("lightbox--hidden");
-        // self.changeSlide(0);
-        // }
-      });
+          // _.lightBox.setAttribute("data-index", index);
+          $(_.$slider).slick("slickGoTo", index);
+          // $(_.$slider).slick("slickGoTo", 0);
+          _.lightBox.classList.remove("lightbox--hidden");
+          // _.changeSlide(0);
+          // }
+        });
     }
 
-    this.eventFuncs = [
+    _.eventFuncs = [
       {
         e: "resize",
         f: function () {
-          self.showItems();
+          _.showItems();
         },
       },
       {
         e: "scroll",
         f: function () {
-          self.showItems();
+          _.showItems();
         },
       },
       {
         e: "orientationChange",
         f: function () {
-          self.showItems();
+          _.showItems();
         },
       },
     ];
 
-    for (var i = 0; i < this.eventFuncs.length; i++) {
-      window.addEventListener(this.eventFuncs[i].e, this.eventFuncs[i].f);
+    for (var i = 0; i < _.eventFuncs.length; i++) {
+      window.addEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
     }
 
-    this.showItems();
+    _.showItems();
   };
 
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
+    var _ = this;
     return (
       '<div class="' +
-      this.slideCategoryPrefix +
+      _.slideCategoryPrefix +
       catIndex +
       '"><div class="img_wrap ' +
-      this.name +
+      _.name +
       '_lightbox-img_wrap">' +
-      this.getPicture(itemIndex + 1 + ".jpg", "img_wrap-img blog-img", itemIndex) +
+      _.getPicture("img_wrap-img blog-img", catIndex, itemIndex) +
       '</div><div class="lightbox-desc_container ' +
-      this.name +
+      _.name +
       '_lightbox-desc_container"><p>' +
       item.description +
       "</p></div></div>"
     );
   };
 
-  Construct.prototype.addSlide = function (catIndex, item, itemIndex) {
-    $(this.$slider).slick("slickAdd", slideTemplate(catIndex, item, itemIndex));
-  };
-
-  Construct.prototype.setAllSlides = function () {
-    this.categories.forEach(function (category, catIndex) {
-      category.items.forEach(function (item, itemIndex) {
-        this.addSlide(catIndex, item, itemIndex);
-      });
-    });
-  };
-
-  Construct.prototype.setCategorySlides = function (catIndex) {
-    this.categories[catIndex].items.forEach(function (item, itemIndex) {
-      this.addSlide(catIndex, item, itemIndex);
-    });
+  Construct.prototype.getCategoryPath = function (catIndex, itemIndex) {
+    var _ = this;
+    // var imageName = itemIndex + 1 + ".jpg";
+    return _.categories[catIndex].title + "/" + (itemIndex + 1) + ".jpg";
   };
 
   Construct.prototype.getPictureSources = function (imageName) {
-    var self = this;
+    var _ = this;
     var breakpoints = [
       { path: "d", value: 1170 },
       { path: "t", value: 768 },
@@ -253,7 +243,7 @@ var Gallery = function () {
     breakpoints.forEach(function (breakpoint) {
       result +=
         '<source srcset="' +
-        self.rootFolder +
+        _.rootFolder +
         "/" +
         breakpoint.path +
         "/" +
@@ -266,83 +256,60 @@ var Gallery = function () {
     return result;
   };
 
-  Construct.prototype.getPicture = function (imageName, classes, index) {
+  Construct.prototype.getPicture = function (classes, catIndex, itemIndex) {
+    var _ = this;
+    var categoryPath = _.getCategoryPath(catIndex, itemIndex);
     return (
       "<picture>" +
-      this.getPictureSources(imageName) +
+      _.getPictureSources(categoryPath) +
       '<img class="' +
       classes +
       '" src="' +
-      this.rootFolder +
+      _.rootFolder +
       "/m/" +
-      imageName +
+      categoryPath +
       '" alt="' +
-      this.items[index].title +
+      _.categories[catIndex].items[itemIndex].title +
       '"></picture>'
     );
   };
 
-  Construct.prototype.changeSlide = function (direction) {
-    var index = +this.lightBox.getAttribute("data-index");
-    var imgContainer = this.lightBox.querySelector(".img_wrap");
-    var tempInnerHTML;
-    var tempImageName;
-
-    if (direction > 0) {
-      index++;
-    } else if (direction < 0) {
-      index--;
-    }
-
-    index = this.getSlideIndex(index);
-
-    tempImageName = index + 1 + ".jpg";
-
-    // console.log(index);
-
-    this.lightBox.setAttribute("data-index", index);
-
-    // imgContainer.src = this.rootFolder + (index + 1) + '.jpg';
-    // imgContainer.alt = this.items[index].title + ' ' + (index + 1);
-
-    imgContainer.innerHTML = this.getPicture(tempImageName, "img_wrap-img blog-img", index);
-
-    if (this.items[index].description) {
-      tempInnerHTML = this.items[index].description;
-    } else {
-      tempInnerHTML = "Нет описания к данной фотографии.";
-    }
-
-    this.lightBox.querySelector("p").innerHTML = tempInnerHTML;
-  };
-
-  Construct.prototype.getSlideIndex = function (index) {
-    if (index >= 0) {
-      return index % this.items.length;
-    }
-
-    return index + this.items.length;
-  };
-
   Construct.prototype.showItems = function () {
-    var self = this;
+    var _ = this;
 
-    // if (!this.startedAnimation && this.getScrollY() >= this.getElemCenterTop(this.name))
-    if (!this.startedAnimation && self.isVisibleElem(self.name)) {
-      this.setRhombusesByCategory();
+    // if (!_.startedAnimation && _.getScrollY() >= _.getElemCenterTop(_.name))
+    if (!_.startedAnimation && _.isVisibleElem(_.name)) {
+      _.setRhombusesByCategory();
 
-      for (var i = 0, len = this.eventFuncs.length; i < len; i++) {
-        window.removeEventListener(this.eventFuncs[i].e, this.eventFuncs[i].f);
+      for (var i = 0, len = _.eventFuncs.length; i < len; i++) {
+        window.removeEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
       }
     }
   };
 
-  Construct.prototype.setRhombusesByCategory = function (catIndex) {
-    catIndex = catIndex || 0;
+  Construct.prototype.getItemsByCategory = function (catIndex) {
+    var _ = this;
 
-    var self = this;
-    this.parentElem = document.getElementById(this.name + "-blocks");
-    var menuItems = document.querySelectorAll("#" + this.name + "-menu a");
+    if (!catIndex && !_.categories[0].items.length) {
+      _.categories.forEach(function (category, index) {
+        if (index > 0) {
+          category.items.forEach(function (item) {
+            _.categories[0].items.push(item);
+          });
+        }
+      });
+    }
+
+    return _.categories[catIndex].items;
+  };
+
+  Construct.prototype.setRhombusesByCategory = function (catIndex) {
+    var _ = this;
+
+    catIndex = catIndex || 0;
+    _.parentElem = document.getElementById(_.name + "-blocks");
+
+    var menuItems = document.querySelectorAll("#" + _.name + "-menu a");
     // var catIndex = parseInt(elem.dataset.catIndex);
     // var catIndex = parseInt(catIndex);
     // var tempBlockWrap;
@@ -352,48 +319,40 @@ var Gallery = function () {
     var tempInnerHTML = "";
     var i, len;
 
-    this.startedAnimation = true;
-    this.iter = 0;
-    this.itemsCount = 0;
-    this.parentElem.innerHTML = "";
+    _.startedAnimation = true;
+    _.iter = 0;
+    _.itemsCount = 0;
+    _.parentElem.innerHTML = "";
 
-    for (i = 0, len = this.items.length; i < len; i++) {
-      if (!!catIndex && this.items[i].category != catIndex) {
-        continue;
-      }
-
-      // tempInnerHTML += '<div class="' + this.childClass + '"><div class="photo_block-frame"><div class="photo_block-rhombus"><img class="photo_block-img" src="' + this.rootFolder + (i + 1) + '.jpg" alt="' + this.items[i].title + '"><div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' + this.items[i].title + '</h3></div></div>';
-
-      tempImageName = i + 1 + ".jpg";
-
+    _.getItemsByCategory(catIndex).forEach(function (item, itemIndex) {
       tempInnerHTML +=
         '<div class="' +
-        this.childClass +
+        _.childClass +
         '"><div class="photo_block-frame"><div class="photo_block-rhombus">' +
-        this.getPicture(tempImageName, "photo_block-img", i) +
+        _.getPicture("photo_block-img", catIndex, itemIndex) +
         '<div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' +
-        this.items[i].title +
+        item.title +
         "</h3></div></div>";
 
-      if (this.showCategory) {
+      if (_.showCategory) {
         tempInnerHTML +=
           '<div class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--category photo_block-category"><div class="rhombus_wrap-rhombus"></div></div>';
       }
 
       tempInnerHTML +=
         '<a href="#" data-index="' +
-        i +
+        itemIndex +
         '" class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--more photo_block-more"><div class="rhombus_wrap-rhombus"></div></a></div>';
 
-      this.itemsCount++;
-    }
+      _.itemsCount++;
+    });
 
     if (!tempInnerHTML) {
       tempInnerHTML = "К сожалению в данной категории нет фотографий!";
     }
 
-    this.createHelpArray();
-    this.parentElem.innerHTML = tempInnerHTML;
+    _.createHelpArray();
+    _.parentElem.innerHTML = tempInnerHTML;
 
     len = menuItems.length;
 
@@ -405,22 +364,22 @@ var Gallery = function () {
       menuItems[catIndex].classList.add("active");
     }
 
-    this.RestructItems.run(true);
+    _.RestructItems.run(true);
 
-    if (this.itemsCount) {
-      if (this.intervalID) {
-        clearInterval(this.intervalID);
-        this.intervalID = 0;
+    if (_.itemsCount) {
+      if (_.intervalID) {
+        clearInterval(_.intervalID);
+        _.intervalID = 0;
       }
 
-      this.intervalID = setInterval(function () {
-        self.randomShowing();
+      _.intervalID = setInterval(function () {
+        _.randomShowing();
       }, 170);
     }
   };
 
   Construct.prototype.createMenu = function () {
-    var self = this;
+    var _ = this;
 
     var container = document.createElement("div");
     var menu = document.createElement("ul");
@@ -428,18 +387,19 @@ var Gallery = function () {
 
     container.className = "menu-container section-flex_container";
 
-    menu.id = this.name + "-menu";
-    menu.className = "hor_menu " + this.name + "-menu";
+    menu.id = _.name + "-menu";
+    menu.className = "hor_menu " + _.name + "-menu";
 
-    for (var i = 0, len = this.categories.length; i < len; i++) {
+    _.categories.forEach(function (category, index) {
       tempInnerHTML += '<li class="list-item"><a class="list-link';
 
-      if (!i) {
+      if (!index) {
         tempInnerHTML += " active";
       }
 
-      tempInnerHTML += '" href="#" data-index="' + i + '">' + this.categories[i] + "</a></li>";
-    }
+      tempInnerHTML +=
+        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+    });
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
     // tempInnerHTML += '<li id="grid-switcher-rhombuses"><a class="active" data-display="rhombuses" href="#"></a></li>';
@@ -459,61 +419,69 @@ var Gallery = function () {
 
       if (elem.hasAttribute("data-index")) {
         index = +elem.getAttribute("data-index");
-        self.setRhombusesByCategory(index);
+        _.setRhombusesByCategory(index);
 
-        $(self.$slider).slick("slickUnfilter");
+        $(_.$slider).slick("slickUnfilter");
 
         if (index > 0) {
-          $(self.$slider)
-            .slick("slickFilter", "." + self.slideCategoryPrefix + index)
+          $(_.$slider)
+            .slick("slickFilter", "." + _.slideCategoryPrefix + index)
             .slick("refresh");
         }
       }
       // else if (elem.hasAttribute('data-display'))
       // {
       // 	display = elem.getAttribute('data-display');
-      // 	console.log(self.parentElem);
+      // 	console.log(_.parentElem);
 
-      // 	self.parentElem.classList.remove('display_rhombuses');
-      // 	self.parentElem.classList.remove('display-squares');
-      // 	self.parentElem.classList.add('display-' + display);
+      // 	_.parentElem.classList.remove('display_rhombuses');
+      // 	_.parentElem.classList.remove('display-squares');
+      // 	_.parentElem.classList.add('display-' + display);
       // }
     });
 
     container.appendChild(menu);
 
     document
-      .querySelector("#" + this.name + " .section-container")
-      .insertBefore(container, document.getElementById(this.name + "-blocks"));
+      .querySelector("#" + _.name + " .section-container")
+      .insertBefore(container, document.getElementById(_.name + "-blocks"));
   };
 
   Construct.prototype.createHelpArray = function () {
-    // this.shownItems = new Array(this.itemsCount);
-    this.shownItems = this.fillArray(new Array(this.itemsCount), 0);
+    var _ = this;
+    // _.shownItems = new Array(_.itemsCount);
+    _.shownItems = _.fillArray(new Array(_.itemsCount), 0);
   };
 
   Construct.prototype.randomShowing = function () {
+    var _ = this;
     var elem;
     var index;
 
     do {
-      index = parseInt(Math.random() * this.itemsCount);
-    } while (this.shownItems[index]);
+      index = parseInt(Math.random() * _.itemsCount);
+    } while (_.shownItems[index]);
 
     elem = document.querySelector(
-      "#" + this.name + "-blocks ." + this.childClass + ":nth-child(" + (index + 1) + ")",
+      "#" +
+        _.name +
+        "-blocks ." +
+        _.childClass +
+        ":nth-child(" +
+        (index + 1) +
+        ")"
     );
 
-    // this.items[index].style.opacity = 1;
-    // this.items[index].style.backgroundColor = 'rgb(0, ' + (this.iter*10) + ', 0)';
+    // _.items[index].style.opacity = 1;
+    // _.items[index].style.backgroundColor = 'rgb(0, ' + (_.iter*10) + ', 0)';
 
     elem.style.opacity = 1;
-    this.shownItems[index] = 1;
-    this.iter++;
+    _.shownItems[index] = 1;
+    _.iter++;
 
-    if (this.iter >= this.itemsCount) {
-      clearInterval(this.intervalID);
-      this.intervalID = 0;
+    if (_.iter >= _.itemsCount) {
+      clearInterval(_.intervalID);
+      _.intervalID = 0;
     }
   };
 
