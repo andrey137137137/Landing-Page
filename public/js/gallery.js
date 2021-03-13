@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params
+      params,
     );
 
     if (!params.name || !params.categories) {
@@ -61,6 +61,9 @@ var Gallery = function () {
     _.slideCategoryPrefix = "gallery_category_";
     _.curCategory = 0;
     _.$slider;
+    _.sliderID = _.name + "-slider-demonstration";
+    _.prevID = _.name + "-slider-prev";
+    _.nextID = _.name + "-slider-next";
 
     // elemWidth;
     // marginLeft;
@@ -87,10 +90,7 @@ var Gallery = function () {
     }
 
     if (_.lightBox) {
-      var sliderID = _.name + "-slider-demonstration";
       var closeID = _.name + "-slider-close";
-      var prevID = _.name + "-slider-prev";
-      var nextID = _.name + "-slider-next";
       var sliderTempInnerHTML = "";
 
       console.log(_.categories);
@@ -100,9 +100,9 @@ var Gallery = function () {
           sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
-      document.getElementById(sliderID).innerHTML = sliderTempInnerHTML;
+      document.getElementById(_.sliderID).innerHTML = sliderTempInnerHTML;
 
-      _.$slider = $("#" + sliderID);
+      _.$slider = $("#" + _.sliderID);
       _.$slider.slick({
         arrows: false,
         dots: false,
@@ -110,10 +110,10 @@ var Gallery = function () {
       _.$slider.on("reInit", function (event, slick) {
         console.log("reInit");
       });
-      $("#" + prevID).on("click", function () {
+      $("#" + _.prevID).on("click", function () {
         $(_.$slider).slick("slickPrev");
       });
-      $("#" + nextID).on("click", function () {
+      $("#" + _.nextID).on("click", function () {
         $(_.$slider).slick("slickNext");
       });
 
@@ -129,7 +129,7 @@ var Gallery = function () {
           elem = elem.parentNode;
         }
 
-        if (elem.id !== closeID && elem.id !== prevID && elem.id !== nextID) {
+        if (elem.id !== closeID && elem.id !== _.prevID && elem.id !== _.nextID) {
           return;
         }
 
@@ -139,45 +139,38 @@ var Gallery = function () {
         if (elem.id === closeID) {
           _.lightBox.classList.add("lightbox--hidden");
         }
-        // else if (elem.id === prevID) {
+        // else if (elem.id === _.prevID) {
         //   _.changeSlide(-1);
-        // } else if (elem.id === nextID) {
+        // } else if (elem.id === _.nextID) {
         //   _.changeSlide(1);
         // }
       });
 
-      document
-        .getElementById(_.name + "-blocks")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
+      document.getElementById(_.name + "-blocks").addEventListener("click", function (event) {
+        event.preventDefault();
 
-          var elem = event.target;
-          var tagName = elem.tagName.toLowerCase();
-          var index;
+        var elem = event.target;
+        var tagName = elem.tagName.toLowerCase();
+        var index;
 
-          if (
-            tagName !== "a" &&
-            elem.parentNode.tagName.toLowerCase() !== "a"
-          ) {
-            return;
-          }
+        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
+          return;
+        }
 
-          // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-          // {
-          if (tagName != "a") {
-            elem = elem.parentNode;
-          }
+        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
+        // {
+        if (tagName != "a") {
+          elem = elem.parentNode;
+        }
 
-          index = +elem.getAttribute("data-index");
-          // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
+        index = +elem.getAttribute("data-index");
+        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
 
-          // _.lightBox.setAttribute("data-index", index);
-          $(_.$slider).slick("slickGoTo", index);
-          // $(_.$slider).slick("slickGoTo", 0);
-          _.lightBox.classList.remove("lightbox--hidden");
-          // _.changeSlide(0);
-          // }
-        });
+        // _.lightBox.setAttribute("data-index", index);
+        _.changeSlide(0);
+        _.lightBox.classList.remove("lightbox--hidden");
+        // }
+      });
     }
 
     _.eventFuncs = [
@@ -206,6 +199,18 @@ var Gallery = function () {
     }
 
     _.showItems();
+  };
+
+  Construct.prototype.changeSlide = function (index) {
+    var _ = this;
+
+    // if (_.curCategory == 0 || _.categories[_.curCategory].items.length > 1) {
+    $(_.$slider).slick("slickGoTo", index);
+    // } else {
+    //   var $slide = document.createElement("div");
+    //   $slide.innerHTML = _.slideTemplate(_.curCategory, _.categories[_.curCategory].items[0], 0);
+    //   _.$slider.after($slide);
+    // }
   };
 
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
@@ -287,10 +292,10 @@ var Gallery = function () {
     }
   };
 
-  Construct.prototype.getItemsByCategory = function (catIndex) {
+  Construct.prototype.getItemsByCategory = function () {
     var _ = this;
 
-    if (!catIndex && !_.categories[0].items.length) {
+    if (!_.curCategory && !_.categories[0].items.length) {
       _.categories.forEach(function (category, index) {
         if (index > 0) {
           category.items.forEach(function (item) {
@@ -300,18 +305,15 @@ var Gallery = function () {
       });
     }
 
-    return _.categories[catIndex].items;
+    return _.categories[_.curCategory].items;
   };
 
-  Construct.prototype.setRhombusesByCategory = function (catIndex) {
+  Construct.prototype.setRhombusesByCategory = function () {
     var _ = this;
 
-    catIndex = catIndex || 0;
     _.parentElem = document.getElementById(_.name + "-blocks");
 
     var menuItems = document.querySelectorAll("#" + _.name + "-menu a");
-    // var catIndex = parseInt(elem.dataset.catIndex);
-    // var catIndex = parseInt(catIndex);
     // var tempBlockWrap;
     // var tempImageContainer;
     var tempImageName;
@@ -324,12 +326,12 @@ var Gallery = function () {
     _.itemsCount = 0;
     _.parentElem.innerHTML = "";
 
-    _.getItemsByCategory(catIndex).forEach(function (item, itemIndex) {
+    _.getItemsByCategory().forEach(function (item, itemIndex) {
       tempInnerHTML +=
         '<div class="' +
         _.childClass +
         '"><div class="photo_block-frame"><div class="photo_block-rhombus">' +
-        _.getPicture("photo_block-img", catIndex, itemIndex) +
+        _.getPicture("photo_block-img", _.curCategory, itemIndex) +
         '<div class="photo_block-foreground"></div><h3 class="section-title photo_block-title">' +
         item.title +
         "</h3></div></div>";
@@ -361,7 +363,7 @@ var Gallery = function () {
         menuItems[i].classList.remove("active");
       }
 
-      menuItems[catIndex].classList.add("active");
+      menuItems[_.curCategory].classList.add("active");
     }
 
     _.RestructItems.run(true);
@@ -397,8 +399,7 @@ var Gallery = function () {
         tempInnerHTML += " active";
       }
 
-      tempInnerHTML +=
-        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempInnerHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -418,14 +419,14 @@ var Gallery = function () {
       event.preventDefault();
 
       if (elem.hasAttribute("data-index")) {
-        index = +elem.getAttribute("data-index");
-        _.setRhombusesByCategory(index);
+        _.curCategory = +elem.getAttribute("data-index");
+        _.setRhombusesByCategory();
 
         $(_.$slider).slick("slickUnfilter");
 
-        if (index > 0) {
+        if (_.curCategory > 0) {
           $(_.$slider)
-            .slick("slickFilter", "." + _.slideCategoryPrefix + index)
+            .slick("slickFilter", "." + _.slideCategoryPrefix + _.curCategory)
             .slick("refresh");
         }
       }
@@ -463,13 +464,7 @@ var Gallery = function () {
     } while (_.shownItems[index]);
 
     elem = document.querySelector(
-      "#" +
-        _.name +
-        "-blocks ." +
-        _.childClass +
-        ":nth-child(" +
-        (index + 1) +
-        ")"
+      "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
     );
 
     // _.items[index].style.opacity = 1;
