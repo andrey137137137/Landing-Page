@@ -99,14 +99,7 @@ var Gallery = function () {
           sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
-      sliderTempInnerHTML +=
-        '<div class="' +
-        _.slideCategoryPrefix +
-        '0"><div class="img_wrap ' +
-        _.name +
-        '_lightbox-img_wrap"><img class="img_wrap-img blog-img" src="" /></div><div class="lightbox-desc_container ' +
-        _.name +
-        '_lightbox-desc_container"><p>EMPTY SLIDE</p></div></div>';
+      sliderTempInnerHTML += _.slideTemplate(-1);
       document.getElementById(_.sliderID).innerHTML = sliderTempInnerHTML;
 
       _.$slider = $("#" + _.sliderID);
@@ -222,18 +215,25 @@ var Gallery = function () {
 
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
     var _ = this;
+    var isEmpty = catIndex < 0;
+    var emptyTitle = "EMPTY SLIDE";
+
     return (
       '<div class="' +
       _.slideCategoryPrefix +
-      catIndex +
+      (isEmpty ? 0 : catIndex) +
       '"><div class="img_wrap ' +
       _.name +
       '_lightbox-img_wrap">' +
-      _.getPicture("img_wrap-img blog-img", catIndex, itemIndex) +
+      (isEmpty
+        ? '<img class="img_wrap-img blog-img" src="" alt="' +
+          emptyTitle +
+          '" />'
+        : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
       '_lightbox-desc_container"><p>' +
-      item.description +
+      (isEmpty ? emptyTitle : item.description) +
       "</p></div></div>"
     );
   };
