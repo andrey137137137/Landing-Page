@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params,
+      params
     );
 
     if (!params.name || !params.categories) {
@@ -39,7 +39,6 @@ var Gallery = function () {
 
     _.name = params.name;
     _.rootFolder = params.rootFolder + _.name;
-    // _.items = params.items;
     _.childClass = params.childClass;
     _.categories = [{ title: "all", items: [] }].concat(params.categories);
     _.showCategory = params.showCategory;
@@ -60,10 +59,12 @@ var Gallery = function () {
     _.dataSrcName = "data-src";
     _.slideCategoryPrefix = "gallery_category_";
     _.curCategory = 0;
-    _.$slider;
     _.sliderID = _.name + "-slider-demonstration";
     _.prevID = _.name + "-slider-prev";
     _.nextID = _.name + "-slider-next";
+    _.$slider;
+    _.$prev;
+    _.$next;
 
     // elemWidth;
     // marginLeft;
@@ -93,27 +94,36 @@ var Gallery = function () {
       var closeID = _.name + "-slider-close";
       var sliderTempInnerHTML = "";
 
-      console.log(_.categories);
-
       _.categories.forEach(function (category, catIndex) {
         category.items.forEach(function (item, itemIndex) {
           sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
+      sliderTempInnerHTML +=
+        '<div class="' +
+        _.slideCategoryPrefix +
+        '0"><div class="img_wrap ' +
+        _.name +
+        '_lightbox-img_wrap"><img class="img_wrap-img blog-img" src="" /></div><div class="lightbox-desc_container ' +
+        _.name +
+        '_lightbox-desc_container"><p>EMPTY SLIDE</p></div></div>';
       document.getElementById(_.sliderID).innerHTML = sliderTempInnerHTML;
 
       _.$slider = $("#" + _.sliderID);
+      _.$prev = $("#" + _.prevID);
+      _.$next = $("#" + _.nextID);
+
       _.$slider.slick({
+        accessibility: false,
         arrows: false,
         dots: false,
+        draggable: false,
       });
-      _.$slider.on("reInit", function (event, slick) {
-        console.log("reInit");
-      });
-      $("#" + _.prevID).on("click", function () {
+
+      _.$prev.on("click", function () {
         $(_.$slider).slick("slickPrev");
       });
-      $("#" + _.nextID).on("click", function () {
+      _.$next.on("click", function () {
         $(_.$slider).slick("slickNext");
       });
 
@@ -129,7 +139,11 @@ var Gallery = function () {
           elem = elem.parentNode;
         }
 
-        if (elem.id !== closeID && elem.id !== _.prevID && elem.id !== _.nextID) {
+        if (
+          elem.id !== closeID &&
+          elem.id !== _.prevID &&
+          elem.id !== _.nextID
+        ) {
           return;
         }
 
@@ -146,31 +160,36 @@ var Gallery = function () {
         // }
       });
 
-      document.getElementById(_.name + "-blocks").addEventListener("click", function (event) {
-        event.preventDefault();
+      document
+        .getElementById(_.name + "-blocks")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
 
-        var elem = event.target;
-        var tagName = elem.tagName.toLowerCase();
-        var index;
+          var elem = event.target;
+          var tagName = elem.tagName.toLowerCase();
+          var index;
 
-        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
-          return;
-        }
+          if (
+            tagName !== "a" &&
+            elem.parentNode.tagName.toLowerCase() !== "a"
+          ) {
+            return;
+          }
 
-        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-        // {
-        if (tagName != "a") {
-          elem = elem.parentNode;
-        }
+          // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
+          // {
+          if (tagName != "a") {
+            elem = elem.parentNode;
+          }
 
-        index = +elem.getAttribute("data-index");
-        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
+          index = +elem.getAttribute("data-index");
+          // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
 
-        // _.lightBox.setAttribute("data-index", index);
-        _.changeSlide(0);
-        _.lightBox.classList.remove("lightbox--hidden");
-        // }
-      });
+          // _.lightBox.setAttribute("data-index", index);
+          $(_.$slider).slick("slickGoTo", index);
+          _.lightBox.classList.remove("lightbox--hidden");
+          // }
+        });
     }
 
     _.eventFuncs = [
@@ -201,18 +220,6 @@ var Gallery = function () {
     _.showItems();
   };
 
-  Construct.prototype.changeSlide = function (index) {
-    var _ = this;
-
-    // if (_.curCategory == 0 || _.categories[_.curCategory].items.length > 1) {
-    $(_.$slider).slick("slickGoTo", index);
-    // } else {
-    //   var $slide = document.createElement("div");
-    //   $slide.innerHTML = _.slideTemplate(_.curCategory, _.categories[_.curCategory].items[0], 0);
-    //   _.$slider.after($slide);
-    // }
-  };
-
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
     var _ = this;
     return (
@@ -231,13 +238,31 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getCategoryPath = function (catIndex, itemIndex) {
+  Construct.prototype.getImagePath = function (
+    catIndex,
+    breakpoint,
+    itemIndex
+  ) {
     var _ = this;
-    // var imageName = itemIndex + 1 + ".jpg";
-    return _.categories[catIndex].title + "/" + (itemIndex + 1) + ".jpg";
+    var category = !catIndex
+      ? _.categories[catIndex].items[itemIndex].category
+      : _.categories[catIndex].title;
+    var imageIndex = !catIndex
+      ? _.categories[catIndex].items[itemIndex].image
+      : itemIndex;
+    return (
+      _.rootFolder +
+      "/" +
+      category +
+      "/" +
+      breakpoint +
+      "/" +
+      (imageIndex + 1) +
+      ".jpg"
+    );
   };
 
-  Construct.prototype.getPictureSources = function (imageName) {
+  Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
     var _ = this;
     var breakpoints = [
       { path: "d", value: 1170 },
@@ -248,11 +273,7 @@ var Gallery = function () {
     breakpoints.forEach(function (breakpoint) {
       result +=
         '<source srcset="' +
-        _.rootFolder +
-        "/" +
-        breakpoint.path +
-        "/" +
-        imageName +
+        _.getImagePath(catIndex, breakpoint.path, itemIndex) +
         '" srcset="" media="(min-width: ' +
         breakpoint.value +
         'px)">';
@@ -263,16 +284,13 @@ var Gallery = function () {
 
   Construct.prototype.getPicture = function (classes, catIndex, itemIndex) {
     var _ = this;
-    var categoryPath = _.getCategoryPath(catIndex, itemIndex);
     return (
       "<picture>" +
-      _.getPictureSources(categoryPath) +
+      _.getPictureSources(catIndex, itemIndex) +
       '<img class="' +
       classes +
       '" src="' +
-      _.rootFolder +
-      "/m/" +
-      categoryPath +
+      _.getImagePath(catIndex, "m", itemIndex) +
       '" alt="' +
       _.categories[catIndex].items[itemIndex].title +
       '"></picture>'
@@ -296,10 +314,16 @@ var Gallery = function () {
     var _ = this;
 
     if (!_.curCategory && !_.categories[0].items.length) {
-      _.categories.forEach(function (category, index) {
-        if (index > 0) {
-          category.items.forEach(function (item) {
-            _.categories[0].items.push(item);
+      _.categories.forEach(function (category, catIndex) {
+        if (catIndex > 0) {
+          category.items.forEach(function (item, itemIndex) {
+            var itemClone = {
+              title: item.title,
+              description: item.description,
+              category: category.title,
+              image: itemIndex,
+            };
+            _.categories[0].items.push(itemClone);
           });
         }
       });
@@ -316,7 +340,6 @@ var Gallery = function () {
     var menuItems = document.querySelectorAll("#" + _.name + "-menu a");
     // var tempBlockWrap;
     // var tempImageContainer;
-    var tempImageName;
     // var tempLink;
     var tempInnerHTML = "";
     var i, len;
@@ -380,6 +403,20 @@ var Gallery = function () {
     }
   };
 
+  Construct.prototype.switchSlider = function (toEnable) {
+    var _ = this;
+
+    // $(_.$slider).slick("slickSetOption", "draggable", toEnable, true);
+
+    if (toEnable) {
+      _.$prev.removeAttr("disabled");
+      _.$next.removeAttr("disabled");
+    } else {
+      _.$prev.attr("disabled", "disabled");
+      _.$next.attr("disabled", "disabled");
+    }
+  };
+
   Construct.prototype.createMenu = function () {
     var _ = this;
 
@@ -399,7 +436,8 @@ var Gallery = function () {
         tempInnerHTML += " active";
       }
 
-      tempInnerHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempInnerHTML +=
+        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -409,7 +447,6 @@ var Gallery = function () {
 
     menu.addEventListener("click", function (event) {
       var elem = event.target;
-      var index;
       // var display;
 
       if (elem.tagName != "A") {
@@ -419,16 +456,26 @@ var Gallery = function () {
       event.preventDefault();
 
       if (elem.hasAttribute("data-index")) {
+        var selector;
+
         _.curCategory = +elem.getAttribute("data-index");
         _.setRhombusesByCategory();
 
         $(_.$slider).slick("slickUnfilter");
+        _.switchSlider(true);
 
         if (_.curCategory > 0) {
-          $(_.$slider)
-            .slick("slickFilter", "." + _.slideCategoryPrefix + _.curCategory)
-            .slick("refresh");
+          selector = "." + _.slideCategoryPrefix + _.curCategory;
+
+          if (_.categories[_.curCategory].items.length == 1) {
+            selector += ", ." + _.slideCategoryPrefix + "0";
+            _.switchSlider(false);
+          }
+        } else {
+          selector = ":not(." + _.slideCategoryPrefix + "0)";
         }
+
+        $(_.$slider).slick("slickFilter", selector).slick("refresh");
       }
       // else if (elem.hasAttribute('data-display'))
       // {
@@ -464,7 +511,13 @@ var Gallery = function () {
     } while (_.shownItems[index]);
 
     elem = document.querySelector(
-      "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
+      "#" +
+        _.name +
+        "-blocks ." +
+        _.childClass +
+        ":nth-child(" +
+        (index + 1) +
+        ")"
     );
 
     // _.items[index].style.opacity = 1;

@@ -114,7 +114,7 @@
           ],
         },
         {
-          title: "website design",
+          title: "website-design",
           items: [
             {
               description:
@@ -197,7 +197,10 @@
             { description: "", title: "unsplash-2" },
           ],
         },
-        { title: "photo", items: [{ description: "", title: "doctype hi-res" }] },
+        {
+          title: "photo",
+          items: [{ description: "", title: "doctype hi-res" }],
+        },
         {
           title: "video",
           items: [
