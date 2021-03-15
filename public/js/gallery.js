@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params
+      params,
     );
 
     if (!params.name || !params.categories) {
@@ -65,6 +65,7 @@ var Gallery = function () {
     _.$slider;
     _.$prev;
     _.$next;
+    _.enableArrows = true;
 
     // elemWidth;
     // marginLeft;
@@ -114,10 +115,14 @@ var Gallery = function () {
       });
 
       _.$prev.on("click", function () {
-        $(_.$slider).slick("slickPrev");
+        if (_.enableArrows) {
+          $(_.$slider).slick("slickPrev");
+        }
       });
       _.$next.on("click", function () {
-        $(_.$slider).slick("slickNext");
+        if (_.enableArrows) {
+          $(_.$slider).slick("slickNext");
+        }
       });
 
       _.lightBox.addEventListener("click", function (event) {
@@ -132,11 +137,7 @@ var Gallery = function () {
           elem = elem.parentNode;
         }
 
-        if (
-          elem.id !== closeID &&
-          elem.id !== _.prevID &&
-          elem.id !== _.nextID
-        ) {
+        if (elem.id !== closeID && elem.id !== _.prevID && elem.id !== _.nextID) {
           return;
         }
 
@@ -153,36 +154,31 @@ var Gallery = function () {
         // }
       });
 
-      document
-        .getElementById(_.name + "-blocks")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
+      document.getElementById(_.name + "-blocks").addEventListener("click", function (event) {
+        event.preventDefault();
 
-          var elem = event.target;
-          var tagName = elem.tagName.toLowerCase();
-          var index;
+        var elem = event.target;
+        var tagName = elem.tagName.toLowerCase();
+        var index;
 
-          if (
-            tagName !== "a" &&
-            elem.parentNode.tagName.toLowerCase() !== "a"
-          ) {
-            return;
-          }
+        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
+          return;
+        }
 
-          // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-          // {
-          if (tagName != "a") {
-            elem = elem.parentNode;
-          }
+        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
+        // {
+        if (tagName != "a") {
+          elem = elem.parentNode;
+        }
 
-          index = +elem.getAttribute("data-index");
-          // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
+        index = +elem.getAttribute("data-index");
+        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
 
-          // _.lightBox.setAttribute("data-index", index);
-          $(_.$slider).slick("slickGoTo", index);
-          _.lightBox.classList.remove("lightbox--hidden");
-          // }
-        });
+        // _.lightBox.setAttribute("data-index", index);
+        $(_.$slider).slick("slickGoTo", index);
+        _.lightBox.classList.remove("lightbox--hidden");
+        // }
+      });
     }
 
     _.eventFuncs = [
@@ -226,9 +222,7 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' +
-          emptyTitle +
-          '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -238,28 +232,13 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (
-    catIndex,
-    breakpoint,
-    itemIndex
-  ) {
+  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex
-      ? _.categories[catIndex].items[itemIndex].image
-      : itemIndex;
-    return (
-      _.rootFolder +
-      "/" +
-      category +
-      "/" +
-      breakpoint +
-      "/" +
-      (imageIndex + 1) +
-      ".jpg"
-    );
+    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
+    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -406,8 +385,6 @@ var Gallery = function () {
   Construct.prototype.switchSlider = function (toEnable) {
     var _ = this;
 
-    // $(_.$slider).slick("slickSetOption", "draggable", toEnable, true);
-
     if (toEnable) {
       _.$prev.removeAttr("disabled");
       _.$next.removeAttr("disabled");
@@ -436,8 +413,7 @@ var Gallery = function () {
         tempInnerHTML += " active";
       }
 
-      tempInnerHTML +=
-        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempInnerHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -462,14 +438,14 @@ var Gallery = function () {
         _.setRhombusesByCategory();
 
         $(_.$slider).slick("slickUnfilter");
-        _.switchSlider(true);
+        _.enableArrows = true;
 
         if (_.curCategory > 0) {
           selector = "." + _.slideCategoryPrefix + _.curCategory;
 
           if (_.categories[_.curCategory].items.length == 1) {
             selector += ", ." + _.slideCategoryPrefix + "0";
-            _.switchSlider(false);
+            _.enableArrows = false;
           }
         } else {
           selector = ":not(." + _.slideCategoryPrefix + "0)";
@@ -511,13 +487,7 @@ var Gallery = function () {
     } while (_.shownItems[index]);
 
     elem = document.querySelector(
-      "#" +
-        _.name +
-        "-blocks ." +
-        _.childClass +
-        ":nth-child(" +
-        (index + 1) +
-        ")"
+      "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
     );
 
     // _.items[index].style.opacity = 1;
