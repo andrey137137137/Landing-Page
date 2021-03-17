@@ -50,7 +50,6 @@ var Gallery = function () {
 
     _.lightBox = document.getElementById(lightBoxID);
 
-    // countInRow = 0;
     _.iter = 0;
     _.itemsCount;
     _.intervalID = 0;
@@ -66,19 +65,14 @@ var Gallery = function () {
     _.$prev;
     _.$next;
     _.enableArrows = true;
+    _.existEmptySlide = false;
 
+    // countInRow = 0;
     // elemWidth;
     // marginLeft;
     // marginEvenRow;
     // oldColClass;
     // evenRowsExist;
-
-    // _.RestructItems = new RestructRhombuses.Construct({
-    // 	selector: '#' + _.name + '-blocks.display_rhombuses',
-    // 	childElem: '.' + _.childClass,
-    // 	wait: true,
-    // 	maxCols: 3
-    // });
 
     _.RestructItems = RestructRhombuses({
       selector: "#" + _.name + "-blocks.display_rhombuses",
@@ -100,7 +94,7 @@ var Gallery = function () {
           sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
-      sliderTempInnerHTML += _.slideTemplate(-1);
+
       document.getElementById(_.sliderID).innerHTML = sliderTempInnerHTML;
 
       _.$slider = $("#" + _.sliderID);
@@ -115,43 +109,15 @@ var Gallery = function () {
       });
 
       _.$prev.on("click", function () {
-        if (_.enableArrows) {
-          $(_.$slider).slick("slickPrev");
-        }
+        _.arrowOn(false);
       });
       _.$next.on("click", function () {
-        if (_.enableArrows) {
-          $(_.$slider).slick("slickNext");
-        }
+        _.arrowOn(true);
       });
 
-      _.lightBox.addEventListener("click", function (event) {
-        var elem = event.target;
-        var tagName = elem.tagName.toLowerCase();
-
-        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
-          return;
-        }
-
-        if (tagName !== "a") {
-          elem = elem.parentNode;
-        }
-
-        if (elem.id !== closeID && elem.id !== _.prevID && elem.id !== _.nextID) {
-          return;
-        }
-
-        // console.log(elem);
-        event.preventDefault();
-
-        if (elem.id === closeID) {
-          _.lightBox.classList.add("lightbox--hidden");
-        }
-        // else if (elem.id === _.prevID) {
-        //   _.changeSlide(-1);
-        // } else if (elem.id === _.nextID) {
-        //   _.changeSlide(1);
-        // }
+      document.getElementById(closeID).addEventListener("click", function (e) {
+        e.preventDefault();
+        _.lightBox.classList.add("lightbox--hidden");
       });
 
       document.getElementById(_.name + "-blocks").addEventListener("click", function (event) {
@@ -172,9 +138,6 @@ var Gallery = function () {
         }
 
         index = +elem.getAttribute("data-index");
-        // document.querySelector('#' + lightBoxID + ' img').src = 'images/' + _.name + '/' + (index + 1) + '.jpg';
-
-        // _.lightBox.setAttribute("data-index", index);
         $(_.$slider).slick("slickGoTo", index);
         _.lightBox.classList.remove("lightbox--hidden");
         // }
@@ -207,6 +170,30 @@ var Gallery = function () {
     }
 
     _.showItems();
+  };
+
+  Construct.prototype.arrowOn = function (isNext) {
+    var _ = this;
+    if (_.enableArrows) {
+      $(_.$slider).slick(isNext ? "slickNext" : "slickPrev");
+    }
+  };
+
+  Construct.prototype.switchArrows = function (enable) {
+    var _ = this;
+    var styleProperty = "opacity";
+    var enableStyleValue = 1;
+    var disableStyleValue = 0.5;
+
+    _.enableArrows = enable;
+
+    if (_.enableArrows) {
+      _.$prev.css(styleProperty, enableStyleValue);
+      _.$next.css(styleProperty, enableStyleValue);
+    } else {
+      _.$prev.css(styleProperty, disableStyleValue);
+      _.$next.css(styleProperty, disableStyleValue);
+    }
   };
 
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
@@ -279,7 +266,6 @@ var Gallery = function () {
   Construct.prototype.showItems = function () {
     var _ = this;
 
-    // if (!_.startedAnimation && _.getScrollY() >= _.getElemCenterTop(_.name))
     if (!_.startedAnimation && _.isVisibleElem(_.name)) {
       _.setRhombusesByCategory();
 
@@ -317,9 +303,6 @@ var Gallery = function () {
     _.parentElem = document.getElementById(_.name + "-blocks");
 
     var menuItems = document.querySelectorAll("#" + _.name + "-menu a");
-    // var tempBlockWrap;
-    // var tempImageContainer;
-    // var tempLink;
     var tempInnerHTML = "";
     var i, len;
 
@@ -382,18 +365,6 @@ var Gallery = function () {
     }
   };
 
-  Construct.prototype.switchSlider = function (toEnable) {
-    var _ = this;
-
-    if (toEnable) {
-      _.$prev.removeAttr("disabled");
-      _.$next.removeAttr("disabled");
-    } else {
-      _.$prev.attr("disabled", "disabled");
-      _.$next.attr("disabled", "disabled");
-    }
-  };
-
   Construct.prototype.createMenu = function () {
     var _ = this;
 
@@ -438,14 +409,19 @@ var Gallery = function () {
         _.setRhombusesByCategory();
 
         $(_.$slider).slick("slickUnfilter");
-        _.enableArrows = true;
+        _.switchArrows(true);
 
         if (_.curCategory > 0) {
           selector = "." + _.slideCategoryPrefix + _.curCategory;
 
           if (_.categories[_.curCategory].items.length == 1) {
+            if (!_.existEmptySlide) {
+              $(_.$slider).slick("slickAdd", _.slideTemplate(-1));
+              _.existEmptySlide = true;
+            }
+
             selector += ", ." + _.slideCategoryPrefix + "0";
-            _.enableArrows = false;
+            _.switchArrows(false);
           }
         } else {
           selector = ":not(." + _.slideCategoryPrefix + "0)";
@@ -465,7 +441,6 @@ var Gallery = function () {
     });
 
     container.appendChild(menu);
-
     document
       .querySelector("#" + _.name + " .section-container")
       .insertBefore(container, document.getElementById(_.name + "-blocks"));
@@ -473,7 +448,6 @@ var Gallery = function () {
 
   Construct.prototype.createHelpArray = function () {
     var _ = this;
-    // _.shownItems = new Array(_.itemsCount);
     _.shownItems = _.fillArray(new Array(_.itemsCount), 0);
   };
 
@@ -489,9 +463,6 @@ var Gallery = function () {
     elem = document.querySelector(
       "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
     );
-
-    // _.items[index].style.opacity = 1;
-    // _.items[index].style.backgroundColor = 'rgb(0, ' + (_.iter*10) + ', 0)';
 
     elem.style.opacity = 1;
     _.shownItems[index] = 1;

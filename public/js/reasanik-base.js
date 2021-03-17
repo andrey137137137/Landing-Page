@@ -30,13 +30,11 @@ var ReasanikBase = function () {
   };
 
   Construct.prototype.isVisibleElem = function (containerID) {
-    var self = this;
-
-    var scrollY = self.getScrollY();
-    var topBorder = self.getElemCenterTop(containerID);
+    var _ = this;
+    var scrollY = _.getScrollY();
+    var topBorder = _.getElemCenterTop(containerID);
     // var bottomBorder = topBorder + parseInt(containerHeight);
-    var bottomBorder =
-      topBorder + parseInt(document.getElementById(containerID).offsetHeight);
+    var bottomBorder = topBorder + parseInt(document.getElementById(containerID).offsetHeight);
 
     if (scrollY >= topBorder && scrollY <= bottomBorder) {
       return true;
@@ -46,20 +44,20 @@ var ReasanikBase = function () {
   };
 
   Construct.prototype.resizeWindowWidth = function (callback) {
-    var self = this;
+    var _ = this;
 
-    if (window.innerWidth === self.windowWidth) {
+    if (window.innerWidth === _.windowWidth) {
       return;
     }
 
-    if (self.windowResizeDelay) {
-      clearTimeout(self.windowResizeDelay);
+    if (_.windowResizeDelay) {
+      clearTimeout(_.windowResizeDelay);
     }
 
-    self.windowWidth = window.innerWidth;
+    _.windowWidth = window.innerWidth;
 
-    self.windowResizeDelay = setTimeout(function () {
-      callback.apply(self);
+    _.windowResizeDelay = setTimeout(function () {
+      callback.apply(_);
     }, 50);
   };
 
@@ -136,9 +134,7 @@ var ReasanikBase = function () {
   };
 
   Construct.prototype.getElemCenterTop = function (elemID) {
-    this.screenHeightThird = parseInt(
-      document.documentElement.clientHeight / 3
-    );
+    this.screenHeightThird = parseInt(document.documentElement.clientHeight / 3);
     // var elem = document.querySelector('#' + elemID + ' .container');
     // var halfHeight = parseInt(document.documentElement.clientHeight/2);
     // var elemHalfHeight = parseInt(elem.offsetHeight/2);
