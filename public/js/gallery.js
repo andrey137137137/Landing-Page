@@ -48,7 +48,7 @@ var Gallery = function () {
 
     params = null;
 
-    _.lightBox = document.getElementById(lightBoxID);
+    _.$lightBox = document.getElementById(lightBoxID);
 
     _.iter = 0;
     _.itemsCount;
@@ -85,7 +85,7 @@ var Gallery = function () {
       _.createMenu();
     }
 
-    if (_.lightBox) {
+    if (_.$lightBox) {
       var closeID = _.name + "-slider-close";
       var sliderTempInnerHTML = "";
 
@@ -117,30 +117,20 @@ var Gallery = function () {
 
       document.getElementById(closeID).addEventListener("click", function (e) {
         e.preventDefault();
-        _.lightBox.classList.add("lightbox--hidden");
+        _.$lightBox.classList.add("lightbox--hidden");
       });
 
-      document.getElementById(_.name + "-blocks").addEventListener("click", function (event) {
-        event.preventDefault();
+      document.getElementById(_.name + "-blocks").addEventListener("click", function (e) {
+        e.preventDefault();
 
-        var elem = event.target;
-        var tagName = elem.tagName.toLowerCase();
-        var index;
+        var $elem = _.isLink(e.target, true);
 
-        if (tagName !== "a" && elem.parentNode.tagName.toLowerCase() !== "a") {
+        if (!$elem) {
           return;
         }
 
-        // if (tagName === 'a' || elem.parentNode.tagName.toLowerCase() === 'a')
-        // {
-        if (tagName != "a") {
-          elem = elem.parentNode;
-        }
-
-        index = +elem.getAttribute("data-index");
-        $(_.$slider).slick("slickGoTo", index);
-        _.lightBox.classList.remove("lightbox--hidden");
-        // }
+        $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
+        _.$lightBox.classList.remove("lightbox--hidden");
       });
     }
 
@@ -179,21 +169,25 @@ var Gallery = function () {
     }
   };
 
-  Construct.prototype.switchArrows = function (enable) {
-    var _ = this;
-    var styleProperty = "opacity";
-    var enableStyleValue = 1;
-    var disableStyleValue = 0.5;
+  Construct.prototype.isLink = function ($elem, intoLink) {
+    var intoLink = intoLink || false;
+    var linkTag = "A";
+    var falseCondition = $elem.tagName !== linkTag;
+    var intoLinkCondition = intoLink && falseCondition;
 
-    _.enableArrows = enable;
-
-    if (_.enableArrows) {
-      _.$prev.css(styleProperty, enableStyleValue);
-      _.$next.css(styleProperty, enableStyleValue);
-    } else {
-      _.$prev.css(styleProperty, disableStyleValue);
-      _.$next.css(styleProperty, disableStyleValue);
+    if (!intoLink && falseCondition) {
+      return false;
     }
+
+    if (intoLinkCondition && $elem.parentNode.tagName !== linkTag) {
+      return false;
+    }
+
+    if (intoLinkCondition) {
+      return $elem.parentNode;
+    }
+
+    return $elem;
   };
 
   Construct.prototype.slideTemplate = function (catIndex, item, itemIndex) {
@@ -365,6 +359,64 @@ var Gallery = function () {
     }
   };
 
+  Construct.prototype.switchArrows = function (enable) {
+    var _ = this;
+    var styleProperty = "opacity";
+    var enableStyleValue = 1;
+    var disableStyleValue = 0.5;
+
+    _.enableArrows = enable;
+
+    if (_.enableArrows) {
+      _.$prev.css(styleProperty, enableStyleValue);
+      _.$next.css(styleProperty, enableStyleValue);
+    } else {
+      _.$prev.css(styleProperty, disableStyleValue);
+      _.$next.css(styleProperty, disableStyleValue);
+    }
+  };
+
+  Construct.prototype.changeCategory = function ($elem) {
+    // var display;
+
+    if ($elem.hasAttribute("data-index")) {
+      var selector;
+
+      _.curCategory = +$elem.getAttribute("data-index");
+      _.setRhombusesByCategory();
+
+      $(_.$slider).slick("slickUnfilter");
+      _.switchArrows(true);
+
+      if (_.curCategory > 0) {
+        selector = "." + _.slideCategoryPrefix + _.curCategory;
+
+        if (_.categories[_.curCategory].items.length == 1) {
+          if (!_.existEmptySlide) {
+            $(_.$slider).slick("slickAdd", _.slideTemplate(-1));
+            _.existEmptySlide = true;
+          }
+
+          selector += ", ." + _.slideCategoryPrefix + "0";
+          _.switchArrows(false);
+        }
+      } else {
+        selector = ":not(." + _.slideCategoryPrefix + "0)";
+      }
+
+      $(_.$slider).slick("slickFilter", selector).slick("refresh");
+    }
+    // else if ($elem.hasAttribute('data-display'))
+    // {
+    // 	display = $elem.getAttribute('data-display');
+    // 	console.log(_.parentElem);
+
+    // 	_.parentElem.classList.remove('display_rhombuses');
+    // 	_.parentElem.classList.remove('display-squares');
+    // 	_.parentElem.classList.add('display-' + display);
+    // }
+  };
+
   Construct.prototype.createMenu = function () {
     var _ = this;
 
@@ -392,52 +444,13 @@ var Gallery = function () {
 
     menu.innerHTML = tempInnerHTML;
 
-    menu.addEventListener("click", function (event) {
-      var elem = event.target;
-      // var display;
-
-      if (elem.tagName != "A") {
+    menu.addEventListener("click", function (e) {
+      e.preventDefault();
+      var $elem = _.isLink(e.target);
+      if (!$elem) {
         return;
       }
-
-      event.preventDefault();
-
-      if (elem.hasAttribute("data-index")) {
-        var selector;
-
-        _.curCategory = +elem.getAttribute("data-index");
-        _.setRhombusesByCategory();
-
-        $(_.$slider).slick("slickUnfilter");
-        _.switchArrows(true);
-
-        if (_.curCategory > 0) {
-          selector = "." + _.slideCategoryPrefix + _.curCategory;
-
-          if (_.categories[_.curCategory].items.length == 1) {
-            if (!_.existEmptySlide) {
-              $(_.$slider).slick("slickAdd", _.slideTemplate(-1));
-              _.existEmptySlide = true;
-            }
-
-            selector += ", ." + _.slideCategoryPrefix + "0";
-            _.switchArrows(false);
-          }
-        } else {
-          selector = ":not(." + _.slideCategoryPrefix + "0)";
-        }
-
-        $(_.$slider).slick("slickFilter", selector).slick("refresh");
-      }
-      // else if (elem.hasAttribute('data-display'))
-      // {
-      // 	display = elem.getAttribute('data-display');
-      // 	console.log(_.parentElem);
-
-      // 	_.parentElem.classList.remove('display_rhombuses');
-      // 	_.parentElem.classList.remove('display-squares');
-      // 	_.parentElem.classList.add('display-' + display);
-      // }
+      _.changeCategory($elem);
     });
 
     container.appendChild(menu);
@@ -453,18 +466,18 @@ var Gallery = function () {
 
   Construct.prototype.randomShowing = function () {
     var _ = this;
-    var elem;
+    var $elem;
     var index;
 
     do {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    elem = document.querySelector(
+    $elem = document.querySelector(
       "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
     );
 
-    elem.style.opacity = 1;
+    $elem.style.opacity = 1;
     _.shownItems[index] = 1;
     _.iter++;
 
