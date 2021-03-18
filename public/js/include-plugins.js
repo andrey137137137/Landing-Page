@@ -18,39 +18,39 @@
     //   ],
     // });
 
-    Slider({
-      sliderID: "main",
-      countSlides: 4,
-      navButtons: {
-        prev: true,
-        next: true,
-      },
-    });
+    // Slider({
+    //   sliderID: "main",
+    //   countSlides: 4,
+    //   navButtons: {
+    //     prev: true,
+    //     next: true,
+    //   },
+    // });
 
-    ScrollEffect({
-      buttonID: "main-slider-after-section",
-      finalElemID: "features",
-    });
+    // ScrollEffect({
+    //   buttonID: "main-slider-after-section",
+    //   finalElemID: "features",
+    // });
 
-    ScrollEffect({
-      buttonID: "to-portfolio",
-      finalElemID: "portfolio",
-    });
+    // ScrollEffect({
+    //   buttonID: "to-portfolio",
+    //   finalElemID: "portfolio",
+    // });
 
-    ScrollEffect({
-      buttonID: "to-skills",
-      finalElemID: "skills",
-    });
+    // ScrollEffect({
+    //   buttonID: "to-skills",
+    //   finalElemID: "skills",
+    // });
 
-    ScrollEffect({
-      buttonID: "to-team",
-      finalElemID: "team",
-    });
+    // ScrollEffect({
+    //   buttonID: "to-team",
+    //   finalElemID: "team",
+    // });
 
-    ScrollEffect({
-      buttonID: "to-contacts",
-      finalElemID: "contacts",
-    });
+    // ScrollEffect({
+    //   buttonID: "to-contacts",
+    //   finalElemID: "contacts",
+    // });
 
     // AnimateBlocks({
     //   parentID: "features",
@@ -213,14 +213,14 @@
       ],
     });
 
-    FormValidate({
-      formID: "contacts_form",
-      // onlySubmitChecking: true,
-    });
+    // FormValidate({
+    //   formID: "contacts_form",
+    //   // onlySubmitChecking: true,
+    // });
 
-    ToTop({
-      buttonID: "to-top",
-      border: 300,
-    });
+    // ToTop({
+    //   buttonID: "to-top",
+    //   border: 300,
+    // });
   });
 })();

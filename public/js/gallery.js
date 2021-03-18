@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params
+      params,
     );
 
     if (!params.name || !params.categories) {
@@ -49,6 +49,7 @@ var Gallery = function () {
     params = null;
 
     _.$lightBox = $("#" + lightBoxID);
+    _.$parentElem = $("#" + _.name + "-blocks");
 
     _.iter = 0;
     _.itemsCount;
@@ -203,9 +204,7 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' +
-          emptyTitle +
-          '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -215,28 +214,13 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (
-    catIndex,
-    breakpoint,
-    itemIndex
-  ) {
+  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex
-      ? _.categories[catIndex].items[itemIndex].image
-      : itemIndex;
-    return (
-      _.rootFolder +
-      "/" +
-      category +
-      "/" +
-      breakpoint +
-      "/" +
-      (imageIndex + 1) +
-      ".jpg"
-    );
+    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
+    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -312,9 +296,7 @@ var Gallery = function () {
     var _ = this;
     var $menuItems = $("#" + _.name + "-menu a");
     var tempHTML = "";
-    var i, len;
 
-    _.$parentElem = $("#" + _.name + "-blocks");
     _.startedAnimation = true;
     _.iter = 0;
     _.itemsCount = 0;
@@ -350,15 +332,16 @@ var Gallery = function () {
     _.createHelpArray();
     _.$parentElem.html(tempHTML);
 
-    len = $menuItems.length;
+    $menuItems.each(function (index) {
+      var $elem = $(this);
+      var toggleClass = "active";
 
-    if (len) {
-      for (i = 0; i < len; i++) {
-        $menuItems[i].removeClass("active");
+      if (index != _.curCategory) {
+        $elem.removeClass(toggleClass);
+      } else if (!$elem.hasClass(toggleClass)) {
+        $elem.addClass(toggleClass);
       }
-
-      $menuItems[_.curCategory].addClass("active");
-    }
+    });
 
     _.RestructItems.run(true);
 
@@ -392,6 +375,7 @@ var Gallery = function () {
   };
 
   Construct.prototype.changeCategory = function ($elem) {
+    var _ = this;
     // var display;
 
     if ($elem.hasAttribute("data-index")) {
@@ -434,14 +418,13 @@ var Gallery = function () {
 
   Construct.prototype.createMenu = function () {
     var _ = this;
-
     var $container = $("<div>");
     var $menu = $("<ul>");
     var tempHTML = "";
 
     $container.addClass("menu-container section-flex_container");
 
-    $menu.id = _.name + "-menu";
+    $menu.attr("id", _.name + "-menu");
     $menu.addClass("hor_menu " + _.name + "-menu");
 
     _.categories.forEach(function (category, index) {
@@ -451,8 +434,7 @@ var Gallery = function () {
         tempHTML += " active";
       }
 
-      tempHTML +=
-        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -470,10 +452,7 @@ var Gallery = function () {
     });
 
     $container.append($menu);
-    $("#" + _.name + " .section-container").insertBefore(
-      $container,
-      $("#" + _.name + "-blocks")
-    );
+    $($container).insertBefore("#" + _.name + "-blocks");
   };
 
   Construct.prototype.createHelpArray = function () {
@@ -490,15 +469,7 @@ var Gallery = function () {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    $elem = $(
-      "#" +
-        _.name +
-        "-blocks ." +
-        _.childClass +
-        ":nth-child(" +
-        (index + 1) +
-        ")"
-    );
+    $elem = $("#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")");
 
     $elem.css("opacity", 1);
     _.shownItems[index] = 1;
