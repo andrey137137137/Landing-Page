@@ -29,7 +29,7 @@ var Gallery = function () {
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params,
+      params
     );
 
     if (!params.name || !params.categories) {
@@ -48,7 +48,7 @@ var Gallery = function () {
 
     params = null;
 
-    _.$lightBox = document.getElementById(lightBoxID);
+    _.$lightBox = $("#" + lightBoxID);
 
     _.iter = 0;
     _.itemsCount;
@@ -87,15 +87,15 @@ var Gallery = function () {
 
     if (_.$lightBox) {
       var closeID = _.name + "-slider-close";
-      var sliderTempInnerHTML = "";
+      var sliderTempHTML = "";
 
       _.categories.forEach(function (category, catIndex) {
         category.items.forEach(function (item, itemIndex) {
-          sliderTempInnerHTML += _.slideTemplate(catIndex, item, itemIndex);
+          sliderTempHTML += _.slideTemplate(catIndex, item, itemIndex);
         });
       });
 
-      document.getElementById(_.sliderID).innerHTML = sliderTempInnerHTML;
+      $("#" + _.sliderID).html(sliderTempHTML);
 
       _.$slider = $("#" + _.sliderID);
       _.$prev = $("#" + _.prevID);
@@ -115,12 +115,12 @@ var Gallery = function () {
         _.arrowOn(true);
       });
 
-      document.getElementById(closeID).addEventListener("click", function (e) {
+      $("#" + closeID).on("click", function (e) {
         e.preventDefault();
-        _.$lightBox.classList.add("lightbox--hidden");
+        _.$lightBox.addClass("lightbox--hidden");
       });
 
-      document.getElementById(_.name + "-blocks").addEventListener("click", function (e) {
+      $("#" + _.name + "-blocks").on("click", function (e) {
         e.preventDefault();
 
         var $elem = _.isLink(e.target, true);
@@ -130,7 +130,7 @@ var Gallery = function () {
         }
 
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        _.$lightBox.classList.remove("lightbox--hidden");
+        _.$lightBox.removeClass("lightbox--hidden");
       });
     }
 
@@ -203,7 +203,9 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' +
+          emptyTitle +
+          '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -213,13 +215,28 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
+  Construct.prototype.getImagePath = function (
+    catIndex,
+    breakpoint,
+    itemIndex
+  ) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
-    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
+    var imageIndex = !catIndex
+      ? _.categories[catIndex].items[itemIndex].image
+      : itemIndex;
+    return (
+      _.rootFolder +
+      "/" +
+      category +
+      "/" +
+      breakpoint +
+      "/" +
+      (imageIndex + 1) +
+      ".jpg"
+    );
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -293,20 +310,18 @@ var Gallery = function () {
 
   Construct.prototype.setRhombusesByCategory = function () {
     var _ = this;
-
-    _.parentElem = document.getElementById(_.name + "-blocks");
-
-    var menuItems = document.querySelectorAll("#" + _.name + "-menu a");
-    var tempInnerHTML = "";
+    var $menuItems = $("#" + _.name + "-menu a");
+    var tempHTML = "";
     var i, len;
 
+    _.$parentElem = $("#" + _.name + "-blocks");
     _.startedAnimation = true;
     _.iter = 0;
     _.itemsCount = 0;
-    _.parentElem.innerHTML = "";
+    _.$parentElem.html("");
 
     _.getItemsByCategory().forEach(function (item, itemIndex) {
-      tempInnerHTML +=
+      tempHTML +=
         '<div class="' +
         _.childClass +
         '"><div class="photo_block-frame"><div class="photo_block-rhombus">' +
@@ -316,11 +331,11 @@ var Gallery = function () {
         "</h3></div></div>";
 
       if (_.showCategory) {
-        tempInnerHTML +=
+        tempHTML +=
           '<div class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--category photo_block-category"><div class="rhombus_wrap-rhombus"></div></div>';
       }
 
-      tempInnerHTML +=
+      tempHTML +=
         '<a href="#" data-index="' +
         itemIndex +
         '" class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--more photo_block-more"><div class="rhombus_wrap-rhombus"></div></a></div>';
@@ -328,21 +343,21 @@ var Gallery = function () {
       _.itemsCount++;
     });
 
-    if (!tempInnerHTML) {
-      tempInnerHTML = "К сожалению в данной категории нет фотографий!";
+    if (!tempHTML) {
+      tempHTML = "К сожалению в данной категории нет фотографий!";
     }
 
     _.createHelpArray();
-    _.parentElem.innerHTML = tempInnerHTML;
+    _.$parentElem.html(tempHTML);
 
-    len = menuItems.length;
+    len = $menuItems.length;
 
     if (len) {
       for (i = 0; i < len; i++) {
-        menuItems[i].classList.remove("active");
+        $menuItems[i].removeClass("active");
       }
 
-      menuItems[_.curCategory].classList.add("active");
+      $menuItems[_.curCategory].addClass("active");
     }
 
     _.RestructItems.run(true);
@@ -409,42 +424,43 @@ var Gallery = function () {
     // else if ($elem.hasAttribute('data-display'))
     // {
     // 	display = $elem.getAttribute('data-display');
-    // 	console.log(_.parentElem);
+    // 	console.log(_.$parentElem);
 
-    // 	_.parentElem.classList.remove('display_rhombuses');
-    // 	_.parentElem.classList.remove('display-squares');
-    // 	_.parentElem.classList.add('display-' + display);
+    // 	_.$parentElem.removeClass('display_rhombuses');
+    // 	_.$parentElem.removeClass('display-squares');
+    // 	_.$parentElem.addClass('display-' + display);
     // }
   };
 
   Construct.prototype.createMenu = function () {
     var _ = this;
 
-    var container = document.createElement("div");
-    var menu = document.createElement("ul");
-    var tempInnerHTML = "";
+    var $container = $("<div>");
+    var $menu = $("<ul>");
+    var tempHTML = "";
 
-    container.className = "menu-container section-flex_container";
+    $container.addClass("menu-container section-flex_container");
 
-    menu.id = _.name + "-menu";
-    menu.className = "hor_menu " + _.name + "-menu";
+    $menu.id = _.name + "-menu";
+    $menu.addClass("hor_menu " + _.name + "-menu");
 
     _.categories.forEach(function (category, index) {
-      tempInnerHTML += '<li class="list-item"><a class="list-link';
+      tempHTML += '<li class="list-item"><a class="list-link';
 
       if (!index) {
-        tempInnerHTML += " active";
+        tempHTML += " active";
       }
 
-      tempInnerHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempHTML +=
+        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
-    // tempInnerHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
-    // tempInnerHTML += '<li id="grid-switcher-rhombuses"><a class="active" data-display="rhombuses" href="#"></a></li>';
+    // tempHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
+    // tempHTML += '<li id="grid-switcher-rhombuses"><a class="active" data-display="rhombuses" href="#"></a></li>';
 
-    menu.innerHTML = tempInnerHTML;
+    $menu.html(tempHTML);
 
-    menu.addEventListener("click", function (e) {
+    $menu.on("click", function (e) {
       e.preventDefault();
       var $elem = _.isLink(e.target);
       if (!$elem) {
@@ -453,10 +469,11 @@ var Gallery = function () {
       _.changeCategory($elem);
     });
 
-    container.appendChild(menu);
-    document
-      .querySelector("#" + _.name + " .section-container")
-      .insertBefore(container, document.getElementById(_.name + "-blocks"));
+    $container.append($menu);
+    $("#" + _.name + " .section-container").insertBefore(
+      $container,
+      $("#" + _.name + "-blocks")
+    );
   };
 
   Construct.prototype.createHelpArray = function () {
@@ -473,11 +490,17 @@ var Gallery = function () {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    $elem = document.querySelector(
-      "#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")",
+    $elem = $(
+      "#" +
+        _.name +
+        "-blocks ." +
+        _.childClass +
+        ":nth-child(" +
+        (index + 1) +
+        ")"
     );
 
-    $elem.style.opacity = 1;
+    $elem.css("opacity", 1);
     _.shownItems[index] = 1;
     _.iter++;
 

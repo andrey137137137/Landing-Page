@@ -1,4 +1,4 @@
-var RestructRhombuses = function() {
+var RestructRhombuses = function () {
   "use strict";
 
   function Construct(params) {
@@ -11,16 +11,14 @@ var RestructRhombuses = function() {
 
   Construct.prototype = Object.create(ReasanikBase());
 
-  // Construct.prototype = {
-
   Construct.prototype.constructor = Construct;
 
   Construct.prototype.pluginName = "RestructRhombuses";
 
-  Construct.prototype.init = function(params) {
-    var self = this;
+  Construct.prototype.init = function (params) {
+    var _ = this;
 
-    params = this.extend(
+    params = _.extend(
       {
         selector: false,
         childElem: false,
@@ -30,142 +28,147 @@ var RestructRhombuses = function() {
         colClassPrefix: "col",
         firstInOddRowClass: "col--first_in_odd_row",
         firstInEvenRowClass: "col--first_in_even_row",
-        lastInEvenRowClass: "col--last_in_even_row"
+        lastInEvenRowClass: "col--last_in_even_row",
       },
       params
     );
 
     if (!params.selector || !params.childElem) {
-      this.setErrorMessage(this.pluginName);
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
-    this.selector = params.selector;
-    this.childElem = params.childElem;
+    _.selector = params.selector;
+    _.childElem = params.childElem;
 
-    this.colClassPrefix = params.colClassPrefix;
-    this.firstInOddRowClass = params.firstInOddRowClass;
-    this.firstInEvenRowClass = params.firstInEvenRowClass;
-    this.lastInEvenRowClass = params.lastInEvenRowClass;
-    this.maxCols = params.maxCols;
-    this.spaceBetweenBlocks = params.spaceBetweenBlocks;
+    _.colClassPrefix = params.colClassPrefix;
+    _.firstInOddRowClass = params.firstInOddRowClass;
+    _.firstInEvenRowClass = params.firstInEvenRowClass;
+    _.lastInEvenRowClass = params.lastInEvenRowClass;
+    _.maxCols = params.maxCols;
+    _.spaceBetweenBlocks = params.spaceBetweenBlocks;
 
     var wait = params.wait;
 
     params = null;
 
-    this.countInRow = 0;
+    _.countInRow = 0;
 
-    this.elemWidth;
-    // this.marginLeft;
-    // this.marginEvenRow;
-    this.oldColClass;
-    // this.evenRowsExist;
+    _.elemWidth;
+    // _.marginLeft;
+    // _.marginEvenRow;
+    _.oldColClass;
+    // _.evenRowsExist;
 
-    this.oldElemWidth = 0;
-    this.oldCountInRow = 0;
-    this.oldElemsCount = 0;
+    _.oldElemWidth = 0;
+    _.oldCountInRow = 0;
+    _.oldElemsCount = 0;
 
     if (!wait) {
-      self.run();
+      _.run();
     }
 
-    window.addEventListener("resize", function() {
-      // self.run();
-      self.resizeWindowWidth(self.run);
+    $(window).on("resize", function () {
+      // _.run();
+      _.resizeWindowWidth(_.run);
+    });
+    window.addEventListener("orientationChange", function () {
+      _.resizeWindowWidth(_.run);
     });
   };
 
-  Construct.prototype.run = function(restruct) {
+  Construct.prototype.run = function (restruct) {
+    var _ = this;
+    var $parent = $(_.selector);
+    var $elems = $parent.find(_.childElem);
+    var $firstElem = $elems.first();
+
     restruct = restruct || false;
 
-    var elems = document.querySelectorAll(this.selector + " " + this.childElem);
-    var parent = document.querySelector(this.selector);
-
-    if (!elems.length) {
-      parent.classList.remove(this.oldColClass);
+    if (!$elems.length) {
+      $parent.removeClass(_.oldColClass);
       return;
     }
 
-    var parentWidth = parent.parentNode.offsetWidth;
+    var parentWidth = $parent.parent().width();
     // var parentWidthWithMargins;
-    var countElems = elems.length;
+    var countElems = $elems.length;
     // var tempCountInRow;
     var firstOddElemIndex;
     var firstEvenElemIndex;
     // var lastEvenElemIndex;
     var step;
-    var newColClass = this.colClassPrefix;
+    var newColClass = _.colClassPrefix;
 
-    // this.elemWidth = this.getWidth(elems[0], true);
-    this.elemWidth = this.getWidth(elems[0]);
-    var rightMargin = this.getStyle(elems[0], "marginRight", "px");
-    this.elemWidth = this.elemWidth + rightMargin * 2;
+    // _.elemWidth = _.getWidth($firstElem, true);
+    _.elemWidth = _.getWidth($firstElem);
+    var rightMargin = _.getStyle($firstElem, "marginRight", "px");
+    _.elemWidth = _.elemWidth + rightMargin * 2;
     console.log(parentWidth);
-    console.log(this.elemWidth);
-    this.countInRow = parseInt(parentWidth / this.elemWidth);
-    // tempCountInRow = parseInt(parentWidth/this.elemWidth);
+    console.log(_.elemWidth);
+    _.countInRow = parseInt(parentWidth / _.elemWidth);
+    // tempCountInRow = parseInt(parentWidth/_.elemWidth);
 
-    // parentWidthWithMargins = parentWidth + this.spaceBetweenBlocks*(tempCountInRow - 1);
+    // parentWidthWithMargins = parentWidth + _.spaceBetweenBlocks*(tempCountInRow - 1);
 
-    // this.countInRow = parseInt(parentWidthWithMargins/this.elemWidth);
+    // _.countInRow = parseInt(parentWidthWithMargins/_.elemWidth);
 
-    if (countElems <= this.countInRow) {
-      this.countInRow = countElems;
+    if (countElems <= _.countInRow) {
+      _.countInRow = countElems;
     }
 
     console.log("---------------");
-    console.log(this.oldElemWidth);
-    console.log(this.oldCountInRow);
-    console.log(this.oldElemsCount);
+    console.log(_.oldElemWidth);
+    console.log(_.oldCountInRow);
+    console.log(_.oldElemsCount);
     console.log(restruct);
 
     if (
-      this.oldElemWidth === this.elemWidth &&
-      this.oldCountInRow === this.countInRow &&
-      this.oldElemsCount === countElems &&
+      _.oldElemWidth === _.elemWidth &&
+      _.oldCountInRow === _.countInRow &&
+      _.oldElemsCount === countElems &&
       !restruct
     ) {
       return;
     }
 
-    console.log(this.elemWidth);
-    console.log(this.countInRow);
+    console.log(_.elemWidth);
+    console.log(_.countInRow);
     console.log(countElems);
 
-    if (this.maxCols > 0 && this.countInRow > this.maxCols) {
-      this.countInRow = this.maxCols;
+    if (_.maxCols > 0 && _.countInRow > _.maxCols) {
+      _.countInRow = _.maxCols;
     }
 
-    this.oldElemWidth = this.elemWidth;
-    this.oldCountInRow = this.countInRow;
-    this.oldElemsCount = countElems;
+    _.oldElemWidth = _.elemWidth;
+    _.oldCountInRow = _.countInRow;
+    _.oldElemsCount = countElems;
 
     firstOddElemIndex = 0;
-    firstEvenElemIndex = this.countInRow;
+    firstEvenElemIndex = _.countInRow;
 
-    if (this.countInRow > 1) {
-      step = this.countInRow * 2 - 1;
+    if (_.countInRow > 1) {
+      step = _.countInRow * 2 - 1;
     } else {
       step = 2;
     }
 
-    for (var i = 0; i < countElems; i++) {
-      elems[i].classList.remove(this.firstInOddRowClass);
-      elems[i].classList.remove(this.firstInEvenRowClass);
-      // elems[i].classList.remove(this.lastInEvenRowClass);
+    $elems.each(function (index) {
+      $(this).removeClass(_.firstInOddRowClass);
+      $(this).removeClass(_.firstInEvenRowClass);
+      // $(this).removeClass(_.lastInEvenRowClass);
 
-      if (firstOddElemIndex == i) {
-        elems[i].classList.add(this.firstInOddRowClass);
+      if (firstOddElemIndex == index) {
+        $(this).addClass(_.firstInOddRowClass);
       }
 
-      if (firstEvenElemIndex == i) {
-        elems[i].classList.add(this.firstInEvenRowClass);
+      if (firstEvenElemIndex == index) {
+        $(this).addClass(_.firstInEvenRowClass);
 
-        // lastEvenElemIndex = firstEvenElemIndex + this.countInRow - 2;
+        // lastEvenElemIndex = firstEvenElemIndex + _.countInRow - 2;
         // firstOddElemIndex = lastEvenElemIndex + 1;
-        if (this.countInRow > 1) {
-          firstOddElemIndex = firstEvenElemIndex + this.countInRow - 1;
+        if (_.countInRow > 1) {
+          firstOddElemIndex = firstEvenElemIndex + _.countInRow - 1;
         } else {
           firstOddElemIndex += step;
         }
@@ -173,24 +176,23 @@ var RestructRhombuses = function() {
         firstEvenElemIndex += step;
       }
 
-      // if (lastEvenElemIndex == i)
+      // if (lastEvenElemIndex == index)
       // {
-      // 	elems[i].classList.add(this.lastInEvenRowClass);
+      // 	$(this).addClass(_.lastInEvenRowClass);
       // }
+    });
+
+    if (_.countInRow > 1) {
+      newColClass += "_" + _.countInRow;
     }
 
-    if (this.countInRow > 1) {
-      newColClass += "_" + this.countInRow;
+    if (_.oldColClass) {
+      $parent.removeClass(_.oldColClass);
     }
 
-    if (this.oldColClass) {
-      parent.classList.remove(this.oldColClass);
-    }
-
-    parent.classList.add(newColClass);
-    this.oldColClass = newColClass;
+    $parent.addClass(newColClass);
+    _.oldColClass = newColClass;
   };
-  // };
 
   return Construct(arguments);
 };

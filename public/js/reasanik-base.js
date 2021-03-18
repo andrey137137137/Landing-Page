@@ -34,7 +34,8 @@ var ReasanikBase = function () {
     var scrollY = _.getScrollY();
     var topBorder = _.getElemCenterTop(containerID);
     // var bottomBorder = topBorder + parseInt(containerHeight);
-    var bottomBorder = topBorder + parseInt(document.getElementById(containerID).offsetHeight);
+    var bottomBorder =
+      topBorder + parseInt(document.getElementById(containerID).offsetHeight);
 
     if (scrollY >= topBorder && scrollY <= bottomBorder) {
       return true;
@@ -93,21 +94,26 @@ var ReasanikBase = function () {
     console.log("------------------------------------------------");
   };
 
-  Construct.prototype.getWidth = function (elem, withMargins) {
-    var width = elem.offsetWidth;
+  Construct.prototype.hasAttr = function ($elem, attrName) {
+    var attr = $elem.attr(attrName);
+    return typeof attr !== typeof undefined && attr !== false;
+  };
+
+  Construct.prototype.getWidth = function ($elem, withMargins) {
+    var width = $elem.width();
 
     withMargins = withMargins || false;
 
     if (withMargins) {
-      width += this.getStyle(elem, "marginLeft", "px");
-      width += this.getStyle(elem, "marginRight", "px");
+      width += this.getStyle($elem, "marginLeft", "px");
+      width += this.getStyle($elem, "marginRight", "px");
     }
 
     return width;
   };
 
-  Construct.prototype.getStyle = function (elem, styleName, measure) {
-    var style = getComputedStyle(elem)[styleName];
+  Construct.prototype.getStyle = function ($elem, styleName, measure) {
+    var style = $elem.css(styleName);
 
     if (measure) {
       style = parseInt(style.slice(0, style.length - measure.length));
@@ -116,28 +122,30 @@ var ReasanikBase = function () {
     return style;
   };
 
-  Construct.prototype.getContainerWidth = function (elem) {
-    var width = elem.parentNode.offsetWidth;
+  Construct.prototype.getContainerWidth = function ($elem) {
+    var width = $elem.parentNode.offsetWidth;
 
-    width -= this.getStyle(elem.parentNode, "paddingLeft", "px");
-    width -= this.getStyle(elem.parentNode, "paddingRight", "px");
+    width -= this.getStyle($elem.parentNode, "paddingLeft", "px");
+    width -= this.getStyle($elem.parentNode, "paddingRight", "px");
 
     return width;
   };
 
-  Construct.prototype.getDataAttr = function (elem, name) {
-    if (elem.dataset) {
-      return elem.dataset[name];
+  Construct.prototype.getDataAttr = function ($elem, name) {
+    if ($elem.dataset) {
+      return $elem.dataset[name];
     }
 
-    return elem.getAttribute("data-" + name);
+    return $elem.getAttribute("data-" + name);
   };
 
   Construct.prototype.getElemCenterTop = function (elemID) {
-    this.screenHeightThird = parseInt(document.documentElement.clientHeight / 3);
-    // var elem = document.querySelector('#' + elemID + ' .container');
+    this.screenHeightThird = parseInt(
+      document.documentElement.clientHeight / 3
+    );
+    // var $elem = document.querySelector('#' + elemID + ' .container');
     // var halfHeight = parseInt(document.documentElement.clientHeight/2);
-    // var elemHalfHeight = parseInt(elem.offsetHeight/2);
+    // var elemHalfHeight = parseInt($elem.offsetHeight/2);
     // console.log(height);
     return document.getElementById(elemID).offsetTop - this.screenHeightThird;
     // return document.getElementById(elemID).offsetTop - halfHeight + elemHalfHeight;

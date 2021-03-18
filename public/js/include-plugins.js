@@ -2,21 +2,21 @@
   "use strict";
 
   window.addEventListener("DOMContentLoaded", function () {
-    Menu({
-      menuID: "main-menu",
-      buttonCheckerID: "menu-checker",
-      headerHeight: document.querySelector("header").offsetHeight,
-      items: [
-        { name: "home", href: "" },
-        { name: "features", href: "features" },
-        { name: "about", href: "about" },
-        { name: "work", href: "portfolio" },
-        { name: "skills", href: "skills" },
-        { name: "blog", href: "blog-news" },
-        { name: "team", href: "team" },
-        { name: "contact", href: "contacts" },
-      ],
-    });
+    // Menu({
+    //   menuID: "main-menu",
+    //   buttonCheckerID: "menu-checker",
+    //   headerHeight: document.querySelector("header").offsetHeight,
+    //   items: [
+    //     { name: "home", href: "" },
+    //     { name: "features", href: "features" },
+    //     { name: "about", href: "about" },
+    //     { name: "work", href: "portfolio" },
+    //     { name: "skills", href: "skills" },
+    //     { name: "blog", href: "blog-news" },
+    //     { name: "team", href: "team" },
+    //     { name: "contact", href: "contacts" },
+    //   ],
+    // });
 
     Slider({
       sliderID: "main",
@@ -52,29 +52,29 @@
       finalElemID: "contacts",
     });
 
-    AnimateBlocks({
-      parentID: "features",
-    });
+    // AnimateBlocks({
+    //   parentID: "features",
+    // });
 
-    AnimateBlocks({
-      parentID: "about",
-      childElem: ".social-item",
-      outPosition: -3000,
-      transform: false,
-    });
+    // AnimateBlocks({
+    //   parentID: "about",
+    //   childElem: ".social-item",
+    //   outPosition: -3000,
+    //   transform: false,
+    // });
 
-    AnimateBlocks({
-      parentID: "skills",
-    });
+    // AnimateBlocks({
+    //   parentID: "skills",
+    // });
 
-    AnimateBlocks({
-      parentID: "skills-technologies",
-      childElem: "li",
-    });
+    // AnimateBlocks({
+    //   parentID: "skills-technologies",
+    //   childElem: "li",
+    // });
 
-    AnimateBlocks({
-      parentID: "statistics",
-    });
+    // AnimateBlocks({
+    //   parentID: "statistics",
+    // });
 
     RestructRhombuses({
       selector: ".about-socials",
