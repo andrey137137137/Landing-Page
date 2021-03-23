@@ -11,66 +11,69 @@ var FormValidate = function () {
 
   Construct.prototype = Object.create(ReasanikBase());
 
-  // Construct.prototype = {
-
   Construct.prototype.constructor = Construct;
 
   Construct.prototype.pluginName = "FormValidate";
 
   Construct.prototype.init = function (params) {
-    var self = this;
+    var _ = this;
 
-    params = this.extend(
+    params = _.extend(
       {
         formID: false,
         onlySubmitChecking: false,
       },
-      params,
+      params
     );
 
     if (!params.formID) {
-      this.setErrorMessage(this.pluginName);
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
-    this.formID = params.formID;
+    _.formID = params.formID;
 
     var onlySubmitChecking = params.onlySubmitChecking;
 
     params = null;
 
-    this.errorMessage = false;
-    this.errorMessageID = "contacts-form-error";
-    this.errorMessageElem = document.getElementById(this.errorMessageID);
+    _.errorMessage = false;
+    _.errorMessageID = "contacts-form-error";
+    _.errorMessageElem = document.getElementById(_.errorMessageID);
 
-    var elems = document.querySelectorAll("#" + this.formID + " .form-elem--required");
+    var elems = document.querySelectorAll(
+      "#" + _.formID + " .form-elem--required"
+    );
 
     if (!onlySubmitChecking) {
       for (var i = 0, len = elems.length; i < len; i++) {
         elems[i].addEventListener("blur", function () {
-          self.validate(this);
+          _.validate(this);
         });
       }
     }
 
-    document.getElementById(this.formID).addEventListener("submit", function (event) {
-      event.preventDefault();
+    document
+      .getElementById(_.formID)
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
 
-      for (var i = 0, len = elems.length; i < len; i++) {
-        if (!self.validate(elems[i])) {
-          return;
+        for (var i = 0, len = elems.length; i < len; i++) {
+          if (!_.validate(elems[i])) {
+            return;
+          }
         }
-      }
 
-      this.submit();
-    });
+        _.submit();
+      });
   };
 
   Construct.prototype.validate = function (elem) {
+    var _ = this;
     var tag = elem.tagName.toLowerCase();
     var type;
 
-    this.errorMessage = false;
+    _.errorMessage = false;
 
     switch (tag) {
       case "select":
@@ -85,35 +88,37 @@ var FormValidate = function () {
         validateSelect(elem);
         break;
       case "text":
-        if (elem.name == this.formID + "_website") {
-          this.validateWebAdress(elem);
+        if (elem.name == _.formID + "_website") {
+          _.validateWebAdress(elem);
         } else {
-          this.validateText(elem);
+          _.validateText(elem);
         }
         break;
       case "email":
-        this.validateEmail(elem);
+        _.validateEmail(elem);
         break;
       case "password":
         validatePassword(elem);
         break;
     }
-    console.log(this.errorMessage);
-    document.querySelector("#" + this.errorMessageID + " div").innerHTML = this.errorMessage;
+    console.log(_.errorMessage);
+    document.querySelector("#" + _.errorMessageID + " div").innerHTML =
+      _.errorMessage;
 
-    if (this.errorMessage) {
-      this.errorMessageElem.style.top = elem.offsetTop + 100 + "px";
-      this.errorMessageElem.classList.add("active");
+    if (_.errorMessage) {
+      _.errorMessageElem.style.top = elem.offsetTop + 100 + "px";
+      _.errorMessageElem.classList.add("active");
       return false;
     }
 
-    this.errorMessageElem.style.top = "";
-    this.errorMessageElem.classList.remove("active");
+    _.errorMessageElem.style.top = "";
+    _.errorMessageElem.classList.remove("active");
 
     return true;
   };
 
   Construct.prototype.trim = function (str) {
+    var _ = this;
     var trimmingChar = " ";
     var firstRestIndex;
     var i;
@@ -143,20 +148,21 @@ var FormValidate = function () {
   };
 
   Construct.prototype.validateText = function (elem) {
+    var _ = this;
     var str = elem.value;
     var reg = /^[a-z0-9 ]+$/;
 
-    str = this.trim(str);
+    str = _.trim(str);
 
     elem.value = str;
     console.log(!str);
     if (!str) {
-      this.errorMessage = "Пустое поле!";
+      _.errorMessage = "Пустое поле!";
       return false;
     }
 
-    if (!this.checkByRegExp(str, reg)) {
-      this.errorMessage = "В поле введён недопустимый символ!";
+    if (!_.checkByRegExp(str, reg)) {
+      _.errorMessage = "В поле введён недопустимый символ!";
       return false;
     }
 
@@ -164,6 +170,7 @@ var FormValidate = function () {
   };
 
   Construct.prototype.validateEmail = function (elem) {
+    var _ = this;
     var parts = elem.value.split("@");
     var len = parts.length;
     var address;
@@ -172,31 +179,31 @@ var FormValidate = function () {
     var regAdr = /^[a-z0-9_-]{3,}$/i;
 
     if (len < 2) {
-      this.errorMessage = "Нет символа @!";
+      _.errorMessage = "Нет символа @!";
       return false;
     }
 
     if (len > 3) {
-      this.errorMessage = "Символ @ должен быть только один!";
+      _.errorMessage = "Символ @ должен быть только один!";
       return false;
     }
 
-    address = this.trim(parts[0]);
+    address = _.trim(parts[0]);
     domain = parts[1];
 
     elem.value = address + "@" + domain;
 
     if (!address) {
-      this.errorMessage = "Не заполнен адрес почты!";
+      _.errorMessage = "Не заполнен адрес почты!";
       return false;
     }
 
-    if (!this.checkByRegExp(address, regAdr)) {
-      this.errorMessage = "В адресе почты есть недопустимые символы!";
+    if (!_.checkByRegExp(address, regAdr)) {
+      _.errorMessage = "В адресе почты есть недопустимые символы!";
       return false;
     }
 
-    domain = this.domainCheck(domain);
+    domain = _.domainCheck(domain);
 
     if (!domain) {
       return false;
@@ -206,6 +213,7 @@ var FormValidate = function () {
   };
 
   Construct.prototype.validateWebAdress = function (elem) {
+    var _ = this;
     var parts = elem.value.split(".", 2);
     var len = parts.length;
     var address;
@@ -214,26 +222,26 @@ var FormValidate = function () {
     var regAdr = /^[a-z0-9_-]{3,}$/i;
 
     if (len < 2) {
-      this.errorMessage = "Нет точки!";
+      _.errorMessage = "Нет точки!";
       return false;
     }
 
-    address = this.trim(parts[0]);
+    address = _.trim(parts[0]);
     domain = parts[1];
 
     elem.value = address + "." + domain;
 
     if (!address) {
-      this.errorMessage = "Не заполнен адрес сайта!";
+      _.errorMessage = "Не заполнен адрес сайта!";
       return false;
     }
 
-    if (!this.checkByRegExp(address, regAdr)) {
-      this.errorMessage = "В адресе сайта есть недопустимые символы!";
+    if (!_.checkByRegExp(address, regAdr)) {
+      _.errorMessage = "В адресе сайта есть недопустимые символы!";
       return false;
     }
 
-    domain = this.domainCheck(domain, true);
+    domain = _.domainCheck(domain, true);
 
     if (!domain) {
       return false;
@@ -243,6 +251,7 @@ var FormValidate = function () {
   };
 
   Construct.prototype.domainCheck = function (str, notForEmail) {
+    var _ = this;
     var domainParts = str.split(".");
     var len = domainParts.length;
     var minParts = 2;
@@ -255,20 +264,20 @@ var FormValidate = function () {
     }
 
     if (len < minParts) {
-      this.errorMessage = "В домене должна быть как минимум одна точка!";
+      _.errorMessage = "В домене должна быть как минимум одна точка!";
       return false;
     }
 
     for (var i = 0; i < len; i++) {
-      domainParts[i] = this.trim(domainParts[i]);
+      domainParts[i] = _.trim(domainParts[i]);
 
       if (!domainParts[i]) {
-        this.errorMessage = "Не заполнена одна из частей домена!";
+        _.errorMessage = "Не заполнена одна из частей домена!";
         return false;
       }
 
-      if (!this.checkByRegExp(domainParts[i], regDom, true)) {
-        this.errorMessage = "В домене есть недопустимые символы!";
+      if (!_.checkByRegExp(domainParts[i], regDom, true)) {
+        _.errorMessage = "В домене есть недопустимые символы!";
         return false;
       }
     }
@@ -291,10 +300,10 @@ var FormValidate = function () {
   };
 
   Construct.prototype.hideErrorMessage = function () {
-    this.errorMessageElem.style.top = "";
-    this.errorMessageElem.classList.remove("active");
+    var _ = this;
+    _.errorMessageElem.style.top = "";
+    _.errorMessageElem.classList.remove("active");
   };
-  // };
 
   return Construct(arguments);
 };

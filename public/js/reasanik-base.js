@@ -99,12 +99,13 @@ var ReasanikBase = function () {
     return typeof attr !== typeof undefined && attr !== false;
   };
 
-  Construct.prototype.getWidth = function ($elem, withMargins) {
-    var width = $elem.width();
+  Construct.prototype.getWidth = function (selector, withMargins) {
+    var width = document.querySelector(selector).offsetWidth;
 
     withMargins = withMargins || false;
 
     if (withMargins) {
+      var $elem = $(selector).first();
       width += this.getStyle($elem, "marginLeft", "px");
       width += this.getStyle($elem, "marginRight", "px");
     }

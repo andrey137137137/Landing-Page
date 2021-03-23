@@ -1,4 +1,4 @@
-var ToTop = function() {
+var ToTop = function () {
   "use strict";
 
   function Construct(params) {
@@ -11,82 +11,77 @@ var ToTop = function() {
 
   Construct.prototype = Object.create(ReasanikBase());
 
-  // Construct.prototype = {
-
   Construct.prototype.constructor = Construct;
 
   Construct.prototype.pluginName = "ToTop";
 
-  Construct.prototype.init = function(params) {
-    var self = this;
+  Construct.prototype.init = function (params) {
+    var _ = this;
 
-    params = this.extend(
+    params = _.extend(
       {
         buttonID: false,
         border: 300,
-        defaultScrollStep: 70
+        defaultScrollStep: 70,
       },
       params
     );
 
     if (!params.buttonID) {
-      this.setErrorMessage(this.pluginName);
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
-    this.border = params.border;
+    _.border = params.border;
 
-    this.elem = document.getElementById(params.buttonID);
-    this.socialsContainer = document.getElementById("footer-socials-container");
+    _.elem = document.getElementById(params.buttonID);
+    _.socialsContainer = document.getElementById("footer-socials-container");
 
-    // this.ToTopButton = new ScrollEffect.Construct({
+    // _.ToTopButton = new ScrollEffect.Construct({
     // 	buttonID: params.buttonID,
     // 	direction: -1,
     // 	defaultScrollStep: 70
     // });
 
-    this.ToTopButton = ScrollEffect({
+    _.ToTopButton = ScrollEffect({
       buttonID: params.buttonID,
       defaultScrollStep: params.defaultScrollStep,
-      direction: -1
+      direction: -1,
     });
 
     params = null;
 
-    window.addEventListener("scroll", function() {
-      self.showHideToTop();
+    window.addEventListener("scroll", function () {
+      _.showHideToTop();
     });
 
-    this.showHideToTop();
+    _.showHideToTop();
   };
 
-  Construct.prototype.showHideToTop = function() {
-    var self = this;
+  Construct.prototype.showHideToTop = function () {
+    var _ = this;
     // var endPage = document.documentElement.scrollHeight - window.innerHeight;
-    var endPage = this.getScrollHeight() - window.innerHeight;
+    var endPage = _.getScrollHeight() - window.innerHeight;
 
-    this.ToTopButton.scrollY = this.getScrollY();
+    _.ToTopButton.scrollY = _.getScrollY();
 
-    if (this.ToTopButton.scrollY > this.border) {
-      this.elem.classList.add("section-btn_to--top_active");
+    if (_.ToTopButton.scrollY > _.border) {
+      _.elem.classList.add("section-btn_to--top_active");
     } else {
-      this.elem.classList.remove("section-btn_to--top_active");
+      _.elem.classList.remove("section-btn_to--top_active");
     }
 
-    if (parseInt(this.ToTopButton.scrollY) === endPage) {
-      setTimeout(function() {
-        self.elem.classList.add("section-btn_to--top_finally");
+    if (parseInt(_.ToTopButton.scrollY) === endPage) {
+      setTimeout(function () {
+        _.elem.classList.add("section-btn_to--top_finally");
       }, 200);
 
-      this.socialsContainer.classList.add("footer-socials_container--visible");
+      _.socialsContainer.classList.add("footer-socials_container--visible");
     } else {
-      this.elem.classList.remove("section-btn_to--top_finally");
-      this.socialsContainer.classList.remove(
-        "footer-socials_container--visible"
-      );
+      _.elem.classList.remove("section-btn_to--top_finally");
+      _.socialsContainer.classList.remove("footer-socials_container--visible");
     }
   };
-  // };
 
   return Construct(arguments);
 };

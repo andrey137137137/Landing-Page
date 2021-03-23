@@ -72,7 +72,7 @@ var RestructRhombuses = function () {
       // _.run();
       _.resizeWindowWidth(_.run);
     });
-    window.addEventListener("orientationChange", function () {
+    $(window).on("orientationChange", function () {
       _.resizeWindowWidth(_.run);
     });
   };
@@ -81,7 +81,7 @@ var RestructRhombuses = function () {
     var _ = this;
     var $parent = $(_.selector);
     var $elems = $parent.find(_.childElem);
-    var $firstElem = $elems.first();
+    var firstElemSelector = _.selector + " " + _.childElem;
 
     restruct = restruct || false;
 
@@ -100,12 +100,11 @@ var RestructRhombuses = function () {
     var step;
     var newColClass = _.colClassPrefix;
 
-    // _.elemWidth = _.getWidth($firstElem, true);
-    _.elemWidth = _.getWidth($firstElem);
-    var rightMargin = _.getStyle($firstElem, "marginRight", "px");
+    _.elemWidth = _.getWidth(firstElemSelector);
+
+    var rightMargin = _.getStyle($(firstElemSelector), "marginRight", "px");
     _.elemWidth = _.elemWidth + rightMargin * 2;
-    console.log(parentWidth);
-    console.log(_.elemWidth);
+
     _.countInRow = parseInt(parentWidth / _.elemWidth);
     // tempCountInRow = parseInt(parentWidth/_.elemWidth);
 
@@ -154,16 +153,18 @@ var RestructRhombuses = function () {
     }
 
     $elems.each(function (index) {
-      $(this).removeClass(_.firstInOddRowClass);
-      $(this).removeClass(_.firstInEvenRowClass);
+      var $elem = $(this);
+
+      $elem.removeClass(_.firstInOddRowClass);
+      $elem.removeClass(_.firstInEvenRowClass);
       // $(this).removeClass(_.lastInEvenRowClass);
 
       if (firstOddElemIndex == index) {
-        $(this).addClass(_.firstInOddRowClass);
+        $elem.addClass(_.firstInOddRowClass);
       }
 
       if (firstEvenElemIndex == index) {
-        $(this).addClass(_.firstInEvenRowClass);
+        $elem.addClass(_.firstInEvenRowClass);
 
         // lastEvenElemIndex = firstEvenElemIndex + _.countInRow - 2;
         // firstOddElemIndex = lastEvenElemIndex + 1;

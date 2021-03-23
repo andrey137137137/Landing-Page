@@ -1,157 +1,141 @@
-var ScrollEffect = function()
-{
-	'use strict';
+var ScrollEffect = function () {
+  "use strict";
 
-	function Construct(params)
-	{
-		if ( !(this instanceof Construct) )
-		{
-			return new Construct(params);
-		}
-		
-		this.init.apply(this, params);
-	}
+  function Construct(params) {
+    if (!(this instanceof Construct)) {
+      return new Construct(params);
+    }
 
-	Construct.prototype = Object.create(ReasanikBase());
+    this.init.apply(this, params);
+  }
 
-	// Construct.prototype = {
+  Construct.prototype = Object.create(ReasanikBase());
 
-		Construct.prototype.constructor = Construct;
+  Construct.prototype.constructor = Construct;
 
-		Construct.prototype.pluginName = 'ScrollEffect';
+  Construct.prototype.pluginName = "ScrollEffect";
 
-		Construct.prototype.init = function(params)
-		{
-			var self = this;
+  Construct.prototype.init = function (params) {
+    var _ = this;
 
-			params = this.extend(
-				{
-					buttonID: false,
-					direction: 1,
-					defaultScrollStep: 50,
-					scrollFinalPos: 0,
-					finalElemID: false
-				},
-				params
-			);
+    params = _.extend(
+      {
+        buttonID: false,
+        direction: 1,
+        defaultScrollStep: 50,
+        scrollFinalPos: 0,
+        finalElemID: false,
+      },
+      params
+    );
 
-			this.scrollY = this.getScrollY();
+    _.scrollY = _.getScrollY();
 
-			this.direction = params.direction;
-			this.defaultScrollStep = params.defaultScrollStep;
-			this.scrollFinalPos = params.scrollFinalPos;
+    _.direction = params.direction;
+    _.defaultScrollStep = params.defaultScrollStep;
+    _.scrollFinalPos = params.scrollFinalPos;
 
-			this.finalElemID = params.finalElemID;
-			var buttonID = params.buttonID;
+    _.finalElemID = params.finalElemID;
+    var buttonID = params.buttonID;
 
-	    params = null;
+    params = null;
 
-			this.intervalID = 0;
+    _.intervalID = 0;
 
-			this.scrollStep;
-			this.counter = 1;
+    _.scrollStep;
+    _.counter = 1;
 
-			if (this.finalElemID)
-			{
-				this.scrollFinalPos = document.getElementById(this.finalElemID).offsetTop;
+    if (_.finalElemID) {
+      _.scrollFinalPos = document.getElementById(_.finalElemID).offsetTop;
 
-				// window.addEventListener('resize', function(){
-				// 	self.scrollFinalPos = document.getElementById(self.finalElemID).offsetTop;
-				// });
-			}
+      // window.addEventListener('resize', function(){
+      // 	_.scrollFinalPos = document.getElementById(_.finalElemID).offsetTop;
+      // });
+    }
 
-			document.getElementById(buttonID).addEventListener('click', function(event){
-				event.preventDefault();
-				self.start();
-			});
-		};
+    document
+      .getElementById(buttonID)
+      .addEventListener("click", function (event) {
+        event.preventDefault();
+        _.start();
+      });
+  };
 
-		Construct.prototype.start = function()
-		{
-			var self = this;
+  Construct.prototype.start = function () {
+    var _ = this;
 
-			if (this.intervalID > 0)
-			{
-				this.stop();
-			}
+    if (_.intervalID > 0) {
+      _.stop();
+    }
 
-			this.scrollY = this.getScrollY();
-			this.scrollStep = this.defaultScrollStep;
+    _.scrollY = _.getScrollY();
+    _.scrollStep = _.defaultScrollStep;
 
-			if (this.finalElemID)
-			{
-				this.scrollFinalPos = document.getElementById(this.finalElemID).offsetTop;
-			}
+    if (_.finalElemID) {
+      _.scrollFinalPos = document.getElementById(_.finalElemID).offsetTop;
+    }
 
-			console.log(this.scrollFinalPos);
+    console.log(_.scrollFinalPos);
 
-			this.intervalID = setInterval(
-				function(){
-					self.run();
-				},
-				50
-			);
-		};
+    _.intervalID = setInterval(function () {
+      _.run();
+    }, 50);
+  };
 
-		Construct.prototype.run = function()
-		{
-			if (this.counter % 10 === 0)
-			{
-				this.scrollStep *= 5;
-			}
+  Construct.prototype.run = function () {
+    var _ = this;
 
-			console.log(this.scrollY);
+    if (_.counter % 10 === 0) {
+      _.scrollStep *= 5;
+    }
 
-			if (this.direction > 0)
-			{
-				this.scrollY += this.scrollStep;
+    console.log(_.scrollY);
 
-				if (this.scrollY >= this.scrollFinalPos)
-				{
-					this.scrollY = this.scrollFinalPos;
-				}
-			}
-			else
-			{
-				this.scrollY -= this.scrollStep;
+    if (_.direction > 0) {
+      _.scrollY += _.scrollStep;
 
-				if (this.scrollY <= this.scrollFinalPos)
-				{
-					this.scrollY = this.scrollFinalPos;
-				}
-			}
+      if (_.scrollY >= _.scrollFinalPos) {
+        _.scrollY = _.scrollFinalPos;
+      }
+    } else {
+      _.scrollY -= _.scrollStep;
 
-			this.changeScroll();
-			this.counter++;
+      if (_.scrollY <= _.scrollFinalPos) {
+        _.scrollY = _.scrollFinalPos;
+      }
+    }
 
-			if (this.scrollY === this.scrollFinalPos)
-			{
-				this.stop();
-			}
-		};
+    _.changeScroll();
+    _.counter++;
 
-		Construct.prototype.stop = function()
-		{
-			clearInterval(this.intervalID);
-			this.intervalID = 0;
+    if (_.scrollY === _.scrollFinalPos) {
+      _.stop();
+    }
+  };
 
-			this.counter = 1;
-			this.scrollStep = this.defaultScrollStep;
-		};
+  Construct.prototype.stop = function () {
+    var _ = this;
 
-		Construct.prototype.changeScroll = function()
-		{
-			// if (document.documentElement.scrollTop)
-			// {
-			// 	document.documentElement.scrollTop = this.scrollY;
-			// }
-			// else if (document.body.scrollTop)
-			// {
-			// 	document.body.scrollTop = this.scrollY;
-			// }
-			this.setScrollY(this.scrollY);
-		};
-	// };
+    clearInterval(_.intervalID);
+    _.intervalID = 0;
 
-	return Construct(arguments);
+    _.counter = 1;
+    _.scrollStep = _.defaultScrollStep;
+  };
+
+  Construct.prototype.changeScroll = function () {
+    var _ = this;
+
+    // if (document.documentElement.scrollTop)
+    // {
+    // 	document.documentElement.scrollTop = _.scrollY;
+    // }
+    // else if (document.body.scrollTop)
+    // {
+    // 	document.body.scrollTop = _.scrollY;
+    // }
+    _.setScrollY(_.scrollY);
+  };
+
+  return Construct(arguments);
 };

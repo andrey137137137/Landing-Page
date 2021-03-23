@@ -1,4 +1,4 @@
-var Menu = function() {
+var Menu = function () {
   "use strict";
 
   function Construct(params) {
@@ -11,21 +11,19 @@ var Menu = function() {
 
   Construct.prototype = Object.create(ReasanikBase());
 
-  // Construct.prototype = {
-
   Construct.prototype.constructor = Construct;
 
   Construct.prototype.pluginName = "Menu";
 
-  Construct.prototype.init = function(params) {
-    var self = this;
+  Construct.prototype.init = function (params) {
+    var _ = this;
 
-    params = this.extend(
+    params = _.extend(
       {
         menuID: false,
         buttonCheckerID: false,
         headerHeight: 0,
-        items: false
+        items: false,
       },
       params
     );
@@ -36,178 +34,196 @@ var Menu = function() {
       !params.headerHeight ||
       !params.items
     ) {
-      this.setErrorMessage(this.pluginName);
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
-    this.menuID = params.menuID;
-    this.buttonCheckerID = params.buttonCheckerID;
-    this.headerHeight = params.headerHeight;
-    this.items = params.items;
+    _.menuID = params.menuID;
+    _.buttonCheckerID = params.buttonCheckerID;
+    _.headerHeight = params.headerHeight;
+    _.items = params.items;
 
     // console.log(params);
     params = null;
 
-    this.buttonChecker = document.getElementById(this.buttonCheckerID);
+    _.$buttonChecker = $("#" + _.buttonCheckerID);
 
-    this.bigScreenWidth = false;
-    this.checked = false;
-    this.scrollY = 0;
+    _.bigScreenWidth = false;
+    _.checked = false;
+    _.scrollY = 0;
 
-    this.menu = document.createElement("ul");
+    _.$menu = $("<ul>");
 
-    var listItems = [];
-    var tempLink;
+    var $tempListItem;
+    var $tempLink;
 
-    this.menu.id = this.menuID;
-    // this.menu.classList.add('hor_menu');
-    this.menu.classList.add("list");
-    this.menu.classList.add("header-menu");
+    _.$menu.attr("id", _.menuID);
+    // _.$menu.addClass('hor_menu');
+    _.$menu.addClass("list");
+    _.$menu.addClass("header-menu");
 
-    for (var i = 0, len = this.items.length; i < len; i++) {
-      listItems[i] = document.createElement("li");
-      listItems[i].classList.add("list-item");
-      tempLink = document.createElement("a");
+    for (var i = 0, len = _.items.length; i < len; i++) {
+      $tempListItem = $("<li>");
+      $tempListItem.addClass("list-item");
+      $tempLink = $("<a>");
 
       if (!i) {
-        tempLink.classList.add("active");
+        $tempLink.addClass("active");
       }
 
-      tempLink.innerHTML = this.items[i].name;
-      tempLink.classList.add("list-link");
-      tempLink.setAttribute("href", "#" + this.items[i].href);
-      tempLink.setAttribute("data-index", i);
+      $tempLink.html(_.items[i].name);
+      $tempLink.addClass("list-link");
+      $tempLink.attr("href", "#" + _.items[i].href);
+      $tempLink.attr("data-index", i);
 
-      tempLink.addEventListener("click", function(event) {
+      $tempLink.on("click", function (event) {
         // event.preventDefault();
 
-        if (!self.bigScreenWidth) {
-          self.checkMenu();
+        if (!_.bigScreenWidth) {
+          _.checkMenu();
         }
       });
 
-      listItems[i].appendChild(tempLink);
-      this.menu.appendChild(listItems[i]);
+      $tempListItem.append($tempLink);
+      _.$menu.append($tempListItem);
     }
 
-    document.querySelector("nav").appendChild(this.menu);
+    $("nav").append(_.$menu);
 
-    // this.buttonChecker.addEventListener('click', function(){
-    // 	this.checkMenu();
+    // _.$buttonChecker.on('click', function(){
+    // 	_.checkMenu();
     // });
 
-    document.body.addEventListener("click", function(event) {
-      self.checkMenu(event.target);
+    document.body.addEventListener("click", function (event) {
+      _.checkMenu(event.target);
     });
 
-    // window.addEventListener('resize', function(){
-    // 	this.changeLayoutAndActiveLink();
+    // $(window).on('resize', function(){
+    // 	_.changeLayoutAndActiveLink();
     // });
 
-    // window.addEventListener('scroll', function(){
-    // 	this.changeLayoutAndActiveLink();
+    // $(window).on('scroll', function(){
+    // 	_.changeLayoutAndActiveLink();
     // });
 
-    window.addEventListener("resize", function() {
-      // self.changeLayoutAndActiveLink();
-      self.resizeWindowWidth(self.changeLayoutAndActiveLink);
+    $(window).on("resize", function () {
+      _.resizeLayoutAndChangeLink();
     });
 
-    window.addEventListener("scroll", function() {
-      self.changeLayoutAndActiveLink();
+    $(window).on("orientationChange", function () {
+      _.resizeLayoutAndChangeLink();
     });
 
-    this.changeLayoutAndActiveLink();
+    $(window).on("scroll", function () {
+      _.changeLayoutAndActiveLink();
+    });
+
+    _.changeLayoutAndActiveLink();
   };
 
-  Construct.prototype.changeLayoutAndActiveLink = function() {
-    this.scrollY = this.getScrollY();
-
-    if (this.scrollY > this.headerHeight) {
-      document.querySelector("header").classList.add("header--min");
-    } else {
-      document.querySelector("header").classList.remove("header--min");
-    }
-
-    if (this.getStyle(this.buttonChecker, "display") === "none") {
-      this.bigScreenWidth = true;
-      this.checked = false;
-
-      if (this.menu.classList.contains("visible")) {
-        this.menu.classList.remove("visible");
-      }
-
-      if (this.buttonChecker.classList.contains("rhombus_wrap--close")) {
-        this.buttonChecker.classList.remove("rhombus_wrap--close");
-        this.buttonChecker.classList.add("rhombus_wrap--bars");
-      }
-    } else {
-      this.bigScreenWidth = false;
-    }
-
-    this.activateSectionLink();
+  Construct.prototype.resizeLayoutAndChangeLink = function () {
+    var _ = this;
+    _.resizeWindowWidth(_.changeLayoutAndActiveLink);
   };
 
-  Construct.prototype.isButtonChecked = function(elem) {
-    if (elem.id === this.buttonCheckerID) {
+  Construct.prototype.changeLayoutAndActiveLink = function () {
+    var _ = this;
+
+    _.scrollY = _.getScrollY();
+
+    if (_.scrollY > _.headerHeight) {
+      $("header").addClass("header--min");
+    } else {
+      $("header").removeClass("header--min");
+    }
+
+    if (_.getStyle(_.$buttonChecker, "display") === "none") {
+      _.bigScreenWidth = true;
+      _.checked = false;
+
+      if (_.$menu.hasClass("visible")) {
+        _.$menu.removeClass("visible");
+      }
+
+      if (_.$buttonChecker.hasClass("rhombus_wrap--close")) {
+        _.$buttonChecker.removeClass("rhombus_wrap--close");
+        _.$buttonChecker.addClass("rhombus_wrap--bars");
+      }
+    } else {
+      _.bigScreenWidth = false;
+    }
+
+    _.activateSectionLink();
+  };
+
+  Construct.prototype.isButtonChecked = function ($elem) {
+    var _ = this;
+
+    if ($elem.id === _.buttonCheckerID) {
       return true;
     }
 
-    if (elem.parentNode.id === this.buttonCheckerID) {
+    if ($elem.parentNode.id === _.buttonCheckerID) {
       return true;
     }
 
     return false;
   };
 
-  Construct.prototype.checkMenu = function(clickedElem) {
-    if (!this.checked && this.isButtonChecked(clickedElem)) {
-      this.checked = true;
-      console.log(this.checked);
+  Construct.prototype.checkMenu = function ($clickedElem) {
+    var _ = this;
 
-      this.buttonChecker.classList.remove("rhombus_wrap--bars");
-      this.buttonChecker.classList.add("rhombus_wrap--close");
+    if (!_.checked && _.isButtonChecked($clickedElem)) {
+      _.checked = true;
+      console.log(_.checked);
 
-      this.menu.classList.add("visible");
-    } else if (this.checked) {
-      this.checked = false;
-      console.log(this.checked);
+      _.$buttonChecker.removeClass("rhombus_wrap--bars");
+      _.$buttonChecker.addClass("rhombus_wrap--close");
 
-      this.buttonChecker.classList.remove("rhombus_wrap--close");
-      this.buttonChecker.classList.add("rhombus_wrap--bars");
+      _.$menu.addClass("visible");
+    } else if (_.checked) {
+      _.checked = false;
+      console.log(_.checked);
 
-      this.menu.classList.remove("visible");
+      _.$buttonChecker.removeClass("rhombus_wrap--close");
+      _.$buttonChecker.addClass("rhombus_wrap--bars");
+
+      _.$menu.removeClass("visible");
     }
   };
 
-  Construct.prototype.activateSectionLink = function() {
+  Construct.prototype.activateSectionLink = function () {
+    var _ = this;
     var activeSectionIndex = 0;
 
-    for (var i = 1; i < this.items.length; i++) {
-      if (this.scrollY >= this.getElemCenterTop(this.items[i].href)) {
-        // if (this.scrollY >= document.getElementById('about').offsetTop - this.headerHeight)
-        // document.querySelectorAll('#main-menu a')[i].classList.add('active');
-        // console.log(this.scrollY);
+    for (var i = 1; i < _.items.length; i++) {
+      if (_.scrollY >= _.getElemCenterTop(_.items[i].href)) {
+        // if (_.scrollY >= $("#" + 'about').offsetTop - _.headerHeight)
+        // $('#main-menu a')[i].addClass('active');
+        // console.log(_.scrollY);
         activeSectionIndex = i;
         // break;
       } else {
         break;
-        // document.querySelectorAll('#main-menu a')[i].classList.remove('active');
+        // $('#main-menu a')[i].removeClass('active');
       }
     }
 
-    for (var i = 0; i < this.items.length; i++) {
-      document
-        .querySelectorAll("#" + this.menuID + " a")
-        [i].classList.remove("active");
-    }
-    // console.log(this.items[activeSectionIndex]);
-    document
-      .querySelectorAll("#" + this.menuID + " a")
-      [activeSectionIndex].classList.add("active");
-    // console.log(document.getElementById(this.items[i].href));
+    // for (var i = 0; i < _.items.length; i++) {
+    $("#" + _.menuID + " a").each(function (index) {
+      var $elem = $(this);
+
+      $elem.removeClass("active");
+
+      if (index == activeSectionIndex) {
+        $elem.addClass("active");
+      }
+    });
+    // }
+    // console.log(_.items[activeSectionIndex]);
+    // $("#" + _.menuID + " a")[activeSectionIndex].addClass("active");
+    // console.log($("#" + _.items[i].href));
   };
-  // };
 
   return Construct(arguments);
 };

@@ -6,12 +6,10 @@ var Slider = function () {
       return new Construct(params);
     }
 
-    // console.log(params[0]);
-
     var pluginName = "Slider";
-    var self = this;
+    var _ = this;
 
-    params = self.extend(
+    params = _.extend(
       {
         sliderID: false,
         countSlides: false,
@@ -21,11 +19,11 @@ var Slider = function () {
         animationDelay: 5000,
         autoplayTimeout: 1500,
       },
-      params[0],
+      params[0]
     );
 
     if (!params.sliderID || !params.navButtons || !params.countSlides) {
-      self.setErrorMessage(pluginName);
+      _.setErrorMessage(pluginName);
       return false;
     }
 
@@ -167,7 +165,9 @@ var Slider = function () {
           timingMethod("left");
           timingMethod("bottom");
 
-          changeStyles(changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0);
+          changeStyles(
+            changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0
+          );
         }
       },
 
@@ -185,7 +185,9 @@ var Slider = function () {
           timingMethod("right");
           timingMethod("bottom");
 
-          changeStyles(changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0);
+          changeStyles(
+            changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0
+          );
         }
       },
     };
@@ -218,7 +220,8 @@ var Slider = function () {
 
       quad: function () {
         changingStyles[timingStyle].step =
-          Math.pow(changingStyles[timingStyle].step, 2) + changingStyles[timingStyle].step;
+          Math.pow(changingStyles[timingStyle].step, 2) +
+          changingStyles[timingStyle].step;
         changeStyleValue();
       },
     };
@@ -229,12 +232,12 @@ var Slider = function () {
       }
     }
 
-    objectParams = self.getObjectLength(transitionMethods, true);
+    objectParams = _.getObjectLength(transitionMethods, true);
 
     transitionMethodNames = objectParams.array;
     countTransitionMethods = objectParams.length;
 
-    objectParams = self.getObjectLength(timingMethods, true);
+    objectParams = _.getObjectLength(timingMethods, true);
 
     timingMethodNames = objectParams.array;
     countTimingMethods = objectParams.length;
@@ -263,34 +266,44 @@ var Slider = function () {
     });
 
     if (navButtons.prev) {
-      document.getElementById(navButtons.prev).addEventListener("click", function (event) {
-        event.preventDefault();
-        changeSlide(-1);
-      });
+      document
+        .getElementById(navButtons.prev)
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          changeSlide(-1);
+        });
     }
 
     if (navButtons.next) {
-      document.getElementById(navButtons.next).addEventListener("click", function (event) {
-        event.preventDefault();
-        changeSlide();
-      });
+      document
+        .getElementById(navButtons.next)
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          changeSlide();
+        });
     }
 
     if (navButtons.play) {
-      document.getElementById(navButtons.play).addEventListener("click", function (event) {
-        event.preventDefault();
-        autoplay(true);
-      });
+      document
+        .getElementById(navButtons.play)
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          autoplay(true);
+        });
     }
 
     if (navButtons.stop) {
-      document.getElementById(navButtons.stop).addEventListener("click", function (event) {
-        event.preventDefault();
-        autoplay();
-      });
+      document
+        .getElementById(navButtons.stop)
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          autoplay();
+        });
     }
 
-    document.getElementById(getSlideID(curIndex)).classList.add("slider-item--active");
+    document
+      .getElementById(getSlideID(curIndex))
+      .classList.add("slider-item--active");
 
     window.addEventListener("resize", isVisibleSlider);
     window.addEventListener("scroll", isVisibleSlider);
@@ -298,8 +311,9 @@ var Slider = function () {
     isVisibleSlider();
 
     function isVisibleSlider() {
-      // var scrollY = self.getScrollY();
-      // var topBorder = self.getElemCenterTop(containerID);
+      var _ = this;
+      // var scrollY = _.getScrollY();
+      // var topBorder = _.getElemCenterTop(containerID);
       // var bottomBorder = topBorder + parseInt(containerHeight);
 
       // if (scrollY >= topBorder && scrollY <= bottomBorder)
@@ -313,7 +327,7 @@ var Slider = function () {
       // 	autoplay(false);
       // }
 
-      if (self.isVisibleElem(containerID)) {
+      if (_.isVisibleElem(containerID)) {
         sliderVisible = true;
         autoplay(true);
       } else {
@@ -500,7 +514,8 @@ var Slider = function () {
 
       for (var prop in changingStyles) {
         changingStyles[prop].measure = changingStyles[prop].measure || "";
-        activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
+        activeSlide.style[prop] =
+          changingStyles[prop].value + changingStyles[prop].measure;
       }
 
       definedChangingStyles = true;
@@ -526,7 +541,8 @@ var Slider = function () {
       } else {
         for (var prop in changingStyles) {
           changingStyles[prop].measure = changingStyles[prop].measure || "";
-          activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
+          activeSlide.style[prop] =
+            changingStyles[prop].value + changingStyles[prop].measure;
         }
 
         // setTimeout(transitionMethods[selectedTransitionMethod], animationSpeed);
@@ -541,8 +557,9 @@ var Slider = function () {
         // var thumbs = document.querySelectorAll('#testimonials-thumbs a');
         var thumbs = document.querySelectorAll("#" + navButtons.thumbs + " a");
 
-        prevIndex = document.querySelector("#" + navButtons.thumbs + " .slider-item--active")
-          .dataset.number;
+        prevIndex = document.querySelector(
+          "#" + navButtons.thumbs + " .slider-item--active"
+        ).dataset.number;
 
         for (var i = 0; i < thumbs.length; i++) {
           thumbs[i].classList.remove("slider-item--active");

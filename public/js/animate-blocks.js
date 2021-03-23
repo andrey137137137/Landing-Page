@@ -1,4 +1,4 @@
-var AnimateBlocks = function() {
+var AnimateBlocks = function () {
   "use strict";
 
   function Construct(params) {
@@ -14,8 +14,10 @@ var AnimateBlocks = function() {
   Construct.prototype.constructor = Construct;
   Construct.prototype.pluginName = "AnimateBlocks";
 
-  Construct.prototype.init = function(params) {
-    params = this.extend(
+  Construct.prototype.init = function (params) {
+    var _ = this;
+
+    params = _.extend(
       {
         parentID: false,
         childElem: ".section-block",
@@ -23,190 +25,185 @@ var AnimateBlocks = function() {
         transform: "scale(0)",
         outPosition: -500,
         timingPosition: "1s",
-        timingTransform: "1s"
+        timingTransform: "1s",
       },
       params
     );
 
     if (!params.parentID) {
-      // self.setErrorMessage(self.pluginName);
-      this.setErrorMessage(this.pluginName);
+      // _.setErrorMessage(_.pluginName);
+      _.setErrorMessage(_.pluginName);
       return false;
     }
 
     for (var prop in params) {
-      this[prop] = params[prop];
+      _[prop] = params[prop];
     }
 
-    // self.parentID = params.parentID;
+    // _.parentID = params.parentID;
 
-    // self.childElem = params.childElem;
-    // self.interval = params.interval;
+    // _.childElem = params.childElem;
+    // _.interval = params.interval;
 
-    // self.transform = params.transform;
-    // self.outPosition = params.outPosition;
+    // _.transform = params.transform;
+    // _.outPosition = params.outPosition;
 
-    // self.timingPosition = params.timingPosition;
-    // self.timingTransform = params.timingTransform;
+    // _.timingPosition = params.timingPosition;
+    // _.timingTransform = params.timingTransform;
 
     params = null;
 
-    var self = this;
+    _.elems = document.querySelectorAll("#" + _.parentID + " " + _.childElem);
+    _.countElems = _.elems.length;
+    _.started = false;
 
-    self.elems = document.querySelectorAll(
-      "#" + self.parentID + " " + self.childElem
-    );
-    self.countElems = self.elems.length;
-    self.started = false;
-
-    if (!self.countElems) {
-      self.setErrorMessage(self.pluginName, "Not children");
+    if (!_.countElems) {
+      _.setErrorMessage(_.pluginName, "Not children");
       return false;
     }
 
-    self.intervalID = 0;
-    self.shiftFromCenter = 0;
-    self.direction = 1;
-    self.rowNumber = 0;
-    self.evenRowElems = true;
-    self.evenLastRowElems = true;
+    _.intervalID = 0;
+    _.shiftFromCenter = 0;
+    _.direction = 1;
+    _.rowNumber = 0;
+    _.evenRowElems = true;
+    _.evenLastRowElems = true;
 
-    self.changedStyles = new Array(self.countElems);
-    self.forLeftPos;
-    self.forRightPos;
+    _.changedStyles = new Array(_.countElems);
+    _.forLeftPos;
+    _.forRightPos;
 
-    self.index;
-    self.countRows;
-    self.countInRow;
-    self.centerRowIndex;
-    self.centerLastRowIndex;
-    self.rest;
-    self.rightBorder;
-    self.firstRestIndex;
+    _.index;
+    _.countRows;
+    _.countInRow;
+    _.centerRowIndex;
+    _.centerLastRowIndex;
+    _.rest;
+    _.rightBorder;
+    _.firstRestIndex;
 
-    self.eventFuncs = [
+    _.eventFuncs = [
       {
         e: "resize",
-        f: function() {
-          // self.setPositions();
-          self.resizeWindowWidth(self.setPositions);
-        }
+        f: function () {
+          // _.setPositions();
+          _.resizeWindowWidth(_.setPositions);
+        },
       },
       {
         e: "resize",
-        f: function() {
-          self.show();
-        }
+        f: function () {
+          _.show();
+        },
       },
       {
         e: "scroll",
-        f: function() {
-          self.show();
-        }
-      }
+        f: function () {
+          _.show();
+        },
+      },
     ];
 
-    for (var i = 0; i < self.eventFuncs.length; i++) {
-      window.addEventListener(self.eventFuncs[i].e, self.eventFuncs[i].f);
+    for (var i = 0; i < _.eventFuncs.length; i++) {
+      window.addEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
     }
 
-    self.setPositions();
-    self.show();
+    _.setPositions();
+    _.show();
   };
 
-  Construct.prototype.setPositions = function() {
-    var self = this;
+  Construct.prototype.setPositions = function () {
+    var _ = this;
 
-    if (self.started) {
-      window.removeEventListener("resize", self.eventFuncs[0].f);
+    if (_.started) {
+      window.removeEventListener("resize", _.eventFuncs[0].f);
       return;
     }
 
     var tempArray;
-    var parentWidth = self.getContainerWidth(self.elems[0]);
-    var elemWidth = self.getWidth(self.elems[0], true);
+    var parentWidth = _.getContainerWidth(_.elems[0]);
+    var elemWidth = _.getWidth(_.elems[0], true);
 
-    self.countInRow = parseInt(parentWidth / elemWidth);
+    _.countInRow = parseInt(parentWidth / elemWidth);
 
-    if (self.countElems < self.countInRow) {
-      self.countInRow = self.countElems;
-    } else if (!self.countInRow) {
-      self.countInRow = 1;
+    if (_.countElems < _.countInRow) {
+      _.countInRow = _.countElems;
+    } else if (!_.countInRow) {
+      _.countInRow = 1;
     }
 
-    self.countRows = Math.ceil(self.countElems / self.countInRow);
-    self.centerRowIndex = parseInt(self.countInRow / 2);
-    self.rightBorder = self.countInRow;
-    self.rest = self.countElems % self.countInRow;
-    self.firstRestIndex = self.countElems - self.rest;
+    _.countRows = Math.ceil(_.countElems / _.countInRow);
+    _.centerRowIndex = parseInt(_.countInRow / 2);
+    _.rightBorder = _.countInRow;
+    _.rest = _.countElems % _.countInRow;
+    _.firstRestIndex = _.countElems - _.rest;
 
-    tempArray = self.correctCenterIndex(self.countInRow, self.centerRowIndex);
-    self.centerRowIndex = tempArray[0];
-    self.evenRowElems = tempArray[1];
+    tempArray = _.correctCenterIndex(_.countInRow, _.centerRowIndex);
+    _.centerRowIndex = tempArray[0];
+    _.evenRowElems = tempArray[1];
 
-    if (self.rest > 0) {
-      self.centerLastRowIndex =
-        parseInt(self.rest / 2) + (self.countRows - 1) * self.countInRow;
-      tempArray = self.correctCenterIndex(self.rest, self.centerLastRowIndex);
-      self.centerLastRowIndex = tempArray[0];
-      self.evenLastRowElems = tempArray[1];
+    if (_.rest > 0) {
+      _.centerLastRowIndex =
+        parseInt(_.rest / 2) + (_.countRows - 1) * _.countInRow;
+      tempArray = _.correctCenterIndex(_.rest, _.centerLastRowIndex);
+      _.centerLastRowIndex = tempArray[0];
+      _.evenLastRowElems = tempArray[1];
     }
 
-    self.forLeftPos = [];
-    self.forRightPos = [];
+    _.forLeftPos = [];
+    _.forRightPos = [];
 
-    for (var i = 0, j = 0; i < self.countInRow; i++) {
-      if (i <= self.centerRowIndex) {
-        if (i == self.centerRowIndex && !self.evenRowElems) {
+    for (var i = 0, j = 0; i < _.countInRow; i++) {
+      if (i <= _.centerRowIndex) {
+        if (i == _.centerRowIndex && !_.evenRowElems) {
           continue;
         }
 
-        self.forLeftPos[i] = i;
+        _.forLeftPos[i] = i;
       } else {
-        self.forRightPos[j] = i;
+        _.forRightPos[j] = i;
         j++;
       }
     }
 
-    for (var i = 0; i < self.countElems; i++) {
-      self.changedStyles[i] = self.getPosition(i);
+    for (var i = 0; i < _.countElems; i++) {
+      _.changedStyles[i] = _.getPosition(i);
 
-      self.elems[i].removeAttribute("style");
-      self.elems[i].style.position = "relative";
+      _.elems[i].removeAttribute("style");
+      _.elems[i].style.position = "relative";
 
-      self.elems[i].style[self.changedStyles[i]] = self.outPosition + "px";
-      self.elems[i].style.transition =
-        self.changedStyles[i] + " " + self.timingPosition;
+      _.elems[i].style[_.changedStyles[i]] = _.outPosition + "px";
+      _.elems[i].style.transition = _.changedStyles[i] + " " + _.timingPosition;
 
-      if (self.transform) {
-        // console.log(self.getStyle(self.elems[i], 'transform'));
-        self.elems[i].style.transform = "scale(0)";
-        self.elems[i].style.transition += ", transform " + self.timingTransform;
+      if (_.transform) {
+        // console.log(_.getStyle(_.elems[i], 'transform'));
+        _.elems[i].style.transform = "scale(0)";
+        _.elems[i].style.transition += ", transform " + _.timingTransform;
       }
     }
 
-    self.index = self.centerRowIndex;
+    _.index = _.centerRowIndex;
   };
 
-  Construct.prototype.show = function() {
-    var self = this;
+  Construct.prototype.show = function () {
+    var _ = this;
 
-    // var scrollY = self.getScrollY();
-    // var elemParentTop = self.getElemCenterTop(self.parentID);
+    // var scrollY = _.getScrollY();
+    // var elemParentTop = _.getElemCenterTop(_.parentID);
 
-    // if (!self.started && scrollY >= elemParentTop)
-    if (!self.started && self.isVisibleElem(self.parentID)) {
-      self.showBlock();
-      self.started = true;
+    // if (!_.started && scrollY >= elemParentTop)
+    if (!_.started && _.isVisibleElem(_.parentID)) {
+      _.showBlock();
+      _.started = true;
 
-      for (var i = 0, len = self.eventFuncs.length; i < len; i++) {
-        window.removeEventListener(self.eventFuncs[i].e, self.eventFuncs[i].f);
+      for (var i = 0, len = _.eventFuncs.length; i < len; i++) {
+        window.removeEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
       }
     }
   };
 
-  Construct.prototype.correctCenterIndex = function(rowLen, centerIndex) {
-    var self = this;
+  Construct.prototype.correctCenterIndex = function (rowLen, centerIndex) {
+    var _ = this;
     var checkEvenRowElems = true;
 
     if (rowLen % 2 == 0) {
@@ -218,33 +215,33 @@ var AnimateBlocks = function() {
     return [centerIndex, checkEvenRowElems];
   };
 
-  Construct.prototype.getPosition = function(indx) {
-    var self = this;
-    var len = self.forLeftPos.length;
+  Construct.prototype.getPosition = function (indx) {
+    var _ = this;
+    var len = _.forLeftPos.length;
     var i;
 
     if (
-      indx >= self.firstRestIndex &&
-      indx == self.centerLastRowIndex &&
-      !self.evenLastRowElems
+      indx >= _.firstRestIndex &&
+      indx == _.centerLastRowIndex &&
+      !_.evenLastRowElems
     ) {
       return "bottom";
     }
 
-    if (indx >= self.firstRestIndex && indx <= self.centerLastRowIndex) {
+    if (indx >= _.firstRestIndex && indx <= _.centerLastRowIndex) {
       return "left";
     }
 
-    if (indx > self.centerLastRowIndex && indx < self.countElems) {
+    if (indx > _.centerLastRowIndex && indx < _.countElems) {
       return "right";
     }
 
-    if (indx % self.countInRow == self.centerRowIndex && !self.evenRowElems) {
+    if (indx % _.countInRow == _.centerRowIndex && !_.evenRowElems) {
       return "bottom";
     }
 
     for (i = 0; i < len; i++) {
-      if (indx % self.countInRow == self.forLeftPos[i]) {
+      if (indx % _.countInRow == _.forLeftPos[i]) {
         break;
       }
     }
@@ -253,10 +250,10 @@ var AnimateBlocks = function() {
       return "left";
     }
 
-    len = self.forRightPos.length;
+    len = _.forRightPos.length;
 
     for (i = 0; i < len; i++) {
-      if (indx % self.countInRow == self.forRightPos[i]) {
+      if (indx % _.countInRow == _.forRightPos[i]) {
         break;
       }
     }
@@ -266,49 +263,46 @@ var AnimateBlocks = function() {
     }
   };
 
-  Construct.prototype.showBlock = function() {
-    var self = this;
+  Construct.prototype.showBlock = function () {
+    var _ = this;
 
-    if (self.transform) {
-      self.elems[self.index].style.transform = "scale(1)";
+    if (_.transform) {
+      _.elems[_.index].style.transform = "scale(1)";
     }
 
-    self.elems[self.index].style[self.changedStyles[self.index]] = 0;
+    _.elems[_.index].style[_.changedStyles[_.index]] = 0;
 
-    if (self.direction > 0) {
-      self.shiftFromCenter++;
-      self.index = self.centerRowIndex + self.shiftFromCenter;
-      self.direction = -1;
+    if (_.direction > 0) {
+      _.shiftFromCenter++;
+      _.index = _.centerRowIndex + _.shiftFromCenter;
+      _.direction = -1;
     } else {
-      self.index = self.centerRowIndex - self.shiftFromCenter;
-      self.direction = 1;
+      _.index = _.centerRowIndex - _.shiftFromCenter;
+      _.direction = 1;
     }
 
-    if (
-      self.index < self.rowNumber * self.countInRow ||
-      self.index >= self.rightBorder
-    ) {
-      self.rowNumber++;
-      self.shiftFromCenter = 0;
-      self.direction = 1;
+    if (_.index < _.rowNumber * _.countInRow || _.index >= _.rightBorder) {
+      _.rowNumber++;
+      _.shiftFromCenter = 0;
+      _.direction = 1;
 
-      if (self.rowNumber == self.countRows - 1 && self.rest > 0) {
-        self.centerRowIndex = self.centerLastRowIndex;
-        self.rightBorder = self.countElems;
+      if (_.rowNumber == _.countRows - 1 && _.rest > 0) {
+        _.centerRowIndex = _.centerLastRowIndex;
+        _.rightBorder = _.countElems;
       } else {
-        self.centerRowIndex += self.countInRow;
-        self.rightBorder = (self.rowNumber + 1) * self.countInRow;
+        _.centerRowIndex += _.countInRow;
+        _.rightBorder = (_.rowNumber + 1) * _.countInRow;
       }
 
-      self.index = self.centerRowIndex;
+      _.index = _.centerRowIndex;
     }
 
-    if (self.rowNumber < self.countRows) {
-      setTimeout(function() {
-        requestAnimationFrame(function() {
-          self.showBlock();
+    if (_.rowNumber < _.countRows) {
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          _.showBlock();
         });
-      }, self.interval);
+      }, _.interval);
     }
   };
 
