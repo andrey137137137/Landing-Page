@@ -53,8 +53,9 @@ var AnimateBlocks = function () {
 
     params = null;
 
-    _.elems = document.querySelectorAll("#" + _.parentID + " " + _.childElem);
-    _.countElems = _.elems.length;
+    _.selector = "#" + _.parentID + " " + _.childElem;
+    _.$elems = $(_.selector);
+    _.countElems = _.$elems.length;
     _.started = false;
 
     if (!_.countElems) {
@@ -105,7 +106,7 @@ var AnimateBlocks = function () {
     ];
 
     for (var i = 0; i < _.eventFuncs.length; i++) {
-      window.addEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
+      $(window).on(_.eventFuncs[i].e, _.eventFuncs[i].f);
     }
 
     _.setPositions();
@@ -116,13 +117,13 @@ var AnimateBlocks = function () {
     var _ = this;
 
     if (_.started) {
-      window.removeEventListener("resize", _.eventFuncs[0].f);
+      $(window).off("resize", _.eventFuncs[0].f);
       return;
     }
 
     var tempArray;
-    var parentWidth = _.getContainerWidth(_.elems[0]);
-    var elemWidth = _.getWidth(_.elems[0], true);
+    var parentWidth = _.getContainerWidth(_.selector);
+    var elemWidth = _.getWidth(_.selector, true);
 
     _.countInRow = parseInt(parentWidth / elemWidth);
 
@@ -166,21 +167,25 @@ var AnimateBlocks = function () {
       }
     }
 
-    for (var i = 0; i < _.countElems; i++) {
-      _.changedStyles[i] = _.getPosition(i);
+    _.$elems.each(function (index) {
+      var $elem = $(this);
+      var transitionStr = _.changedStyles[index] + " " + _.timingPosition;
 
-      _.elems[i].removeAttribute("style");
-      _.elems[i].style.position = "relative";
+      _.changedStyles[index] = _.getPosition(index);
 
-      _.elems[i].style[_.changedStyles[i]] = _.outPosition + "px";
-      _.elems[i].style.transition = _.changedStyles[i] + " " + _.timingPosition;
+      $elem.removeAttribute("style");
+      $elem.css("position", "relative");
+
+      $elem.css([_.changedStyles[index]], _.outPosition + "px");
 
       if (_.transform) {
-        // console.log(_.getStyle(_.elems[i], 'transform'));
-        _.elems[i].style.transform = "scale(0)";
-        _.elems[i].style.transition += ", transform " + _.timingTransform;
+        // console.log(_.getStyle($elem, 'transform'));
+        $elem.css("transform", "scale(0)");
+        transitionStr += ", transform " + _.timingTransform;
       }
-    }
+    });
+
+    $elem.css("transition", transitionStr);
 
     _.index = _.centerRowIndex;
   };
@@ -197,13 +202,12 @@ var AnimateBlocks = function () {
       _.started = true;
 
       for (var i = 0, len = _.eventFuncs.length; i < len; i++) {
-        window.removeEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
+        $(window).off(_.eventFuncs[i].e, _.eventFuncs[i].f);
       }
     }
   };
 
   Construct.prototype.correctCenterIndex = function (rowLen, centerIndex) {
-    var _ = this;
     var checkEvenRowElems = true;
 
     if (rowLen % 2 == 0) {
@@ -215,33 +219,33 @@ var AnimateBlocks = function () {
     return [centerIndex, checkEvenRowElems];
   };
 
-  Construct.prototype.getPosition = function (indx) {
+  Construct.prototype.getPosition = function (index) {
     var _ = this;
     var len = _.forLeftPos.length;
     var i;
 
     if (
-      indx >= _.firstRestIndex &&
-      indx == _.centerLastRowIndex &&
+      index >= _.firstRestIndex &&
+      index == _.centerLastRowIndex &&
       !_.evenLastRowElems
     ) {
       return "bottom";
     }
 
-    if (indx >= _.firstRestIndex && indx <= _.centerLastRowIndex) {
+    if (index >= _.firstRestIndex && index <= _.centerLastRowIndex) {
       return "left";
     }
 
-    if (indx > _.centerLastRowIndex && indx < _.countElems) {
+    if (index > _.centerLastRowIndex && index < _.countElems) {
       return "right";
     }
 
-    if (indx % _.countInRow == _.centerRowIndex && !_.evenRowElems) {
+    if (index % _.countInRow == _.centerRowIndex && !_.evenRowElems) {
       return "bottom";
     }
 
     for (i = 0; i < len; i++) {
-      if (indx % _.countInRow == _.forLeftPos[i]) {
+      if (index % _.countInRow == _.forLeftPos[i]) {
         break;
       }
     }
@@ -253,7 +257,7 @@ var AnimateBlocks = function () {
     len = _.forRightPos.length;
 
     for (i = 0; i < len; i++) {
-      if (indx % _.countInRow == _.forRightPos[i]) {
+      if (index % _.countInRow == _.forRightPos[i]) {
         break;
       }
     }
@@ -265,12 +269,13 @@ var AnimateBlocks = function () {
 
   Construct.prototype.showBlock = function () {
     var _ = this;
+    var $elem = _.$elems.eq(_.index);
 
     if (_.transform) {
-      _.elems[_.index].style.transform = "scale(1)";
+      $elem.css("transform", "scale(1)");
     }
 
-    _.elems[_.index].style[_.changedStyles[_.index]] = 0;
+    $elem.css([_.changedStyles[_.index]], 0);
 
     if (_.direction > 0) {
       _.shiftFromCenter++;

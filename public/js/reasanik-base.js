@@ -123,11 +123,12 @@ var ReasanikBase = function () {
     return style;
   };
 
-  Construct.prototype.getContainerWidth = function ($elem) {
-    var width = $elem.parentNode.offsetWidth;
+  Construct.prototype.getContainerWidth = function (selector) {
+    var width = document.querySelector(selector).parentNode.offsetWidth;
+    var $parent = $(selector).parent();
 
-    width -= this.getStyle($elem.parentNode, "paddingLeft", "px");
-    width -= this.getStyle($elem.parentNode, "paddingRight", "px");
+    width -= this.getStyle($parent, "paddingLeft", "px");
+    width -= this.getStyle($parent, "paddingRight", "px");
 
     return width;
   };
