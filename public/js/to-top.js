@@ -34,14 +34,8 @@ var ToTop = function () {
 
     _.border = params.border;
 
-    _.elem = document.getElementById(params.buttonID);
-    _.socialsContainer = document.getElementById("footer-socials-container");
-
-    // _.ToTopButton = new ScrollEffect.Construct({
-    // 	buttonID: params.buttonID,
-    // 	direction: -1,
-    // 	defaultScrollStep: 70
-    // });
+    _.$elem = $("#" + params.buttonID);
+    _.$socialsContainer = $("#footer-socials-container");
 
     _.ToTopButton = ScrollEffect({
       buttonID: params.buttonID,
@@ -51,7 +45,7 @@ var ToTop = function () {
 
     params = null;
 
-    window.addEventListener("scroll", function () {
+    $(window).on("scroll", function () {
       _.showHideToTop();
     });
 
@@ -66,20 +60,20 @@ var ToTop = function () {
     _.ToTopButton.scrollY = _.getScrollY();
 
     if (_.ToTopButton.scrollY > _.border) {
-      _.elem.classList.add("section-btn_to--top_active");
+      _.$elem.addClass("section-btn_to--top_active");
     } else {
-      _.elem.classList.remove("section-btn_to--top_active");
+      _.$elem.removeClass("section-btn_to--top_active");
     }
 
     if (parseInt(_.ToTopButton.scrollY) === endPage) {
       setTimeout(function () {
-        _.elem.classList.add("section-btn_to--top_finally");
+        _.$elem.addClass("section-btn_to--top_finally");
       }, 200);
 
-      _.socialsContainer.classList.add("footer-socials_container--visible");
+      _.$socialsContainer.addClass("footer-socials_container--visible");
     } else {
-      _.elem.classList.remove("section-btn_to--top_finally");
-      _.socialsContainer.classList.remove("footer-socials_container--visible");
+      _.$elem.removeClass("section-btn_to--top_finally");
+      _.$socialsContainer.removeClass("footer-socials_container--visible");
     }
   };
 

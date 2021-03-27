@@ -31,7 +31,6 @@ var AnimateBlocks = function () {
     );
 
     if (!params.parentID) {
-      // _.setErrorMessage(_.pluginName);
       _.setErrorMessage(_.pluginName);
       return false;
     }
@@ -39,17 +38,6 @@ var AnimateBlocks = function () {
     for (var prop in params) {
       _[prop] = params[prop];
     }
-
-    // _.parentID = params.parentID;
-
-    // _.childElem = params.childElem;
-    // _.interval = params.interval;
-
-    // _.transform = params.transform;
-    // _.outPosition = params.outPosition;
-
-    // _.timingPosition = params.timingPosition;
-    // _.timingTransform = params.timingTransform;
 
     params = null;
 
@@ -87,7 +75,6 @@ var AnimateBlocks = function () {
       {
         e: "resize",
         f: function () {
-          // _.setPositions();
           _.resizeWindowWidth(_.setPositions);
         },
       },
@@ -169,23 +156,23 @@ var AnimateBlocks = function () {
 
     _.$elems.each(function (index) {
       var $elem = $(this);
-      var transitionStr = _.changedStyles[index] + " " + _.timingPosition;
 
       _.changedStyles[index] = _.getPosition(index);
 
-      $elem.removeAttribute("style");
+      var transitionStr = _.changedStyles[index] + " " + _.timingPosition;
+
+      $elem.removeAttr("style");
       $elem.css("position", "relative");
 
-      $elem.css([_.changedStyles[index]], _.outPosition + "px");
+      $elem.css(_.changedStyles[index], _.outPosition + "px");
 
       if (_.transform) {
-        // console.log(_.getStyle($elem, 'transform'));
         $elem.css("transform", "scale(0)");
         transitionStr += ", transform " + _.timingTransform;
       }
-    });
 
-    $elem.css("transition", transitionStr);
+      $elem.css("transition", transitionStr);
+    });
 
     _.index = _.centerRowIndex;
   };
@@ -193,10 +180,7 @@ var AnimateBlocks = function () {
   Construct.prototype.show = function () {
     var _ = this;
 
-    // var scrollY = _.getScrollY();
-    // var elemParentTop = _.getElemCenterTop(_.parentID);
-
-    // if (!_.started && scrollY >= elemParentTop)
+    // if (!_.started && _.getScrollY() >= _.getElemCenterTop(_.parentID))
     if (!_.started && _.isVisibleElem(_.parentID)) {
       _.showBlock();
       _.started = true;
@@ -275,7 +259,7 @@ var AnimateBlocks = function () {
       $elem.css("transform", "scale(1)");
     }
 
-    $elem.css([_.changedStyles[_.index]], 0);
+    $elem.css(_.changedStyles[_.index], 0);
 
     if (_.direction > 0) {
       _.shiftFromCenter++;

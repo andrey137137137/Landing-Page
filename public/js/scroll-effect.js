@@ -36,6 +36,7 @@ var ScrollEffect = function () {
     _.scrollFinalPos = params.scrollFinalPos;
 
     _.finalElemID = params.finalElemID;
+
     var buttonID = params.buttonID;
 
     params = null;
@@ -48,17 +49,15 @@ var ScrollEffect = function () {
     if (_.finalElemID) {
       _.scrollFinalPos = document.getElementById(_.finalElemID).offsetTop;
 
-      // window.addEventListener('resize', function(){
+      // $(window).on('resize', function(){
       // 	_.scrollFinalPos = document.getElementById(_.finalElemID).offsetTop;
       // });
     }
 
-    document
-      .getElementById(buttonID)
-      .addEventListener("click", function (event) {
-        event.preventDefault();
-        _.start();
-      });
+    $("#" + buttonID).on("click", function (event) {
+      event.preventDefault();
+      _.start();
+    });
   };
 
   Construct.prototype.start = function () {

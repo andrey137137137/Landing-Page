@@ -18,63 +18,63 @@
       ],
     });
 
-    // Slider({
-    //   sliderID: "main",
-    //   countSlides: 4,
-    //   navButtons: {
-    //     prev: true,
-    //     next: true,
-    //   },
-    // });
+    Slider({
+      sliderID: "main",
+      countSlides: 4,
+      navButtons: {
+        prev: true,
+        next: true,
+      },
+    });
 
-    // ScrollEffect({
-    //   buttonID: "main-slider-after-section",
-    //   finalElemID: "features",
-    // });
+    ScrollEffect({
+      buttonID: "main-slider-after-section",
+      finalElemID: "features",
+    });
 
-    // ScrollEffect({
-    //   buttonID: "to-portfolio",
-    //   finalElemID: "portfolio",
-    // });
+    ScrollEffect({
+      buttonID: "to-portfolio",
+      finalElemID: "portfolio",
+    });
 
-    // ScrollEffect({
-    //   buttonID: "to-skills",
-    //   finalElemID: "skills",
-    // });
+    ScrollEffect({
+      buttonID: "to-skills",
+      finalElemID: "skills",
+    });
 
-    // ScrollEffect({
-    //   buttonID: "to-team",
-    //   finalElemID: "team",
-    // });
+    ScrollEffect({
+      buttonID: "to-team",
+      finalElemID: "team",
+    });
 
-    // ScrollEffect({
-    //   buttonID: "to-contacts",
-    //   finalElemID: "contacts",
-    // });
+    ScrollEffect({
+      buttonID: "to-contacts",
+      finalElemID: "contacts",
+    });
 
-    // AnimateBlocks({
-    //   parentID: "features",
-    // });
+    AnimateBlocks({
+      parentID: "features",
+    });
 
-    // AnimateBlocks({
-    //   parentID: "about",
-    //   childElem: ".social-item",
-    //   outPosition: -3000,
-    //   transform: false,
-    // });
+    AnimateBlocks({
+      parentID: "about",
+      childElem: ".social-item",
+      outPosition: -3000,
+      transform: false,
+    });
 
-    // AnimateBlocks({
-    //   parentID: "skills",
-    // });
+    AnimateBlocks({
+      parentID: "skills",
+    });
 
-    // AnimateBlocks({
-    //   parentID: "skills-technologies",
-    //   childElem: "li",
-    // });
+    AnimateBlocks({
+      parentID: "skills-technologies",
+      childElem: "li",
+    });
 
-    // AnimateBlocks({
-    //   parentID: "statistics",
-    // });
+    AnimateBlocks({
+      parentID: "statistics",
+    });
 
     RestructRhombuses({
       selector: ".about-socials",
@@ -218,9 +218,9 @@
     //   // onlySubmitChecking: true,
     // });
 
-    // ToTop({
-    //   buttonID: "to-top",
-    //   border: 300,
-    // });
+    ToTop({
+      buttonID: "to-top",
+      border: 300,
+    });
   });
 })();

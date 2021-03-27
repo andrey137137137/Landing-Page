@@ -266,52 +266,41 @@ var Slider = function () {
     });
 
     if (navButtons.prev) {
-      document
-        .getElementById(navButtons.prev)
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          changeSlide(-1);
-        });
+      $("#" + navButtons.prev).on("click", function (event) {
+        event.preventDefault();
+        changeSlide(-1);
+      });
     }
 
     if (navButtons.next) {
-      document
-        .getElementById(navButtons.next)
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          changeSlide();
-        });
+      $("#" + navButtons.next).on("click", function (event) {
+        event.preventDefault();
+        changeSlide();
+      });
     }
 
     if (navButtons.play) {
-      document
-        .getElementById(navButtons.play)
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          autoplay(true);
-        });
+      $("#" + navButtons.play).on("click", function (event) {
+        event.preventDefault();
+        autoplay(true);
+      });
     }
 
     if (navButtons.stop) {
-      document
-        .getElementById(navButtons.stop)
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          autoplay();
-        });
+      $("#" + navButtons.stop).on("click", function (event) {
+        event.preventDefault();
+        autoplay();
+      });
     }
 
-    document
-      .getElementById(getSlideID(curIndex))
-      .classList.add("slider-item--active");
+    $("#" + getSlideID(curIndex)).on("slider-item--active");
 
-    window.addEventListener("resize", isVisibleSlider);
-    window.addEventListener("scroll", isVisibleSlider);
+    $(window).on("resize", isVisibleSlider);
+    $(window).on("scroll", isVisibleSlider);
 
     isVisibleSlider();
 
     function isVisibleSlider() {
-      var _ = this;
       // var scrollY = _.getScrollY();
       // var topBorder = _.getElemCenterTop(containerID);
       // var bottomBorder = topBorder + parseInt(containerHeight);
