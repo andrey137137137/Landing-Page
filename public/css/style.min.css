@@ -2038,8 +2038,8 @@ ul {
   transition: bottom 0.5s, right 0.5s, opacity 0.5s;
 }
 
-.lightbox--hidden {
-  display: none !important;
+.lightbox {
+  display: none;
 }
 
 .features-container,

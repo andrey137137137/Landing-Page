@@ -1006,9 +1006,10 @@ ul {
 // BEGIN PORTFOLIO AND BLOG-NEWS ICONS
 
 .lightbox {
-  &--hidden {
-    display: none !important;
-  }
+  // &--hidden {
+    // display: none !important;
+    display: none;
+  // }
 }
 
 // END PORTFOLIO AND BLOG-NEWS ICONS

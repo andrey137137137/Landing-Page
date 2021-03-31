@@ -107,6 +107,7 @@ var Gallery = function () {
         arrows: false,
         dots: false,
         draggable: false,
+        lazyLoad: "progressive",
       });
 
       _.$prev.on("click", function () {
@@ -118,7 +119,7 @@ var Gallery = function () {
 
       $("#" + closeID).on("click", function (e) {
         e.preventDefault();
-        _.$lightBox.addClass("lightbox--hidden");
+        _.$lightBox.slideUp(1000);
       });
 
       $("#" + _.name + "-blocks").on("click", function (e) {
@@ -131,7 +132,7 @@ var Gallery = function () {
         }
 
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        _.$lightBox.removeClass("lightbox--hidden");
+        _.$lightBox.fadeIn(1000);
       });
     }
 
