@@ -25,11 +25,13 @@ var Gallery = function () {
         items: false,
         categories: false,
         showCategory: false,
-        lightBoxID: false,
+        lightboxID: false,
+        lightboxAnimationShow: { func: "fadeIn", time: 1000 },
+        lightboxAnimationHide: { func: "fadeOut", time: 1000 },
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params,
+      params
     );
 
     if (!params.name || !params.categories) {
@@ -43,12 +45,14 @@ var Gallery = function () {
     _.categories = [{ title: "all", items: [] }].concat(params.categories);
     _.showCategory = params.showCategory;
     _.showMenu = params.showMenu;
+    _.lightboxAnimationShow = params.lightboxAnimationShow;
+    _.lightboxAnimationHide = params.lightboxAnimationHide;
 
-    var lightBoxID = _.name + "-" + params.lightBoxID;
+    var lightboxID = _.name + "-" + params.lightboxID;
 
     params = null;
 
-    _.$lightBox = $("#" + lightBoxID);
+    _.$lightbox = $("#" + lightboxID);
     _.$parentElem = $("#" + _.name + "-blocks");
 
     _.iter = 0;
@@ -86,7 +90,7 @@ var Gallery = function () {
       _.createMenu();
     }
 
-    if (_.$lightBox) {
+    if (_.$lightbox) {
       var closeID = _.name + "-slider-close";
       var sliderTempHTML = "";
 
@@ -119,7 +123,7 @@ var Gallery = function () {
 
       $("#" + closeID).on("click", function (e) {
         e.preventDefault();
-        _.$lightBox.slideUp(1000);
+        _.lightboxToggle(false);
       });
 
       $("#" + _.name + "-blocks").on("click", function (e) {
@@ -132,7 +136,8 @@ var Gallery = function () {
         }
 
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        _.$lightBox.fadeIn(1000);
+        console.log(_);
+        _.lightboxToggle(true);
       });
     }
 
@@ -158,10 +163,18 @@ var Gallery = function () {
     ];
 
     for (var i = 0; i < _.eventFuncs.length; i++) {
-      window.addEventListener(_.eventFuncs[i].e, _.eventFuncs[i].f);
+      $(window).on(_.eventFuncs[i].e, _.eventFuncs[i].f);
     }
 
     _.showItems();
+  };
+
+  Construct.prototype.lightboxToggle = function (toShow) {
+    var _ = this;
+    var lightboxAnimObjName = "lightboxAnimation" + (toShow ? "Show" : "Hide");
+    var func = _[lightboxAnimObjName].func;
+    var time = _[lightboxAnimObjName].time;
+    _.$lightbox[func](time);
   };
 
   Construct.prototype.arrowOn = function (isNext) {
@@ -205,7 +218,9 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' +
+          emptyTitle +
+          '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -215,13 +230,28 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
+  Construct.prototype.getImagePath = function (
+    catIndex,
+    breakpoint,
+    itemIndex
+  ) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
-    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
+    var imageIndex = !catIndex
+      ? _.categories[catIndex].items[itemIndex].image
+      : itemIndex;
+    return (
+      _.rootFolder +
+      "/" +
+      category +
+      "/" +
+      breakpoint +
+      "/" +
+      (imageIndex + 1) +
+      ".jpg"
+    );
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -435,7 +465,8 @@ var Gallery = function () {
         tempHTML += " active";
       }
 
-      tempHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempHTML +=
+        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -470,7 +501,15 @@ var Gallery = function () {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    $elem = $("#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")");
+    $elem = $(
+      "#" +
+        _.name +
+        "-blocks ." +
+        _.childClass +
+        ":nth-child(" +
+        (index + 1) +
+        ")"
+    );
 
     $elem.css("opacity", 1);
     _.shownItems[index] = 1;

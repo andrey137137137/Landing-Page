@@ -2038,10 +2038,6 @@ ul {
   transition: bottom 0.5s, right 0.5s, opacity 0.5s;
 }
 
-.lightbox {
-  display: none;
-}
-
 .features-container,
 .skills-container {
   -webkit-box-pack: center;

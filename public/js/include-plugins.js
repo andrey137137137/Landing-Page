@@ -83,7 +83,7 @@ $(function () {
 
   Gallery({
     name: "portfolio",
-    lightBoxID: "lightbox",
+    lightboxID: "lightbox",
     categories: [
       {
         title: "graphic",
@@ -182,7 +182,9 @@ $(function () {
 
   Gallery({
     name: "blog-news",
-    lightBoxID: "lightbox",
+    lightboxID: "lightbox",
+    lightboxAnimationShow: { func: "slideDown", time: 1000 },
+    lightboxAnimationHide: { func: "slideUp", time: 1000 },
     showCategory: true,
     showMenu: false,
     categories: [
