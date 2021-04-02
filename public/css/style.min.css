@@ -2038,6 +2038,12 @@ ul {
   transition: bottom 0.5s, right 0.5s, opacity 0.5s;
 }
 
+.lightbox-close {
+  margin-left: -26.5px;
+  width: 53px;
+  height: 53px;
+}
+
 .features-container,
 .skills-container {
   -webkit-box-pack: center;
@@ -2845,6 +2851,7 @@ ul {
 .blog-lightbox {
   position: relative;
   margin: 117px auto 0;
+  width: 100%;
   max-width: 728px;
 }
 
@@ -3839,9 +3846,6 @@ ul {
   top: -66px;
   left: 50%;
   z-index: 10;
-  margin-left: -26.5px;
-  width: 53px;
-  height: 53px;
 }
 
 .portfolio_lightbox-nav {

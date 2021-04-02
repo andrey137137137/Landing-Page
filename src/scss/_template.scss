@@ -123,8 +123,7 @@ body {
       // width: 0;
       // height: 0;
       opacity: 0;
-      transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s,
-        padding #{$transitionTime};
+      transition: width 1s, height 1s, opacity 1s, left 1s, bottom 1s, padding #{$transitionTime};
 
       .rhombus_wrap-rhombus {
         border-top: 1px solid $white;
@@ -979,8 +978,7 @@ ul {
   &-category {
     top: $defaultNegativeButtonMargin;
     left: $defaultNegativeButtonMargin;
-    transition: top #{$transitionTime}, left #{$transitionTime},
-      opacity #{$transitionTime};
+    transition: top #{$transitionTime}, left #{$transitionTime}, opacity #{$transitionTime};
     color: $white;
     background-color: rgba(205, 41, 41, 0.5);
     @include resetRhombusRotate;
@@ -996,8 +994,7 @@ ul {
     right: $defaultNegativeButtonMargin;
     padding: 11px;
     transform: rotate(-90deg);
-    transition: bottom #{$transitionTime}, right #{$transitionTime},
-      opacity #{$transitionTime};
+    transition: bottom #{$transitionTime}, right #{$transitionTime}, opacity #{$transitionTime};
   }
 }
 
@@ -1005,11 +1002,16 @@ ul {
 
 // BEGIN PORTFOLIO AND BLOG-NEWS ICONS
 
-// .lightbox {
-//   &--hidden {
-//     display: none !important;
-//   }
-// }
+.lightbox {
+  // &--hidden {
+  //   display: none !important;
+  // }
+
+  &-close {
+    margin-left: $defaultNegativeRhombusMargin;
+    @include rhombusSize;
+  }
+}
 
 // END PORTFOLIO AND BLOG-NEWS ICONS
 

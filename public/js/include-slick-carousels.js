@@ -61,15 +61,7 @@ $(function () {
       slidesToShow: 4,
 
       responsive: [
-        // {
-        //   breakpoint: 1170,
-        //   settings: {
-        //     variableWidth: true,
-        //     slidesToShow: 4,
-        //   },
-        // },
         {
-          // breakpoint: 910,
           breakpoint: 1170,
           settings: {
             dots: true,
@@ -90,8 +82,8 @@ $(function () {
           breakpoint: 460,
           settings: {
             dots: true,
-            centerMode: true,
             variableWidth: false,
+            slidesToShow: 1,
           },
         },
       ],
@@ -117,7 +109,12 @@ $(function () {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          // centerMode: true,
+        },
+      },
+      {
+        breakpoint: 460,
+        settings: {
+          slidesToShow: 1,
         },
       },
     ],

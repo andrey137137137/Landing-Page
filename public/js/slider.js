@@ -19,7 +19,7 @@ var Slider = function () {
         animationDelay: 5000,
         autoplayTimeout: 1500,
       },
-      params[0]
+      params[0],
     );
 
     if (!params.sliderID || !params.navButtons || !params.countSlides) {
@@ -165,9 +165,7 @@ var Slider = function () {
           timingMethod("left");
           timingMethod("bottom");
 
-          changeStyles(
-            changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0
-          );
+          changeStyles(changingStyles.left.value >= 0 && changingStyles.bottom.value >= 0);
         }
       },
 
@@ -185,9 +183,7 @@ var Slider = function () {
           timingMethod("right");
           timingMethod("bottom");
 
-          changeStyles(
-            changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0
-          );
+          changeStyles(changingStyles.right.value >= 0 && changingStyles.bottom.value >= 0);
         }
       },
     };
@@ -220,8 +216,7 @@ var Slider = function () {
 
       quad: function () {
         changingStyles[timingStyle].step =
-          Math.pow(changingStyles[timingStyle].step, 2) +
-          changingStyles[timingStyle].step;
+          Math.pow(changingStyles[timingStyle].step, 2) + changingStyles[timingStyle].step;
         changeStyleValue();
       },
     };
@@ -266,41 +261,42 @@ var Slider = function () {
     });
 
     if (navButtons.prev) {
-      $("#" + navButtons.prev).on("click", function (event) {
+      document.getElementById(navButtons.prev).addEventListener("click", function (event) {
         event.preventDefault();
         changeSlide(-1);
       });
     }
 
     if (navButtons.next) {
-      $("#" + navButtons.next).on("click", function (event) {
+      document.getElementById(navButtons.next).addEventListener("click", function (event) {
         event.preventDefault();
         changeSlide();
       });
     }
 
     if (navButtons.play) {
-      $("#" + navButtons.play).on("click", function (event) {
+      document.getElementById(navButtons.play).addEventListener("click", function (event) {
         event.preventDefault();
         autoplay(true);
       });
     }
 
     if (navButtons.stop) {
-      $("#" + navButtons.stop).on("click", function (event) {
+      document.getElementById(navButtons.stop).addEventListener("click", function (event) {
         event.preventDefault();
         autoplay();
       });
     }
 
-    $("#" + getSlideID(curIndex)).on("slider-item--active");
+    document.getElementById(getSlideID(curIndex)).classList.add("slider-item--active");
 
-    $(window).on("resize", isVisibleSlider);
-    $(window).on("scroll", isVisibleSlider);
+    window.addEventListener("resize", isVisibleSlider);
+    window.addEventListener("scroll", isVisibleSlider);
 
     isVisibleSlider();
 
     function isVisibleSlider() {
+      // var _ = this;
       // var scrollY = _.getScrollY();
       // var topBorder = _.getElemCenterTop(containerID);
       // var bottomBorder = topBorder + parseInt(containerHeight);
@@ -503,8 +499,7 @@ var Slider = function () {
 
       for (var prop in changingStyles) {
         changingStyles[prop].measure = changingStyles[prop].measure || "";
-        activeSlide.style[prop] =
-          changingStyles[prop].value + changingStyles[prop].measure;
+        activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
       }
 
       definedChangingStyles = true;
@@ -530,8 +525,7 @@ var Slider = function () {
       } else {
         for (var prop in changingStyles) {
           changingStyles[prop].measure = changingStyles[prop].measure || "";
-          activeSlide.style[prop] =
-            changingStyles[prop].value + changingStyles[prop].measure;
+          activeSlide.style[prop] = changingStyles[prop].value + changingStyles[prop].measure;
         }
 
         // setTimeout(transitionMethods[selectedTransitionMethod], animationSpeed);
@@ -546,9 +540,8 @@ var Slider = function () {
         // var thumbs = document.querySelectorAll('#testimonials-thumbs a');
         var thumbs = document.querySelectorAll("#" + navButtons.thumbs + " a");
 
-        prevIndex = document.querySelector(
-          "#" + navButtons.thumbs + " .slider-item--active"
-        ).dataset.number;
+        prevIndex = document.querySelector("#" + navButtons.thumbs + " .slider-item--active")
+          .dataset.number;
 
         for (var i = 0; i < thumbs.length; i++) {
           thumbs[i].classList.remove("slider-item--active");
