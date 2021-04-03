@@ -92,6 +92,7 @@ var Gallery = function () {
 
     if (_.$lightbox) {
       var closeID = _.name + "-slider-close";
+      var hiddenClass = "lightbox--hidden";
       var sliderTempHTML = "";
 
       _.categories.forEach(function (category, catIndex) {
@@ -114,6 +115,10 @@ var Gallery = function () {
         lazyLoad: "progressive",
       });
 
+      _.$slider.on("setPosition", function (e, slick) {
+        console.log(slick);
+      });
+
       _.$prev.on("click", function () {
         _.arrowOn(false);
       });
@@ -123,7 +128,8 @@ var Gallery = function () {
 
       $("#" + closeID).on("click", function (e) {
         e.preventDefault();
-        _.lightboxToggle(false);
+        // _.lightboxToggle(false);
+        _.$lightbox.addClass(hiddenClass);
       });
 
       $("#" + _.name + "-blocks").on("click", function (e) {
@@ -136,8 +142,8 @@ var Gallery = function () {
         }
 
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        console.log(_);
-        _.lightboxToggle(true);
+        // _.lightboxToggle(true);
+        _.$lightbox.removeClass(hiddenClass);
       });
     }
 
