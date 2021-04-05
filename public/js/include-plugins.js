@@ -84,6 +84,14 @@ $(function () {
   Gallery({
     name: "portfolio",
     lightboxID: "lightbox",
+    lightboxAnimShowStyles: {
+      top: "0",
+      opacity: 1,
+    },
+    lightboxAnimHideStyles: {
+      top: "100%",
+      opacity: 0,
+    },
     categories: [
       {
         title: "graphic",
@@ -180,40 +188,38 @@ $(function () {
     ],
   });
 
-  Gallery({
-    name: "blog-news",
-    lightboxID: "lightbox",
-    lightboxAnimationShow: { func: "slideDown", time: 1000 },
-    lightboxAnimationHide: { func: "slideUp", time: 1000 },
-    showCategory: true,
-    showMenu: false,
-    categories: [
-      {
-        title: "blog",
-        items: [
-          {
-            description: "",
-            title: "rubiko will take you to the next level",
-          },
-          { description: "", title: "unsplash" },
-          { description: "", title: "unsplash-2" },
-        ],
-      },
-      {
-        title: "photo",
-        items: [{ description: "", title: "doctype hi-res" }],
-      },
-      {
-        title: "video",
-        items: [
-          {
-            description: "",
-            title: "new york from a different view",
-          },
-        ],
-      },
-    ],
-  });
+  // Gallery({
+  //   name: "blog-news",
+  //   lightboxID: "lightbox",
+  //   showCategory: true,
+  //   showMenu: false,
+  //   categories: [
+  //     {
+  //       title: "blog",
+  //       items: [
+  //         {
+  //           description: "",
+  //           title: "rubiko will take you to the next level",
+  //         },
+  //         { description: "", title: "unsplash" },
+  //         { description: "", title: "unsplash-2" },
+  //       ],
+  //     },
+  //     {
+  //       title: "photo",
+  //       items: [{ description: "", title: "doctype hi-res" }],
+  //     },
+  //     {
+  //       title: "video",
+  //       items: [
+  //         {
+  //           description: "",
+  //           title: "new york from a different view",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // });
 
   // FormValidate({
   //   formID: "contacts_form",

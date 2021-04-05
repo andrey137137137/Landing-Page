@@ -1006,10 +1006,11 @@ ul {
 // BEGIN PORTFOLIO AND BLOG-NEWS ICONS
 
 .lightbox {
-  &--hidden {
-    top: 100% !important;
-    opacity: 0 !important;
-  }
+  // &--hidden {
+  //   top: 100% !important;
+  //   opacity: 0 !important;
+  //   height: 0 !important;
+  // }
 
   &-close {
     margin-left: $defaultNegativeRhombusMargin;

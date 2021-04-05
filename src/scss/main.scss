@@ -2045,7 +2045,7 @@
 
 .portfolio_lightbox {
   position: fixed;
-  top: 0;
+  // top: 0;
   left: 0;
   z-index: $zLevel10;
 
@@ -2059,10 +2059,10 @@
   color: $white;
   background-color: rgba(33, 33, 33, 0.95);
   overflow: hidden;
-  opacity: 1;
+  // opacity: 1;
 
-  transition: top $transitionTime, opacity $transitionTime,
-    background $transitionTime;
+  // transition: top $transitionTime, opacity $transitionTime,
+  //   background $transitionTime;
 
   &-container {
     padding-top: $lightBoxPaddingTop;

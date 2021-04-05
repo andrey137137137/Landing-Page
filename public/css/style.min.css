@@ -2038,11 +2038,6 @@ ul {
   transition: bottom 0.5s, right 0.5s, opacity 0.5s;
 }
 
-.lightbox--hidden {
-  top: 100% !important;
-  opacity: 0 !important;
-}
-
 .lightbox-close {
   margin-left: -26.5px;
   width: 53px;
@@ -3785,7 +3780,6 @@ ul {
 
 .portfolio_lightbox {
   position: fixed;
-  top: 0;
   left: 0;
   z-index: 100000;
   display: -webkit-box;
@@ -3806,9 +3800,6 @@ ul {
   color: #fff;
   background-color: rgba(33, 33, 33, .95);
   overflow: hidden;
-  opacity: 1;
-  -webkit-transition: top 0.5s, opacity 0.5s, background 0.5s;
-  transition: top 0.5s, opacity 0.5s, background 0.5s;
 }
 
 .portfolio_lightbox-container {

@@ -26,8 +26,8 @@ var Gallery = function () {
         categories: false,
         showCategory: false,
         lightboxID: false,
-        lightboxAnimationShow: { func: "fadeIn", time: 1000 },
-        lightboxAnimationHide: { func: "fadeOut", time: 1000 },
+        // lightboxAnimShowStyles: { func: "fadeIn", time: 1000 },
+        // lightboxAnimHideStyles: { func: "fadeOut", time: 1000 },
         showMenu: true,
         childClass: "photo_block-wrap",
       },
@@ -45,8 +45,16 @@ var Gallery = function () {
     _.categories = [{ title: "all", items: [] }].concat(params.categories);
     _.showCategory = params.showCategory;
     _.showMenu = params.showMenu;
-    _.lightboxAnimationShow = params.lightboxAnimationShow;
-    _.lightboxAnimationHide = params.lightboxAnimationHide;
+    _.lightboxAnimationSpeed = "0.5s";
+    _.lightboxAnimShowStyles = params.lightboxAnimShowStyles;
+    _.lightboxAnimHideStyles = params.lightboxAnimHideStyles;
+
+    // for (var key in _.lightboxAnimHideStyles) {
+    //   if (Object.hasOwnProperty.call(_.lightboxAnimHideStyles, key)) {
+    //     _.lightboxAnimHideStyles[key] =
+    //       _.lightboxAnimHideStyles[key] + " !important";
+    //   }
+    // }
 
     var lightboxID = _.name + "-" + params.lightboxID;
 
@@ -71,6 +79,8 @@ var Gallery = function () {
     _.$next;
     _.enableArrows = true;
     _.existEmptySlide = false;
+    _.sliderSpeed = 300;
+    _.sliderCancelledAnim = 0;
 
     // countInRow = 0;
     // elemWidth;
@@ -92,8 +102,19 @@ var Gallery = function () {
 
     if (_.$lightbox) {
       var closeID = _.name + "-slider-close";
-      var hiddenClass = "lightbox--hidden";
+      // var hiddenClass = "lightbox--hidden";
       var sliderTempHTML = "";
+      var transitionCssArray = [];
+
+      _.$lightbox.css(_.lightboxAnimHideStyles);
+
+      for (const key in _.lightboxAnimShowStyles) {
+        if (Object.hasOwnProperty.call(_.lightboxAnimShowStyles, key)) {
+          transitionCssArray.push(key + " " + _.lightboxAnimationSpeed);
+        }
+      }
+
+      _.$lightbox.css("transition", transitionCssArray.join(", "));
 
       _.categories.forEach(function (category, catIndex) {
         category.items.forEach(function (item, itemIndex) {
@@ -115,10 +136,6 @@ var Gallery = function () {
         lazyLoad: "progressive",
       });
 
-      _.$slider.on("setPosition", function (e, slick) {
-        console.log(slick);
-      });
-
       _.$prev.on("click", function () {
         _.arrowOn(false);
       });
@@ -129,7 +146,8 @@ var Gallery = function () {
       $("#" + closeID).on("click", function (e) {
         e.preventDefault();
         // _.lightboxToggle(false);
-        _.$lightbox.addClass(hiddenClass);
+        // _.$lightbox.addClass(hiddenClass);
+        _.$lightbox.css(_.lightboxAnimHideStyles);
       });
 
       $("#" + _.name + "-blocks").on("click", function (e) {
@@ -141,9 +159,11 @@ var Gallery = function () {
           return;
         }
 
+        $(_.$slider).slick("slickSetOption", "speed", _.sliderCancelledAnim);
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
         // _.lightboxToggle(true);
-        _.$lightbox.removeClass(hiddenClass);
+        // _.$lightbox.removeClass(hiddenClass);
+        _.$lightbox.css(_.lightboxAnimShowStyles);
       });
     }
 
@@ -186,6 +206,7 @@ var Gallery = function () {
   Construct.prototype.arrowOn = function (isNext) {
     var _ = this;
     if (_.enableArrows) {
+      $(_.$slider).slick("slickSetOption", "speed", _.sliderSpeed);
       $(_.$slider).slick(isNext ? "slickNext" : "slickPrev");
     }
   };
@@ -417,8 +438,13 @@ var Gallery = function () {
 
     if ($elem.hasAttribute("data-index")) {
       var selector;
+      var index = +$elem.getAttribute("data-index");
 
-      _.curCategory = +$elem.getAttribute("data-index");
+      if (_.curCategory == index) {
+        return;
+      }
+
+      _.curCategory = index;
       _.setRhombusesByCategory();
 
       $(_.$slider).slick("slickUnfilter");
@@ -441,6 +467,7 @@ var Gallery = function () {
       }
 
       $(_.$slider).slick("slickFilter", selector).slick("refresh");
+      // $(_.$slider).slick("slickGoTo", 0);
     }
     // else if ($elem.hasAttribute('data-display'))
     // {
