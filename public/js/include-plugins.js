@@ -1,7 +1,6 @@
 $(function () {
   "use strict";
 
-  // window.addEventListener("DOMContentLoaded", function () {
   Menu({
     menuID: "main-menu",
     buttonCheckerID: "menu-checker",
@@ -188,38 +187,46 @@ $(function () {
     ],
   });
 
-  // Gallery({
-  //   name: "blog-news",
-  //   lightboxID: "lightbox",
-  //   showCategory: true,
-  //   showMenu: false,
-  //   categories: [
-  //     {
-  //       title: "blog",
-  //       items: [
-  //         {
-  //           description: "",
-  //           title: "rubiko will take you to the next level",
-  //         },
-  //         { description: "", title: "unsplash" },
-  //         { description: "", title: "unsplash-2" },
-  //       ],
-  //     },
-  //     {
-  //       title: "photo",
-  //       items: [{ description: "", title: "doctype hi-res" }],
-  //     },
-  //     {
-  //       title: "video",
-  //       items: [
-  //         {
-  //           description: "",
-  //           title: "new york from a different view",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // });
+  Gallery({
+    name: "blog-news",
+    lightboxID: "lightbox",
+    // lightboxAnimShowStyles: {
+    //   height: "auto",
+    //   opacity: 1,
+    // },
+    // lightboxAnimHideStyles: {
+    //   height: 0,
+    //   opacity: 0,
+    // },
+    showCategory: true,
+    showMenu: false,
+    categories: [
+      {
+        title: "blog",
+        items: [
+          {
+            description: "",
+            title: "rubiko will take you to the next level",
+          },
+          { description: "", title: "unsplash" },
+          { description: "", title: "unsplash-2" },
+        ],
+      },
+      {
+        title: "photo",
+        items: [{ description: "", title: "doctype hi-res" }],
+      },
+      {
+        title: "video",
+        items: [
+          {
+            description: "",
+            title: "new york from a different view",
+          },
+        ],
+      },
+    ],
+  });
 
   // FormValidate({
   //   formID: "contacts_form",
@@ -230,5 +237,17 @@ $(function () {
     buttonID: "to-top",
     border: 300,
   });
-  // });
+
+  $(".social-show").on("click", function (e) {
+    e.preventDefault();
+
+    var $container = $(this).parent();
+    var activeClass = "social-rhombus--active";
+
+    if ($container.hasClass(activeClass)) {
+      $container.removeClass(activeClass);
+    } else {
+      $container.addClass(activeClass);
+    }
+  });
 });

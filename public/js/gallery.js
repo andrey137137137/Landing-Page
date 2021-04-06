@@ -26,12 +26,12 @@ var Gallery = function () {
         categories: false,
         showCategory: false,
         lightboxID: false,
-        // lightboxAnimShowStyles: { func: "fadeIn", time: 1000 },
-        // lightboxAnimHideStyles: { func: "fadeOut", time: 1000 },
+        lightboxAnimShowStyles: { func: "slideDown" },
+        lightboxAnimHideStyles: { func: "slideUp" },
         showMenu: true,
         childClass: "photo_block-wrap",
       },
-      params
+      params,
     );
 
     if (!params.name || !params.categories) {
@@ -45,16 +45,11 @@ var Gallery = function () {
     _.categories = [{ title: "all", items: [] }].concat(params.categories);
     _.showCategory = params.showCategory;
     _.showMenu = params.showMenu;
-    _.lightboxAnimationSpeed = "0.5s";
+    _.lightboxAnimationSpeed = 500;
     _.lightboxAnimShowStyles = params.lightboxAnimShowStyles;
     _.lightboxAnimHideStyles = params.lightboxAnimHideStyles;
-
-    // for (var key in _.lightboxAnimHideStyles) {
-    //   if (Object.hasOwnProperty.call(_.lightboxAnimHideStyles, key)) {
-    //     _.lightboxAnimHideStyles[key] =
-    //       _.lightboxAnimHideStyles[key] + " !important";
-    //   }
-    // }
+    _.isJsLightboxAnimation =
+      _.exist(_.lightboxAnimShowStyles.func) && _.exist(_.lightboxAnimHideStyles.func);
 
     var lightboxID = _.name + "-" + params.lightboxID;
 
@@ -102,19 +97,22 @@ var Gallery = function () {
 
     if (_.$lightbox) {
       var closeID = _.name + "-slider-close";
-      // var hiddenClass = "lightbox--hidden";
       var sliderTempHTML = "";
       var transitionCssArray = [];
 
-      _.$lightbox.css(_.lightboxAnimHideStyles);
+      if (_.isJsLightboxAnimation) {
+        _.$lightbox.css("display", "none");
+      } else {
+        _.$lightbox.css(_.lightboxAnimHideStyles);
 
-      for (const key in _.lightboxAnimShowStyles) {
-        if (Object.hasOwnProperty.call(_.lightboxAnimShowStyles, key)) {
-          transitionCssArray.push(key + " " + _.lightboxAnimationSpeed);
+        for (const key in _.lightboxAnimShowStyles) {
+          if (Object.hasOwnProperty.call(_.lightboxAnimShowStyles, key)) {
+            transitionCssArray.push(key + " " + _.lightboxAnimationSpeed + "ms");
+          }
         }
-      }
 
-      _.$lightbox.css("transition", transitionCssArray.join(", "));
+        _.$lightbox.css("transition", transitionCssArray.join(", "));
+      }
 
       _.categories.forEach(function (category, catIndex) {
         category.items.forEach(function (item, itemIndex) {
@@ -145,9 +143,11 @@ var Gallery = function () {
 
       $("#" + closeID).on("click", function (e) {
         e.preventDefault();
-        // _.lightboxToggle(false);
-        // _.$lightbox.addClass(hiddenClass);
-        _.$lightbox.css(_.lightboxAnimHideStyles);
+        if (_.isJsLightboxAnimation) {
+          _.lightboxToggle(false);
+        } else {
+          _.$lightbox.css(_.lightboxAnimHideStyles);
+        }
       });
 
       $("#" + _.name + "-blocks").on("click", function (e) {
@@ -161,9 +161,11 @@ var Gallery = function () {
 
         $(_.$slider).slick("slickSetOption", "speed", _.sliderCancelledAnim);
         $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        // _.lightboxToggle(true);
-        // _.$lightbox.removeClass(hiddenClass);
-        _.$lightbox.css(_.lightboxAnimShowStyles);
+        if (_.isJsLightboxAnimation) {
+          _.lightboxToggle(true);
+        } else {
+          _.$lightbox.css(_.lightboxAnimShowStyles);
+        }
       });
     }
 
@@ -197,9 +199,11 @@ var Gallery = function () {
 
   Construct.prototype.lightboxToggle = function (toShow) {
     var _ = this;
-    var lightboxAnimObjName = "lightboxAnimation" + (toShow ? "Show" : "Hide");
+    var lightboxAnimObjName = "lightboxAnim" + (toShow ? "Show" : "Hide") + "Styles";
     var func = _[lightboxAnimObjName].func;
-    var time = _[lightboxAnimObjName].time;
+    var time = _.exist(_[lightboxAnimObjName].time)
+      ? _[lightboxAnimObjName].time
+      : _.lightboxAnimationSpeed;
     _.$lightbox[func](time);
   };
 
@@ -245,9 +249,7 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' +
-          emptyTitle +
-          '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -257,28 +259,13 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (
-    catIndex,
-    breakpoint,
-    itemIndex
-  ) {
+  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex
-      ? _.categories[catIndex].items[itemIndex].image
-      : itemIndex;
-    return (
-      _.rootFolder +
-      "/" +
-      category +
-      "/" +
-      breakpoint +
-      "/" +
-      (imageIndex + 1) +
-      ".jpg"
-    );
+    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
+    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -498,8 +485,7 @@ var Gallery = function () {
         tempHTML += " active";
       }
 
-      tempHTML +=
-        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -534,15 +520,7 @@ var Gallery = function () {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    $elem = $(
-      "#" +
-        _.name +
-        "-blocks ." +
-        _.childClass +
-        ":nth-child(" +
-        (index + 1) +
-        ")"
-    );
+    $elem = $("#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")");
 
     $elem.css("opacity", 1);
     _.shownItems[index] = 1;
