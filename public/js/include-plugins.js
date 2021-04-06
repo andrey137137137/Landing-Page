@@ -190,16 +190,10 @@ $(function () {
   Gallery({
     name: "blog-news",
     lightboxID: "lightbox",
-    // lightboxAnimShowStyles: {
-    //   height: "auto",
-    //   opacity: 1,
-    // },
-    // lightboxAnimHideStyles: {
-    //   height: 0,
-    //   opacity: 0,
-    // },
-    showCategory: true,
-    showMenu: false,
+    lightboxAnimShowStyles: { func: "slideDown" },
+    lightboxAnimHideStyles: { func: "slideUp" },
+    toShowCategory: true,
+    toShowMenu: false,
     categories: [
       {
         title: "blog",
@@ -236,18 +230,5 @@ $(function () {
   ToTop({
     buttonID: "to-top",
     border: 300,
-  });
-
-  $(".social-show").on("click", function (e) {
-    e.preventDefault();
-
-    var $container = $(this).parent();
-    var activeClass = "social-rhombus--active";
-
-    if ($container.hasClass(activeClass)) {
-      $container.removeClass(activeClass);
-    } else {
-      $container.addClass(activeClass);
-    }
   });
 });

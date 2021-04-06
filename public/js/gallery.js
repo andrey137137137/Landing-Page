@@ -24,14 +24,14 @@ var Gallery = function () {
         name: false,
         items: false,
         categories: false,
-        showCategory: false,
+        toShowCategory: false,
         lightboxID: false,
-        lightboxAnimShowStyles: { func: "slideDown" },
-        lightboxAnimHideStyles: { func: "slideUp" },
-        showMenu: true,
+        lightboxAnimShowStyles: { func: "fadeOut" },
+        lightboxAnimHideStyles: { func: "fadeIn" },
+        toShowMenu: true,
         childClass: "photo_block-wrap",
       },
-      params,
+      params
     );
 
     if (!params.name || !params.categories) {
@@ -43,35 +43,26 @@ var Gallery = function () {
     _.rootFolder = params.rootFolder + _.name;
     _.childClass = params.childClass;
     _.categories = [{ title: "all", items: [] }].concat(params.categories);
-    _.showCategory = params.showCategory;
-    _.showMenu = params.showMenu;
-    _.lightboxAnimationSpeed = 500;
+    _.toShowCategory = params.toShowCategory;
+    _.toShowMenu = params.toShowMenu;
     _.lightboxAnimShowStyles = params.lightboxAnimShowStyles;
     _.lightboxAnimHideStyles = params.lightboxAnimHideStyles;
-    _.isJsLightboxAnimation =
-      _.exist(_.lightboxAnimShowStyles.func) && _.exist(_.lightboxAnimHideStyles.func);
-
-    var lightboxID = _.name + "-" + params.lightboxID;
+    _.$lightbox = $("#" + _.name + "-" + params.lightboxID);
 
     params = null;
 
-    _.$lightbox = $("#" + lightboxID);
     _.$parentElem = $("#" + _.name + "-blocks");
-
     _.iter = 0;
-    _.itemsCount;
+    _.itemsCount = 0;
     _.intervalID = 0;
     _.startedAnimation = false;
-    _.shownItems;
+    _.shownItems = [];
     _.dataSrcName = "data-src";
     _.slideCategoryPrefix = "gallery_category_";
     _.curCategory = 0;
     _.sliderID = _.name + "-slider-demonstration";
     _.prevID = _.name + "-slider-prev";
     _.nextID = _.name + "-slider-next";
-    _.$slider;
-    _.$prev;
-    _.$next;
     _.enableArrows = true;
     _.existEmptySlide = false;
     _.sliderSpeed = 300;
@@ -91,82 +82,12 @@ var Gallery = function () {
       maxCols: 4,
     });
 
-    if (_.showMenu) {
+    if (_.toShowMenu) {
       _.createMenu();
     }
 
     if (_.$lightbox) {
-      var closeID = _.name + "-slider-close";
-      var sliderTempHTML = "";
-      var transitionCssArray = [];
-
-      if (_.isJsLightboxAnimation) {
-        _.$lightbox.css("display", "none");
-      } else {
-        _.$lightbox.css(_.lightboxAnimHideStyles);
-
-        for (const key in _.lightboxAnimShowStyles) {
-          if (Object.hasOwnProperty.call(_.lightboxAnimShowStyles, key)) {
-            transitionCssArray.push(key + " " + _.lightboxAnimationSpeed + "ms");
-          }
-        }
-
-        _.$lightbox.css("transition", transitionCssArray.join(", "));
-      }
-
-      _.categories.forEach(function (category, catIndex) {
-        category.items.forEach(function (item, itemIndex) {
-          sliderTempHTML += _.slideTemplate(catIndex, item, itemIndex);
-        });
-      });
-
-      $("#" + _.sliderID).html(sliderTempHTML);
-
-      _.$slider = $("#" + _.sliderID);
-      _.$prev = $("#" + _.prevID);
-      _.$next = $("#" + _.nextID);
-
-      _.$slider.slick({
-        accessibility: false,
-        arrows: false,
-        dots: false,
-        draggable: false,
-        lazyLoad: "progressive",
-      });
-
-      _.$prev.on("click", function () {
-        _.arrowOn(false);
-      });
-      _.$next.on("click", function () {
-        _.arrowOn(true);
-      });
-
-      $("#" + closeID).on("click", function (e) {
-        e.preventDefault();
-        if (_.isJsLightboxAnimation) {
-          _.lightboxToggle(false);
-        } else {
-          _.$lightbox.css(_.lightboxAnimHideStyles);
-        }
-      });
-
-      $("#" + _.name + "-blocks").on("click", function (e) {
-        e.preventDefault();
-
-        var $elem = _.isLink(e.target, true);
-
-        if (!$elem) {
-          return;
-        }
-
-        $(_.$slider).slick("slickSetOption", "speed", _.sliderCancelledAnim);
-        $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
-        if (_.isJsLightboxAnimation) {
-          _.lightboxToggle(true);
-        } else {
-          _.$lightbox.css(_.lightboxAnimShowStyles);
-        }
-      });
+      _.initLightbox();
     }
 
     _.eventFuncs = [
@@ -197,9 +118,109 @@ var Gallery = function () {
     _.showItems();
   };
 
+  Construct.prototype.initLightbox = function () {
+    var _ = this;
+    var closeID = _.name + "-slider-close";
+    var sliderTempHTML = "";
+    var transitionCssArray = [];
+
+    _.lightboxAnimationSpeed = 500;
+    _.isJsLightboxAnimation =
+      _.exist(_.lightboxAnimShowStyles.func) &&
+      _.exist(_.lightboxAnimHideStyles.func);
+
+    if (_.isJsLightboxAnimation) {
+      _.$lightbox.css("display", "none");
+    } else {
+      _.$lightbox.css(_.lightboxAnimHideStyles);
+
+      for (const key in _.lightboxAnimShowStyles) {
+        if (Object.hasOwnProperty.call(_.lightboxAnimShowStyles, key)) {
+          transitionCssArray.push(key + " " + _.lightboxAnimationSpeed + "ms");
+        }
+      }
+
+      _.$lightbox.css("transition", transitionCssArray.join(", "));
+    }
+
+    _.categories.forEach(function (category, catIndex) {
+      category.items.forEach(function (item, itemIndex) {
+        sliderTempHTML += _.slideTemplate(catIndex, item, itemIndex);
+      });
+    });
+
+    $("#" + _.sliderID).html(sliderTempHTML);
+
+    _.$slider = $("#" + _.sliderID);
+    _.$prev = $("#" + _.prevID);
+    _.$next = $("#" + _.nextID);
+    _.$socialBtn = _.$lightbox.find(".social-show");
+    _.$socialRhombus = _.$socialBtn.parent();
+
+    _.$slider.slick({
+      accessibility: false,
+      arrows: false,
+      dots: false,
+      draggable: false,
+      lazyLoad: "progressive",
+    });
+
+    _.$prev.on("click", function () {
+      _.arrowOn(false);
+    });
+    _.$next.on("click", function () {
+      _.arrowOn(true);
+    });
+
+    $("#" + closeID).on("click", function (e) {
+      e.preventDefault();
+      _.lightboxToggle(false);
+      _.socialBtnToggle(true);
+    });
+
+    $("#" + _.name + "-blocks").on("click", function (e) {
+      e.preventDefault();
+
+      var $elem = _.isLink(e.target, true);
+
+      if (!$elem) {
+        return;
+      }
+
+      $(_.$slider).slick("slickSetOption", "speed", _.sliderCancelledAnim);
+      $(_.$slider).slick("slickGoTo", +$elem.getAttribute("data-index"));
+      _.lightboxToggle(true);
+    });
+
+    _.$lightbox.find(".social-show").on("click", function (e) {
+      e.preventDefault();
+      _.socialBtnToggle();
+    });
+  };
+
+  Construct.prototype.socialBtnToggle = function (toDisactive) {
+    var _ = this;
+    var activeClass = "social-rhombus--active";
+
+    toDisactive = toDisactive || false;
+
+    if (_.$socialRhombus.hasClass(activeClass) || toDisactive) {
+      _.$socialRhombus.removeClass(activeClass);
+    } else {
+      _.$socialRhombus.addClass(activeClass);
+    }
+  };
+
   Construct.prototype.lightboxToggle = function (toShow) {
     var _ = this;
-    var lightboxAnimObjName = "lightboxAnim" + (toShow ? "Show" : "Hide") + "Styles";
+    var lightboxAnimObjName =
+      "lightboxAnim" + (toShow ? "Show" : "Hide") + "Styles";
+
+    if (!_.isJsLightboxAnimation) {
+      _.$lightbox.css(_[lightboxAnimObjName]);
+      return;
+    }
+
     var func = _[lightboxAnimObjName].func;
     var time = _.exist(_[lightboxAnimObjName].time)
       ? _[lightboxAnimObjName].time
@@ -249,7 +270,9 @@ var Gallery = function () {
       _.name +
       '_lightbox-img_wrap">' +
       (isEmpty
-        ? '<img class="img_wrap-img blog-img" src="" alt="' + emptyTitle + '" />'
+        ? '<img class="img_wrap-img blog-img" src="" alt="' +
+          emptyTitle +
+          '" />'
         : _.getPicture("img_wrap-img blog-img", catIndex, itemIndex)) +
       '</div><div class="lightbox-desc_container ' +
       _.name +
@@ -259,13 +282,28 @@ var Gallery = function () {
     );
   };
 
-  Construct.prototype.getImagePath = function (catIndex, breakpoint, itemIndex) {
+  Construct.prototype.getImagePath = function (
+    catIndex,
+    breakpoint,
+    itemIndex
+  ) {
     var _ = this;
     var category = !catIndex
       ? _.categories[catIndex].items[itemIndex].category
       : _.categories[catIndex].title;
-    var imageIndex = !catIndex ? _.categories[catIndex].items[itemIndex].image : itemIndex;
-    return _.rootFolder + "/" + category + "/" + breakpoint + "/" + (imageIndex + 1) + ".jpg";
+    var imageIndex = !catIndex
+      ? _.categories[catIndex].items[itemIndex].image
+      : itemIndex;
+    return (
+      _.rootFolder +
+      "/" +
+      category +
+      "/" +
+      breakpoint +
+      "/" +
+      (imageIndex + 1) +
+      ".jpg"
+    );
   };
 
   Construct.prototype.getPictureSources = function (catIndex, itemIndex) {
@@ -357,7 +395,7 @@ var Gallery = function () {
         item.title +
         "</h3></div></div>";
 
-      if (_.showCategory) {
+      if (_.toShowCategory) {
         tempHTML +=
           '<div class="rhombus_wrap rhombus_wrap--btn rhombus_wrap--category photo_block-category"><div class="rhombus_wrap-rhombus"></div></div>';
       }
@@ -485,7 +523,8 @@ var Gallery = function () {
         tempHTML += " active";
       }
 
-      tempHTML += '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
+      tempHTML +=
+        '" href="#" data-index="' + index + '">' + category.title + "</a></li>";
     });
 
     // tempHTML += '<li id="grid-switcher-squares"><a data-display="squares" href="#"></a></li>';
@@ -520,7 +559,15 @@ var Gallery = function () {
       index = parseInt(Math.random() * _.itemsCount);
     } while (_.shownItems[index]);
 
-    $elem = $("#" + _.name + "-blocks ." + _.childClass + ":nth-child(" + (index + 1) + ")");
+    $elem = $(
+      "#" +
+        _.name +
+        "-blocks ." +
+        _.childClass +
+        ":nth-child(" +
+        (index + 1) +
+        ")"
+    );
 
     $elem.css("opacity", 1);
     _.shownItems[index] = 1;
