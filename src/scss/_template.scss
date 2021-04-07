@@ -822,6 +822,7 @@ ul {
 
   &.col {
     // width: 211px;
+    width: 328px;
 
     // .photo_block-wrap {
     // 	margin-left: 31px;
@@ -1012,6 +1013,7 @@ ul {
   // }
 
   &-close {
+    position: absolute;
     margin-left: $defaultNegativeRhombusMargin;
     @include rhombusSize;
   }
