@@ -3781,15 +3781,14 @@ ul {
   -webkit-box-direction: normal;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   height: auto;
 }
 
 .footer-socials_container {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   bottom: -300px;
-  padding: 0 20px;
   max-width: 768px;
   -webkit-transition: bottom 0.5s ease 0.7s;
   transition: bottom 0.5s ease 0.7s;
@@ -3802,18 +3801,21 @@ ul {
 .footer-socials {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 11px 0 -8px;
-  width: 197px;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin-top: 11px;
+  margin-bottom: -8px;
+  max-width: 197px;
 }
 
 .footer-socials .social-item {
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0 11px;
 }
 
 .footer-socials .social-item:nth-child(1) {
-  margin: 0 72px;
+  margin-right: 52px;
+  margin-left: 52px;
 }
 
 .portfolio_lightbox {
@@ -3918,6 +3920,31 @@ ul {
     top: 0;
     left: 0;
     position: relative;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .footer-socials_container {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .footer-socials {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .footer-socials .social-item {
+    margin-right: 11px;
+    margin-left: 11px;
+  }
+
+  .footer-socials .social-item:nth-child(1) {
+    margin-right: 72px;
+    margin-left: 72px;
   }
 }
 
@@ -4353,12 +4380,19 @@ ul {
     height: 226px;
   }
 
+  .footer-flex_container {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
   .footer-socials_container {
     padding: 0 5px;
   }
 
   .footer-socials {
     width: auto;
+    max-width: 100%;
   }
 
   .footer-socials .social-item {
@@ -4459,9 +4493,19 @@ ul {
     top: 171px;
   }
 
-  .photo_block-more {
+  .photo_block-more,
+  .photo_block-category {
+    padding: 16px;
     width: 53px;
     height: 53px;
+  }
+
+  .photo_block-category .rhombus_wrap-rhombus:before {
+    line-height: 25px;
+  }
+
+  .photo_block-more {
+    padding: 16px;
   }
 
   .photo_block-title {

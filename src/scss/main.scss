@@ -246,7 +246,8 @@
           rgba(9, 9, 9, 0.85) 0%,
           rgba(205, 41, 41, 0.85) 100%
         ),
-        rgba(9, 9, 9, 0.85) url(#{$imgBgPath}/main-slider/1-m.jpg) no-repeat center top;
+        rgba(9, 9, 9, 0.85) url(#{$imgBgPath}/main-slider/1-m.jpg) no-repeat
+          center top;
       // linear-gradient: 'to top right, rgba(9, 9, 9, .85) 0%, rgba(205, 41, 41, .85) 100%', 'rgba(9, 9, 9, .85) url(images/backgrounds/main-slider/1-m.jpg') no-repeat center -8px';
       background-size: cover;
     }
@@ -267,14 +268,16 @@
 
   &_item_2 {
     &-background {
-      background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/2.jpg") center top;
+      background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/2.jpg")
+        center top;
       // background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/2.jpg';
     }
   }
 
   &_item_3 {
     &-background {
-      background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/3-m.jpg") no-repeat center top;
+      background: rgba(9, 9, 9, 0.85) url("#{$imgBgPath}/main-slider/3-m.jpg")
+        no-repeat center top;
       //background: rgba(9, 9, 9, .85) url('#{$imgBgPath}/main-slider/3-m.jpg') no-repeat;
       background-size: cover;
     }
@@ -655,7 +658,8 @@
 .testimonials {
   padding-top: 76px;
   // height: 417px;
-  background: $darkSectionBgColor url("#{$imgBgPath}/testimonials-m.jpg") no-repeat center top;
+  background: $darkSectionBgColor url("#{$imgBgPath}/testimonials-m.jpg")
+    no-repeat center top;
   //background: $darkSectionBgColor url('#{$imgBgPath}/testimonials-m.jpg') no-repeat -425px -299px;
 
   &-container {
@@ -948,7 +952,11 @@
 .statistics {
   padding: 80px 0 120px;
   // height: 875px;
-  background: linear-gradient(to top right, rgba(9, 9, 9, 0.1) 0%, rgba(205, 41, 41, 0.1) 100%),
+  background: linear-gradient(
+      to top right,
+      rgba(9, 9, 9, 0.1) 0%,
+      rgba(205, 41, 41, 0.1) 100%
+    ),
     #{$darkSectionBgColor} url(#{$imgBgPath}/statistics-m.jpg) no-repeat center top;
   //background: $darkSectionBgColor url('#{$imgBgPath}/statistics-m.jpg') no-repeat -583px -5px;
 
@@ -1185,7 +1193,8 @@
   &-list {
     &--sub {
       margin-top: 18px;
-      background: url("#{$imgBgPath}/blog-comments/vertical-line.png") repeat-y left 20px,
+      background: url("#{$imgBgPath}/blog-comments/vertical-line.png") repeat-y
+          left 20px,
         url("#{$imgBgPath}/blog-comments/sub.png") no-repeat;
 
       #{$block}-item {
@@ -1240,7 +1249,8 @@
     }
 
     &--admin {
-      background: $linkColor url("#{$imgBgPath}/logo.png") no-repeat center center;
+      background: $linkColor url("#{$imgBgPath}/logo.png") no-repeat center
+        center;
     }
   }
 
@@ -1354,7 +1364,8 @@
   // padding-top: 84px;
   padding-top: 74px;
   // height: 448px;
-  background: #121212 url("#{$imgBgPath}/socials-feedback-m.jpg") no-repeat top center;
+  background: #121212 url("#{$imgBgPath}/socials-feedback-m.jpg") no-repeat top
+    center;
 
   &-container {
     padding: 0;
@@ -1726,7 +1737,8 @@
     height: $contactInputLineHeight;
     //font: 200 14px/17px 'Exo 2', sans-serif;
     //font: 14px/17px 'Exo2.0-Extra-Light', sans-serif;
-    font: unquote("14px/#{$contactInputLineHeight}") "Exo2.0-Extra-Light", sans-serif;
+    font: unquote("14px/#{$contactInputLineHeight}") "Exo2.0-Extra-Light",
+      sans-serif;
     text-align: center;
     color: rgba(245, 245, 245, 0.25);
     background: none;
@@ -1995,13 +2007,14 @@
 
   &-flex_container {
     flex-flow: row nowrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     height: auto;
   }
 
   &-socials_container {
+    justify-content: center;
     bottom: -300px;
-    padding: 0 20px;
+    // padding: 0 20px;
     max-width: 768px;
     transition: bottom $transitionTime ease $transitionTime + 0.2s;
 
@@ -2012,16 +2025,16 @@
 
   &-socials {
     flex-wrap: wrap;
-    margin: 11px 0 -8px;
-    width: 197px;
+    justify-content: space-around;
+    @include margin("11px * -8px");
+    max-width: 197px;
 
     .social-item {
       flex-shrink: 0;
-      margin: 0 11px;
 
       &:nth-child(1) {
         // margin-bottom: 53px;
-        margin: 0 72px;
+        @include margin("* 52px");
       }
     }
   }
