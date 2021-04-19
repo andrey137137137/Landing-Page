@@ -1,0 +1,136 @@
+
+footer#footer.section.dark_section.footer
+
+  |
+  |
+
+  // footer_top
+
+  |
+  |
+
+  section.section.footer_top
+    .container
+
+      article.float_col.col_3.footer_top__article
+
+        a.logo(href="#")
+          .img_wrap.logo__img
+            img.img_wrap__img(src="img/logo.png" alt="Логотип")
+          h2.logo__title Waxom
+        p.footer_top__desc.main Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci suscipit lobortis claritatem.
+        a.more_link.footer_top__link.more(href="#") Read more
+      
+      article.float_col.col_3.footer_top__article
+
+        h3.title.footer_top__title Recent Posts
+        -
+          var footer_posts_1 = [
+            {
+              desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
+              date: 'September 08, 2015'
+            },
+            {
+              desc: 'Diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
+              date: 'September 08, 2015'
+            },
+            {
+              desc: 'Claritas est etiam processus dynamicus, qui sequitur mutationem per seacula quarta decima',
+              date: 'September 08, 2015'
+            }
+          ]
+
+        //- for post, index in footer_posts_1
+        //-   if index < 2
+        //-     .footer_top__post
+        //-       span.footer_top__date September 08, 2015
+        //-       p.footer_top__desc #{post}
+        //-   else
+        //-     .footer_top__post.last
+        //-       span.footer_top__date September 08, 2015
+        //-       p.footer_top__desc #{post}
+
+        +footer_list(footer_posts_1)
+
+      article.float_col.col_3.footer_top__article
+
+        h3.title.footer_top__title Our Twitter
+        -
+          var footer_posts_2 = [
+            {
+              desc: '<a class="footer_top__link" href="#">@waxom</a> Cum soluta nobis eleifend option congue nihil imperdiet doming',
+              date: '3 mins ago'
+            },
+            {
+              desc: 'Mirum est <a class="footer_top__link" href="#">#envato</a> notare quam littera gothica, quam nunc putamus parum anteposuerit litterarum',
+              date: '5 hours ago'
+            },
+            {
+              desc: 'Soluta nobis option <b class="footer__bold footer_top__bold"> bit.ly/1Hniso7</b>',
+              date: '20 days ago'
+            }
+          ]
+
+        //- for post, index in footer_posts_2
+        //-   if index < 2
+        //-     .footer_top__post
+        //-       p.footer_top__desc !{post.desc}
+        //-       span.footer_top__date #{post.date}
+        //-   else
+        //-     .footer_top__post.last
+        //-       p.footer_top__desc !{post.desc}
+        //-       span.footer_top__date #{post.date}
+
+        +footer_list(footer_posts_2, false)
+
+      .float_col.col_3.footer_top__article
+
+        h3.title.footer_top__title Dribbble Widget
+
+        - for (var i = 1; i <= 4; i++)
+          .img_wrap.footer_top__img_wrap
+            img.img_wrap__img(src=i alt=i)
+
+  |
+  |
+
+  // footer_bottom
+
+  |
+  |
+
+  .section.footer_bottom
+    .container
+
+      ul.col.col_6.menu.footer_bottom__left_menu
+        -
+          var footer_left_menu = [
+            'Copyright © 2015 <a class="menu__link" href="#"><b class="footer__bold footer_bottom__bold"> Waxom </b></a>',
+            '<a class="menu__link" href="#"> Privacy Policy </a>',
+            '<a class="menu__link" href="#"> FAQ </a>',
+            '<a class="menu__link" href="#"> Support </a>'
+          ]
+
+        //- for item, index in footer_menu
+        //-   li(class={menu__item: true, last: index == footer_menu.length - 1}) !{item}
+
+        +footer_menu_list(footer_left_menu)
+
+      .clearfix.col.col_6.footer_bottom__right_menu_wrap
+        ul.menu.footer_bottom__right_menu
+          -
+            var footer_right_menu = [
+              'Designed by <a class="menu__link" href="#"><b class="footer__bold footer_bottom__bold"> ThemeFire </b></a>',
+              'Only on <a class="menu__link" href="#"><b class="footer__bold footer_bottom__bold"> Envato Market </b></a>'
+            ]
+
+          //- li.menu__item Designed by
+          //-   | 
+          //-   a.menu__link(href="#")
+          //-     b.footer__bold.footer_bottom__bold ThemeFire
+          //- li.menu__item.last Only on
+          //-   | 
+          //-   a.menu__link(href="#")
+          //-     b.footer__bold.footer_bottom__bold Envato Market
+
+          +footer_menu_list(footer_right_menu)

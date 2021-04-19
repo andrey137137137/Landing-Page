@@ -1,4 +1,2 @@
-node_modules
-public/css/style.min.css
-public/index.html
+/node_modules
 package-lock.json

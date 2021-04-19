@@ -1,0 +1,118 @@
+
+header#header.section.dark_section.header
+  nav.container.header__container
+
+    .float_col.col_11.header__menu_container
+      a.logo.header__logo(href="#")
+        .img_wrap.logo__img
+          img.img_wrap__img(src="img/logo.png" alt="Логотип")
+        h2.logo__title Waxom
+      a.header__menu_checker.fa_icon.fa_icon_bars(href="#")
+      -
+        var main_menu_items = [
+          {
+            link: 'main_slider',
+            title: 'home'
+          },
+          {
+            link: '',
+            title: 'about us'
+          },
+          {
+            link: 'gallery',
+            title: 'portfolio'
+          },
+          {
+            link: 'features',
+            title: 'features'
+          },
+          {
+            link: 'blog',
+            title: 'blog'
+          },
+          {
+            link: '',
+            title: 'pricing'
+          },
+          {
+            link: '',
+            title: 'shortcodes'
+          },
+          {
+            link: 'footer',
+            title: 'contact'
+          }
+          // {link: 'wordpress_theme', title: 'wordpress'},
+          
+          // {link: 'ideas', title: 'ideas'},
+          
+          // {link: 'video_presentation', title: 'presentation'},
+          
+          // {link: 'excellent', title: 'excellent'},
+          
+          // {link: 'counters', title: 'statistics'},
+          
+          // {link: 'clients', title: 'clients'}
+        ]
+
+      ul.menu.header__menu
+        for item in main_menu_items
+          li.menu__item
+            a.menu__link(href="#" + item.link) #{item.title}
+
+    .float_col.col_1.header__icons
+      a.sl_icon.sl_icon_bag.header__icon_cart(href="#")
+      a.fa_icon.fa_icon_search.header__icon_search(href="#")
+
+|
+|
+
+// main_slider
+
+|
+|
+
+//- ul.main_slider__slider_list(style="margin-top: 100px;")
+  li
+    img(src="img/bg/main_slider.jpg")
+    .dark_section__foreground.main_slider__foreground
+    article.container.main_slider__container
+
+      h1.col_6_n_30_px.title.section__title.main_slider__title Unique and Modern Design
+        b.main_slider__bold Portfolio PSD Template
+      p.col_6_n_30_px.section__desc.main_slider__desc Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+      a.btn.main_slider__btn(href="#") Get started
+  li
+    img(src="img/bg/video_presentation.jpg")
+  li
+    img(src="img/bg/clients.jpg")
+
+section#mainSliderSection.section.dark_section.main_slider
+  #mainSlider.main_slider__slider_list
+
+    .main_slider__slide.active
+      .dark_section__foreground.main_slider__foreground
+      img(src="img/bg/main_slider.jpg")
+      article.container.main_slider__container
+
+        h1.col_6_n_30_px.title.section__title.main_slider__title Unique and Modern Design
+          b.main_slider__bold Portfolio PSD Template
+        p.col_6_n_30_px.section__desc.main_slider__desc Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+        a.btn.main_slider__btn(href="#") Get started
+    .main_slider__slide
+      .dark_section__foreground.main_slider__foreground
+      img(src="img/bg/video_presentation.jpg")
+    .main_slider__slide
+      .dark_section__foreground.main_slider__foreground
+      img(src="img/bg/clients.jpg")
+
+  .slider_nav.main_slider__nav
+
+    a.slider_nav__arrow.slider_nav__prev(href="#")
+    a.slider_nav__arrow.slider_nav__next(href="#")
+
+    ul.slider_nav__thumbs.main_slider__thumbs
+      //- - for (var i = 0; i < 5; i++)
+      //-   li.slider_nav__thumb.main_slider__thumb
+      //-     a.thumb__link.main_slider__thumb_link(href="#")
+      //-       span.thumb__dot

@@ -1,61 +1,53 @@
-mixin logo(id="", isMain=false, titleH=false)
-  a.logo(id=id ? id + "-logo" : "" class=isMain ? "header-logo" : id + "-logo" href="#")
-    .rhombus_wrap.logo-rhombus.logo-rhombus--fill
-    .rhombus_wrap.logo-rhombus.logo-rhombus--empty
-    if isMain
-      h1.logo-title rubiko
-    else if titleH
-      h2.logo-title rubiko
+
+mixin light_section(settings)
+
+  - var owner_container_class = settings.is_container_class ? ' ' + settings.class + '__container' : ''
+  //- - var owner_container_class = settings.class + '__container'
+  - var center = settings.title.not_col_class ? '' : 'col '
+
+  section(id=settings.class class="section light_section " + settings.class)
+    div(class="container" + owner_container_class)
+
+      if settings.title
+        h2.title.section__title.light_section__title= settings.title.value
+        p(class=center + "col_8 section__desc light_section__desc")= settings.title.desc
+
+      block
+
+mixin dark_section(settings)
+
+  if settings.container_class
+    - var owner_container_class = ' ' + settings.class + '__' + settings.container_class
+  else
+    - var owner_container_class = settings.is_container_class ? ' ' + settings.class + '__container' : ''
+
+  - var container_classes = 'container' + owner_container_class
+
+  section(id=settings.class class="section dark_section " + settings.class)
+    if settings.is_foreground
+      .dark_section__foreground
+
+    if settings.container_is_ul
+      ul(class=container_classes)
+        block
     else
-      span.logo-title rubiko
+      div(class=container_classes)
+        block
 
-mixin picture(path, name, alt, wrapClasses=[], imgClasses=[], from=0)
-  -
-    var breakpoints = [
-      { path: 'd', value: 1170 },
-      { path: 't', value: 768 },
-    ]
+mixin footer_list(items, first_desc = true)
 
-  picture.lazy(class=wrapClasses)
-    - for (var i = from; i < 2; i++)
-      source(data-src=path + "/" + breakpoints[i].path + "/" + name media="(min-width: " + breakpoints[i].value + "px)" srcset="")
-    img(class=imgClasses data-src=path + "/m/" + name src="" alt=alt)
+  for item, index in items
+    div(class={footer_top__post: true, last: index == items.length - 1})
+      if first_desc
+        span.footer_top__date #{item.date}
+        p.footer_top__desc !{item.desc}
+      else
+        p.footer_top__desc !{item.desc}
+        span.footer_top__date #{item.date}
 
-mixin socials(classes="", count=6, from=0, id="")
-  -
-    var items = [
-      "facebook",
-      "twitter",
-      "dribbble",
-      "tumblr",
-      "linkedin",
-      "pinterest"
-    ]
-  - var fixedCount = count + from
+mixin footer_menu_list(items)
 
-  ul(id=id class=(classes ? classes + " " : "") + "social-list")
-    - for (var i = from; i < fixedCount; i++)
-      li.rhombus_wrap.social-item
-        a.rhombus_wrap-rhombus.social-link(class="social-link--" + items[i] href="#")
-
-mixin social-rhombus(classes="", count=6)
-  .rhombus_wrap.social-rhombus(class=classes)
-    +socials("", count)
-    .rhombus_wrap.rhombus_wrap--red_bg.social-show
-      .rhombus_wrap-rhombus
-
-mixin team-item(number, status, name)
-  .section-block.team_block(class="team_block--item_" + number)
-    .rhombus_wrap.photo_block-wrap.team_block-photo_block_wrap
-      .photo_block-frame
-        .rhombus_wrap-rhombus.photo_block-rhombus
-          //- picture
-          //- 	source(srcset="img/team/d/" + number + ".jpg" media="(min-width: 1170px)")
-          //- 	source(srcset="img/team/t/" + number + ".jpg" media="(min-width: 768px)")
-          //-   img.photo_block-img.team_block-img(srcset="img/team/m/" + number + ".jpg" alt=number)
-          +picture("img/team", number + ".jpg", number, [], ["photo_block-img", "team_block-img"])
-      +socials("team-socials", 5)
-
-    span.team_block-status= status
-    h3.section-title.team_block-title= name
-    p.team_block-desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
+  for item, index in items
+    li(class={menu__item: true, last: index == items.length - 1}) !{item}
+      |
+      |
